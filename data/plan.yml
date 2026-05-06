@@ -1,0 +1,433 @@
+trip:
+  name: "Eurotrip 2026 — Alvin & Girlfriend"
+  duration: "30 days"
+  dates: "Aug 12 – Sep 10, 2026"
+  budget_total_usd: 14000
+  persons: 2
+  origin: "Lima, Peru (LIM)"
+  anchor_event:
+    name: "Wedding"
+    date: "2026-09-06"
+    city: "Craiova, Romania"
+    arrive_by: "2026-09-04"
+
+itinerary:
+  - id: 1
+    city: "Paris"
+    country: "France"
+    nights: 6
+    dates: "Aug 12–18"
+    daily_cost_usd: 390
+    accommodation: "Airbnb 1BR (Marais/11th arr.)"
+    accommodation_cost_night: 190
+    highlights:
+      - "Disneyland Paris — 2 days (both parks)"
+      - "Eiffel Tower observation decks"
+      - "Jules Verne dinner (book 90 days ahead!)"
+      - "Montmartre & Sacré-Coeur"
+      - "Seine river cruise"
+      - "VR experience (The Edge VR or Eclipso)"
+      - "Picnic lunch at Champ de Mars"
+    transport_from_prev: "Lima → Paris CDG (Air France/Iberia, ~$700–900/person)"
+
+  - id: 2
+    city: "Grindelwald / Interlaken"
+    country: "Switzerland"
+    nights: 4
+    dates: "Aug 18–22"
+    daily_cost_usd: 480
+    accommodation: "Airbnb / Mountain Guesthouse"
+    accommodation_cost_night: 200
+    highlights:
+      - "Jungfraujoch Top of Europe (full day)"
+      - "First Gondola + Bachalpsee lake hike"
+      - "Lake Oeschinen swim (Kandersteg day trip)"
+      - "Bernina Express scenic train"
+      - "Chez Vrony dinner (Zermatt, if visiting)"
+      - "Harder Kulm views (Interlaken)"
+    transport_from_prev: "Train TGV Lyria Paris→Zurich (4h, ~$55–135/person)"
+
+  - id: 3
+    city: "Rome"
+    country: "Italy"
+    nights: 4
+    dates: "Aug 22–26"
+    daily_cost_usd: 350
+    accommodation: "Boutique hotel (Trastevere area)"
+    accommodation_cost_night: 160
+    highlights:
+      - "Colosseum + Roman Forum + Palatine Hill"
+      - "Vatican Museums + Sistine Chapel + St. Peter's"
+      - "Colosseum VR Experience (Samsung Oculus)"
+      - "Pantheon (€5)"
+      - "Trastevere evening walk + dinner"
+      - "Museo Civico di Zoologia (dinosaur section)"
+      - "Circo Maximo AR Experience"
+    transport_from_prev: "Flight Paris→Rome (~$25–75/person, Ryanair/easyJet)"
+
+  - id: 4
+    city: "Barcelona"
+    country: "Spain"
+    nights: 3
+    dates: "Aug 26–29"
+    daily_cost_usd: 320
+    accommodation: "Hotel or Airbnb"
+    accommodation_cost_night: 145
+    highlights:
+      - "Sagrada Família (book ahead, ~€26/person)"
+      - "Park Güell (~€10/person)"
+      - "La Pedrera / Casa Batlló"
+      - "Gothic Quarter wander"
+      - "Barceloneta beach day"
+      - "La Boqueria market"
+    transport_from_prev: "Flight Rome→Barcelona (~$25–100/person)"
+
+  - id: 5
+    city: "Budapest"
+    country: "Hungary"
+    nights: 3
+    dates: "Aug 29–Sep 2"
+    daily_cost_usd: 215
+    accommodation: "Hotel (great value)"
+    accommodation_cost_night: 95
+    highlights:
+      - "Széchenyi Thermal Baths"
+      - "Fisherman's Bastion (free views)"
+      - "Parliament building"
+      - "Ruin bars (Szimpla Kert)"
+      - "Chain Bridge at night"
+      - "Boat cruise on the Danube"
+    transport_from_prev: "Flight Barcelona→Budapest (~$40–120/person)"
+
+  - id: 6
+    city: "Vienna"
+    country: "Austria"
+    nights: 2
+    dates: "Sep 2–4"
+    daily_cost_usd: 295
+    accommodation: "Hotel"
+    accommodation_cost_night: 130
+    highlights:
+      - "Schönbrunn Palace & gardens"
+      - "Naschmarkt food market"
+      - "Prater + Riesenrad (giant Ferris wheel views)"
+      - "Vienna Woods hike"
+    transport_from_prev: "Train or short flight Budapest→Vienna (~$30–60/person)"
+
+  - id: 7
+    city: "Craiova"
+    country: "Romania"
+    nights: 4
+    dates: "Sep 4–8"
+    daily_cost_usd: 150
+    accommodation: "Hotel / Wedding arrangements"
+    accommodation_cost_night: 70
+    highlights:
+      - "Wedding — September 6, 2026 (!)"
+      - "Arrive relaxed Sep 4 (2 days before)"
+      - "Craiova Art Museum (optional)"
+      - "Nicolae Romanescu Park"
+    transport_from_prev: "Flight Vienna→Bucharest OTP (~$50–100/person) + Train OTP→Craiova (3.5h, ~$12/person)"
+
+  - id: 8
+    city: "Bucharest"
+    country: "Romania"
+    nights: 2
+    dates: "Sep 8–10"
+    daily_cost_usd: 130
+    accommodation: "Hotel"
+    accommodation_cost_night: 60
+    highlights:
+      - "Palace of the Parliament (2nd largest building in world)"
+      - "Old Town (Lipscani district)"
+      - "Cismigiu Gardens"
+    transport_from_prev: "Train Craiova→Bucharest (3.5h)"
+
+interests:
+  dinosaurs:
+    title: "Dinosaur & Paleontology Experiences"
+    warning: "Paris MNHN Gallery is CLOSED for renovation until late 2027 — do NOT plan this in Paris"
+    options:
+      - name: "Museum für Naturkunde"
+        city: "Berlin (optional add)"
+        country: "Germany"
+        highlight: "World's best dino museum — tallest mounted dinosaur + Europe's only original T. rex (Tristan Otto)"
+        admission_eur: 11
+        rating: "★★★★★"
+      - name: "Natural History Museum"
+        city: "London (optional add)"
+        country: "UK"
+        highlight: "Free dino gallery. 2026 special: Jurassic Oceans exhibition (£15)"
+        admission_eur: 0
+        rating: "★★★★★"
+      - name: "Museo Civico di Zoologia"
+        city: "Rome"
+        country: "Italy"
+        highlight: "5 million specimens, dino section with interactive 3D reconstructions. On the route!"
+        admission_eur: 8
+        rating: "★★★"
+
+  vr_experiences:
+    title: "VR & Immersive Experiences"
+    options:
+      - name: "The Edge VR (L'Edge)"
+        city: "Paris"
+        highlight: "4D haptic vest + fans + heat + vibration. Ultra-realistic. Perfect match!"
+        price_per_person_eur: 30
+      - name: "Eclipso"
+        city: "Paris (Bercy Village)"
+        highlight: "300–1000m² total immersion dark room environment"
+        price_per_person_eur: 28
+      - name: "Virtual Room Paris"
+        city: "Paris"
+        highlight: "First collaborative VR center, designed for couples"
+        price_per_person_eur: 25
+      - name: "Colosseum VR Experience"
+        city: "Rome"
+        highlight: "Samsung Oculus inside the real Colosseum — watch gladiators fight around you"
+        price_per_person_eur: 45
+      - name: "Circo Maximo AR Experience"
+        city: "Rome"
+        highlight: "Augmented reality walk through ancient chariot races on the real site"
+        price_per_person_eur: 18
+      - name: "Domus Aurea VR"
+        city: "Rome"
+        highlight: "Nero's Golden House with 3D VR immersion into 30 frescoed halls"
+        price_per_person_eur: 22
+      - name: "Zero Latency VR"
+        city: "Rome"
+        highlight: "Untethered free-roam VR (same global brand)"
+        price_per_person_eur: 35
+
+dining_views:
+  - name: "Le Jules Verne"
+    city: "Paris"
+    location: "Eiffel Tower, 2nd floor"
+    stars: 2
+    price_per_person_usd: 330
+    price_note: "5-course tasting menu €295/person. Book 90 days ahead — fills in hours!"
+    booking: "restaurants-toureiffel.com"
+    must_book: true
+  - name: "Chez Vrony"
+    city: "Zermatt, Switzerland"
+    location: "Findeln hamlet, 2,130m above Zermatt"
+    stars: 0
+    price_per_person_usd: 65
+    price_note: "Michelin Guide-listed. Matterhorn views. Local raclette & rösti. ~€50–80/person"
+    booking: "Recommended advance reservation"
+    must_book: false
+  - name: "Berggasthaus First"
+    city: "Grindelwald, Switzerland"
+    location: "Top of Firstbahn gondola"
+    stars: 0
+    price_per_person_usd: 45
+    price_note: "Eiger-Mönch-Jungfrau panorama. ~30–50 CHF/person"
+    booking: "Walk-in"
+    must_book: false
+  - name: "Harder Kulm"
+    city: "Interlaken, Switzerland"
+    location: "Funicular summit"
+    stars: 0
+    price_per_person_usd: 55
+    price_note: "Views of both lakes + Jungfrau massif. ~40–60 CHF/person. Short funicular ride."
+    booking: "Walk-in"
+    must_book: false
+  - name: "Terrass Hotel Rooftop"
+    city: "Paris"
+    location: "7th floor, Montmartre"
+    stars: 0
+    price_per_person_usd: 40
+    price_note: "Eiffel Tower + Sacré-Coeur views. Tapas + cocktails."
+    booking: "Reservation recommended"
+    must_book: false
+
+skiing:
+  context: "Trip is in August/September — most European resorts are CLOSED. Only glacier resorts operate."
+  options:
+    - name: "Val Senales Glacier"
+      country: "Italy (South Tyrol)"
+      opens: "~September 19 (just after wedding — viable for Sept 8–10 post-wedding)"
+      terrain_km: 42
+      day_pass_eur: 52
+      rental_per_day_eur: 35
+      total_per_person_usd: 110
+      verdict: "BEST OPTION — closest to your Italy experience (South Tyrol), large terrain, affordable"
+      rating: "★★★★★"
+    - name: "Passo Stelvio"
+      country: "Italy (Lombardy)"
+      opens: "May–November (open during Rome/Italy leg)"
+      terrain_km: 10
+      day_pass_eur: 40
+      rental_per_day_eur: 35
+      total_per_person_usd: 90
+      verdict: "Limited terrain but spectacular setting. Viable during Italy stay (late August)"
+      rating: "★★★"
+    - name: "Hintertux Glacier"
+      country: "Austria (Tyrol)"
+      opens: "Year-round"
+      terrain_km: 20
+      day_pass_eur: 53
+      rental_per_day_eur: 35
+      total_per_person_usd: 105
+      verdict: "Only true year-round glacier in Europe. Add as Vienna detour."
+      rating: "★★★★"
+
+switzerland:
+  lakes:
+    - name: "Lake Oeschinen (Oeschinensee)"
+      location: "Kandersteg, Bernese Oberland"
+      access: "Cable car (~15 CHF/person) + 20 min walk OR 90-min hike"
+      swimming: true
+      water_temp_sept: "12–17°C"
+      backdrop: "Turquoise lake + limestone cliffs (Blüemlisalp) — zero urban development visible"
+      verdict: "TOP PICK — exactly what you described: at the foot of the Alps with full mountain panorama"
+      rating: "★★★★★"
+    - name: "Lago di Braies (Pragser Wildsee)"
+      location: "South Tyrol, Italy (near Val Senales)"
+      access: "Bus from parking area (reservation required)"
+      swimming: true
+      water_temp_sept: "8–12°C (cold)"
+      backdrop: "Teal lake + Dolomite rock walls — stunning photo backdrop"
+      verdict: "Most dramatic backdrop. Combine with Val Senales ski day (45 min away)"
+      rating: "★★★★★"
+
+  scenic_trains:
+    - name: "Bernina Express"
+      route: "Chur → Tirano (Italy) via Bernina Pass"
+      duration: "4 hours"
+      price_per_person_usd: 105
+      price_note: "2nd class ~€55 + €40 seat reservation. Swiss Travel Pass covers base fare."
+      highlight: "UNESCO heritage railway. Highest Alpine crossing at 2,253m. Glaciers + viaducts + Italian descent."
+      verdict: "BEST SCENIC TRAIN IN EUROPE — do this one"
+      rating: "★★★★★"
+    - name: "GoldenPass Express"
+      route: "Interlaken → Montreux (Lake Geneva)"
+      duration: "3 hours"
+      price_per_person_usd: 45
+      price_note: "Swiss Travel Pass + ~€15 reservation"
+      highlight: "Bernese Oberland countryside → Lake Geneva. Good for connecting Switzerland to France side."
+      verdict: "Great value, beautiful. Do if time allows."
+      rating: "★★★★"
+    - name: "Glacier Express"
+      route: "Zermatt → St. Moritz"
+      duration: "8 hours"
+      price_per_person_usd: 235
+      price_note: "159 CHF + 54 CHF reservation = ~$235/person. Very expensive."
+      highlight: "World's most famous scenic train. But slow and expensive vs Bernina."
+      verdict: "Skip full route — too long/expensive. Do Bernina Express instead."
+      rating: "★★★"
+
+  swiss_travel_pass:
+    days_3: 270
+    days_4: 323
+    currency: "USD approx."
+    covers: "All SBB trains, Glacier/Bernina/GoldenPass base fare, mountain railways, lake steamers"
+    note: "Add seat reservations separately (CHF 40–54 for panoramic trains)"
+    verdict: "Worth it if spending 3–4 nights and doing Bernina Express + Jungfraujoch"
+
+transport:
+  international:
+    outbound:
+      from: "Lima (LIM)"
+      to: "Paris (CDG)"
+      options:
+        - airline: "Air France / KLM"
+          route: "LIM → CDG direct or via AMS"
+          duration: "13–14h"
+          price_range_usd: "700–900 per person"
+          notes: "Most direct option"
+        - airline: "Iberia"
+          route: "LIM → MAD → CDG"
+          duration: "15–16h"
+          price_range_usd: "600–850 per person"
+          notes: "Often good value, especially book 6+ months ahead"
+    return:
+      from: "Bucharest (OTP)"
+      to: "Lima (LIM)"
+      route: "OTP → AMS or MAD → LIM"
+      price_range_usd: "600–900 per person"
+    total_international_for_2: "2400–3600"
+
+  intra_europe:
+    - leg: "Paris → Zurich"
+      type: "Train (TGV Lyria)"
+      duration: "4h"
+      price_for_2_usd: "110–270"
+      notes: "Scenic, city-center to city-center. Book 3 months ahead for best price."
+    - leg: "Paris → Rome"
+      type: "Flight"
+      duration: "2h flight"
+      price_for_2_usd: "50–150"
+      notes: "Ryanair/easyJet. Fly, much faster and cheaper than train."
+    - leg: "Rome → Barcelona"
+      type: "Flight"
+      duration: "2h flight"
+      price_for_2_usd: "50–150"
+      notes: "RyanAir/Vueling. Book early."
+    - leg: "Barcelona → Budapest"
+      type: "Flight"
+      duration: "2.5h"
+      price_for_2_usd: "60–200"
+      notes: "WizzAir or Ryanair"
+    - leg: "Budapest → Vienna"
+      type: "Train"
+      duration: "2.5h"
+      price_for_2_usd: "30–80"
+      notes: "Comfortable and scenic"
+    - leg: "Vienna → Bucharest"
+      type: "Flight"
+      duration: "2h"
+      price_for_2_usd: "86–200"
+      notes: "WizzAir. Check Ryanair too."
+    - leg: "Bucharest → Craiova"
+      type: "Train"
+      duration: "3.5–4h"
+      price_for_2_usd: "25"
+      notes: "Or private car ~$80. Train is cheapest."
+
+budget:
+  accommodation_26_nights: "3500–5200"
+  food_26_days: "2200–3200"
+  international_flights: "2400–3600"
+  intra_europe_transport: "1000–1800"
+  activities: "1200–1800"
+  jules_verne_dinner: "700"
+  skiing_2_days: "300–500"
+  scenic_trains: "200–350"
+  misc: "500–800"
+  total_min: 11500
+  total_max: 17200
+  target: 14000
+  verdict: "$14,000 is achievable with discipline — Switzerland + Paris are the expensive anchors, offset by Prague/Budapest/Romania"
+
+booking_priority:
+  - order: 1
+    what: "Jules Verne Restaurant"
+    when_to_book: "June 2026 (90 days before your late August/September date)"
+    urgency: "CRITICAL — sunset window seats fill within hours of opening"
+    url: "restaurants-toureiffel.com"
+  - order: 2
+    what: "Disneyland Paris tickets"
+    when_to_book: "3–4 months ahead"
+    urgency: "High — advance midweek ~€89–100/person vs. €130+ same day"
+    url: "disneylandparis.com"
+  - order: 3
+    what: "Vatican Museums skip-the-line"
+    when_to_book: "2–3 months ahead"
+    urgency: "High — queues are 2–3h without pre-booking"
+    url: "vatican.va"
+  - order: 4
+    what: "Colosseum guided tour + VR add-on"
+    when_to_book: "2 months ahead"
+    urgency: "Medium-high"
+    url: "ancientandrecent.com"
+  - order: 5
+    what: "Bernina Express seat reservation"
+    when_to_book: "1–2 months ahead"
+    urgency: "Medium — especially July/August"
+    url: "sbb.ch"
+  - order: 6
+    what: "International flights Lima ↔ Europe"
+    when_to_book: "NOW (6+ months ahead)"
+    urgency: "CRITICAL — prices rise significantly closer to date"
+    url: "Use KAYAK, Google Flights, ITA Matrix"
