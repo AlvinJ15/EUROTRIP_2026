@@ -19,7 +19,8 @@ const TRIP = {
     city: "Craiova, Romania",
     note: "Fly Madrid→Craiova Sep 5 at 8pm, land ~midnight. Two full wedding days: Sep 6 + Sep 7."
   },
-  flightNote: "✅ CONFIRMED: Madrid→Craiova Sep 5, 8pm (lands ~midnight) · Return Madrid→Lima Sep 29, 11am · Jules Verne Paris Sep 24, 8pm",
+  flightNote: "✅ CONFIRMED: Madrid→Craiova Sep 5, 8pm (lands ~midnight) · Return Madrid→Lima Sep 29, 11am · Jules Verne Paris Sep 24, 8pm (still fits — Thursday is still a Paris day)",
+  datesRevision: "✅ VENICE DROPPED — both yellow items resolved. Turkey Sep 8–12 (4n) · Greece 12–15 · Rome 15–18 · ✈️ Rome→Geneva Sep 18 · Zermatt 18–20 · Grindelwald 20–21 · Paris 21–25 · London 25–27 (2n) · Madrid 27–29. The Venice night went to London, and the freed calendar day pulled everything one day earlier — which also moved Disney onto Tue Sep 22 + Wed Sep 23, the two quietest days of the week, back-to-back.",
   flightSavings: "Round-trip LIM↔MAD is simpler and usually cheaper than an open-jaw — the Madrid bookends are already fixed."
 };
 
@@ -73,20 +74,20 @@ const FLIGHTS = {
     { leg: "Barcelona → Madrid", method: "🚄 AVE high-speed train", cost: "$60–140 for 2", notes: "Sep 4 evening return. Book both directions together." },
     { leg: "Madrid → Craiova", method: "✈️ Flight — ✅ BOOKED", cost: "Booked", notes: "Sep 5, departs 8:00pm, lands ~midnight. Arrange an airport pickup in advance — arriving at midnight with no plan is the one avoidable stress of this trip." },
     { leg: "Craiova → Istanbul", method: "✈️ Flight", cost: "$120–260 for 2", notes: "Sep 8. Craiova (CRA) has limited routes — most likely bus/train to Bucharest OTP (3.5h) then OTP→IST (1h50) on Turkish Airlines. Check for a direct CRA→IST first." },
-    { leg: "Istanbul → Athens", method: "✈️ Flight", cost: "$100–240 for 2", notes: "Sep 11. 1h30, Aegean or Turkish. Frequent daily departures." },
-    { leg: "Athens → Santorini", method: "✈️ Flight (or ⛴️ ferry)", cost: "$90–200 for 2", notes: "Sep 13. Flight 45min — take it. The ferry is 5–8h and eats a whole day you don't have." },
-    { leg: "Santorini → Rome", method: "✈️ Flight", cost: "$140–320 for 2", notes: "Sep 14. Seasonal direct JTR→FCO exists in September (Volotea/Ryanair). If unavailable, route via Athens." },
-    { leg: "Rome → Venice", method: "🚄 Frecciarossa train", cost: "$70–160 for 2", notes: "Sep 17. 4h, city centre to Venezia Santa Lucia (right on the Grand Canal). Book at trenitalia.com." },
-    { leg: "Venice → Zermatt", method: "🚂 Train via Milan + Brig", cost: "$180–300 for 2", notes: "Sep 18. Venice→Milan 2h30, Milan→Brig→Zermatt ~4h. Long but scenic through the Simplon. Zermatt is car-free — you arrive by train into the village." },
+    { leg: "Istanbul → Athens", method: "✈️ Flight", cost: "$100–240 for 2", notes: "Sep 12. 1h30, Aegean or Turkish. Frequent daily departures." },
+    { leg: "Athens → Santorini", method: "✈️ Flight (or ⛴️ ferry)", cost: "$90–200 for 2", notes: "Sep 14. Flight 45min — take it. The ferry is 5–8h and eats a whole day you don't have." },
+    { leg: "Santorini → Rome", method: "✈️ Flight", cost: "$140–320 for 2", notes: "Sep 15. Seasonal direct JTR→FCO exists in September (Volotea/Ryanair). If unavailable, route via Athens." },
+    { leg: "Rome → Geneva", method: "✈️ Flight", cost: "$100–220 for 2", notes: "🆕 Sep 18 morning — this leg REPLACES Rome→Venice→Zermatt. 1h50 FCO→GVA (easyJet/ITA/Swiss). Take a departure before ~11:00 so you reach Zermatt in daylight." },
+    { leg: "Geneva → Zermatt", method: "🚂 Train via Visp", cost: "Covered by Swiss Travel Pass", notes: "🆕 Sep 18 afternoon. Geneva airport station → Visp → Zermatt, ~3h40, one easy change. Activate the Swiss Travel Pass on Sep 18 and this leg costs nothing extra. Zermatt is car-free — the train runs into the village." },
     { leg: "Zermatt → Grindelwald", method: "🚂 Train", cost: "Covered by Swiss Travel Pass", notes: "Sep 20 afternoon. 2h15 via Visp + Interlaken Ost. Easy, gorgeous." },
     { leg: "Grindelwald → Paris (GoldenPass Express)", method: "🚂 Scenic train + TGV", cost: "$200–320 for 2", notes: "Sep 21. Grindelwald→Interlaken, then GOLDENPASS EXPRESS Interlaken→Montreux (3h panoramic), Montreux→Geneva (1h), TGV Geneva→Paris (3h10). Your scenic train, on the route, zero detour." },
-    { leg: "Paris → London", method: "🚄 Eurostar", cost: "$140–320 for 2", notes: "Sep 25 morning. 2h15 Gare du Nord → St Pancras. Book 2 months ahead — prices climb steeply." },
+    { leg: "Paris → London", method: "🚄 Eurostar", cost: "$140–320 for 2", notes: "✅ Sep 25, mid-morning (~09:00–10:00) — no longer a dawn scramble. 2h15 Gare du Nord → St Pancras, arrive ~midday. With 2 London nights the train time is flexible again." },
     { leg: "London → Madrid", method: "✈️ Flight", cost: "$120–300 for 2", notes: "Sep 27 evening. 2h20. Iberia/Ryanair/easyJet. Must be Sep 27 — you need a buffer night before the 11am Sep 29 departure." }
   ]
 };
 
 // ============================================================
-// ITINERARY — 11 stops
+// ITINERARY — 10 stops (Venice dropped; its night went to London)
 // ============================================================
 const ITINERARY = [
   {
@@ -161,8 +162,8 @@ const ITINERARY = [
     city: "Istanbul",
     country: "Turkey",
     emoji: "🕌",
-    nights: 3,
-    dates: "Sep 8–11 (Tue–Fri)",
+    nights: 4,
+    dates: "Sep 8–12 (Tue–Sat)",
     image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&q=80",
     dailyCost: 180,
     accommodation: "Hotel — Sultanahmet or Karaköy",
@@ -172,7 +173,8 @@ const ITINERARY = [
       { day: "Sep 8 (Tue)", plan: "Arrive Istanbul afternoon/evening. Check in. Easy first evening: Galata Bridge, fish sandwiches, Karaköy backstreets. You've just done two wedding days — take it slow." },
       { day: "Sep 9 (Wed)", plan: "The classics: Hagia Sophia, Blue Mosque, Basilica Cistern, Topkapi Palace — all within walking distance in Sultanahmet. Afternoon: Grand Bazaar + Spice Bazaar. Evening: rooftop dinner with the skyline." },
       { day: "Sep 10 (Thu)", plan: "Bosphorus cruise (Europe/Asia in one boat ride). Afternoon: Turkish bath (hamam) — genuinely restorative after the wedding. Evening: Istiklal Street + Galata Tower at sunset." },
-      { day: "Sep 11 (Fri)", plan: "Free morning / last bazaar run. Afternoon flight → Athens (1h30)." }
+      { day: "Sep 11 (Fri)", plan: "🆕 THE EXTRA DAY. Either: (a) slow Istanbul — Asian side ferry to Kadıköy, Süleymaniye Mosque, Balat's painted houses, Princes' Islands; or (b) 🎈 CAPPADOCIA — fly IST→NAV Thu evening, sunrise balloon Fri morning, valleys + cave hotel, fly back Fri night or Sat morning. The 4th night is what makes the balloon possible." },
+      { day: "Sep 12 (Sat)", plan: "Free morning / last bazaar run. Afternoon flight → Athens (1h30)." }
     ],
     highlights: [
       { icon: "🕌", text: "Hagia Sophia — 1,500 years old, cathedral then mosque then museum then mosque again", cost: "~€25/person (foreign visitor fee)" },
@@ -183,10 +185,10 @@ const ITINERARY = [
       { icon: "🛍️", text: "Grand Bazaar + Spice Bazaar — 4,000 shops, 15th century. Haggling expected.", cost: "Free to browse" }
     ],
     tips: [
-      "Kept flexible as you asked — 3 days, no locked schedule. Istanbul rewards wandering.",
-      "The Istanbul Tourist Pass isn't worth it for 3 days unless you hit 5+ paid sites. Buy individually.",
+      "🆕 Now 4 nights (was 3) — this is the leg that absorbed the extra night. Still deliberately unscheduled; Istanbul rewards wandering.",
+      "The Istanbul Tourist Pass is worth a look at 4 days if you'll hit 5+ paid sites — otherwise still buy individually.",
       "Hagia Sophia + Topkapi: book online, the queues are real even in September.",
-      "Want Cappadocia instead? It's a 1h20 flight + a sunrise balloon (~€200/person). Spectacular, but it costs you 2 internal flights out of 3 days. Only if you're willing to give up most of Istanbul.",
+      "🎈 CAPPADOCIA IS NOW REALISTIC. At 3 nights it cost you most of Istanbul; at 4 it doesn't. IST→NAV is 1h20, the sunrise balloon is ~€200/person, and you'd still keep 2 full Istanbul days. This is the single best use of the extra night.",
       "September Istanbul: 26–28°C, ideal. Cover shoulders and knees for mosques; women need a headscarf (they lend them)."
     ],
     selectedActivities: ["Hagia Sophia", "Bosphorus cruise", "Hamam", "Grand Bazaar"]
@@ -197,17 +199,17 @@ const ITINERARY = [
     country: "Greece",
     emoji: "🇬🇷",
     nights: 3,
-    dates: "Sep 11–14 (Fri–Mon)",
+    dates: "Sep 12–15 (Sat–Tue)",
     image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80",
     dailyCost: 280,
     accommodation: "Hotel Athens (2 nights) + Santorini caldera-view hotel (1 night)",
     accommodationCost: 165,
-    transport: { from: "Istanbul", how: "Fly IST→ATH (1h30, Aegean/Turkish). Then ATH→JTR Santorini (45min) on Sep 13." },
+    transport: { from: "Istanbul", how: "Fly IST→ATH (1h30, Aegean/Turkish). Then ATH→JTR Santorini (45min) on Sep 14." },
     dayByDay: [
-      { day: "Sep 11 (Fri)", plan: "Arrive Athens evening. Check in near Plaka/Monastiraki. Dinner on a rooftop with the Acropolis lit up above you." },
-      { day: "Sep 12 (Sat)", plan: "🏛️ ACROPOLIS at 8am opening (beat the heat and the cruise crowds) — Parthenon, Erechtheion. Then Ancient Agora + Temple of Olympian Zeus. Afternoon: Plaka + Monastiraki. Sunset at Lycabettus Hill." },
-      { day: "Sep 13 (Sun)", plan: "Morning flight → Santorini (45min). Afternoon: Fira to Oia caldera walk or the bus. 🌅 OIA SUNSET — the famous one. Book dinner with a caldera view." },
-      { day: "Sep 14 (Mon)", plan: "Santorini morning: Amoudi Bay or a quick swim at Red Beach. Afternoon flight → Rome." }
+      { day: "Sep 12 (Sat)", plan: "Arrive Athens evening. Check in near Plaka/Monastiraki. Dinner on a rooftop with the Acropolis lit up above you." },
+      { day: "Sep 13 (Sun)", plan: "🏛️ ACROPOLIS at 8am opening (beat the heat and the cruise crowds) — Parthenon, Erechtheion. Then Ancient Agora + Temple of Olympian Zeus. Afternoon: Plaka + Monastiraki. Sunset at Lycabettus Hill." },
+      { day: "Sep 14 (Mon)", plan: "Morning flight → Santorini (45min). Afternoon: Fira to Oia caldera walk or the bus. 🌅 OIA SUNSET — the famous one. Book dinner with a caldera view." },
+      { day: "Sep 15 (Tue)", plan: "Santorini morning: Amoudi Bay or a quick swim at Red Beach. Afternoon flight → Rome." }
     ],
     highlights: [
       { icon: "🏛️", text: "The Acropolis + Parthenon — go at 8am opening, it's 30°C by 11am and packed", cost: "€20/person (combo ticket €30)" },
@@ -219,10 +221,10 @@ const ITINERARY = [
     ],
     tips: [
       "3 days is tight for Greece — this splits Athens 2 nights / Santorini 1 night, which is the maximum you can do without cutting Italy.",
-      "🔴 Book the Santorini caldera-view hotel early. Sep 13 is a Sunday in high-shoulder season and Oia sells out.",
+      "🔴 Book the Santorini caldera-view hotel early. Sep 14 is a Monday now — slightly easier than the old Sunday date, but Oia still sells out in shoulder season.",
       "Fly Athens→Santorini, don't ferry. The ferry is 5–8h and would consume your only Santorini day.",
-      "Acropolis: buy the timed ticket online and take the 8am entry. This matters more than any other timing on the trip.",
-      "Santorini→Rome direct flights are seasonal — verify Sep 14 exists, otherwise route via Athens and budget an extra 3h."
+      "Acropolis is now Sunday Sep 13 — busier than the old Saturday slot for Greek visitors. The 8am timed entry matters more than ever.",
+      "Santorini→Rome direct flights are seasonal — verify Sep 15 exists, otherwise route via Athens and budget an extra 3h."
     ],
     selectedActivities: ["🏛️ Acropolis", "🌅 Oia sunset", "Caldera dinner"]
   },
@@ -233,17 +235,17 @@ const ITINERARY = [
     emoji: "🏛️",
     mandatory: true,
     nights: 3,
-    dates: "Sep 14–17 (Mon–Thu)",
+    dates: "Sep 15–18 (Tue–Fri)",
     image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80",
     dailyCost: 340,
     accommodation: "Boutique hotel — Trastevere",
     accommodationCost: 155,
     transport: { from: "Santorini", how: "Fly JTR→FCO (~2h30 direct seasonal, or via Athens). Arrive Rome evening." },
     dayByDay: [
-      { day: "Sep 14 (Mon)", plan: "Arrive Rome evening. Check in Trastevere. Evening walk + dinner in the cobbled streets. Gelato." },
-      { day: "Sep 15 (Tue)", plan: "🔴 VATICAN — Museums + Sistine Chapel + St. Peter's Basilica. Book the earliest skip-the-line slot. Afternoon: climb St. Peter's dome. Evening: Pantheon (€5) + Piazza Navona." },
-      { day: "Sep 16 (Wed)", plan: "🔴 COLOSSEUM + Roman Forum + Palatine Hill, with the Samsung Oculus VR add-on inside the arena. Afternoon: Circo Massimo AR experience — ancient chariot races overlaid on the real ruins. Evening: Trevi Fountain after dark (far fewer people)." },
-      { day: "Sep 17 (Thu)", plan: "Early Frecciarossa train → Venice (4h). Arrive Venice around midday." }
+      { day: "Sep 15 (Tue)", plan: "Arrive Rome evening. Check in Trastevere. Evening walk + dinner in the cobbled streets. Gelato." },
+      { day: "Sep 16 (Wed)", plan: "🔴 COLOSSEUM + Roman Forum + Palatine Hill, with the Samsung Oculus VR add-on inside the arena. Afternoon: Circo Massimo AR experience — ancient chariot races overlaid on the real ruins. Evening: Trevi Fountain after dark (far fewer people). ⚠️ SWAPPED with the Vatican day — see tips." },
+      { day: "Sep 17 (Thu)", plan: "🔴 VATICAN — Museums + Sistine Chapel + St. Peter's Basilica. Book the earliest skip-the-line slot. Afternoon: climb St. Peter's dome. Evening: Pantheon (€5) + Piazza Navona. Domus Aurea VR also runs Thu–Sun if you want it." },
+      { day: "Sep 18 (Fri)", plan: "🆕 Morning flight Rome (FCO) → Geneva (1h50), then train Geneva→Visp→Zermatt (~3h40) on the Swiss Travel Pass. Arrive Zermatt late afternoon — in daylight, with the rental shops still open." }
     ],
     highlights: [
       { icon: "🔴", text: "MANDATORY: Vatican Museums + Sistine Chapel + St. Peter's Basilica", cost: "€22/person · St. Peter's free · dome €10" },
@@ -254,48 +256,18 @@ const ITINERARY = [
       { icon: "🌆", text: "Trastevere evenings — cobblestones, the best food in Rome, no tourist-trap menus", cost: "$35–55/person" }
     ],
     tips: [
-      "🔴 Vatican Tuesday Sep 15: book the 8:00am entry at tickets.museivaticani.va, 2 months out. The 'skip-the-line' resellers charge triple.",
+      "⚠️ WHY THE DAYS SWAPPED: the new dates pushed the Vatican onto Wednesday, which is PAPAL AUDIENCE day — St. Peter's Square is given over to the audience ~09:00–12:00 and the Basilica is closed or heavily restricted that morning. So the Colosseum takes Wed Sep 16 and the Vatican takes Thu Sep 17.",
+      "🔴 Vatican Thursday Sep 17: book the 8:00am entry at tickets.museivaticani.va, 2 months out. The 'skip-the-line' resellers charge triple.",
       "Colosseum: book the guided tour WITH the VR add-on at ancientandrecent.com — you asked for the immersive stuff and this is the best of it.",
       "Eat anywhere except within 500m of the Trevi Fountain. That rule alone doubles the quality of your meals.",
       "Rome gets 3 nights — enough for the Vatican and the Colosseum done properly. Pompeii doesn't fit this version of the trip.",
-      "Book the Sep 17 Frecciarossa to Venice in advance (~€30/person); walk-up fares are triple."
+      "🆕 Sep 18 is now a flight to Geneva, not a train to Venice. Book an FCO→GVA departure before ~11:00 — later and you arrive in Zermatt after the ski-rental shops shut, which costs you 40 minutes of Saturday's short glacier window.",
+      "Leave Rome for the airport by 07:00 on Sep 18. Leonardo Express Termini→FCO is 32min, €14 — don't take a taxi."
     ],
-    selectedActivities: ["🔴 Vatican (MANDATORY)", "🔴 Colosseum VR (MANDATORY)", "Circo Massimo AR", "Pantheon"]
+    selectedActivities: ["🔴 Colosseum VR Sep 16 (MANDATORY)", "🔴 Vatican Sep 17 (MANDATORY)", "Circo Massimo AR", "Pantheon"]
   },
   {
     id: 6,
-    city: "Venice",
-    country: "Italy",
-    emoji: "🚤",
-    nights: 1,
-    dates: "Sep 17–18 (Thu–Fri)",
-    image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&q=80",
-    dailyCost: 320,
-    accommodation: "Hotel — Cannaregio or Dorsoduro (avoid Mestre, you want to wake up IN Venice)",
-    accommodationCost: 200,
-    transport: { from: "Rome", how: "Frecciarossa train Roma Termini→Venezia Santa Lucia (4h). The station door opens onto the Grand Canal." },
-    dayByDay: [
-      { day: "Sep 17 (Thu)", plan: "Arrive midday. Vaporetto down the Grand Canal to your hotel (the €9 waterbus is the best-value sightseeing in Italy). Afternoon: St. Mark's Square, Basilica, Doge's Palace, Rialto Bridge. 🌅 Sunset from the Accademia Bridge. Evening: cicchetti bar crawl in Cannaregio — Venice's tapas, €1.50 a bite." },
-      { day: "Sep 18 (Fri)", plan: "Early morning walk — Venice at 7am with no crowds is the real thing. Then train → Milan → Brig → Zermatt (~6h30). Arrive Zermatt evening." }
-    ],
-    highlights: [
-      { icon: "🚤", text: "Grand Canal by vaporetto line 1 — the whole city from the water for €9.50", cost: "€9.50/person" },
-      { icon: "⛪", text: "St. Mark's Basilica + Square — gold mosaics, the Doge's Palace next door", cost: "€6 basilica · €30 Doge's Palace" },
-      { icon: "🌉", text: "Rialto Bridge + market + Accademia Bridge sunset", cost: "Free" },
-      { icon: "🍷", text: "Cicchetti bar crawl (Cannaregio) — small plates + ombra wine, how Venetians actually eat", cost: "$25–40/person" },
-      { icon: "🌅", text: "Venice at 7am — empty alleys, no day-trippers. The single best hour of the stop.", cost: "Free" }
-    ],
-    tips: [
-      "One night only — so skip Murano/Burano and the gondola queue. Do the Grand Canal, San Marco, and the cicchetti crawl, and you've had Venice.",
-      "Sleep IN Venice, not Mestre. Costs more, but the 7am empty-city morning is the whole reason for stopping.",
-      "Venice charges a day-tripper access fee on some 2026 dates — overnight guests are EXEMPT, but keep the hotel booking on your phone.",
-      "Book the Sep 18 Venice→Milan train the night before; the Milan→Zermatt leg via Brig is regional and doesn't need booking.",
-      "Sep 18 is a long travel day (~6h30). Buy food before boarding."
-    ],
-    selectedActivities: ["Grand Canal vaporetto", "St. Mark's", "Cicchetti crawl"]
-  },
-  {
-    id: 7,
     city: "Zermatt — Glacier Skiing",
     country: "Switzerland",
     emoji: "⛷️",
@@ -306,9 +278,9 @@ const ITINERARY = [
     dailyCost: 430,
     accommodation: "Hotel / guesthouse in Zermatt village (car-free)",
     accommodationCost: 260,
-    transport: { from: "Venice", how: "Train Venice→Milan (2h30) → Milan→Brig→Zermatt (~4h) via the Simplon tunnel. Zermatt is car-free; the train goes into the village." },
+    transport: { from: "Rome", how: "🆕 Flight FCO→Geneva (1h50), then train Geneva→Visp→Zermatt (~3h40) on the Swiss Travel Pass. One travel day instead of the old two. Zermatt is car-free; the train goes into the village." },
     dayByDay: [
-      { day: "Sep 18 (Fri)", plan: "Arrive Zermatt evening. Check in, collect ski + boot rental for tomorrow morning, walk the village, early dinner. First sight of the Matterhorn." },
+      { day: "Sep 18 (Fri)", plan: "Fly Rome→Geneva in the morning, train down to Zermatt, arrive late afternoon. Check in, collect ski + boot rental for tomorrow morning, walk the village, early dinner. First sight of the Matterhorn. ✅ You now arrive with the rental shops still open — that was the weak point of the old Venice routing." },
       { day: "Sep 19 (Sat)", plan: "⛷️ SKI DAY. Up early. Matterhorn Glacier Ride cable car to 3,883m — highest cable car in Europe, glass floor. Ski the Theodul Glacier ~08:00–13:00, ~21km of groomed piste at 3,000m+ with the Matterhorn beside you and Italy over the ridge. Afternoon: late lunch at Chez Vrony (2,130m, Michelin-listed) or back down to the village." },
       { day: "Sep 20 (Sun)", plan: "Morning: Gornergrat cogwheel railway — 33min to 3,089m, Matterhorn dead ahead the whole way. Best scenic-rail-per-minute on the trip. Afternoon: train → Grindelwald (2h15)." }
     ],
@@ -323,6 +295,8 @@ const ITINERARY = [
       "❄️ Snow is guaranteed — this is a PERMANENT GLACIER at 3,800m, not seasonal snowfall. Nothing to do with the 'grass visible' TikToks from 1,800m resorts.",
       "Ski MORNINGS. Glacier lifts run ~07:00–13:00 in September and the snow softens by 11am. Be on the first cable car.",
       "Rent skis + boots the evening of Sep 18, not the morning of Sep 19 — it saves you 40 minutes of your short ski window.",
+      "⚠️ The ski day is SATURDAY Sep 19. Swiss weekend skiers are on the glacier, but at 3,800m in September the mountain is never crowded — be on the first cable car and you're ahead of them anyway.",
+      "🆕 Activate the Swiss Travel Pass on Sep 18, not Sep 19 — the 4 days then run Sep 18–21 and cover the Geneva→Zermatt arrival, Zermatt→Grindelwald, and the GoldenPass out. Activating a day late means paying ~$70 for the Geneva leg.",
       "Chez Vrony: reserve ahead. It's a 20-min walk down from Sunnegga, and it's the best meal in Switzerland on this trip.",
       "Zermatt is car-free — park-and-ride at Täsch if you ever drive, but you're arriving by train anyway.",
       "The Swiss Travel Pass (4 days, ~$323/person) covers the trains, Grindelwald gondolas, and gives a Gornergrat discount. Worth it for this 4-night Swiss block."
@@ -330,7 +304,7 @@ const ITINERARY = [
     selectedActivities: ["⛷️ Glacier ski day Sep 19", "🚂 Gornergrat railway", "🍽️ Chez Vrony"]
   },
   {
-    id: 8,
+    id: 7,
     city: "Grindelwald / Interlaken",
     country: "Switzerland",
     emoji: "🛷",
@@ -357,12 +331,13 @@ const ITINERARY = [
       "One night only, so the morning is dense. First gondola opens ~08:00 — be on it. Cliff Walk + Flieger + cart is achievable by 13:00.",
       "If you'd rather have Jungfraujoch (3,454m, ~$233/person, full day) instead of the adventure morning — it doesn't fit in one night. Say the word and I'll trade you a night from Rome.",
       "Book the GoldenPass seat reservation (~CHF 20) at sbb.ch — panoramic cars sell out.",
-      "Sep 21 arrival in Paris is ~22:00. Buy dinner on the train; don't plan anything that night."
+      "🆕 The adventure morning is now MONDAY Sep 21 instead of a Tuesday — slightly quieter on the Cliff Walk and the Flieger. Small win.",
+      "Sep 21 arrival in Paris is ~22:00. Buy dinner on the train; don't plan anything that night. It eats the Monday, which was a dead arrival day anyway — Disney gets Tuesday AND Wednesday intact."
     ],
     selectedActivities: ["🛷 Toboggan / Pfingstegg", "🪂 First Flieger zipline", "🚶 First Cliff Walk", "🚂 GoldenPass Express"]
   },
   {
-    id: 9,
+    id: 8,
     city: "Paris",
     country: "France",
     emoji: "🗼",
@@ -375,14 +350,14 @@ const ITINERARY = [
     accommodationCost: 185,
     transport: { from: "Grindelwald", how: "GoldenPass Express → Montreux → Geneva → TGV Lyria → Paris Gare de Lyon. Arrive ~22:00 Sep 21." },
     dayByDay: [
-      { day: "Sep 21 (Mon)", plan: "Arrive ~22:00 from Switzerland. Check in. Sleep — Disney starts early." },
-      { day: "Sep 22 (Tue)", plan: "🎡 DISNEYLAND PARIS — Day 1 (Disneyland Park). Tuesday = among the lowest-crowd days of the year, 15–30 min waits. RER A from Châtelet, €2.55. Rope drop at 09:30." },
-      { day: "Sep 23 (Wed)", plan: "🎡 DISNEYLAND PARIS — Day 2 (Walt Disney Studios). Wednesday = the other lowest-crowd weekday. Stay for the evening show." },
-      { day: "Sep 24 (Thu)", plan: "🗼 EIFFEL TOWER day. Morning: summit + 2nd floor observation decks. Afternoon: Champ de Mars picnic, walk past the Louvre pyramid from OUTSIDE (courtyard only — no museum), Seine river cruise. Evening: 🍽️ LE JULES VERNE, 8:00pm — ✅ BOOKED. 2 Michelin stars, inside the tower, private elevator. Jacket required for men." },
-      { day: "Sep 25 (Fri)", plan: "Morning: Montmartre + Sacré-Coeur (free, best view in Paris). Midday Eurostar → London (2h15)." }
+      { day: "Sep 21 (Mon)", plan: "Arrive ~22:00 from Switzerland. Check in. Sleep — Disney starts early. ✅ The arrival now lands on a Monday, so it costs you nothing: both Disney days survive intact." },
+      { day: "Sep 22 (Tue)", plan: "🎡 DISNEYLAND PARIS — Day 1 (Disneyland Park). ✅ Tuesday is the single lowest-crowd day of the week in September: 15–30 min waits. RER A from Châtelet, €2.55. Rope drop at 09:30." },
+      { day: "Sep 23 (Wed)", plan: "🎡 DISNEYLAND PARIS — Day 2 (Walt Disney Studios). ✅ Back-to-back with yesterday, so buy a 2-day ticket rather than two singles — cheaper, and anything you miss on Tuesday rolls over. Wednesday is equally quiet: 15–30 min." },
+      { day: "Sep 24 (Thu)", plan: "🗼 EIFFEL TOWER day — this one is LOCKED by the booking. Morning: Montmartre + Sacré-Coeur. Midday: Eiffel summit + 2nd floor decks. Afternoon: Champ de Mars, the Louvre pyramid from OUTSIDE (courtyard only — no museum), Seine river cruise. Evening: 🍽️ LE JULES VERNE, 8:00pm — ✅ BOOKED. Jacket required for men." },
+      { day: "Sep 25 (Fri)", plan: "Relaxed last Paris morning — Le Marais, a proper café breakfast, anything you skipped. ~09:00–10:00 Eurostar Gare du Nord → St Pancras, arrive London around midday. ✅ No dawn alarm: the second London night removed that." }
     ],
     highlights: [
-      { icon: "🎡", text: "Disneyland Paris — 2 days, Tue + Wed = lowest crowds of the entire year. 15–30 min ride waits.", cost: "€89–100/person/day (advance)" },
+      { icon: "🎡", text: "Disneyland Paris — 2 days, ✅ Tue Sep 22 + Wed Sep 23, back-to-back on the two quietest weekdays of the year: 15–30 min waits.", cost: "€89–100/person/day (advance), or a 2-day ticket" },
       { icon: "🍽️", text: "LE JULES VERNE — ✅ BOOKED Sep 24, 8:00pm. 2 Michelin stars inside the Eiffel Tower.", cost: "€295–330/person" },
       { icon: "🗼", text: "Eiffel Tower — summit + 2nd floor decks. Do this the same day as the dinner.", cost: "€29.40/person summit" },
       { icon: "⛵", text: "Seine river cruise — 1h, the whole city from the water", cost: "~€17/person" },
@@ -391,16 +366,19 @@ const ITINERARY = [
       { icon: "🥽", text: "Optional: Eclipso or The Gate VR — dark-room immersive / haptic free-roam", cost: "€28–32/person" }
     ],
     tips: [
-      "🔴 Jules Verne is BOOKED for Sep 24, 8pm — but reconfirm 48h ahead and check the dress code (jacket required for men). Do not plan Disney that day.",
-      "Disneyland Sep 22 (Tue) + Sep 23 (Wed): the two lowest-crowd weekdays in the lowest-crowd month. Book advance tickets at disneylandparis.com for €89–100 vs €130+ at the gate.",
-      "Disneyland transport: RER A from Châtelet-Les-Halles, €2.55/person. NEVER pay for the €23 shuttle.",
+      "✅ GOOD NEWS: Jules Verne (Sep 24, 8pm) still falls inside the Paris window and still lands on a non-Disney day. Nothing to rebook. Reconfirm 48h ahead — jacket required for men.",
+      "✅ WHAT DROPPING VENICE BOUGHT PARIS: the Swiss arrival moved to Monday, so Disney gets Tue Sep 22 + Wed Sep 23 — the two lowest-crowd days of the week, consecutive, with Thursday still free for the Eiffel Tower and the dinner. The old plan had Disney split across Wed and Fri, and the Friday ran 25–40 min waits.",
+      "🎟️ Because the Disney days are now back-to-back, buy a 2-DAY ticket instead of two 1-day tickets — usually cheaper, and it lets you leave a ride for tomorrow instead of forcing it at closing.",
+      "Montmartre got folded into Thursday morning. It's a 45-min visit and it's free — it survives the squeeze fine.",
+      "Book advance Disney tickets at disneylandparis.com for €89–100 vs €130+ at the gate. Transport: RER A from Châtelet-Les-Halles, €2.55/person. NEVER pay for the €23 shuttle.",
       "Louvre: courtyard and pyramid from outside only — noted, no ticket booked.",
-      "Only 4 nights and 2 are Disney days, so Paris is tight. Catacombs / Atelier des Lumières would need a 5th night stolen from Rome or Switzerland."
+      "✅ The Eurostar is now Fri Sep 25 mid-morning (~09:00–10:00) instead of a 07:00 Saturday scramble. Book it for around 09:00 — you still land in London by midday with a usable afternoon.",
+      "🥽 Eclipso or The Gate VR now genuinely fits — the Friday morning is loose, or swap it into Thursday afternoon. This was 'optional, probably not' under the old dates."
     ],
     selectedActivities: ["🎡 Disneyland 2 days (Tue+Wed)", "🍽️ Jules Verne ✅ BOOKED", "🗼 Eiffel Tower", "Montmartre", "Louvre exterior only"]
   },
   {
-    id: 10,
+    id: 9,
     city: "London",
     country: "United Kingdom",
     emoji: "🦕",
@@ -408,32 +386,35 @@ const ITINERARY = [
     dates: "Sep 25–27 (Fri–Sun)",
     image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
     dailyCost: 340,
-    accommodation: "Hotel — central (King's Cross or South Kensington)",
+    accommodation: "Hotel — King's Cross / Euston (next to St Pancras and the Watford train)",
     accommodationCost: 200,
-    transport: { from: "Paris", how: "Eurostar Gare du Nord → St Pancras International (2h15). Book 2 months ahead." },
+    transport: { from: "Paris", how: "✅ Eurostar Gare du Nord → St Pancras, ~09:00–10:00 departure, arrives around midday. At 2 nights the train time is flexible again." },
     dayByDay: [
-      { day: "Sep 25 (Fri)", plan: "Arrive St Pancras midday. Check in. Afternoon: Westminster, Big Ben, Thames walk, Tower Bridge. Evening: a proper pub." },
-      { day: "Sep 26 (Sat)", plan: "🎬 WARNER BROS STUDIO TOUR — The Making of Harry Potter. Full day. Train Euston→Watford Junction (20min) + shuttle bus. Allow 4–5h inside minimum. 🔴 MUST be booked in advance — it sells out weeks ahead." },
-      { day: "Sep 27 (Sun)", plan: "🦕 NATURAL HISTORY MUSEUM — the dinosaur gallery, FREE. Get there for the 10:00 opening. If it's running, add the Jurassic Oceans special exhibition (~£15). Afternoon: pack. ✈️ Evening flight London→Madrid (2h20)." }
+      { day: "Sep 25 (Fri)", plan: "✅ THE NIGHT VENICE PAID FOR. Arrive St Pancras ~midday, check in at King's Cross. Afternoon: Westminster + Big Ben + a Thames walk to Tower Bridge, or the TOWER OF LONDON (~£35, last entry 15:30 — this only exists because of the extra night). Evening: a proper pub." },
+      { day: "Sep 26 (Sat)", plan: "🎬 WARNER BROS STUDIO TOUR — a full, unhurried day. ANY slot works now, so take a mid-morning one: Euston → Watford Junction (20min) + shuttle, allow 4–5h inside. Back in central London late afternoon. Evening: dinner, or a West End show if you want one." },
+      { day: "Sep 27 (Sun)", plan: "🦕 NATURAL HISTORY MUSEUM at the 10:00 opening — dinosaur gallery, FREE. Add Jurassic Oceans (~£15) if running. Afternoon: collect bags, pack. ✈️ Evening flight London→Madrid (2h20)." }
     ],
     highlights: [
       { icon: "🎬", text: "Warner Bros Studio Tour — the actual Harry Potter sets, Diagon Alley, the Great Hall, Hogwarts model", cost: "~£53/person (~$68)" },
       { icon: "🦕", text: "Natural History Museum dinosaur gallery — FREE, world-class, one of the best dino collections anywhere", cost: "FREE" },
       { icon: "🌊", text: "Jurassic Oceans special exhibition (2026) — marine reptiles, if still running", cost: "~£15/person" },
+      { icon: "🏰", text: "Tower of London — 🆕 NOW FITS, on the Friday afternoon. Crown Jewels, the White Tower.", cost: "~£35/person" },
       { icon: "🏛️", text: "Westminster + Big Ben + Tower Bridge + Thames walk", cost: "Free" },
       { icon: "🍺", text: "A real London pub — Sunday roast if the timing works", cost: "$25–40/person" }
     ],
     tips: [
-      "🔴 WARNER BROS STUDIO: book the moment you read this. Saturday Sep 26 slots sell out weeks ahead and there is no walk-up.",
-      "Warner Bros logistics: train Euston→Watford Junction (20min, ~£11), then the £3 shuttle bus. Budget 90min door to door each way.",
-      "Natural History Museum is FREE and doesn't need a ticket — but book a free timed slot on nhm.ac.uk anyway to skip the queue.",
-      "🔴 Fly to Madrid on Sep 27, NOT Sep 28. You need a full buffer day before an 11am international departure.",
-      "Two nights covers exactly what you asked for: one Warner Bros day, one museum/dino day. No slack for Tower of London or a West End show."
+      "✅ RESOLVED: two nights. Warner Bros no longer depends on a narrow slot and a dawn train — book whichever Saturday slot you like at wbstudiotour.co.uk, ideally mid-morning so you're not rushed at the end.",
+      "🏰 The Friday afternoon is the new free space. Tower of London (last entry 15:30) is the strongest use of it if you arrive by midday; otherwise Westminster + the Thames walk costs nothing and is the better first taste of the city.",
+      "Stay at King's Cross / Euston. Euston is where the Watford train leaves from and St Pancras is next door — still the right call even with the extra night.",
+      "Warner Bros logistics: Euston→Watford Junction (20min, ~£11), then the £3 shuttle. Budget 90min door to door each way.",
+      "Natural History Museum is FREE and doesn't need a ticket — but book a free timed slot on nhm.ac.uk to skip the Sunday queue. Sunday 10:00 is family-heavy; be at the door at opening.",
+      "🔴 Fly to Madrid on Sep 27 evening, NOT Sep 28. You need a full buffer day before an 11am international departure. Book the flight for 20:00 or later so the museum morning isn't rushed.",
+      "Still doesn't fit at 2 nights: the British Museum, Greenwich, and a day trip anywhere. Two nights is comfortable, not generous."
     ],
-    selectedActivities: ["🎬 Warner Bros Studio Tour", "🦕 NHM dinosaur gallery", "Westminster walk"]
+    selectedActivities: ["🎬 Warner Bros Studio Tour (Sat)", "🦕 NHM dinosaur gallery (Sun)", "🏰 Tower of London or Westminster (Fri)"]
   },
   {
-    id: 11,
+    id: 10,
     city: "Madrid — Final",
     country: "Spain",
     emoji: "🛫",
@@ -473,13 +454,14 @@ const TICKETS = [
     city: "Paris",
     flag: "🇫🇷",
     attractions: [
-      { name: "Disneyland Paris — 1 day (1 park)", price: "€89–114/person", note: "Advance online, midweek September. Gate price €130+. Sep 22 Tue + Sep 23 Wed." },
-      { name: "Disneyland Paris — 1 day (2 parks)", price: "€100–125/person", note: "Add ~€20 for park hopper. Book disneylandparis.com." },
+      { name: "Disneyland Paris — 2-day ticket", price: "€150–190/person", note: "🆕 BUY THIS ONE. Tue Sep 22 + Wed Sep 23 are now consecutive, so a 2-day ticket beats two singles. disneylandparis.com, advance online." },
+      { name: "Disneyland Paris — 1 day (1 park)", price: "€89–114/person", note: "Only if you'd rather split the purchase. Gate price €130+." },
+      { name: "Disneyland Paris — park hopper upgrade", price: "+~€20/person", note: "Worth it across two back-to-back days — Disneyland Park mornings, Walt Disney Studios afternoons." },
       { name: "Eiffel Tower — Summit (lift)", price: "€29.40/person", note: "Book at toureiffel.paris. Sep 24 morning, before the dinner." },
       { name: "Eiffel Tower — 2nd floor (lift)", price: "€19.40/person", note: "The Jules Verne level. Separate booking from the restaurant." },
       { name: "Le Jules Verne", price: "€295–330/person", note: "✅ BOOKED Sep 24, 8:00pm. Tasting menu only. Jacket required for men." },
       { name: "Seine River Cruise (Bateaux Parisiens)", price: "~€17/person", note: "1h. Good Sep 24 afternoon filler before the dinner." },
-      { name: "Eclipso / The Gate VR", price: "€28–32/person", note: "Optional — only if you skip something else. Paris is tight at 4 nights." },
+      { name: "Eclipso / The Gate VR", price: "€28–32/person", note: "🆕 Now realistic — the Friday morning is loose before a ~09:00 Eurostar, or use Thursday afternoon." },
       { name: "Louvre", price: "€0 — EXTERIOR ONLY", note: "Courtyard + glass pyramid from outside. Not entering, per your call." }
     ]
   },
@@ -487,11 +469,12 @@ const TICKETS = [
     city: "London",
     flag: "🇬🇧",
     attractions: [
-      { name: "Warner Bros Studio Tour (Harry Potter)", price: "~£53/person (~$68)", note: "🔴 BOOK NOW. wbstudiotour.co.uk. Sep 26 Sat sells out weeks ahead. Allow 4–5h." },
+      { name: "Warner Bros Studio Tour (Harry Potter)", price: "~£53/person (~$68)", note: "✅ Sat Sep 26, ANY slot — the second night removed the timing constraint. Take mid-morning (~10:00–11:00) and allow 4–5h inside. wbstudiotour.co.uk, book 2–3 months out; it still sells out." },
+      { name: "Eurostar Paris → London", price: "$70–160/person", note: "✅ Fri Sep 25, ~09:00–10:00. Standard advance fare, no need to pay for flexibility any more." },
       { name: "Train Euston → Watford Junction", price: "~£11/person return", note: "20min + £3 shuttle bus to the studio. 90min door-to-door each way." },
-      { name: "Natural History Museum (dinosaur gallery)", price: "FREE", note: "nhm.ac.uk — book a free timed slot to skip the queue. Sep 27, 10am opening." },
+      { name: "Natural History Museum (dinosaur gallery)", price: "FREE", note: "nhm.ac.uk — book a free timed slot. Sun Sep 27, be there for the 10:00 opening; Sundays are family-heavy." },
       { name: "Jurassic Oceans special exhibition", price: "~£15/person", note: "2026 special at the NHM — verify it's still running in September." },
-      { name: "Tower of London (optional, doesn't fit)", price: "~£35/person", note: "No room in 2 nights. Listed for reference only." }
+      { name: "Tower of London", price: "~£35/person", note: "🆕 NOW FITS — Fri Sep 25 afternoon, the day the Venice night bought you. Last entry ~15:30, so book it only if the Eurostar lands you by midday. hrp.org.uk" }
     ]
   },
   {
@@ -506,37 +489,28 @@ const TICKETS = [
       { name: "Pfingstegg toboggan (Rodelbahn)", price: "~CHF 10/run (~$11)", note: "736m alpine slide. Do it twice, it's cheap." },
       { name: "Mountain cart / Trottibike", price: "~CHF 19/person each (~$21)", note: "Downhill from First. Combine with the gondola ticket." },
       { name: "GoldenPass Express seat reservation", price: "~CHF 20/person (~$22)", note: "Base fare covered by the Swiss Travel Pass. Reserve panoramic seats at sbb.ch." },
-      { name: "Swiss Travel Pass — 4 days", price: "~CHF 290/person (~$323)", note: "Covers trains, Grindelwald gondolas, GoldenPass base fare, Gornergrat discount. Worth it for this 4-night block." }
+      { name: "Swiss Travel Pass — 4 days", price: "~CHF 290/person (~$323)", note: "🆕 ACTIVATE Sep 18 (days Sep 18–21). Now also covers the Geneva airport→Zermatt arrival leg, on top of Zermatt→Grindelwald, the GoldenPass base fare, the Grindelwald gondolas and the Gornergrat discount. Activating Sep 19 instead wastes ~$70." }
     ]
   },
   {
     city: "Rome",
     flag: "🇮🇹",
     attractions: [
-      { name: "Vatican Museums + Sistine Chapel", price: "€17 + €5 booking fee", note: "🔴 tickets.museivaticani.va, 2 months ahead. Sep 15 Tue, earliest slot." },
-      { name: "St. Peter's Basilica", price: "FREE (dome €10 lift)", note: "Dress code: covered shoulders and knees." },
-      { name: "Colosseum + Forum + Palatine Hill", price: "€18/person", note: "coopculture.it. Sep 16 Wed." },
-      { name: "Colosseum VR (Samsung Oculus)", price: "~€30/person add-on", note: "ancientandrecent.com — bundle with entry. Gladiators in the real arena." },
-      { name: "Circo Massimo AR Experience", price: "~€12/person", note: "circomaximoexperience.it — AR chariot races on the actual ruins." },
+      { name: "Vatican Museums + Sistine Chapel", price: "€17 + €5 booking fee", note: "🔴 tickets.museivaticani.va, 2 months ahead. 🆕 Sep 17 THU, earliest slot — moved off Wednesday to dodge the Papal Audience." },
+      { name: "St. Peter's Basilica", price: "FREE (dome €10 lift)", note: "⚠️ Closed/restricted on WEDNESDAY mornings for the Papal Audience — which is why the Vatican day is now Thursday. Dress code: covered shoulders and knees." },
+      { name: "Colosseum + Forum + Palatine Hill", price: "€18/person", note: "coopculture.it. 🆕 Sep 16 WED." },
+      { name: "Colosseum VR (Samsung Oculus)", price: "~€30/person add-on", note: "ancientandrecent.com — bundle with entry. Gladiators in the real arena. Sep 16." },
+      { name: "Circo Massimo AR Experience", price: "~€12/person", note: "circomaximoexperience.it — AR chariot races on the actual ruins. Sep 16 afternoon." },
       { name: "Pantheon", price: "€5/person", note: "Timed entry online, no queue." },
-      { name: "Museo Civico di Zoologia (dinos)", price: "~€10/person", note: "Optional — near Villa Borghese." }
-    ]
-  },
-  {
-    city: "Venice",
-    flag: "🇮🇹",
-    attractions: [
-      { name: "Vaporetto Grand Canal (line 1)", price: "€9.50/person single", note: "The best-value sightseeing in Italy. 24h pass €25 if you'll ride 3+ times." },
-      { name: "St. Mark's Basilica", price: "€6/person", note: "Book a timed slot — the queue is brutal otherwise." },
-      { name: "Doge's Palace", price: "€30/person", note: "Optional at one night. Skip if you'd rather wander." },
-      { name: "Venice access fee", price: "€5 day-trippers", note: "EXEMPT as an overnight guest — keep your hotel booking on your phone." }
+      { name: "Museo Civico di Zoologia (dinos)", price: "~€10/person", note: "Optional — near Villa Borghese." },
+      { name: "Leonardo Express Termini → FCO", price: "€14/person", note: "🆕 Sep 18, ~07:00. 32min. You now fly out of Rome instead of taking the Venice train." }
     ]
   },
   {
     city: "Greece",
     flag: "🇬🇷",
     attractions: [
-      { name: "Acropolis (Athens)", price: "€20/person", note: "Combo ticket with 6 other sites: €30. Book the 8:00am slot." },
+      { name: "Acropolis (Athens)", price: "€20/person", note: "Combo ticket with 6 other sites: €30. 🆕 Sun Sep 13 — book the 8:00am slot, Sundays draw local crowds too." },
       { name: "Ancient Agora", price: "€10/person", note: "Included in the €30 combo ticket." },
       { name: "Athens → Santorini flight", price: "$45–100/person", note: "45min. Aegean/Sky Express. Do NOT take the ferry — it's 5–8h." },
       { name: "Oia sunset", price: "FREE", note: "Arrive 90 min early for a spot on the castle ruins." }
@@ -592,7 +566,7 @@ const AQUARIUMS = [
     highlights: "Largest shark tank in France (3M litres), 43 tanks, 10,000+ fish. At Trocadéro — walk out and the Eiffel Tower is right in front of you.",
     size: "43 tanks, 4M litres",
     duration: "1–1.5h",
-    verdict: "Possible add-on to the Sep 24 Eiffel Tower morning, since it's a 5-minute walk from the tower.",
+    verdict: "⚠️ Still tight — Sep 24 carries Montmartre, the Eiffel Tower AND the Jules Verne dinner. But it's a 5-minute walk from the tower, so it slots in if you cut Montmartre or skip the Seine cruise.",
     rating: 3,
     onRoute: true
   },
@@ -605,7 +579,7 @@ const AQUARIUMS = [
     highlights: "Shark walkway, Atlantic tunnel, on the South Bank next to the London Eye.",
     size: "Mid-size, 14 zones",
     duration: "1.5h",
-    verdict: "❌ SKIP — two London nights are fully committed to Warner Bros and the Natural History Museum.",
+    verdict: "❌ SKIP — even at 2 nights, the Friday afternoon is better spent on the Tower of London or Westminster, and you have a far better aquarium option in Barcelona and Paris.",
     rating: 3,
     onRoute: false
   }
@@ -622,7 +596,7 @@ const SKIING = {
     stelvioNote: "Reality check on timing: glacier lifts run roughly 07:00–13:00 in September and the snow softens by 11am. Be on the FIRST cable car. This is a spectacular half-day, not a full ski day — treat it as 'ski the Alps in summer with the Matterhorn beside you', not a ski week.",
     bottomLine: "✅ Zermatt in September = 100% snow, 100% open. The 'visible grass' scenario is physically impossible at 3,800m on a permanent glacier."
   },
-  recommendation: "✅ CHOSEN: ZERMATT — 1 ski day, Sep 19. It's the only option that satisfies BOTH 'skiing is very important' AND 'Switzerland is important' in a single stop, with zero detour on the Italy→France axis. The ski add-on itself is only ~$326 for 2 (pass + rental); the rest of the Swiss cost is the Switzerland leg you wanted anyway. Hintertux or Val Senales would each be ~$120 cheaper on the ski day but leave Switzerland unvisited, forcing a separate 2-night Swiss stop that costs more in both money and days.",
+  recommendation: "✅ CHOSEN: ZERMATT — 1 ski day, Sep 19 (Sat). It's the only option that satisfies BOTH 'skiing is very important' AND 'Switzerland is important' in a single stop, with zero detour on the Italy→France axis. The ski add-on itself is only ~$326 for 2 (pass + rental); the rest of the Swiss cost is the Switzerland leg you wanted anyway. Hintertux or Val Senales would each be ~$120 cheaper on the ski day but leave Switzerland unvisited, forcing a separate 2-night Swiss stop that costs more in both money and days.",
   options: [
     {
       name: "Zermatt — Theodul Glacier",
@@ -655,7 +629,7 @@ const SKIING = {
       totalPerPerson: "~$95 all-in",
       snowGuarantee: "High once open — but the OPENING DATE is the risk, not the snow",
       conditions: "Firm, professionally groomed. National teams train here.",
-      pros: ["Cheapest, and 42km is double the terrain", "Pairs beautifully with Venice and the Dolomites", "Lago di Braies 45min away — spectacular", "Professional-grade grooming"],
+      pros: ["Cheapest, and 42km is double the terrain", "Pairs beautifully with the Dolomites", "Lago di Braies 45min away — spectacular", "Professional-grade grooming"],
       cons: ["🔴 Opens ~Sep 19 and dates slip — you could arrive to closed lifts", "Leaves Switzerland unvisited — needs a separate 2-night Swiss stop", "Remote (Bolzano area), awkward onward connections"],
       verdict: "REJECTED — the fun gamble. Great value and terrain, but the opening-date risk plus a separate Switzerland leg costs more than it saves.",
       rating: 3
@@ -674,7 +648,7 @@ const SKIING = {
       snowGuarantee: "100% — Austria's only true year-round glacier",
       conditions: "Reliable glacier snow, morning skiing.",
       pros: ["Year-round, no opening risk", "Cheaper than Zermatt", "Good terrain for September"],
-      cons: ["Leaves Switzerland unvisited — costs ~2 extra days for a separate Swiss stop", "Awkward on the Italy→France route", "You'd have to drop Venice or Rome nights to fit it"],
+      cons: ["Leaves Switzerland unvisited — costs ~2 extra days for a separate Swiss stop", "Awkward on the Italy→France route", "You'd have to drop Rome or Paris nights to fit it"],
       verdict: "REJECTED — fine glacier, wrong country for this itinerary",
       rating: 3
     }
@@ -688,22 +662,22 @@ const VR_BY_CITY = [
   {
     city: "Rome", flag: "🇮🇹",
     options: [
-      { name: "Colosseum VR (Ancient & Recent) ✅", type: "Historic site VR", price: "~€30 add-on", desc: "Samsung Oculus inside the REAL Colosseum. Gladiators fight around you in the actual arena. Sep 16.", rating: 5 },
+      { name: "Colosseum VR (Ancient & Recent) ✅", type: "Historic site VR", price: "~€30 add-on", desc: "Samsung Oculus inside the REAL Colosseum. Gladiators fight around you in the actual arena. Sep 16 (Wed).", rating: 5 },
       { name: "Circo Massimo AR ✅", type: "Historic site AR", price: "~€12/person", desc: "See-through AR walk — ancient chariot races overlaid on the real ruins. Sep 16 afternoon.", rating: 4 },
-      { name: "Domus Aurea VR", type: "Underground historic VR", price: "~€20/person", desc: "Nero's Golden House, VR through 30 frescoed halls. Thu–Sun only — Sep 17 is your departure day, so probably not.", rating: 4 }
+      { name: "Domus Aurea VR", type: "Underground historic VR", price: "~€20/person", desc: "Nero's Golden House, VR through 30 frescoed halls. Thu–Sun only — 🆕 Sep 17 is now a Thursday IN Rome, so this finally fits if you skip the St. Peter's dome climb.", rating: 4 }
     ]
   },
   {
     city: "Paris", flag: "🇫🇷",
     options: [
-      { name: "Eclipso (Bercy Village)", type: "Dark room immersive", price: "~€28/person", desc: "300–1,000m² total-immersion dark room. Optional — Paris is tight at 4 nights with 2 Disney days.", rating: 5 },
+      { name: "Eclipso (Bercy Village)", type: "Dark room immersive", price: "~€28/person", desc: "300–1,000m² total-immersion dark room. 🆕 Fits now — Friday morning before the ~09:00 Eurostar is loose, or Thursday afternoon.", rating: 5 },
       { name: "The Gate VR", type: "Free-roam haptic", price: "~€32/person", desc: "100m² arena, haptic guns, latest headsets. Best pure VR in Paris.", rating: 5 }
     ]
   },
   {
     city: "London", flag: "🇬🇧",
     options: [
-      { name: "Warner Bros Studio Tour ✅", type: "Immersive film sets (not VR, better)", price: "~£53/person", desc: "The actual Harry Potter sets — Great Hall, Diagon Alley, Hogwarts model. Sep 26, full day. 🔴 BOOK NOW.", rating: 5 }
+      { name: "Warner Bros Studio Tour ✅", type: "Immersive film sets (not VR, better)", price: "~£53/person", desc: "The actual Harry Potter sets — Great Hall, Diagon Alley, Hogwarts model. Sat Sep 26, a full unhurried day now that London has 2 nights. Book 2–3 months out.", rating: 5 }
     ]
   },
   {
@@ -735,10 +709,10 @@ const DINO_BY_CITY = [
 // ============================================================
 const DINING = [
   { name: "Le Jules Verne", city: "Paris", location: "Eiffel Tower, 2nd floor — private elevator", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80", stars: 2, pricePerPerson: "€295–330", totalFor2: "~$660–740", description: "2 Michelin stars. Chef Frédéric Anton. Tasting menus only. You dine inside the Eiffel Tower with Paris at your feet.", mustBook: true, bookingNote: "✅ BOOKED — Thursday Sep 24, 8:00pm. Reconfirm 48h ahead. Jacket required for men.", priority: 1 },
-  { name: "Chez Vrony", city: "Zermatt, Switzerland", location: "Findeln hamlet, 2,130m above Zermatt", image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80", stars: 0, pricePerPerson: "$60–70", totalFor2: "~$130", description: "Michelin Guide-listed mountain restaurant. Matterhorn from your table. Local raclette, rösti, dried alpine meats. Reached on foot from Sunnegga.", mustBook: true, bookingNote: "Reserve ahead. Sep 19 after the ski morning — the perfect landing.", priority: 2 },
-  { name: "Caldera-view dinner, Oia", city: "Santorini, Greece", location: "Oia clifftop", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80", stars: 0, pricePerPerson: "$60–90", totalFor2: "~$120–180", description: "Dinner over the caldera as the sun goes down. Expensive and touristy and completely worth doing once. Sep 13.", mustBook: true, bookingNote: "Book a sunset-window table days ahead — every restaurant in Oia is full at 19:00.", priority: 3 },
+  { name: "Chez Vrony", city: "Zermatt, Switzerland", location: "Findeln hamlet, 2,130m above Zermatt", image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80", stars: 0, pricePerPerson: "$60–70", totalFor2: "~$130", description: "Michelin Guide-listed mountain restaurant. Matterhorn from your table. Local raclette, rösti, dried alpine meats. Reached on foot from Sunnegga.", mustBook: true, bookingNote: "Reserve ahead. 🆕 Sep 19 (Sat) after the ski morning — the perfect landing. Saturday lunch books out fastest; reserve early.", priority: 2 },
+  { name: "Caldera-view dinner, Oia", city: "Santorini, Greece", location: "Oia clifftop", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80", stars: 0, pricePerPerson: "$60–90", totalFor2: "~$120–180", description: "Dinner over the caldera as the sun goes down. Expensive and touristy and completely worth doing once. 🆕 Sep 14 (Mon).", mustBook: true, bookingNote: "Book a sunset-window table days ahead — every restaurant in Oia is full at 19:00.", priority: 3 },
   { name: "Rooftop dinner, Sultanahmet", city: "Istanbul, Turkey", location: "Sultanahmet rooftop terraces", image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=600&q=80", stars: 0, pricePerPerson: "$30–45", totalFor2: "~$60–90", description: "Hagia Sophia on one side, Blue Mosque on the other, the Bosphorus behind. Cheap by European standards, unmatched view.", mustBook: false, bookingNote: "Walk-in mostly fine. Go at sunset for the call to prayer across the city.", priority: 4 },
-  { name: "Cicchetti crawl, Cannaregio", city: "Venice, Italy", location: "Cannaregio backstreets", image: "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=600&q=80", stars: 0, pricePerPerson: "$25–40", totalFor2: "~$50–80", description: "Venice's tapas — small plates at €1.50–3 each with an ombra of wine, standing at the bar. How Venetians actually eat, and it beats any sit-down tourist menu.", mustBook: false, bookingNote: "No booking. Just walk and stop. Sep 17 evening.", priority: 5 },
+  { name: "Trastevere dinner", city: "Rome, Italy", location: "Trastevere backstreets", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80", stars: 0, pricePerPerson: "$35–55", totalFor2: "~$70–110", description: "Cacio e pepe and carbonara done properly, on cobblestones, with no tourist-trap menu in sight. Three Rome evenings — use at least two of them here.", mustBook: false, bookingNote: "Mostly walk-in, but book the popular places (Da Enzo, Roma Sparita) a few days ahead. Sep 15–17.", priority: 5 },
   { name: "Mercado de San Miguel", city: "Madrid, Spain", location: "Near Plaza Mayor", image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80", stars: 0, pricePerPerson: "$25–40", totalFor2: "~$50–80", description: "Madrid's best tapas market under a glass-and-iron roof. Ideal jet-lag dinner on Sep 2 — graze, don't commit.", mustBook: false, bookingNote: "Walk-in. Busy after 21:00.", priority: 6 }
 ];
 
@@ -748,41 +722,44 @@ const DINING = [
 const BUDGET = {
   categories: [
     { label: "Flights: Lima↔Madrid round-trip (×2)", min: 1300, max: 1800, note: "Direct Iberia/Air Europa. Sep 2 out, Sep 29 back at 11am. Book as one round-trip." },
-    { label: "Accommodation (27 nights, 2 pax)", min: 4000, max: 5400, note: "Zermatt/Venice/London are the expensive nights; Craiova and Istanbul offset them." },
-    { label: "Food (28 days)", min: 2100, max: 3000, note: "Airbnb kitchen in Paris + supermarket lunches in Switzerland save the most." },
-    { label: "Intra-Europe transport (7 flights + 6 train legs)", min: 1600, max: 2500, note: "More legs than the old plan — Eurostar, AVE ×2, Frecciarossa, Swiss trains, GoldenPass. Book everything 2–3 months out." },
+    { label: "Accommodation (27 nights, 2 pax)", min: 3900, max: 5250, note: "🆕 Unchanged by dropping Venice — the night moved to London and both run ~$200. Zermatt and London are the expensive nights; Craiova and Istanbul offset them." },
+    { label: "Food (28 days)", min: 2120, max: 3020, note: "~$20 higher than the Venice version (London eats dearer than Venice for one day). Airbnb kitchen in Paris + supermarket lunches in Switzerland save the most." },
+    { label: "Intra-Europe transport (8 flights + 4 train legs)", min: 1450, max: 2300, note: "🆕 Rome→Venice + Venice→Zermatt ($250–460) replaced by one Rome→Geneva flight ($100–220), with Geneva→Zermatt on the Swiss Travel Pass. One more flight, two fewer trains. Book everything 2–3 months out." },
     { label: "Activities (Disney ×2, Vatican, Colosseum VR, Warner Bros, Acropolis, Hagia Sophia…)", min: 1400, max: 2000, note: "See the ticket breakdown by city." },
     { label: "Jules Verne dinner (2 persons) — ✅ BOOKED", min: 660, max: 740, note: "Sep 24, 8pm. Already committed." },
-    { label: "Skiing — Zermatt (1 day × 2 persons)", min: 300, max: 360, note: "~CHF 95 pass + ~CHF 50 rental per person. The ski add-on itself is cheap." },
-    { label: "Swiss Travel Pass 4 days (×2 persons)", min: 620, max: 660, note: "Covers Swiss trains, Grindelwald gondolas, GoldenPass base fare, Gornergrat discount." },
+    { label: "Skiing — Zermatt (1 day × 2 persons)", min: 300, max: 360, note: "~CHF 95 pass + ~CHF 50 rental per person. 🆕 Ski day is now Sat Sep 19. The ski add-on itself is cheap." },
+    { label: "Swiss Travel Pass 4 days (×2 persons)", min: 620, max: 660, note: "🆕 Activate Sep 18. Now also covers the Geneva→Zermatt arrival, plus Swiss trains, Grindelwald gondolas, GoldenPass base fare and the Gornergrat discount." },
     { label: "Warner Bros Studio Tour + transport (2 pax)", min: 160, max: 200, note: "~£53/person + ~£11 train + £3 shuttle each." },
     { label: "Misc (travel insurance, SIMs, tips, gifts)", min: 500, max: 800, note: "Travel insurance STRONGLY recommended — 12 separate transport legs." }
   ],
-  total: { min: 12640, max: 17460, target: 14000 },
+  total: { min: 12410, max: 17130, target: 14000 },
   savingTips: [
-    "⚠️ HONEST WARNING: the midpoint of this plan is ~$15,000, above your $14,000 target. The new route has more transport legs and three expensive stops (Zermatt, Venice, London) that the old plan didn't. See the trade-offs below.",
-    "Biggest single saving: drop the Venice night ($320) and the Grindelwald night ($380) — but that costs you the toboggan and the GoldenPass.",
+    "⚠️ HONEST WARNING: the midpoint of this plan is ~$14,770, still above your $14,000 target. Dropping Venice moved it by roughly $130 — real, but not the lever that closes the gap.",
+    "📊 WHAT DROPPING VENICE ACTUALLY DID TO THE MONEY: lodging was a wash ($200/night either way — the night moved to London, it didn't disappear). Food went UP ~$20 (London is dearer). Transport came DOWN $30–360: Rome→Venice + Venice→Zermatt ($250–460 for 2) became one Rome→Geneva flight ($100–220) with the Swiss leg on the pass. If the Geneva fare comes in cheap you save ~$300; if it's dear, it's break-even. You did this for the calendar day, not the cash.",
+    "✅ WHAT IT DID TO THE SCHEDULE (the real payoff): two travel days became one; London went 1→2 nights; the 07:00 Eurostar became a relaxed ~09:00 one; the Warner Bros slot constraint vanished; the Tower of London became possible; and Disney landed on Tue Sep 22 + Wed Sep 23 — consecutive, and the two lowest-crowd days of the week.",
+    "🎟️ NEW SAVING, small but free: because the Disney days are now back-to-back, a 2-day ticket replaces two 1-day tickets — typically €25–40/person cheaper.",
+    "Second lever: the Grindelwald night ($380) — but that costs you the toboggan, the zipline and the GoldenPass. Don't.",
     "Second biggest: Zermatt lodging. Staying in Täsch (one stop down the valley) instead of Zermatt village saves ~$80/night.",
     "Book ALL intra-Europe flights and trains 2–3 months ahead. On this route that's worth $400–700 alone — prices roughly double inside 3 weeks.",
-    "Natural History Museum London is FREE. Montmartre, Sacré-Coeur, Oia sunset, Blue Mosque, and Venice at 7am are all free.",
-    "Disneyland advance midweek tickets: €89–100/person/day vs €130+ at the gate. Sep 22–23 are the cheapest days of the year.",
+    "Natural History Museum London is FREE. Montmartre, Sacré-Coeur, Oia sunset, the Blue Mosque and the Westminster/Thames walk are all free.",
+    "Disneyland advance tickets: €89–100/person/day vs €130+ at the gate — and the 2-day ticket for Sep 22–23 beats both.",
     "Airbnb with a kitchen in Paris (4 nights): save $20–40/day on breakfast versus a hotel.",
     "Switzerland: Coop/Migros supermarkets for packed lunches. Mountain restaurant lunch is ~50% the price of dinner — so make Chez Vrony your lunch, which is what the Sep 19 plan already does.",
+    "🆕 Activate the Swiss Travel Pass on Sep 18, not Sep 19. It then covers the Geneva→Zermatt arrival train — about $70 for the two of you, free.",
     "Istanbul and Craiova are the cheap stops — don't economise there, economise in Switzerland."
   ],
   hotelVsAirbnb: [
     { city: "Madrid (start)", nights: 2, recommendation: "Hotel near Atocha", reason: "Short stay, and Atocha is where the Barcelona train leaves from.", cost: "$120–150/night" },
     { city: "Barcelona", nights: 1, recommendation: "Hotel", reason: "One night — hotel, no question. Stay near Sagrada Família or Eixample.", cost: "$140–180/night" },
     { city: "Craiova", nights: 3, recommendation: "Hotel near the venue", reason: "Wedding logistics beat everything. Cheapest stop of the trip.", cost: "$60–80/night" },
-    { city: "Istanbul", nights: 3, recommendation: "Hotel — Sultanahmet", reason: "Walk to Hagia Sophia, Blue Mosque, Topkapi, the cistern. Excellent value.", cost: "$90–130/night" },
+    { city: "Istanbul", nights: 4, recommendation: "Hotel — Sultanahmet", reason: "🆕 4th night added. Walk to Hagia Sophia, Blue Mosque, Topkapi, the cistern. Excellent value — the cheapest place to have gained a night.", cost: "$90–130/night" },
     { city: "Athens", nights: 2, recommendation: "Hotel — Plaka/Monastiraki", reason: "Rooftop with an Acropolis view is worth the small premium.", cost: "$110–150/night" },
     { city: "Santorini", nights: 1, recommendation: "Caldera-view hotel", reason: "One night, so pay for the view. It's the entire point of going.", cost: "$220–300/night" },
     { city: "Rome", nights: 3, recommendation: "Boutique hotel — Trastevere", reason: "Best food neighbourhood, walkable to everything.", cost: "$140–190/night" },
-    { city: "Venice", nights: 1, recommendation: "Hotel IN Venice (not Mestre)", reason: "The 7am empty-city morning is why you're stopping. Mestre kills it.", cost: "$180–240/night" },
     { city: "Zermatt", nights: 2, recommendation: "Hotel/guesthouse in the village", reason: "Car-free village, walk to the cable car. Täsch is $80/night cheaper if you'll commute.", cost: "$230–290/night" },
     { city: "Grindelwald", nights: 1, recommendation: "Guesthouse", reason: "One night, early start for the First gondola. Stay close to the station.", cost: "$180–240/night" },
     { city: "Paris", nights: 4, recommendation: "Airbnb — Le Marais / 11th", reason: "Kitchen breakfasts across 4 nights, and easy RER A access for Disney.", cost: "$170–210/night" },
-    { city: "London", nights: 2, recommendation: "Hotel — King's Cross or South Kensington", reason: "King's Cross for the Eurostar + Watford train; South Kensington for the museum.", cost: "$180–230/night" },
+    { city: "London", nights: 2, recommendation: "Hotel — King's Cross / Euston", reason: "🆕 Back to 2 nights (the Venice night). King's Cross puts you next to St Pancras for the Eurostar and Euston for the Watford train. Book both nights in the same hotel — no moving.", cost: "$180–230/night" },
     { city: "Madrid (end)", nights: 2, recommendation: "Hotel near Atocha or airport", reason: "Buffer nights before an 11am departure. Airport-adjacent is fine for the last one.", cost: "$110–150/night" }
   ]
 };
@@ -791,20 +768,20 @@ const BUDGET = {
 // BOOKING PRIORITY — today is late July 2026, several of these are URGENT
 // ============================================================
 const BOOKINGS = [
-  { priority: 1, what: "Warner Bros Studio Tour, London (Sat Sep 26)", when: "🔴 TODAY", urgency: "critical", note: "Saturday slots sell out weeks ahead and there is NO walk-up. This is the single most time-critical unbooked item. wbstudiotour.co.uk", estimatedCost: "~£53/person (~$68)" },
-  { priority: 2, what: "Flights: Lima↔Madrid round-trip (Sep 2 / Sep 29)", when: "🔴 NOW if not booked", urgency: "critical", note: "Direct Iberia or Air Europa. Only ~5 weeks out — prices are climbing hard.", estimatedCost: "$620–850/person each way" },
+  { priority: 1, what: "Flights: Lima↔Madrid round-trip (Sep 2 / Sep 29)", when: "🔴 NOW if not booked", urgency: "critical", note: "Direct Iberia or Air Europa. Only ~5 weeks out — prices are climbing hard.", estimatedCost: "$620–850/person each way" },
+  { priority: 2, what: "🆕 Flight Rome (FCO) → Geneva (GVA), Fri Sep 18 morning", when: "🔴 NOW", urgency: "critical", note: "🆕 THE LEG THAT REPLACES VENICE. easyJet / ITA / Swiss, 1h50. Take a departure before ~11:00 so the Geneva→Zermatt train (3h40) lands you in the village before the ski-rental shops close. This is the one new booking created by the change.", estimatedCost: "$100–220 for 2" },
   { priority: 3, what: "Craiova midnight airport pickup (Sep 5)", when: "🔴 THIS WEEK", urgency: "critical", note: "You land at ~midnight. Taxis are scarce at Craiova at that hour. Arrange a transfer through your hotel now.", estimatedCost: "$25–50" },
   { priority: 4, what: "Sagrada Família — 9:00am slot Fri Sep 4", when: "🔴 NOW", urgency: "critical", note: "sagradafamilia.org. September mornings sell out. This is the only reason for the Barcelona hop — don't lose it.", estimatedCost: "€26–44/person" },
-  { priority: 5, what: "Disneyland Paris — 2 days (Tue Sep 22 + Wed Sep 23)", when: "NOW", urgency: "high", note: "disneylandparis.com. Advance midweek €89–100/person/day vs €130+ at the gate. The two lowest-crowd days of the year.", estimatedCost: "€89–100/person/day" },
-  { priority: 6, what: "Vatican Museums + Sistine Chapel (Tue Sep 15, earliest slot)", when: "NOW", urgency: "high", note: "Official only: tickets.museivaticani.va. Resellers charge triple for the same ticket.", estimatedCost: "€22/person" },
-  { priority: 7, what: "Colosseum + Roman Forum + VR add-on (Wed Sep 16)", when: "NOW", urgency: "high", note: "ancientandrecent.com for the VR bundle, or coopculture.it for entry only.", estimatedCost: "~€48/person" },
-  { priority: 8, what: "Santorini caldera-view hotel (Sun Sep 13)", when: "NOW", urgency: "high", note: "One night only, so the view matters. Oia sells out in shoulder season.", estimatedCost: "$220–300/night" },
-  { priority: 9, what: "Eurostar Paris→London (Fri Sep 25)", when: "Within 2 weeks", urgency: "high", note: "Prices climb steeply as the date approaches. eurostar.com", estimatedCost: "$70–160/person" },
-  { priority: 10, what: "Intra-Europe flights: Craiova→Istanbul, Istanbul→Athens, Athens→Santorini, Santorini→Rome, London→Madrid", when: "Within 2 weeks", urgency: "high", note: "Five separate flights. Verify the Santorini→Rome direct exists on Sep 14, otherwise route via Athens.", estimatedCost: "$550–1,220 for 2 total" },
-  { priority: 11, what: "Acropolis 8:00am timed entry (Sat Sep 12)", when: "1 month ahead", urgency: "medium", note: "Go at opening. By 11am it's 30°C and full of cruise groups.", estimatedCost: "€20–30/person" },
-  { priority: 12, what: "Trains: AVE Madrid↔Barcelona, Frecciarossa Rome→Venice, Venice→Zermatt", when: "1–2 months ahead", urgency: "medium", note: "renfe.com and trenitalia.com. Walk-up fares are 2–3× advance.", estimatedCost: "$310–600 for 2 total" },
-  { priority: 13, what: "Swiss Travel Pass 4 days + GoldenPass seat reservation", when: "1 month ahead", urgency: "medium", note: "sbb.ch. The GoldenPass panoramic cars sell out; the pass itself can be bought later.", estimatedCost: "~$345/person" },
-  { priority: 14, what: "Zermatt ski rental + Chez Vrony reservation (Sep 19)", when: "2–3 weeks ahead", urgency: "medium", note: "Collect the rental the EVENING of Sep 18 to save 40min of your short ski window.", estimatedCost: "~CHF 50/person rental" },
+  { priority: 5, what: "Warner Bros Studio Tour, London — Sat Sep 26", when: "NOW", urgency: "high", note: "✅ DE-ESCALATED. With 2 London nights any slot works — take mid-morning (~10:00–11:00) for an unhurried day. It still sells out 2–3 months ahead, so book it, just don't panic about the time. wbstudiotour.co.uk", estimatedCost: "~£53/person (~$68)" },
+  { priority: 6, what: "Disneyland Paris — 2-DAY ticket (Tue Sep 22 + Wed Sep 23)", when: "NOW", urgency: "high", note: "🆕 CONSECUTIVE DAYS NOW — buy one 2-day ticket instead of two singles, it's cheaper and lets rides roll over. Tue and Wed are the two lowest-crowd days of the week: 15–30 min waits. disneylandparis.com.", estimatedCost: "€150–190/person for 2 days" },
+  { priority: 7, what: "Vatican Museums + Sistine Chapel (THU Sep 17, earliest slot)", when: "NOW", urgency: "high", note: "🆕 MOVED TO THURSDAY. The new dates put the Vatican on a Wednesday — Papal Audience day, when St. Peter's is closed/restricted all morning. Swapped with the Colosseum. Official only: tickets.museivaticani.va.", estimatedCost: "€22/person" },
+  { priority: 8, what: "Colosseum + Roman Forum + VR add-on (WED Sep 16)", when: "NOW", urgency: "high", note: "🆕 Moved to Wednesday in the swap with the Vatican. ancientandrecent.com for the VR bundle, or coopculture.it for entry only.", estimatedCost: "~€48/person" },
+  { priority: 9, what: "Santorini caldera-view hotel (Mon Sep 14)", when: "NOW", urgency: "high", note: "🆕 Now a Monday — marginally easier than the old Sunday. One night only, so the view matters. Oia still sells out in shoulder season.", estimatedCost: "$220–300/night" },
+  { priority: 10, what: "Intra-Europe flights: Craiova→Istanbul (Sep 8), Istanbul→Athens (Sep 12), Athens→Santorini (Sep 14), Santorini→Rome (Sep 15), London→Madrid (Sep 27 eve)", when: "Within 2 weeks", urgency: "high", note: "Verify the Santorini→Rome direct exists on Sep 15, otherwise route via Athens. Book the London→Madrid for 20:00 or later. (Rome→Geneva is listed separately at priority 2.)", estimatedCost: "$550–1,220 for 2 total" },
+  { priority: 11, what: "Acropolis 8:00am timed entry (SUN Sep 13)", when: "1 month ahead", urgency: "medium", note: "🆕 Now a Sunday — local crowds on top of the cruise groups. The 8am slot matters more than before. By 11am it's 30°C and full.", estimatedCost: "€20–30/person" },
+  { priority: 12, what: "Trains: AVE Madrid↔Barcelona (Sep 3 + Sep 4), Eurostar Paris→London (Fri Sep 25, ~09:00)", when: "1–2 months ahead", urgency: "medium", note: "🆕 The Italian train legs are GONE — Rome→Venice and Venice→Zermatt no longer exist. The Eurostar is now a relaxed mid-morning Friday train, standard advance fare. renfe.com / eurostar.com.", estimatedCost: "$200–460 for 2 total" },
+  { priority: 13, what: "Swiss Travel Pass 4 days (ACTIVATE Sep 18) + GoldenPass seat reservation (Sep 21)", when: "1 month ahead", urgency: "medium", note: "🆕 Activate Sep 18 so the pass covers the Geneva→Zermatt arrival — days then run Sep 18–21, which also covers Zermatt→Grindelwald and the GoldenPass out. sbb.ch. The panoramic cars sell out; the pass itself can be bought later.", estimatedCost: "~$345/person" },
+  { priority: 14, what: "Zermatt ski rental + Chez Vrony reservation (SAT Sep 19)", when: "2–3 weeks ahead", urgency: "medium", note: "🆕 Ski day is Saturday Sep 19. Collect the rental the EVENING of Sep 18 — you now arrive from Geneva in the late afternoon with the shops still open, which the old Venice routing did not guarantee.", estimatedCost: "~CHF 50/person rental" },
   { priority: 15, what: "Reconfirm Le Jules Verne (Sep 24, 8pm)", when: "Sep 22", urgency: "medium", note: "✅ Already booked. Reconfirm 48h ahead and check the dress code — jacket required for men.", estimatedCost: "Already committed" }
 ];
 
@@ -815,7 +792,7 @@ const CROWD_DATA = {
   disneylandParis: {
     lateAugust: { level: "8–9/10", waitTimes: "60–90 min on major rides", notes: "French summer holidays end Sep 1 — irrelevant to you now" },
     september7_13: { level: "5–6/10", waitTimes: "30–45 min", notes: "Schools just returned — transition week" },
-    september14_30: { level: "3–4/10", waitTimes: "15–30 min on major rides", notes: "Lowest crowds of the year. Weekdays Tue–Thu = the sweet spot." },
-    yourDates: "Sep 22 (Tue) + Sep 23 (Wed) = ideal. Two weekdays in the lowest-crowd period of the year. Expect 15–30 min waits on major rides."
+    september14_30: { level: "3–4/10", waitTimes: "15–30 min on major rides", notes: "Lowest crowds of the year. Weekdays Tue–Thu = the sweet spot; Fridays tick up as the weekend starts." },
+    yourDates: "✅ OPTIMAL: Tue Sep 22 + Wed Sep 23. Tuesday and Wednesday are the two quietest days of the week in the quietest fortnight of the year — 15–30 min on the headliners. Dropping Venice is what bought this: the Swiss arrival moved onto the Monday, so it no longer eats a park day, and the old Friday (25–40 min) is gone from the plan entirely. They're consecutive, so buy a 2-day ticket. Rope drop at 09:30 both days and you'll clear the headliners before 11:00."
   }
 };

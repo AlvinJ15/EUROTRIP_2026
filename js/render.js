@@ -62,6 +62,7 @@ function renderItinerary() {
           <span class="stop-number">${String(i + 1).padStart(2,'0')}</span>
           <div class="stop-header-info">
             ${stop.mandatory ? '<span class="mandatory-badge">🔴 MANDATORY</span>' : ''}
+            ${stop.contested ? '<span class="contested-badge">⚠️ UNDECIDED</span>' : ''}
             <h2 class="stop-city">${stop.emoji} ${stop.city}</h2>
             <p class="stop-country">${stop.country}</p>
           </div>
@@ -73,6 +74,8 @@ function renderItinerary() {
           <span class="meta-badge badge-dates">📅 ${stop.dates}</span>
           <span class="meta-badge badge-cost">💵 ~$${stop.dailyCost}/day for 2</span>
         </div>
+        ${stop.contestedNote ? `
+          <div class="contested-note">${stop.contestedNote}</div>` : ''}
         <div class="stop-transport">
           <span class="transport-label">✈️ Getting there:</span>
           <span class="transport-text">${stop.transport.how}</span>
