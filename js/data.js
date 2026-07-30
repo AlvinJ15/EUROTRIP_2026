@@ -12,59 +12,58 @@ const TRIP = {
   budget: 14000,
   persons: 2,
   origin: "Lima, Peru",
-  routeNote: "Option C — Spain warm-up → Craiova wedding → Turkey → Greece → Italy → Switzerland (ski) → Paris → London → home from Madrid. Round-trip Lima↔Madrid, no open-jaw needed.",
+  routeNote: "Option C — Spain warm-up → Craiova wedding → Istanbul → Cappadocia → Athens → Santorini → Rome → Switzerland (ski) → Paris → London → home from Madrid. Round-trip Lima↔Madrid, no open-jaw needed.",
   anchor: {
     event: "Wedding",
     date: "Sunday, September 6, 2026",
     city: "Craiova, Romania",
     note: "Fly Madrid→Craiova Sep 5 at 8pm, land ~midnight. Two full wedding days: Sep 6 + Sep 7."
   },
-  flightNote: "✅ CONFIRMED: Madrid→Craiova Sep 5, 8pm (lands ~midnight) · Return Madrid→Lima Sep 29, 11am · Jules Verne Paris Sep 24, 8pm (still fits — Thursday is still a Paris day)",
-  datesRevision: "✅ VENICE DROPPED — both yellow items resolved. Turkey Sep 8–12 (4n) · Greece 12–15 · Rome 15–18 · ✈️ Rome→Geneva Sep 18 · Zermatt 18–20 · Grindelwald 20–21 · Paris 21–25 · London 25–27 (2n) · Madrid 27–29. The Venice night went to London, and the freed calendar day pulled everything one day earlier — which also moved Disney onto Tue Sep 22 + Wed Sep 23, the two quietest days of the week, back-to-back.",
-  flightSavings: "Round-trip LIM↔MAD is simpler and usually cheaper than an open-jaw — the Madrid bookends are already fixed."
+  flightNote: "✅ BOOKED — PNR XYJSDU, Plus Ultra: Lima Sep 1 18:10 → Madrid Sep 2 12:45 (PU0302, 11h35) · Madrid Sep 29 11:00 → Lima 16:10 (PU0301, 12h10) · Madrid→Craiova Sep 5, 8pm (lands ~midnight) · Jules Verne Paris Sep 24, 8pm",
+  datesRevision: "🎈 TURKEY + GREECE REBUILT — Cappadocia is now a real stop, not an option. Istanbul 8–10 (2n) · ✈️ Cappadocia 10–12 (2n, sunrise balloon Fri Sep 11) · ✈️ Athens 12–14 (2n) · ✈️ Santorini 14–15 (1n) · Rome 15–18 unchanged. The two nights came out of Istanbul, which drops from 4 to 2. Greece runs Athens FIRST, Santorini LAST — that keeps every hop moving west with no backtracking, and puts the Oia sunset as the finale before Rome. ⚠️ The cost: Istanbul loses the Asian side, Balat and the slow bazaar afternoon; and the plan is ~$760–1,180 dearer.",
+  previousRevision: "✅ VENICE DROPPED — both yellow items resolved. Turkey Sep 8–12 (4n) · Greece 12–15 · Rome 15–18 · ✈️ Rome→Geneva Sep 18 · Zermatt 18–20 · Grindelwald 20–21 · Paris 21–25 · London 25–27 (2n) · Madrid 27–29. The Venice night went to London, and the freed calendar day pulled everything one day earlier — which also moved Disney onto Tue Sep 22 + Wed Sep 23, the two quietest days of the week, back-to-back.",
+  flightSavings: "Round-trip LIM↔MAD on Plus Ultra is booked and paid — PNR XYJSDU. The Madrid bookends are now fixed in stone."
 };
 
 // ============================================================
 // FLIGHTS
 // ============================================================
 const FLIGHTS = {
+  // ✅ BOTH LONG-HAUL LEGS ARE BOOKED — PNR XYJSDU, Plus Ultra, Economy.
+  pnr: "XYJSDU",
   outbound: {
     from: "Lima (LIM)",
     to: "Madrid (MAD)",
     bestOptions: [
       {
-        airline: "Iberia",
+        airline: "Plus Ultra PU 0302 — ✅ BOOKED",
         route: "LIM → MAD direct",
         stopover: "None — direct",
-        flightTime: "~11h",
+        flightTime: "11h 35m",
         layover: "n/a",
-        estimatePerson: "$620–820",
-        notes: "Daily direct. Arrive Madrid morning of Sep 2 to get a full first day. Air Europa also flies this route direct.",
+        depart: "Tue Sep 1, 18:10 — Lima Jorge Chávez (LIM)",
+        arrive: "Wed Sep 2, 12:45 — Madrid Adolfo Suárez Barajas (MAD)",
+        estimatePerson: "Booked",
+        notes: "✅ CONFIRMED · PNR XYJSDU · Economy. Departs Lima Tue Sep 1 at 18:10, lands Madrid Wed Sep 2 at 12:45 (overnight flight, +1 day). You arrive at MIDDAY, not morning — Sep 2 is a half day in Madrid.",
         recommended: true
-      },
-      {
-        airline: "Air Europa",
-        route: "LIM → MAD direct",
-        stopover: "None — direct",
-        flightTime: "~11h",
-        layover: "n/a",
-        estimatePerson: "$580–780",
-        notes: "Often slightly cheaper than Iberia. Same direct route into Madrid-Barajas.",
-        recommended: false
       }
     ],
-    tip: "Book LIM↔MAD as a single round-trip (Sep 2 out / Sep 29 back at 11am). All the European legs in between are separate cheap tickets — do NOT try to bundle them."
+    tip: "✅ Round-trip LIM↔MAD is booked on Plus Ultra, PNR XYJSDU (out Sep 1 18:10 / back Sep 29 11:00). All the European legs in between are still separate cheap tickets — do NOT try to bundle them into this reservation."
   },
   return: {
     from: "Madrid (MAD)",
     to: "Lima (LIM)",
     bestOptions: [
       {
-        airline: "Iberia / Air Europa",
+        airline: "Plus Ultra PU 0301 — ✅ BOOKED",
         route: "MAD → LIM direct",
-        flightTime: "~12h",
-        estimatePerson: "$620–850",
-        notes: "✅ CONFIRMED: Sep 29 at 11:00am. Be at Barajas by 8:00am — that means the London→Madrid flight must land Sep 27, not Sep 28.",
+        stopover: "None — direct",
+        flightTime: "12h 10m",
+        layover: "n/a",
+        depart: "Tue Sep 29, 11:00 — Madrid Adolfo Suárez Barajas (MAD)",
+        arrive: "Tue Sep 29, 16:10 — Lima Jorge Chávez (LIM)",
+        estimatePerson: "Booked",
+        notes: "✅ CONFIRMED · PNR XYJSDU · Economy. Departs Madrid Sep 29 at 11:00, lands Lima the same day at 16:10. Be at Barajas by 08:00 — that is why the London→Madrid flight must land Sep 27, not Sep 28.",
         recommended: true
       }
     ]
@@ -73,8 +72,9 @@ const FLIGHTS = {
     { leg: "Madrid → Barcelona", method: "🚄 AVE high-speed train", cost: "$60–140 for 2", notes: "2h30 city-centre to city-centre. Sep 3 morning. Book at renfe.com — cheaper than flying once you count airport transfers." },
     { leg: "Barcelona → Madrid", method: "🚄 AVE high-speed train", cost: "$60–140 for 2", notes: "Sep 4 evening return. Book both directions together." },
     { leg: "Madrid → Craiova", method: "✈️ Flight — ✅ BOOKED", cost: "Booked", notes: "Sep 5, departs 8:00pm, lands ~midnight. Arrange an airport pickup in advance — arriving at midnight with no plan is the one avoidable stress of this trip." },
-    { leg: "Craiova → Istanbul", method: "✈️ Flight", cost: "$120–260 for 2", notes: "Sep 8. Craiova (CRA) has limited routes — most likely bus/train to Bucharest OTP (3.5h) then OTP→IST (1h50) on Turkish Airlines. Check for a direct CRA→IST first." },
-    { leg: "Istanbul → Athens", method: "✈️ Flight", cost: "$100–240 for 2", notes: "Sep 12. 1h30, Aegean or Turkish. Frequent daily departures." },
+    { leg: "Craiova → Istanbul", method: "🚗 Overland + ✈️ direct flight", cost: "$170–330 for 2", notes: "Sep 8. ⭐ Two separate tickets beats one: go overland Craiova→Bucharest OTP (3h by private car, or 3h15 train + airport bus), then a DIRECT OTP→IST flight (1h30, Turkish Airlines). A single connecting ticket out of Craiova routes you through a western hub — 10–14h and more expensive. Fly into IST, not Sabiha Gökçen. See the route planner for the full breakdown." },
+    { leg: "Istanbul → Cappadocia", method: "✈️ Domestic flight", cost: "$80–160 for 2", notes: "🆕 Sep 10 evening. IST→Nevşehir (NAV, 40min from Göreme) or Kayseri (ASR, 1h15 but more flights and often cheaper). 1h20 in the air, Turkish Airlines or AJet. Take an evening departure so you keep the Bosphorus cruise and the hamam." },
+    { leg: "Cappadocia → Athens (via Istanbul)", method: "✈️ Two flights, ONE ticket", cost: "$180–380 for 2", notes: "🆕 Sep 12. There are no international flights out of Cappadocia — you must come back through Istanbul. NAV/ASR→IST (1h20) then IST→ATH (1h30). 🔴 Book it as a single Turkish Airlines itinerary so the connection is protected; two separate tickets here means a missed connection is your problem. Total ~7–8h door to door." },
     { leg: "Athens → Santorini", method: "✈️ Flight (or ⛴️ ferry)", cost: "$90–200 for 2", notes: "Sep 14. Flight 45min — take it. The ferry is 5–8h and eats a whole day you don't have." },
     { leg: "Santorini → Rome", method: "✈️ Flight", cost: "$140–320 for 2", notes: "Sep 15. Seasonal direct JTR→FCO exists in September (Volotea/Ryanair). If unavailable, route via Athens." },
     { leg: "Rome → Geneva", method: "✈️ Flight", cost: "$100–220 for 2", notes: "🆕 Sep 18 morning — this leg REPLACES Rome→Venice→Zermatt. 1h50 FCO→GVA (easyJet/ITA/Swiss). Take a departure before ~11:00 so you reach Zermatt in daylight." },
@@ -101,9 +101,9 @@ const ITINERARY = [
     dailyCost: 290,
     accommodation: "Hotel Madrid (2 nights) + Hotel Barcelona (1 night)",
     accommodationCost: 140,
-    transport: { from: "Lima (LIM)", how: "Iberia/Air Europa LIM→MAD direct (~11h). Arrive morning Sep 2." },
+    transport: { from: "Lima (LIM)", how: "✅ BOOKED — Plus Ultra PU 0302, PNR XYJSDU. Departs Lima Tue Sep 1 at 18:10, lands Madrid Wed Sep 2 at 12:45 (11h 35m, direct, overnight)." },
     dayByDay: [
-      { day: "Sep 2 (Wed)", plan: "Land Madrid morning. Drop bags, fight the jet lag with daylight: Retiro Park, Puerta del Sol, Plaza Mayor. Evening: Mercado de San Miguel tapas. Sleep early." },
+      { day: "Sep 2 (Wed)", plan: "✅ Land Madrid 12:45 (Plus Ultra PU0302 out of Lima the previous evening). Through immigration + bags, hotel by ~14:30. Half a day, so keep it light and outdoors to break the jet lag: Retiro Park, Puerta del Sol, Plaza Mayor. Evening: Mercado de San Miguel tapas. Sleep early." },
       { day: "Sep 3 (Thu)", plan: "Morning AVE train Madrid→Barcelona (2h30). Afternoon: Gothic Quarter + La Boqueria market. Evening: Barceloneta beach + seafood dinner." },
       { day: "Sep 4 (Fri)", plan: "⛪ SAGRADA FAMÍLIA — book the 9:00am first-entry slot. Late morning: Park Güell or Casa Batlló exterior. Evening AVE train back to Madrid." },
       { day: "Sep 5 (Sat)", plan: "Relaxed Madrid morning — Plaza de España, churros at San Ginés. Pack. Airport by 5:30pm. ✈️ 8:00pm flight Madrid→Craiova, lands ~midnight." }
@@ -116,6 +116,8 @@ const ITINERARY = [
       { icon: "🌿", text: "Park Güell — Gaudí mosaic terraces over the city", cost: "€10/person" }
     ],
     tips: [
+      "🛫 You leave Lima on Tue Sep 1 at 18:10 — the trip effectively starts a day before the itinerary does. Be at Jorge Chávez by 15:00.",
+      "Arrival is 12:45, not morning: Sep 2 is a half day. Don't book anything timed before 15:00 on it.",
       "Sagrada Família Sep 4 (Fri) 9am slot: book at sagradafamilia.org NOW — September mornings sell out weeks ahead.",
       "Stay near Madrid Atocha station — the Barcelona train leaves from there and it saves you two taxi rides.",
       "Sep 5: leave for Barajas by 5:30pm at the latest for the 8pm Craiova flight.",
@@ -162,19 +164,17 @@ const ITINERARY = [
     city: "Istanbul",
     country: "Turkey",
     emoji: "🕌",
-    nights: 4,
-    dates: "Sep 8–12 (Tue–Sat)",
+    nights: 2,
+    dates: "Sep 8–10 (Tue–Thu)",
     image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&q=80",
     dailyCost: 180,
-    accommodation: "Hotel — Sultanahmet or Karaköy",
+    accommodation: "Hotel — Sultanahmet (walk to everything)",
     accommodationCost: 110,
-    transport: { from: "Craiova", how: "Transfer to Bucharest OTP (3.5h) → fly OTP→IST (1h50, Turkish Airlines). Check direct CRA→IST first." },
+    transport: { from: "Craiova", how: "Overland Craiova→Bucharest OTP (3h by car), then direct OTP→IST flight (1h30, Turkish Airlines). See the route planner." },
     dayByDay: [
-      { day: "Sep 8 (Tue)", plan: "Arrive Istanbul afternoon/evening. Check in. Easy first evening: Galata Bridge, fish sandwiches, Karaköy backstreets. You've just done two wedding days — take it slow." },
-      { day: "Sep 9 (Wed)", plan: "The classics: Hagia Sophia, Blue Mosque, Basilica Cistern, Topkapi Palace — all within walking distance in Sultanahmet. Afternoon: Grand Bazaar + Spice Bazaar. Evening: rooftop dinner with the skyline." },
-      { day: "Sep 10 (Thu)", plan: "Bosphorus cruise (Europe/Asia in one boat ride). Afternoon: Turkish bath (hamam) — genuinely restorative after the wedding. Evening: Istiklal Street + Galata Tower at sunset." },
-      { day: "Sep 11 (Fri)", plan: "🆕 THE EXTRA DAY. Either: (a) slow Istanbul — Asian side ferry to Kadıköy, Süleymaniye Mosque, Balat's painted houses, Princes' Islands; or (b) 🎈 CAPPADOCIA — fly IST→NAV Thu evening, sunrise balloon Fri morning, valleys + cave hotel, fly back Fri night or Sat morning. The 4th night is what makes the balloon possible." },
-      { day: "Sep 12 (Sat)", plan: "Free morning / last bazaar run. Afternoon flight → Athens (1h30)." }
+      { day: "Sep 8 (Tue)", plan: "Arrive Istanbul afternoon/evening. Check in Sultanahmet. Easy first evening: Galata Bridge, fish sandwiches, Karaköy backstreets. You've just done two wedding days — take it slow." },
+      { day: "Sep 9 (Wed)", plan: "🕌 THE SULTANAHMET DAY — Hagia Sophia, Blue Mosque, Basilica Cistern, Topkapi Palace, all within walking distance of each other. Late afternoon: Grand Bazaar + Spice Bazaar. Evening: rooftop dinner with Hagia Sophia on one side and the Blue Mosque on the other. This is a packed day — book the big two online." },
+      { day: "Sep 10 (Thu)", plan: "⛵ Morning Bosphorus cruise (Europe and Asia in one boat ride). Early afternoon: hamam at Çemberlitaş or Kılıç Ali Paşa — the right way to end the Istanbul leg. ✈️ Evening flight IST→Cappadocia (1h20). Cave hotel by ~22:00 — sleep fast, the balloon pickup is around 04:30." }
     ],
     highlights: [
       { icon: "🕌", text: "Hagia Sophia — 1,500 years old, cathedral then mosque then museum then mosque again", cost: "~€25/person (foreign visitor fee)" },
@@ -185,51 +185,119 @@ const ITINERARY = [
       { icon: "🛍️", text: "Grand Bazaar + Spice Bazaar — 4,000 shops, 15th century. Haggling expected.", cost: "Free to browse" }
     ],
     tips: [
-      "🆕 Now 4 nights (was 3) — this is the leg that absorbed the extra night. Still deliberately unscheduled; Istanbul rewards wandering.",
-      "The Istanbul Tourist Pass is worth a look at 4 days if you'll hit 5+ paid sites — otherwise still buy individually.",
-      "Hagia Sophia + Topkapi: book online, the queues are real even in September.",
-      "🎈 CAPPADOCIA IS NOW REALISTIC. At 3 nights it cost you most of Istanbul; at 4 it doesn't. IST→NAV is 1h20, the sunrise balloon is ~€200/person, and you'd still keep 2 full Istanbul days. This is the single best use of the extra night.",
-      "September Istanbul: 26–28°C, ideal. Cover shoulders and knees for mosques; women need a headscarf (they lend them)."
+      "🆕 NOW 2 NIGHTS, NOT 4 — the two nights moved to Cappadocia. This is a deliberate trade: Istanbul becomes efficient instead of leisurely, and you gain the balloon.",
+      "🔴 What this costs you: the Asian side (Kadıköy), Balat's painted houses, Süleymaniye Mosque, the Princes' Islands and a slow bazaar afternoon. Sep 9 is now a full, scheduled day rather than a wander.",
+      "Book Hagia Sophia + Topkapi online for Sep 9. With one core day you cannot afford a 90-minute queue.",
+      "Stay IN Sultanahmet for these two nights, not Karaköy. The walking distance is the whole point when the time is short.",
+      "September Istanbul: 26–28°C, ideal. Cover shoulders and knees for mosques; women need a headscarf (they lend them).",
+      "Buy an Istanbulkart on arrival — it covers the tram, metro, buses and the Bosphorus ferries."
     ],
-    selectedActivities: ["Hagia Sophia", "Bosphorus cruise", "Hamam", "Grand Bazaar"]
+    selectedActivities: ["Hagia Sophia", "Topkapi", "Bosphorus cruise", "Hamam", "Grand Bazaar"]
   },
   {
     id: 4,
-    city: "Athens + Santorini",
-    country: "Greece",
-    emoji: "🇬🇷",
-    nights: 3,
-    dates: "Sep 12–15 (Sat–Tue)",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80",
-    dailyCost: 280,
-    accommodation: "Hotel Athens (2 nights) + Santorini caldera-view hotel (1 night)",
-    accommodationCost: 165,
-    transport: { from: "Istanbul", how: "Fly IST→ATH (1h30, Aegean/Turkish). Then ATH→JTR Santorini (45min) on Sep 14." },
+    city: "Cappadocia",
+    country: "Turkey",
+    emoji: "🎈",
+    nights: 2,
+    dates: "Sep 10–12 (Thu–Sat)",
+    image: "https://images.unsplash.com/photo-1600240644455-3edc55c375fe?w=800&q=80",
+    dailyCost: 260,
+    accommodation: "Cave hotel — Göreme or Uçhisar",
+    accommodationCost: 150,
+    transport: { from: "Istanbul", how: "Evening flight IST→Nevşehir (NAV) or Kayseri (ASR), 1h20 + 40–75min hotel shuttle. See the route planner for which airport." },
     dayByDay: [
-      { day: "Sep 12 (Sat)", plan: "Arrive Athens evening. Check in near Plaka/Monastiraki. Dinner on a rooftop with the Acropolis lit up above you." },
-      { day: "Sep 13 (Sun)", plan: "🏛️ ACROPOLIS at 8am opening (beat the heat and the cruise crowds) — Parthenon, Erechtheion. Then Ancient Agora + Temple of Olympian Zeus. Afternoon: Plaka + Monastiraki. Sunset at Lycabettus Hill." },
-      { day: "Sep 14 (Mon)", plan: "Morning flight → Santorini (45min). Afternoon: Fira to Oia caldera walk or the bus. 🌅 OIA SUNSET — the famous one. Book dinner with a caldera view." },
-      { day: "Sep 15 (Tue)", plan: "Santorini morning: Amoudi Bay or a quick swim at Red Beach. Afternoon flight → Rome." }
+      { day: "Sep 10 (Thu)", plan: "Land NAV/ASR in the evening, shuttle to the cave hotel in Göreme. Late dinner at the hotel. Bed early — balloon pickup is ~04:30." },
+      { day: "Sep 11 (Fri)", plan: "🎈 SUNRISE BALLOON FLIGHT — up at 04:30, in the air about an hour as the sun comes over the fairy chimneys, hundreds of other balloons around you. Champagne landing ~08:00. Back to bed if you need it. Then: Göreme Open-Air Museum (rock-cut churches with Byzantine frescoes), Uçhisar Castle, and Derinkuyu or Kaymaklı underground city — eight levels carved into rock. Sunset at Red Valley." },
+      { day: "Sep 12 (Sat)", plan: "⭐ THE BACKUP MORNING — if Friday's balloon was cancelled for wind, you fly this morning instead. If it already flew: Devrent and Love Valley walk, or pottery in Avanos. ✈️ Midday flight back to Istanbul, connect straight through to Athens (arrive ~20:00)." }
     ],
     highlights: [
-      { icon: "🏛️", text: "The Acropolis + Parthenon — go at 8am opening, it's 30°C by 11am and packed", cost: "€20/person (combo ticket €30)" },
-      { icon: "🌅", text: "Oia sunset, Santorini — the single most famous sunset in Europe. Arrive 90 min early for a spot.", cost: "Free" },
-      { icon: "🏘️", text: "Fira → Oia caldera walk — 10km clifftop path, or take the bus if the day is short", cost: "Free (bus ~€2)" },
-      { icon: "🍽️", text: "Caldera-view dinner in Oia — expensive, worth it once. Book ahead.", cost: "$60–90/person" },
-      { icon: "🏛️", text: "Ancient Agora + Plaka — the old city under the Acropolis, best evening wandering in Athens", cost: "€10/person" },
-      { icon: "🏖️", text: "Amoudi Bay — swim below Oia, seafood tavernas on the water", cost: "Free" }
+      { icon: "🎈", text: "SUNRISE HOT-AIR BALLOON — the reason this stop exists. September is peak flying season: clear, calm, warm.", cost: "~€200–280/person" },
+      { icon: "⛪", text: "Göreme Open-Air Museum — UNESCO site, rock-cut monasteries and 10th-century frescoes", cost: "~€25/person" },
+      { icon: "🕳️", text: "Derinkuyu or Kaymaklı underground city — 8 levels deep, sheltered 20,000 people", cost: "~€15/person" },
+      { icon: "🏨", text: "Cave hotel — sleeping inside carved volcanic rock. Genuinely worth paying up for one of the two nights.", cost: "$130–200/night" },
+      { icon: "🌄", text: "Red Valley / Rose Valley at sunset — the light on the tuff is the second-best thing here after the balloon", cost: "Free" },
+      { icon: "🏰", text: "Uçhisar Castle — highest point in Cappadocia, whole-valley panorama", cost: "~€6/person" }
     ],
     tips: [
-      "3 days is tight for Greece — this splits Athens 2 nights / Santorini 1 night, which is the maximum you can do without cutting Italy.",
-      "🔴 Book the Santorini caldera-view hotel early. Sep 14 is a Monday now — slightly easier than the old Sunday date, but Oia still sells out in shoulder season.",
-      "Fly Athens→Santorini, don't ferry. The ferry is 5–8h and would consume your only Santorini day.",
-      "Acropolis is now Sunday Sep 13 — busier than the old Saturday slot for Greek visitors. The 8am timed entry matters more than ever.",
-      "Santorini→Rome direct flights are seasonal — verify Sep 15 exists, otherwise route via Athens and budget an extra 3h."
+      "🔴 BOOK THE BALLOON NOW, for Friday Sep 11, with a reputable operator (Butterfly, Royal, Voyager). September is the busiest flying month and the good slots sell out months ahead.",
+      "⭐ Two nights = two sunrise windows. Roughly 1 flight in 5 is cancelled for wind, and the operator rebooks you to the next morning — which only helps if you're still there. This is the single strongest reason for 2 nights over 1.",
+      "Confirm the operator's cancellation policy in writing: a wind cancellation should be a full refund or a free move to Saturday.",
+      "Airport choice matters: Nevşehir (NAV) is ~40 min from Göreme, Kayseri (ASR) is ~1h15 but has more flights and often cheaper fares. Compare total cost including the shuttle.",
+      "Cave hotels are not all equal — book one with a terrace facing east, and you watch the balloons rise over breakfast on Saturday too.",
+      "It's 1,000m+ up and cools off fast after sunset. Bring a jacket for the 04:30 pickup.",
+      "Skip the ATV/quad tours if time is short. The valley walks are free and better."
     ],
-    selectedActivities: ["🏛️ Acropolis", "🌅 Oia sunset", "Caldera dinner"]
+    selectedActivities: ["🎈 Sunrise balloon", "Göreme Open-Air Museum", "Underground city", "Cave hotel"]
   },
   {
     id: 5,
+    city: "Athens",
+    country: "Greece",
+    emoji: "🏛️",
+    nights: 2,
+    dates: "Sep 12–14 (Sat–Mon)",
+    image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&q=80",
+    dailyCost: 260,
+    accommodation: "Hotel — Plaka / Monastiraki, rooftop with an Acropolis view",
+    accommodationCost: 130,
+    transport: { from: "Cappadocia", how: "NAV/ASR→Istanbul, connect IST→Athens (1h30). Book as ONE Turkish Airlines ticket so the connection is protected." },
+    dayByDay: [
+      { day: "Sep 12 (Sat)", plan: "Long travel day out of Cappadocia via Istanbul. Arrive Athens ~20:00, check in around Plaka/Monastiraki. Dinner on a rooftop with the Acropolis lit up above you — the best possible first impression of the city." },
+      { day: "Sep 13 (Sun)", plan: "🏛️ ACROPOLIS at the 08:00 opening — Parthenon, Erechtheion, Propylaea, before the heat and the cruise groups. Then the Ancient Agora and the Temple of Olympian Zeus on the combo ticket. Afternoon: Plaka, Monastiraki flea market, Anafiotika's island-like lanes. Sunset from Lycabettus Hill." },
+      { day: "Sep 14 (Mon)", plan: "Breakfast, then the 40-min Metro to the airport. ✈️ Morning flight → Santorini (45 min)." }
+    ],
+    highlights: [
+      { icon: "🏛️", text: "The Acropolis + Parthenon — go at 08:00 opening, it's 30°C by 11am and packed by 10", cost: "€20/person (€30 combo covers 6 more sites)" },
+      { icon: "🏺", text: "Acropolis Museum — the Parthenon frieze displayed at real scale, glass floor over the excavations", cost: "€15/person" },
+      { icon: "🏛️", text: "Ancient Agora + Temple of Olympian Zeus — included in the combo ticket", cost: "Combo ticket" },
+      { icon: "🌆", text: "Lycabettus Hill at sunset — funicular or a 25-min climb, the whole city and the Acropolis below you", cost: "€10/person funicular" },
+      { icon: "🏘️", text: "Plaka + Anafiotika — the old town under the Acropolis, best evening wandering in Athens", cost: "Free" },
+      { icon: "🍽️", text: "Rooftop dinner facing the lit Acropolis — cheap by European standards, unforgettable view", cost: "$30–50/person" }
+    ],
+    tips: [
+      "🔴 Acropolis timed entry is now mandatory — book the 08:00 slot for Sunday Sep 13 at hhticket.gr. It sells out.",
+      "The €30 combo ticket pays for itself if you do the Agora plus one more site, and it skips the individual queues.",
+      "Sunday Sep 13 is busier with Greek visitors than a weekday would be. The 08:00 entry matters more than ever.",
+      "The airport Metro (Line 3) runs straight to Syntagma and Monastiraki — do not take the €40 taxi.",
+      "Two nights here is enough for the Acropolis and Plaka done properly. It is not enough for Delphi or Cape Sounion — don't try."
+    ],
+    selectedActivities: ["🏛️ Acropolis", "Acropolis Museum", "Lycabettus sunset", "Plaka"]
+  },
+  {
+    id: 6,
+    city: "Santorini",
+    country: "Greece",
+    emoji: "🌅",
+    nights: 1,
+    dates: "Sep 14–15 (Mon–Tue)",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80",
+    dailyCost: 320,
+    accommodation: "Caldera-view hotel — Oia or Imerovigli",
+    accommodationCost: 260,
+    transport: { from: "Athens", how: "Morning flight ATH→JTR (45 min) — fly, do not ferry. Hotel transfer from the airport to Oia, 25 min." },
+    dayByDay: [
+      { day: "Sep 14 (Mon)", plan: "Morning flight in, transfer to Oia, drop bags. Afternoon: the Fira→Oia caldera path (10km clifftop, or take the bus and walk the last stretch). 🌅 OIA SUNSET — be in position 90 minutes early, it is as crowded as it is famous. Then a booked caldera-view dinner." },
+      { day: "Sep 15 (Tue)", plan: "Santorini morning: down the steps to Amoudi Bay for a swim and seafood on the water, or Red Beach. Back up, collect bags. ✈️ Afternoon flight → Rome." }
+    ],
+    highlights: [
+      { icon: "🌅", text: "Oia sunset — the single most famous sunset in Europe. Arrive 90 min early for a spot on the castle side.", cost: "Free" },
+      { icon: "🏘️", text: "Fira → Oia caldera walk — 10km along the cliff edge with the volcano below you the whole way", cost: "Free (bus ~€2)" },
+      { icon: "🍽️", text: "Caldera-view dinner in Oia — expensive, touristy, completely worth doing once", cost: "$60–90/person" },
+      { icon: "🏖️", text: "Amoudi Bay — 300 steps below Oia, swim off the rocks, seafood tavernas at the waterline", cost: "Free" },
+      { icon: "🏨", text: "One night in a caldera-view room — with a single night here, pay for the view. It is the entire point.", cost: "$220–300/night" }
+    ],
+    tips: [
+      "🔴 One night means one sunset. Book the Oia hotel AND the sunset-window dinner table well ahead — both sell out in September.",
+      "Fly, don't ferry. The ferry is 4h30–8h and would consume the only day you have here.",
+      "Stay in Oia or Imerovigli, not Fira — you want to walk to the sunset, not bus to it.",
+      "Santorini→Rome direct is SEASONAL. Verify Sep 15 exists before you build the day around it; the fallback via Athens costs 3 extra hours.",
+      "Luggage and Oia's stepped lanes do not mix. Arrange the hotel transfer, and ask how close the car can actually get."
+    ],
+    selectedActivities: ["🌅 Oia sunset", "Caldera dinner", "Amoudi Bay"]
+  },
+  {
+    id: 7,
     city: "Rome",
     country: "Italy",
     emoji: "🏛️",
@@ -267,7 +335,7 @@ const ITINERARY = [
     selectedActivities: ["🔴 Colosseum VR Sep 16 (MANDATORY)", "🔴 Vatican Sep 17 (MANDATORY)", "Circo Massimo AR", "Pantheon"]
   },
   {
-    id: 6,
+    id: 8,
     city: "Zermatt — Glacier Skiing",
     country: "Switzerland",
     emoji: "⛷️",
@@ -304,7 +372,7 @@ const ITINERARY = [
     selectedActivities: ["⛷️ Glacier ski day Sep 19", "🚂 Gornergrat railway", "🍽️ Chez Vrony"]
   },
   {
-    id: 7,
+    id: 9,
     city: "Grindelwald / Interlaken",
     country: "Switzerland",
     emoji: "🛷",
@@ -337,7 +405,7 @@ const ITINERARY = [
     selectedActivities: ["🛷 Toboggan / Pfingstegg", "🪂 First Flieger zipline", "🚶 First Cliff Walk", "🚂 GoldenPass Express"]
   },
   {
-    id: 8,
+    id: 10,
     city: "Paris",
     country: "France",
     emoji: "🗼",
@@ -378,7 +446,7 @@ const ITINERARY = [
     selectedActivities: ["🎡 Disneyland 2 days (Tue+Wed)", "🍽️ Jules Verne ✅ BOOKED", "🗼 Eiffel Tower", "Montmartre", "Louvre exterior only"]
   },
   {
-    id: 9,
+    id: 11,
     city: "London",
     country: "United Kingdom",
     emoji: "🦕",
@@ -414,7 +482,7 @@ const ITINERARY = [
     selectedActivities: ["🎬 Warner Bros Studio Tour (Sat)", "🦕 NHM dinosaur gallery (Sun)", "🏰 Tower of London or Westminster (Fri)"]
   },
   {
-    id: 10,
+    id: 12,
     city: "Madrid — Final",
     country: "Spain",
     emoji: "🛫",
@@ -428,7 +496,7 @@ const ITINERARY = [
     dayByDay: [
       { day: "Sep 27 (Sun)", plan: "Land Madrid late evening. Check in. Sleep." },
       { day: "Sep 28 (Mon)", plan: "Buffer + last day. Whatever you missed on Sep 2: Royal Palace, Gran Vía, Mercado de San Miguel one more time, El Rastro area. Buy gifts. Repack properly for the long flight. Early night." },
-      { day: "Sep 29 (Tue)", plan: "✈️ MADRID → LIMA, 11:00am. Be at Barajas by 8:00am. Trip ends." }
+      { day: "Sep 29 (Tue)", plan: "✈️ MADRID → LIMA — Plus Ultra PU 0301, departs 11:00, lands Lima 16:10 the same day (12h 10m). Be at Barajas by 08:00. Trip ends." }
     ],
     highlights: [
       { icon: "🛡️", text: "Buffer day Sep 28 — the insurance policy for the whole trip. If anything slips earlier, it absorbs it.", cost: "Free" },
@@ -510,18 +578,32 @@ const TICKETS = [
     city: "Greece",
     flag: "🇬🇷",
     attractions: [
-      { name: "Acropolis (Athens)", price: "€20/person", note: "Combo ticket with 6 other sites: €30. 🆕 Sun Sep 13 — book the 8:00am slot, Sundays draw local crowds too." },
+      { name: "Acropolis (Athens)", price: "€20/person", note: "Combo ticket with 6 other sites: €30. Sun Sep 13 — book the 08:00 slot at hhticket.gr; timed entry is mandatory and Sundays draw local crowds too." },
+      { name: "Acropolis Museum", price: "€15/person", note: "🆕 Sep 13 afternoon. The Parthenon frieze at real scale — go after the site itself, not before." },
       { name: "Ancient Agora", price: "€10/person", note: "Included in the €30 combo ticket." },
-      { name: "Athens → Santorini flight", price: "$45–100/person", note: "45min. Aegean/Sky Express. Do NOT take the ferry — it's 5–8h." },
-      { name: "Oia sunset", price: "FREE", note: "Arrive 90 min early for a spot on the castle ruins." }
+      { name: "Lycabettus funicular", price: "€10/person", note: "🆕 Sep 13 sunset. Or climb it free in 25 min." },
+      { name: "Athens → Santorini flight", price: "$45–100/person", note: "45min, Sep 14. Aegean/Sky Express. Do NOT take the ferry — it's 4h30–8h." },
+      { name: "Oia sunset", price: "FREE", note: "Sep 14. Arrive 90 min early for a spot on the castle ruins." }
+    ]
+  },
+  {
+    city: "Cappadocia",
+    flag: "🎈",
+    attractions: [
+      { name: "🎈 Sunrise hot-air balloon flight", price: "~€200–280/person", note: "🆕 THE headline cost of the Turkey leg. Fri Sep 11 at sunrise, ~1h airborne. Government-regulated pricing, so choose on operator reputation, not price. 🔴 Book now — September sells out." },
+      { name: "Göreme Open-Air Museum", price: "~€25/person", note: "🆕 UNESCO rock-cut churches with 10th-century frescoes. Sep 11, after the balloon. The Dark Church costs a few euros extra and is worth it." },
+      { name: "Derinkuyu or Kaymaklı underground city", price: "~€15/person", note: "🆕 Eight levels carved into rock. Pick one, not both — they're similar and Derinkuyu goes deeper." },
+      { name: "Uçhisar Castle", price: "~€6/person", note: "🆕 Highest point in Cappadocia, whole-valley panorama. 30 minutes well spent." },
+      { name: "Museum Pass Cappadocia", price: "~€45/person", note: "🆕 Bundles Göreme + Zelve + an underground city. Worth it at 3+ sites, not at 2." },
+      { name: "Red Valley / Love Valley walks", price: "FREE", note: "🆕 Better than the paid ATV tours. Go at sunset." }
     ]
   },
   {
     city: "Istanbul",
     flag: "🇹🇷",
     attractions: [
-      { name: "Hagia Sophia", price: "~€25/person", note: "Foreign visitor fee. Book online, the queue is long." },
-      { name: "Topkapi Palace", price: "~€30/person", note: "Add the Harem section (~€10 extra) — it's the best part." },
+      { name: "Hagia Sophia", price: "~€25/person", note: "Foreign visitor fee. 🔴 Book online for Wed Sep 9 — with one core Istanbul day you cannot absorb the queue." },
+      { name: "Topkapi Palace", price: "~€30/person", note: "Also Wed Sep 9. Add the Harem section (~€10 extra) — it's the best part." },
       { name: "Basilica Cistern", price: "~€25/person", note: "Sunken columns + Medusa heads. Atmospheric, 45min." },
       { name: "Blue Mosque", price: "FREE", note: "Closed to visitors during prayer times. Headscarf provided for women." },
       { name: "Bosphorus cruise", price: "~€15–30/person", note: "Public ferry is the cheap version and just as good." },
@@ -722,19 +804,21 @@ const DINING = [
 const BUDGET = {
   categories: [
     { label: "Flights: Lima↔Madrid round-trip (×2)", min: 1300, max: 1800, note: "Direct Iberia/Air Europa. Sep 2 out, Sep 29 back at 11am. Book as one round-trip." },
-    { label: "Accommodation (27 nights, 2 pax)", min: 3900, max: 5250, note: "🆕 Unchanged by dropping Venice — the night moved to London and both run ~$200. Zermatt and London are the expensive nights; Craiova and Istanbul offset them." },
+    { label: "Accommodation (27 nights, 2 pax)", min: 3980, max: 5390, note: "🆕 +$80–140 from the Turkey change: two Istanbul nights ($90–130) became two Cappadocia cave-hotel nights ($130–200). Same night count, slightly dearer beds. Zermatt, Santorini and London remain the expensive ones." },
     { label: "Food (28 days)", min: 2120, max: 3020, note: "~$20 higher than the Venice version (London eats dearer than Venice for one day). Airbnb kitchen in Paris + supermarket lunches in Switzerland save the most." },
-    { label: "Intra-Europe transport (8 flights + 4 train legs)", min: 1450, max: 2300, note: "🆕 Rome→Venice + Venice→Zermatt ($250–460) replaced by one Rome→Geneva flight ($100–220), with Geneva→Zermatt on the Swiss Travel Pass. One more flight, two fewer trains. Book everything 2–3 months out." },
-    { label: "Activities (Disney ×2, Vatican, Colosseum VR, Warner Bros, Acropolis, Hagia Sophia…)", min: 1400, max: 2000, note: "See the ticket breakdown by city." },
+    { label: "Intra-Europe transport (10 flights + 4 train legs)", min: 1610, max: 2620, note: "🆕 +$160–320 for the two Cappadocia hops (IST→NAV and NAV→IST, ~$40–80/person each). Cheap flights, but they are new. Everything 2–3 months out." },
+    { label: "🎈 Cappadocia sunrise balloon (2 pax)", min: 440, max: 620, note: "🆕 ~€200–280/person for a standard 1-hour sunrise flight, Fri Sep 11. Government-regulated pricing, so shop on operator reputation and basket size, not price. This is the single biggest new line item." },
+    { label: "Activities (Disney ×2, Vatican, Colosseum VR, Warner Bros, Acropolis, Göreme, Hagia Sophia…)", min: 1480, max: 2100, note: "🆕 +$80–100 for Göreme Open-Air Museum and an underground city. See the ticket breakdown by city." },
     { label: "Jules Verne dinner (2 persons) — ✅ BOOKED", min: 660, max: 740, note: "Sep 24, 8pm. Already committed." },
     { label: "Skiing — Zermatt (1 day × 2 persons)", min: 300, max: 360, note: "~CHF 95 pass + ~CHF 50 rental per person. 🆕 Ski day is now Sat Sep 19. The ski add-on itself is cheap." },
     { label: "Swiss Travel Pass 4 days (×2 persons)", min: 620, max: 660, note: "🆕 Activate Sep 18. Now also covers the Geneva→Zermatt arrival, plus Swiss trains, Grindelwald gondolas, GoldenPass base fare and the Gornergrat discount." },
     { label: "Warner Bros Studio Tour + transport (2 pax)", min: 160, max: 200, note: "~£53/person + ~£11 train + £3 shuttle each." },
     { label: "Misc (travel insurance, SIMs, tips, gifts)", min: 500, max: 800, note: "Travel insurance STRONGLY recommended — 12 separate transport legs." }
   ],
-  total: { min: 12410, max: 17130, target: 14000 },
+  total: { min: 13170, max: 18310, target: 14000 },
   savingTips: [
-    "⚠️ HONEST WARNING: the midpoint of this plan is ~$14,770, still above your $14,000 target. Dropping Venice moved it by roughly $130 — real, but not the lever that closes the gap.",
+    "⚠️ HONEST WARNING: the midpoint is now ~$15,740, about $1,740 over your $14,000 target. Adding Cappadocia cost roughly $760–1,180 — the balloon alone is $440–620. It is the best single experience you've added to this trip, and it is not free. Decide deliberately.",
+    "🎈 IF YOU NEED THAT MONEY BACK: the honest candidates are Santorini's one caldera night ($220–300 + the $130 dinner), the Jules Verne dinner ($660–740, already booked), or one Disney day. Cutting the balloon to fund the rest defeats the purpose of the change.",
     "📊 WHAT DROPPING VENICE ACTUALLY DID TO THE MONEY: lodging was a wash ($200/night either way — the night moved to London, it didn't disappear). Food went UP ~$20 (London is dearer). Transport came DOWN $30–360: Rome→Venice + Venice→Zermatt ($250–460 for 2) became one Rome→Geneva flight ($100–220) with the Swiss leg on the pass. If the Geneva fare comes in cheap you save ~$300; if it's dear, it's break-even. You did this for the calendar day, not the cash.",
     "✅ WHAT IT DID TO THE SCHEDULE (the real payoff): two travel days became one; London went 1→2 nights; the 07:00 Eurostar became a relaxed ~09:00 one; the Warner Bros slot constraint vanished; the Tower of London became possible; and Disney landed on Tue Sep 22 + Wed Sep 23 — consecutive, and the two lowest-crowd days of the week.",
     "🎟️ NEW SAVING, small but free: because the Disney days are now back-to-back, a 2-day ticket replaces two 1-day tickets — typically €25–40/person cheaper.",
@@ -752,7 +836,8 @@ const BUDGET = {
     { city: "Madrid (start)", nights: 2, recommendation: "Hotel near Atocha", reason: "Short stay, and Atocha is where the Barcelona train leaves from.", cost: "$120–150/night" },
     { city: "Barcelona", nights: 1, recommendation: "Hotel", reason: "One night — hotel, no question. Stay near Sagrada Família or Eixample.", cost: "$140–180/night" },
     { city: "Craiova", nights: 3, recommendation: "Hotel near the venue", reason: "Wedding logistics beat everything. Cheapest stop of the trip.", cost: "$60–80/night" },
-    { city: "Istanbul", nights: 4, recommendation: "Hotel — Sultanahmet", reason: "🆕 4th night added. Walk to Hagia Sophia, Blue Mosque, Topkapi, the cistern. Excellent value — the cheapest place to have gained a night.", cost: "$90–130/night" },
+    { city: "Istanbul", nights: 2, recommendation: "Hotel — Sultanahmet", reason: "🆕 Down from 4 nights. With only one core day, staying inside Sultanahmet (walk to Hagia Sophia, Blue Mosque, Topkapi, the cistern) stops being a preference and becomes the plan.", cost: "$90–130/night" },
+    { city: "Cappadocia", nights: 2, recommendation: "🆕 Cave hotel — Göreme or Uçhisar", reason: "🆕 The two nights Istanbul gave up. Pay for a cave room with an east-facing terrace — you watch Saturday's balloons rise over breakfast. Two nights also buys a second balloon morning if Friday is cancelled for wind.", cost: "$130–200/night" },
     { city: "Athens", nights: 2, recommendation: "Hotel — Plaka/Monastiraki", reason: "Rooftop with an Acropolis view is worth the small premium.", cost: "$110–150/night" },
     { city: "Santorini", nights: 1, recommendation: "Caldera-view hotel", reason: "One night, so pay for the view. It's the entire point of going.", cost: "$220–300/night" },
     { city: "Rome", nights: 3, recommendation: "Boutique hotel — Trastevere", reason: "Best food neighbourhood, walkable to everything.", cost: "$140–190/night" },
@@ -768,21 +853,27 @@ const BUDGET = {
 // BOOKING PRIORITY — today is late July 2026, several of these are URGENT
 // ============================================================
 const BOOKINGS = [
-  { priority: 1, what: "Flights: Lima↔Madrid round-trip (Sep 2 / Sep 29)", when: "🔴 NOW if not booked", urgency: "critical", note: "Direct Iberia or Air Europa. Only ~5 weeks out — prices are climbing hard.", estimatedCost: "$620–850/person each way" },
-  { priority: 2, what: "🆕 Flight Rome (FCO) → Geneva (GVA), Fri Sep 18 morning", when: "🔴 NOW", urgency: "critical", note: "🆕 THE LEG THAT REPLACES VENICE. easyJet / ITA / Swiss, 1h50. Take a departure before ~11:00 so the Geneva→Zermatt train (3h40) lands you in the village before the ski-rental shops close. This is the one new booking created by the change.", estimatedCost: "$100–220 for 2" },
-  { priority: 3, what: "Craiova midnight airport pickup (Sep 5)", when: "🔴 THIS WEEK", urgency: "critical", note: "You land at ~midnight. Taxis are scarce at Craiova at that hour. Arrange a transfer through your hotel now.", estimatedCost: "$25–50" },
-  { priority: 4, what: "Sagrada Família — 9:00am slot Fri Sep 4", when: "🔴 NOW", urgency: "critical", note: "sagradafamilia.org. September mornings sell out. This is the only reason for the Barcelona hop — don't lose it.", estimatedCost: "€26–44/person" },
-  { priority: 5, what: "Warner Bros Studio Tour, London — Sat Sep 26", when: "NOW", urgency: "high", note: "✅ DE-ESCALATED. With 2 London nights any slot works — take mid-morning (~10:00–11:00) for an unhurried day. It still sells out 2–3 months ahead, so book it, just don't panic about the time. wbstudiotour.co.uk", estimatedCost: "~£53/person (~$68)" },
-  { priority: 6, what: "Disneyland Paris — 2-DAY ticket (Tue Sep 22 + Wed Sep 23)", when: "NOW", urgency: "high", note: "🆕 CONSECUTIVE DAYS NOW — buy one 2-day ticket instead of two singles, it's cheaper and lets rides roll over. Tue and Wed are the two lowest-crowd days of the week: 15–30 min waits. disneylandparis.com.", estimatedCost: "€150–190/person for 2 days" },
-  { priority: 7, what: "Vatican Museums + Sistine Chapel (THU Sep 17, earliest slot)", when: "NOW", urgency: "high", note: "🆕 MOVED TO THURSDAY. The new dates put the Vatican on a Wednesday — Papal Audience day, when St. Peter's is closed/restricted all morning. Swapped with the Colosseum. Official only: tickets.museivaticani.va.", estimatedCost: "€22/person" },
-  { priority: 8, what: "Colosseum + Roman Forum + VR add-on (WED Sep 16)", when: "NOW", urgency: "high", note: "🆕 Moved to Wednesday in the swap with the Vatican. ancientandrecent.com for the VR bundle, or coopculture.it for entry only.", estimatedCost: "~€48/person" },
-  { priority: 9, what: "Santorini caldera-view hotel (Mon Sep 14)", when: "NOW", urgency: "high", note: "🆕 Now a Monday — marginally easier than the old Sunday. One night only, so the view matters. Oia still sells out in shoulder season.", estimatedCost: "$220–300/night" },
-  { priority: 10, what: "Intra-Europe flights: Craiova→Istanbul (Sep 8), Istanbul→Athens (Sep 12), Athens→Santorini (Sep 14), Santorini→Rome (Sep 15), London→Madrid (Sep 27 eve)", when: "Within 2 weeks", urgency: "high", note: "Verify the Santorini→Rome direct exists on Sep 15, otherwise route via Athens. Book the London→Madrid for 20:00 or later. (Rome→Geneva is listed separately at priority 2.)", estimatedCost: "$550–1,220 for 2 total" },
-  { priority: 11, what: "Acropolis 8:00am timed entry (SUN Sep 13)", when: "1 month ahead", urgency: "medium", note: "🆕 Now a Sunday — local crowds on top of the cruise groups. The 8am slot matters more than before. By 11am it's 30°C and full.", estimatedCost: "€20–30/person" },
-  { priority: 12, what: "Trains: AVE Madrid↔Barcelona (Sep 3 + Sep 4), Eurostar Paris→London (Fri Sep 25, ~09:00)", when: "1–2 months ahead", urgency: "medium", note: "🆕 The Italian train legs are GONE — Rome→Venice and Venice→Zermatt no longer exist. The Eurostar is now a relaxed mid-morning Friday train, standard advance fare. renfe.com / eurostar.com.", estimatedCost: "$200–460 for 2 total" },
-  { priority: 13, what: "Swiss Travel Pass 4 days (ACTIVATE Sep 18) + GoldenPass seat reservation (Sep 21)", when: "1 month ahead", urgency: "medium", note: "🆕 Activate Sep 18 so the pass covers the Geneva→Zermatt arrival — days then run Sep 18–21, which also covers Zermatt→Grindelwald and the GoldenPass out. sbb.ch. The panoramic cars sell out; the pass itself can be bought later.", estimatedCost: "~$345/person" },
-  { priority: 14, what: "Zermatt ski rental + Chez Vrony reservation (SAT Sep 19)", when: "2–3 weeks ahead", urgency: "medium", note: "🆕 Ski day is Saturday Sep 19. Collect the rental the EVENING of Sep 18 — you now arrive from Geneva in the late afternoon with the shops still open, which the old Venice routing did not guarantee.", estimatedCost: "~CHF 50/person rental" },
-  { priority: 15, what: "Reconfirm Le Jules Verne (Sep 24, 8pm)", when: "Sep 22", urgency: "medium", note: "✅ Already booked. Reconfirm 48h ahead and check the dress code — jacket required for men.", estimatedCost: "Already committed" }
+  { priority: 1, what: "🎈 CAPPADOCIA SUNRISE BALLOON — Fri Sep 11", when: "🔴 NOW — most urgent item on the list", urgency: "critical", note: "🆕 September is the peak flying month and the reputable operators (Butterfly, Royal, Voyager, Turquaz) sell out months ahead. Book the standard 1-hour sunrise flight for Fri Sep 11 and get the wind-cancellation policy in writing — a cancellation should be a full refund or a free move to Sat Sep 12, which is exactly why you have two nights there.", estimatedCost: "€200–280/person" },
+  { priority: 2, what: "🆕 Cappadocia flights — IST→NAV/ASR (Sep 10 eve) + NAV/ASR→IST→ATH (Sep 12) as ONE ticket", when: "🔴 NOW", urgency: "critical", note: "🆕 Two new legs created by the Turkey change. Book the Sep 12 return as a SINGLE Turkish Airlines itinerary through Istanbul to Athens — separate tickets mean a missed connection is your problem, and there is no second flight that day that still gets you to Athens for dinner. Compare Nevşehir (NAV, 40min from Göreme) against Kayseri (ASR, 1h15 but more frequencies) on total cost including the shuttle.", estimatedCost: "$260–540 for 2 total" },
+  { priority: 3, what: "🆕 Cave hotel, Göreme or Uçhisar — 2 nights (Sep 10 + 11)", when: "🔴 NOW", urgency: "critical", note: "🆕 Ask for an east-facing terrace room: you watch Saturday's balloons rise over breakfast even after flying on Friday. Confirm they run the 04:30 balloon pickup and a late check-in for the Thursday evening arrival.", estimatedCost: "$130–200/night" },
+  { priority: 4, what: "🆕 Flight Rome (FCO) → Geneva (GVA), Fri Sep 18 morning", when: "🔴 NOW", urgency: "critical", note: "easyJet / ITA / Swiss, 1h50. Take a departure before ~11:00 so the Geneva→Zermatt train (3h40) lands you in the village before the ski-rental shops close.", estimatedCost: "$100–220 for 2" },
+  { priority: 5, what: "Craiova midnight airport pickup (Sep 5)", when: "🔴 THIS WEEK", urgency: "critical", note: "You land at ~midnight. Taxis are scarce at Craiova at that hour. Arrange a transfer through your hotel now.", estimatedCost: "$25–50" },
+  { priority: 6, what: "Sagrada Família — 9:00am slot Fri Sep 4", when: "🔴 NOW", urgency: "critical", note: "sagradafamilia.org. September mornings sell out. This is the only reason for the Barcelona hop — don't lose it.", estimatedCost: "€26–44/person" },
+  { priority: 7, what: "🆕 Craiova → Bucharest OTP private transfer (Sep 8 morning)", when: "1–2 weeks ahead", urgency: "high", note: "🆕 3h by car, ~€90–130 for the two of you, hotel door to terminal. Book through the Craiova hotel or the wedding hosts. The train + airport bus is far cheaper but CFR runs late routinely — and this is the morning after two wedding days.", estimatedCost: "€90–130 total" },
+  { priority: 8, what: "Warner Bros Studio Tour, London — Sat Sep 26", when: "NOW", urgency: "high", note: "With 2 London nights any slot works — take mid-morning (~10:00–11:00) for an unhurried day. It still sells out 2–3 months ahead. wbstudiotour.co.uk", estimatedCost: "~£53/person (~$68)" },
+  { priority: 9, what: "Disneyland Paris — 2-DAY ticket (Tue Sep 22 + Wed Sep 23)", when: "NOW", urgency: "high", note: "Consecutive days — buy one 2-day ticket instead of two singles, it's cheaper and lets rides roll over. Tue and Wed are the two lowest-crowd days of the week: 15–30 min waits. disneylandparis.com.", estimatedCost: "€150–190/person for 2 days" },
+  { priority: 10, what: "Vatican Museums + Sistine Chapel (THU Sep 17, earliest slot)", when: "NOW", urgency: "high", note: "Thursday, deliberately — Wednesday is Papal Audience day, when St. Peter's is closed/restricted all morning. Official only: tickets.museivaticani.va.", estimatedCost: "€22/person" },
+  { priority: 11, what: "Colosseum + Roman Forum + VR add-on (WED Sep 16)", when: "NOW", urgency: "high", note: "Swapped with the Vatican for the Papal Audience reason above. ancientandrecent.com for the VR bundle, or coopculture.it for entry only.", estimatedCost: "~€48/person" },
+  { priority: 12, what: "Santorini caldera-view hotel + sunset dinner table (Mon Sep 14)", when: "NOW", urgency: "high", note: "One night only, so the view matters. Book the Oia hotel AND the 19:00-window restaurant table together — both sell out in September, and you only get one sunset.", estimatedCost: "$220–300/night + $120–180 dinner" },
+  { priority: 13, what: "🕌 Hagia Sophia + Topkapi timed entry (WED Sep 9)", when: "2–4 weeks ahead", urgency: "high", note: "🆕 Newly urgent. Istanbul is down to a single core day, so a 90-minute queue is no longer survivable. Book both online for Sep 9.", estimatedCost: "~€55/person combined" },
+  { priority: 14, what: "Remaining intra-Europe flights: Craiova→Istanbul (Sep 8), Athens→Santorini (Sep 14), Santorini→Rome (Sep 15), London→Madrid (Sep 27 eve)", when: "Within 2 weeks", urgency: "high", note: "🔴 Verify the Santorini→Rome direct actually operates on Sep 15 before building the day around it — otherwise route via Athens and add 3h. Book London→Madrid for 17:00 or later so the museum morning survives.", estimatedCost: "$450–1,000 for 2 total" },
+  { priority: 15, what: "Acropolis 8:00am timed entry (SUN Sep 13)", when: "1 month ahead", urgency: "medium", note: "Sunday — local crowds on top of the cruise groups. Timed entry is mandatory now: hhticket.gr. By 11am it's 30°C and full. The €30 combo also covers the Agora.", estimatedCost: "€20–30/person" },
+  { priority: 16, what: "Trains: AVE Madrid↔Barcelona (Sep 3 + Sep 4), Eurostar Paris→London (Fri Sep 25, ~09:00)", when: "1–2 months ahead", urgency: "medium", note: "Book the two AVE legs together for the round-trip price. Eurostar fares only climb — this is the one train worth booking early. renfe.com / eurostar.com.", estimatedCost: "$200–460 for 2 total" },
+  { priority: 17, what: "Swiss Travel Pass 4 days (ACTIVATE Sep 18) + GoldenPass seat reservation (Sep 21)", when: "1 month ahead", urgency: "medium", note: "Activate Sep 18 so the pass covers the Geneva→Zermatt arrival — days then run Sep 18–21, which also covers Zermatt→Grindelwald and the GoldenPass out. sbb.ch. The panoramic cars sell out; the pass itself can be bought later.", estimatedCost: "~$345/person" },
+  { priority: 18, what: "Göreme Open-Air Museum + underground city (Fri Sep 11)", when: "2 weeks ahead", urgency: "medium", note: "🆕 Walk-up is usually fine, but the Museum Pass Cappadocia bundles Göreme, Derinkuyu/Kaymaklı and Zelve at a discount if you'll do 3+ sites.", estimatedCost: "~€40/person" },
+  { priority: 19, what: "Zermatt ski rental + Chez Vrony reservation (SAT Sep 19)", when: "2–3 weeks ahead", urgency: "medium", note: "Collect the rental the EVENING of Sep 18 — you arrive from Geneva in the late afternoon with the shops still open.", estimatedCost: "~CHF 50/person rental" },
+  { priority: 20, what: "Reconfirm Le Jules Verne (Sep 24, 8pm)", when: "Sep 22", urgency: "medium", note: "✅ Already booked. Reconfirm 48h ahead and check the dress code — jacket required for men.", estimatedCost: "Already committed" },
+  { priority: 21, what: "✅ DONE — Lima↔Madrid round-trip, Plus Ultra PNR XYJSDU", when: "✅ Booked", urgency: "medium", note: "Lima Sep 1 18:10 → Madrid Sep 2 12:45 (PU0302) · Madrid Sep 29 11:00 → Lima 16:10 (PU0301). Nothing to do but check in online 24h before each leg.", estimatedCost: "Already committed" }
 ];
 
 // ============================================================

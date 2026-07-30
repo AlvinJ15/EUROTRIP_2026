@@ -1,0 +1,183 @@
+/* ============================================================
+   EUROTRIP 2026 — ROUTE PLANNER (door-to-door segments)
+   ============================================================ */
+
+.routes-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.route-chip {
+  font-size: 0.74rem; font-weight: 700; text-decoration: none; white-space: nowrap;
+  color: var(--primary-dark); background: #fff; border: 1px solid var(--border);
+  border-radius: 50px; padding: 5px 12px; transition: all 0.18s;
+}
+.route-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.routes-warning {
+  background: #fffbeb; border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 12px 16px; font-size: 0.84rem; color: #78350f; margin-bottom: 26px; line-height: 1.55;
+}
+
+.route-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); margin-bottom: 20px; overflow: hidden; scroll-margin-top: 70px;
+}
+
+/* ---- header ---- */
+.route-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  padding: 16px 22px; background: var(--bg-dark);
+}
+.route-day {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--accent); background: rgba(232,168,48,0.15); border: 1px solid rgba(232,168,48,0.35);
+  border-radius: 50px; padding: 4px 12px; white-space: nowrap;
+}
+.route-title { color: #fff; font-size: 1.02rem; font-weight: 800; flex: 1 1 260px; line-height: 1.35; }
+.route-arrow { color: var(--accent); margin: 0 4px; }
+.route-tag {
+  font-size: 0.7rem; font-weight: 800; color: #fff;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px; padding: 4px 12px; white-space: nowrap;
+}
+
+/* ---- recommended summary ---- */
+.route-best { padding: 16px 22px; background: #ecfdf5; border-bottom: 1px solid #d1fae5; }
+.route-best-label {
+  display: inline-block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #fff; background: var(--success); border-radius: 4px; padding: 3px 9px; margin-bottom: 8px;
+}
+.route-best-text { display: block; font-size: 0.98rem; font-weight: 700; color: #065f46; line-height: 1.45; }
+.route-totals { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.route-total {
+  font-size: 0.8rem; color: #065f46; background: #fff;
+  border: 1px solid #a7f3d0; border-radius: 50px; padding: 5px 13px;
+}
+.route-why { font-size: 0.86rem; color: #047857; line-height: 1.6; }
+
+/* ---- segment chain ---- */
+.route-segments { padding: 18px 22px; }
+.route-seg { display: flex; gap: 12px; position: relative; padding-bottom: 16px; }
+.route-seg:last-child { padding-bottom: 0; }
+.route-seg::before {
+  content: ''; position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px;
+  background: linear-gradient(var(--primary-light), var(--border));
+}
+.route-seg:last-child::before { display: none; }
+.route-seg-num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; z-index: 1;
+  background: var(--primary); color: #fff; font-size: 0.78rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.route-seg-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.route-seg-title { font-size: 0.92rem; font-weight: 700; line-height: 1.4; }
+.route-seg-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.route-seg-meta > span {
+  font-size: 0.75rem; color: var(--text-muted); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px;
+}
+.route-seg-meta .route-seg-cost { color: var(--primary-dark); font-weight: 700; background: #eff6ff; border-color: #bfdbfe; }
+.route-seg-book { font-size: 0.78rem; font-weight: 700; color: var(--accent-dark); }
+.route-seg-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+/* ---- alternatives ---- */
+.route-alts { padding: 4px 22px 18px; }
+.route-alts h5, .route-watch h5 {
+  font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text-muted); margin-bottom: 10px;
+}
+.route-alt {
+  display: flex; flex-direction: column; gap: 4px;
+  border-radius: var(--radius); padding: 10px 14px; margin-bottom: 8px;
+  border-left: 3px solid var(--border); background: var(--bg);
+}
+.route-alt.alt-avoid { background: #fef2f2; border-left-color: var(--danger); }
+.route-alt.alt-ok { background: #fffbeb; border-left-color: var(--accent); }
+.route-alt-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; justify-content: space-between; }
+.route-alt-head strong { font-size: 0.87rem; }
+.route-alt-verdict { font-size: 0.68rem; font-weight: 800; white-space: nowrap; }
+.alt-avoid .route-alt-verdict { color: var(--danger); }
+.alt-ok .route-alt-verdict { color: var(--accent-dark); }
+.route-alt-meta { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+.route-alt-why { font-size: 0.82rem; line-height: 1.55; color: var(--text); }
+
+/* ---- watch-outs ---- */
+.route-watch { padding: 4px 22px 20px; }
+.route-watch ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.route-watch li {
+  font-size: 0.83rem; line-height: 1.55; color: #92400e;
+  background: #fffbeb; border-radius: 8px; padding: 8px 12px;
+}
+
+/* ---- inside the calendar drawer ---- */
+.cal-route { border-left: 3px solid var(--primary) !important; }
+.cal-route-best { font-size: 0.84rem; font-weight: 700; line-height: 1.5; margin-bottom: 8px; }
+.cal-route-totals { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.cal-route-totals span {
+  font-size: 0.72rem; font-weight: 700; color: var(--primary-dark);
+  background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 50px; padding: 3px 10px;
+}
+.cal-route-chain { display: flex; flex-direction: column; gap: 6px; }
+.cal-route-step { display: flex; gap: 8px; font-size: 0.78rem; line-height: 1.45; }
+.cal-route-step b { flex-shrink: 0; color: var(--primary); }
+.cal-route-step i { font-style: normal; color: var(--text-muted); }
+.cal-route-link { display: inline-block; margin-top: 10px; font-size: 0.78rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+.cal-route-link:hover { text-decoration: underline; }
+
+/* route badge in a month-grid cell */
+.cal-routebadge {
+  font-size: 0.62rem; font-weight: 800; color: var(--primary-dark);
+  background: #dbeafe; border-radius: 4px; padding: 2px 5px; align-self: flex-start;
+}
+
+@media (max-width: 640px) {
+  .route-head, .route-best, .route-segments, .route-alts, .route-watch { padding-left: 14px; padding-right: 14px; }
+  .route-title { font-size: 0.94rem; }
+}
+
+/* ============================================================
+   ROUTING DECISIONS — "why this order" plan cards
+   ============================================================ */
+.plan-card {
+  background: var(--bg-card); border: 2px solid var(--primary-light); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); padding: 20px 22px; margin-bottom: 20px; scroll-margin-top: 70px;
+}
+.plan-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; line-height: 1.35; }
+.plan-question { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+.plan-chosen {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: var(--radius);
+  padding: 10px 14px; margin-bottom: 14px;
+}
+.plan-chosen-label {
+  font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
+  color: #fff; background: var(--success); border-radius: 4px; padding: 3px 9px; white-space: nowrap;
+}
+.plan-chosen strong { font-size: 0.98rem; color: #065f46; }
+
+.plan-chain { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; margin-bottom: 18px; }
+.plan-step {
+  flex: 1 1 170px; display: flex; flex-direction: column; gap: 3px;
+  background: var(--bg); border: 1px solid var(--border); border-top: 3px solid var(--primary);
+  border-radius: 10px; padding: 9px 12px;
+}
+.plan-step-label { font-size: 0.82rem; font-weight: 800; line-height: 1.35; }
+.plan-step-sub { font-size: 0.74rem; color: var(--text-muted); line-height: 1.45; }
+.plan-step-arrow { align-self: center; color: var(--primary-light); font-weight: 800; }
+
+.plan-options { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 14px; }
+.plan-option {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px;
+}
+.plan-option.is-chosen { background: #f0fdf4; border-color: var(--success); box-shadow: inset 0 0 0 1px var(--success); }
+.plan-option-head { font-size: 0.87rem; line-height: 1.4; }
+.plan-option.is-chosen .plan-option-head strong { color: #065f46; }
+.plan-pros, .plan-cons { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.plan-pros li, .plan-cons li { font-size: 0.8rem; line-height: 1.55; padding-left: 18px; position: relative; }
+.plan-pros li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 800; }
+.plan-cons li::before { content: '✕'; position: absolute; left: 0; color: var(--danger); font-weight: 800; }
+.plan-cons li { color: var(--text-muted); }
+
+.plan-bottom {
+  font-size: 0.87rem; line-height: 1.65; color: #78350f;
+  background: #fffbeb; border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0; padding: 12px 16px;
+}
