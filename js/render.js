@@ -12,7 +12,8 @@ function renderHero() {
   document.getElementById('hero-budget').textContent = '$' + TRIP.budget.toLocaleString() + ' USD';
   document.getElementById('hero-wedding').textContent = '💍 ' + TRIP.anchor.event + ' — ' + TRIP.anchor.date + ' in ' + TRIP.anchor.city;
   document.getElementById('hero-saving').textContent = '✈️ ' + TRIP.flightSavings;
-  document.getElementById('hero-route').textContent = '🗺️ Romania → Budapest → Vienna → Alps → Ski → Rome → Barcelona → Paris';
+  document.getElementById('hero-route').textContent =
+    '🗺️ ' + ITINERARY.map(s => s.city.replace(/ —.*| \/.*/, '')).join(' → ');
   document.getElementById('hero-flight-note').textContent = TRIP.flightNote;
 }
 
@@ -22,22 +23,32 @@ function renderNav() {
   ).join('');
 }
 
+function flightCard(opt) {
+  return `
+    <div class="flight-option ${opt.recommended ? 'flight-recommended' : ''}">
+      ${opt.recommended ? `<span class="flight-badge">${/BOOKED/.test(opt.airline) ? '✅ Booked' : '⭐ Recommended'}</span>` : ''}
+      <h4>${opt.airline}</h4>
+      <p class="flight-route">✈️ ${opt.route}</p>
+      ${opt.depart ? `<p class="flight-detail">🛫 Depart: <strong>${opt.depart}</strong></p>` : ''}
+      ${opt.arrive ? `<p class="flight-detail">🛬 Arrive: <strong>${opt.arrive}</strong></p>` : ''}
+      <p class="flight-detail">🛑 Stop: ${opt.stopover}</p>
+      <p class="flight-detail">⏱️ ${opt.flightTime}</p>
+      <p class="flight-detail">⏳ Layover: ${opt.layover}</p>
+      <p class="flight-price">${opt.estimatePerson === 'Booked' ? '✅ Booked & paid' : '~' + opt.estimatePerson + '/person'}</p>
+      <p class="flight-notes">${opt.notes}</p>
+    </div>
+  `;
+}
+
 function renderFlights() {
   const ob = FLIGHTS.outbound;
   const container = document.getElementById('flights-outbound');
   if (!container) return;
-  container.innerHTML = ob.bestOptions.map(opt => `
-    <div class="flight-option ${opt.recommended ? 'flight-recommended' : ''}">
-      ${opt.recommended ? '<span class="flight-badge">⭐ Recommended</span>' : ''}
-      <h4>${opt.airline}</h4>
-      <p class="flight-route">✈️ ${opt.route}</p>
-      <p class="flight-detail">🛑 Stop: ${opt.stopover}</p>
-      <p class="flight-detail">⏱️ ${opt.flightTime}</p>
-      <p class="flight-detail">⏳ Layover: ${opt.layover}</p>
-      <p class="flight-price">~${opt.estimatePerson}/person</p>
-      <p class="flight-notes">${opt.notes}</p>
-    </div>
-  `).join('');
+  container.innerHTML = ob.bestOptions.map(flightCard).join('');
+
+  const ret = document.getElementById('flights-return');
+  if (ret) ret.innerHTML = FLIGHTS.return.bestOptions.map(flightCard).join('');
+
   document.getElementById('flights-tip').textContent = ob.tip;
 
   const intra = document.getElementById('flights-intra');
@@ -50,6 +61,118 @@ function renderFlights() {
         <td class="note-cell">${f.notes}</td>
       </tr>
     `).join('');
+  }
+}
+
+function verdictMeta(v) {
+  return v === 'avoid'
+    ? { cls: 'alt-avoid', label: '❌ Not worth it' }
+    : { cls: 'alt-ok', label: '🟡 Viable backup' };
+}
+
+function routeCard(r) {
+  const rec = r.recommended;
+  return `
+    <div class="route-card" id="route-${r.id}">
+      <div class="route-head">
+        <span class="route-day">📅 ${r.date}</span>
+        <h4 class="route-title">${r.fromEmoji} ${r.from} <span class="route-arrow">→</span> ${r.toEmoji} ${r.to}</h4>
+        ${r.tag ? `<span class="route-tag">${r.tag}</span>` : ''}
+      </div>
+      <div class="route-best">
+        <span class="route-best-label">⭐ Best way</span>
+        <span class="route-best-text">${rec.label}</span>
+        <div class="route-totals">
+          <span class="route-total">⏱️ <strong>${rec.doorToDoor}</strong></span>
+          <span class="route-total">💵 <strong>${rec.totalCost}</strong></span>
+          <span class="route-total">🔗 <strong>${rec.segments.length} segments</strong></span>
+        </div>
+        <p class="route-why">${rec.why}</p>
+      </div>
+      <div class="route-segments">
+        ${rec.segments.map((s, i) => `
+          <div class="route-seg">
+            <span class="route-seg-num">${i + 1}</span>
+            <div class="route-seg-body">
+              <span class="route-seg-title">${s.mode} ${s.title}</span>
+              <span class="route-seg-meta">
+                <span>🚉 ${s.operator}</span>
+                <span>⏱️ ${s.duration}</span>
+                <span class="route-seg-cost">💵 ${s.cost}</span>
+                ${s.when && s.when !== '—' ? `<span>🕑 ${s.when}</span>` : ''}
+              </span>
+              ${s.booking && s.booking !== '—' ? `<span class="route-seg-book">📋 ${s.booking}</span>` : ''}
+              <span class="route-seg-note">${s.notes}</span>
+            </div>
+          </div>`).join('')}
+      </div>
+      ${r.alternatives && r.alternatives.length ? `
+        <div class="route-alts">
+          <h5>Other ways — and why they lose</h5>
+          ${r.alternatives.map(a => {
+            const v = verdictMeta(a.verdict);
+            return `
+              <div class="route-alt ${v.cls}">
+                <span class="route-alt-head">
+                  <strong>${a.label}</strong>
+                  <span class="route-alt-verdict">${v.label}</span>
+                </span>
+                <span class="route-alt-meta">⏱️ ${a.duration} · 💵 ${a.cost}</span>
+                <span class="route-alt-why">${a.why}</span>
+              </div>`;
+          }).join('')}
+        </div>` : ''}
+      ${r.watchOuts && r.watchOuts.length ? `
+        <div class="route-watch">
+          <h5>⚠️ Watch out</h5>
+          <ul>${r.watchOuts.map(w => `<li>${w}</li>`).join('')}</ul>
+        </div>` : ''}
+    </div>`;
+}
+
+function renderRoutePlans() {
+  const container = document.getElementById('route-plans');
+  if (!container || typeof ROUTE_PLANS === 'undefined') return;
+  container.innerHTML = ROUTE_PLANS.map(p => `
+    <div class="plan-card" id="plan-${p.id}">
+      <h3 class="plan-title">${p.title}</h3>
+      <p class="plan-question">${p.question}</p>
+      <div class="plan-chosen">
+        <span class="plan-chosen-label">✅ Recommended</span>
+        <strong>${p.chosenLabel}</strong>
+      </div>
+      <div class="plan-chain">
+        ${p.chain.map(c => `
+          <div class="plan-step">
+            <span class="plan-step-label">${c.label}</span>
+            <span class="plan-step-sub">${c.sub}</span>
+          </div>`).join('<span class="plan-step-arrow">→</span>')}
+      </div>
+      <div class="plan-options">
+        ${p.options.map(o => `
+          <div class="plan-option ${o.chosen ? 'is-chosen' : ''}">
+            <span class="plan-option-head">
+              ${o.chosen ? '✅' : '○'} <strong>${o.label}</strong>
+            </span>
+            <ul class="plan-pros">${o.pros.map(x => `<li>${x}</li>`).join('')}</ul>
+            <ul class="plan-cons">${o.cons.map(x => `<li>${x}</li>`).join('')}</ul>
+          </div>`).join('')}
+      </div>
+      <p class="plan-bottom"><strong>Bottom line:</strong> ${p.bottomLine}</p>
+    </div>
+  `).join('');
+}
+
+function renderRoutes() {
+  const container = document.getElementById('routes-list');
+  if (!container || typeof ROUTES === 'undefined') return;
+  container.innerHTML = ROUTES.map(routeCard).join('');
+
+  const nav = document.getElementById('routes-nav');
+  if (nav) {
+    nav.innerHTML = ROUTES.map(r =>
+      `<a class="route-chip" href="#route-${r.id}">${r.date.replace(/^\w+ /, '')} · ${r.fromEmoji}→${r.toEmoji}</a>`
+    ).join('');
   }
 }
 
@@ -369,6 +492,8 @@ function initApp() {
   renderHero();
   renderNav();
   renderFlights();
+  renderRoutePlans();
+  renderRoutes();
   renderItinerary();
   renderVRByCity();
   renderDinoByCity();

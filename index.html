@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eurotrip 2026 — Alvin Trip</title>
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/routes.css" />
+  <link rel="stylesheet" href="styles/calendar.css" />
 </head>
 <body>
 
@@ -33,19 +35,43 @@
   <!-- NAV -->
   <nav id="main-nav">
     <span class="nav-brand">✈️ EUROTRIP 2026</span>
+    <div class="view-switch">
+      <button class="view-btn is-active" data-view="timeline">📖 Detail</button>
+      <button class="view-btn" data-view="calendar">🗓️ Calendar</button>
+    </div>
     <div id="nav-cities"></div>
   </nav>
+
+  <!-- ============ CALENDAR VIEW ============ -->
+  <section id="calendar-view">
+    <div class="section">
+      <h2 class="section-title">🗓️ Calendar View — September 2026</h2>
+      <p class="section-subtitle">Every date, every city change, every transport leg on one grid. Each colour is a stop — click any day for the detail.</p>
+      <div id="cal-summary" class="cal-summary"></div>
+      <div id="cal-legend" class="cal-legend"></div>
+      <h3 class="cal-subhead">Stop timeline — where you are on each date</h3>
+      <div class="cal-bars-wrap"><div id="cal-bars" class="cal-bars"></div></div>
+      <h3 class="cal-subhead">Month grid</h3>
+      <div id="cal-grid" class="cal-grid"></div>
+      <p class="cal-footnote">Split cells = a city-change day: the first colour is where you wake up, the second where you sleep. 🌙 shows the night's city.</p>
+    </div>
+    <aside id="cal-detail" class="cal-detail" aria-live="polite"></aside>
+  </section>
 
   <!-- FLIGHTS -->
   <section id="flights" style="background:#0d1b2a;">
     <div class="section">
       <h2 class="section-title" style="color:#fff;">✈️ Flights — How to Get There</h2>
-      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">No direct Lima→Bucharest flights. Best route: Lima→Madrid→Bucharest (Iberia open-jaw). Fly home from Paris.</p>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.55);">✅ Both long-haul legs are booked — Plus Ultra, PNR <strong style="color:#fbbf24;">XYJSDU</strong>, Economy. Lima↔Madrid direct, round-trip.</p>
+      <h3 style="color:#fff; font-size:1rem; margin-bottom:14px;">🛫 Outbound — Lima → Madrid</h3>
       <div class="cards-grid" id="flights-outbound" style="margin-bottom:20px;"></div>
+      <h3 style="color:#fff; font-size:1rem; margin-bottom:14px;">🛬 Return — Madrid → Lima</h3>
+      <div class="cards-grid" id="flights-return" style="margin-bottom:20px;"></div>
       <div style="background:rgba(232,168,48,0.15); border:1px solid rgba(232,168,48,0.4); border-radius:12px; padding:14px 18px; margin-bottom:28px;">
         <p style="color:#fbbf24; font-size:0.88rem;" id="flights-tip"></p>
       </div>
-      <h3 style="color:#fff; font-size:1rem; margin-bottom:14px;">Intra-Europe Transport</h3>
+      <h3 style="color:#fff; font-size:1rem; margin-bottom:14px;">Intra-Europe Transport — Summary</h3>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.84rem; margin-bottom:12px;">One line per leg. The full door-to-door segment breakdown, with alternatives and booking sites, is in the <strong style="color:#fbbf24;">Route Planner</strong> section below.</p>
       <div style="overflow-x:auto; border-radius:12px;">
         <table class="budget-table">
           <thead><tr><th>Leg</th><th>Method</th><th>Cost for 2</th><th>Notes</th></tr></thead>
@@ -55,24 +81,38 @@
     </div>
   </section>
 
+  <div class="section-divider"><h3>Getting Between Cities — Optimized Routes</h3></div>
+
+  <!-- ROUTES -->
+  <section id="routes" style="background:var(--bg);">
+    <div class="section">
+      <h2 class="section-title">🚏 Route Planner — Door to Door</h2>
+      <p class="section-subtitle">Every city-to-city move broken into the segments you actually have to book, with times, costs and where to buy. Plus the alternatives — and why they lose.</p>
+      <div id="route-plans"></div>
+      <div id="routes-nav" class="routes-nav"></div>
+      <div class="routes-warning">⚠️ Schedules are September-2026-realistic; <strong>fares are estimates for 2 people</strong>. Verify on the booking site listed in each segment before paying. Anything marked ✅ BOOKED is confirmed.</div>
+      <div id="routes-list"></div>
+    </div>
+  </section>
+
   <div class="section-divider"><h3>Your Itinerary — East to West</h3></div>
 
   <!-- ITINERARY -->
   <section id="itinerary">
     <div class="section" style="padding-bottom:0; padding-top:44px;">
       <h2 class="section-title">🗺️ Day-by-Day Itinerary</h2>
-      <p class="section-subtitle">Weekday-optimized · Travel days kept separate · Vatican on Monday, Disneyland on Wednesday+Thursday</p>
+      <p class="section-subtitle">Weekday-optimized · Travel days kept separate · Vatican on Thursday Sep 17, Disneyland on Tuesday Sep 22 + Wednesday Sep 23</p>
     </div>
     <div id="itinerary-stops"></div>
   </section>
 
-  <div class="section-divider"><h3>Disneyland Paris — Why Wednesday + Thursday</h3></div>
+  <div class="section-divider"><h3>Disneyland Paris — Why Tuesday + Wednesday</h3></div>
 
   <!-- DISNEYLAND -->
   <section id="disneyland" style="background:#fff;">
     <div class="section">
       <h2 class="section-title">🎡 Disneyland Paris — Crowd Calendar</h2>
-      <p class="section-subtitle">Sep 30 (Wed) + Oct 1 (Thu) = two weekdays in the lowest-crowd month of the year</p>
+      <p class="section-subtitle">Sep 22 (Tue) + Sep 23 (Wed) = the two quietest weekdays in the lowest-crowd month of the year</p>
       <div id="crowd-note"></div>
       <div style="margin-top:18px; background:#eff6ff; border-radius:12px; padding:16px 20px;">
         <h4 style="color:var(--primary-dark); margin-bottom:10px;">💡 Disneyland Tips</h4>
@@ -150,7 +190,7 @@
           </div>
           <div style="padding:20px 22px;">
             <h4>Colosseum + Roman Forum + Palatine Hill</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin:8px 0;">Plan: <strong>Tuesday Sep 22 morning</strong></p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin:8px 0;">Plan: <strong>Wednesday Sep 16 morning</strong></p>
             <p style="font-size:0.85rem; line-height:1.55; margin-bottom:12px;">The real gladiatorial arena where 50,000 people once watched combat. Add the <strong>Samsung Oculus VR</strong> — you stand in the arena while digital gladiators fight around you. Roman Forum included (the entire ancient city center).</p>
             <div style="display:flex; flex-direction:column; gap:6px; font-size:0.83rem;">
               <span>🎟️ Entry: <strong>€18/person</strong> (skip-the-line essential)</span>
@@ -165,7 +205,7 @@
           </div>
           <div style="padding:20px 22px;">
             <h4>Vatican Museums + Sistine Chapel + St. Peter's</h4>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin:8px 0;">Plan: <strong>Monday Sep 21 morning</strong> (least crowded day)</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin:8px 0;">Plan: <strong>Thursday Sep 17 morning</strong> (Wednesday is Papal Audience day — St. Peter's is restricted)</p>
             <p style="font-size:0.85rem; line-height:1.55; margin-bottom:12px;">Vatican Museums hold one of the world's greatest collections. The Sistine Chapel ceiling (Michelangelo) is genuinely breathtaking in person. St. Peter's Basilica is <strong>free</strong> — the Dome climb gives incredible Rome views.</p>
             <div style="display:flex; flex-direction:column; gap:6px; font-size:0.83rem;">
               <span>🎟️ Museums + Sistine: <strong>€22/person</strong> (€17 + €5 booking)</span>
@@ -177,8 +217,8 @@
         </div>
       </div>
       <div style="margin-top:20px; background:#fffbeb; border-radius:12px; padding:16px 20px;">
-        <h4 style="margin-bottom:10px; color:#78350f;">🌋 Pompeii Day Trip — Sep 23 (Wednesday)</h4>
-        <p style="font-size:0.88rem; color:#92400e; line-height:1.6;">Take the 8am Frecciarossa from Roma Termini → Naples (1.5h) → Circumvesuviana train → Pompeii Scavi (40min). Walk through a real Roman city frozen in 79 AD — streets, houses, bakeries, temples, all preserved. Far more visceral than any museum. Entry €18/person. Budget a full day. Return to Rome by 7pm.</p>
+        <h4 style="margin-bottom:10px; color:#78350f;">🌋 Pompeii Day Trip — ❌ DOES NOT FIT</h4>
+        <p style="font-size:0.88rem; color:#92400e; line-height:1.6;">Kept here for reference only. Rome is <strong>3 nights (Sep 15–18)</strong>: Sep 15 is an evening arrival from Santorini, Sep 16 is the Colosseum, Sep 17 is the Vatican, and Sep 18 you fly to Geneva in the morning. Pompeii needs a full day (8am Frecciarossa Roma Termini → Naples 1.5h, then Circumvesuviana → Pompeii Scavi 40min, €18/person, back by 7pm) and there is no such day. Cutting either mandatory site to fit it would be the wrong trade — save Pompeii for a trip that starts in Naples.</p>
       </div>
     </div>
   </section>
@@ -247,6 +287,8 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/routes.js"></script>
   <script src="js/render.js"></script>
+  <script src="js/calendar.js"></script>
 </body>
 </html>
