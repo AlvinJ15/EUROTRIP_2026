@@ -6,6 +6,7 @@
   <title>Eurotrip 2026 — Alvin Trip</title>
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/routes.css" />
+  <link rel="stylesheet" href="styles/luggage.css" />
   <link rel="stylesheet" href="styles/calendar.css" />
 </head>
 <body>
@@ -92,6 +93,18 @@
       <div id="routes-nav" class="routes-nav"></div>
       <div class="routes-warning">⚠️ Schedules are September-2026-realistic; <strong>fares are estimates for 2 people</strong>. Verify on the booking site listed in each segment before paying. Anything marked ✅ BOOKED is confirmed.</div>
       <div id="routes-list"></div>
+    </div>
+  </section>
+
+  <!-- LUGGAGE -->
+  <section id="luggage">
+    <div class="section">
+      <h2 class="section-title">🧳 Luggage Plan — Where the Bags Are</h2>
+      <p class="section-subtitle">Every day you're between accommodations, with an explicit answer to "where do the bags go while we do this?" Three days on this trip have activities you physically cannot do holding a suitcase.</p>
+      <p class="luggage-kit">Your kit: <strong id="luggage-kit"></strong></p>
+      <ul id="luggage-principles" class="luggage-principles"></ul>
+      <div id="luggage-fee" class="luggage-fee"></div>
+      <div id="luggage-days" class="luggage-days"></div>
     </div>
   </section>
 
@@ -288,6 +301,7 @@
 
   <script src="js/data.js"></script>
   <script src="js/routes.js"></script>
+  <script src="js/luggage.js"></script>
   <script src="js/render.js"></script>
   <script src="js/calendar.js"></script>
 </body>

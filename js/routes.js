@@ -173,24 +173,24 @@ const ROUTES = [
     watchOuts: ['Don\'t plan anything before 15:00 — you land 12:45 and the day is already half gone.']
   },
 
-  // ---------------------------------------------------------- Sep 3
+  // ---------------------------------------------------------- Sep 2 (2nd leg of the day)
   {
     id: 'mad-bcn',
-    day: 3,
-    date: 'Thu Sep 3',
+    day: 2,
+    date: 'Wed Sep 2',
     from: 'Madrid',
     to: 'Barcelona',
     fromEmoji: '🇪🇸',
     toEmoji: '⛪',
     tag: 'high-speed rail',
     recommended: {
-      label: 'AVE Madrid Atocha → Barcelona Sants, morning departure',
+      label: '🆕 AVE Madrid Atocha → Barcelona Sants, late-afternoon departure on landing day',
       doorToDoor: '~3h 15m door to door',
       totalCost: '$60–140 for 2',
       why: 'Flying MAD→BCN is 1h15 in the air but 4h+ door-to-door once you add two airport transfers and security. The train puts you in the middle of Barcelona with no transfer at either end. This is not close.',
       segments: [
-        { mode: '🚇', title: 'Hotel → Madrid Atocha', operator: 'Metro L1', duration: '10–20 min', cost: '€3–4 for 2', when: 'leave 90 min before departure', booking: 'Multi card', notes: 'Atocha needs 20 min inside for the security scan and platform walk — it is not a hop-on station.' },
-        { mode: '🚄', title: 'Madrid Atocha → Barcelona Sants', operator: 'Renfe AVE (also Iryo, Ouigo)', duration: '2h 30m', cost: '€25–60/person', when: 'departures ~06:00–21:00, roughly hourly', booking: 'renfe.com — book 2–3 months out for the €25 fares', notes: '300 km/h. Compare Iryo and Ouigo on the same route: same journey, often 30–50% cheaper, slightly less legroom.' },
+        { mode: '🚆', title: 'Barajas T4 → Madrid Atocha', operator: 'Cercanías C-1 (or Metro L8 + L1)', duration: '~35 min', cost: '€2.60/person on Cercanías', when: 'land 12:45, clear immigration ~13:45, at Atocha ~15:00', booking: 'Buy at the station', notes: '🆕 You go straight from the plane to the train — no Madrid hotel on Sep 2 any more. Cercanías runs from inside T4, which is why it beats a taxi with four bags.' },
+        { mode: '🚄', title: 'Madrid Atocha → Barcelona Sants', operator: 'Renfe AVE (also Iryo, Ouigo)', duration: '2h 30m', cost: '€25–60/person', when: '🆕 aim for ~16:30 — arrives Sants ~19:00 with a real dinner still ahead', booking: 'renfe.com — book with the Sep 4 return, round-trips price lower', notes: '300 km/h. Compare Iryo and Ouigo on the same route: same journey, often 30–50% cheaper, slightly less legroom. Leave yourself a 90-min cushion after landing — if the flight is late you want the next departure, not the last one.' },
         { mode: '🚇', title: 'Barcelona Sants → hotel', operator: 'Metro L3/L5', duration: '10–15 min', cost: '€5 for 2', when: '—', booking: 'T-Casual 10-trip card, €12.15 shared between you', notes: 'Sants is on two metro lines. Buy the T-Casual — single tickets are €2.65 each and you will make 6+ trips.' }
       ]
     },
@@ -198,7 +198,11 @@ const ROUTES = [
       { label: 'Fly MAD → BCN (Iberia/Vueling/Ryanair)', duration: '1h 15m air, 4h–4h 30m door-to-door', cost: '$50–160 for 2', verdict: 'avoid', why: 'Two airport transfers, security, and a 40-min bus from BCN into town. You lose 1h+ and land outside the city. Only worth it on a dirt-cheap Vueling fare.' },
       { label: 'ALSA bus', duration: '7h 30m', cost: '$40–70 for 2', verdict: 'avoid', why: 'Saves maybe $40 and costs five hours. You have one Barcelona night — do not spend the day on the A-2.' }
     ],
-    watchOuts: ['Book the outbound AVE and the Sep 4 return together — Renfe prices round-trips lower.', 'Aim to leave Madrid by 09:00 so the Gothic Quarter and La Boqueria still have the afternoon.']
+    watchOuts: [
+      '🧳 This is a bag-move day by design. Nothing is scheduled in Madrid — you land, you cross the city, you ride to Barcelona, you check in. Trying to squeeze Retiro or Plaza Mayor in between means doing it with two trolleys after an 11h35 overnight flight.',
+      '⏰ Do not book the last AVE of the evening. If your inbound is delayed you want a later train to fall back to, and the Sep 3 Sagrada Família slot is at 09:00.',
+      'Book the outbound AVE and the Sep 4 return together — Renfe prices round-trips lower.'
+    ]
   },
 
   // ---------------------------------------------------------- Sep 4
@@ -212,20 +216,24 @@ const ROUTES = [
     toEmoji: '🇪🇸',
     tag: 'high-speed rail',
     recommended: {
-      label: 'AVE Barcelona Sants → Madrid Atocha, evening departure',
+      label: '🆕 AVE Barcelona Sants → Madrid Atocha, morning departure',
       doorToDoor: '~3h 15m door to door',
       totalCost: '$60–140 for 2',
-      why: 'Same logic as the outbound, reversed. Take an 18:00–20:00 departure so Sagrada Família at 09:00 plus Park Güell still fit into a full day.',
+      why: '🆕 Flipped from an evening train to a morning one. The old plan had you checking out at 11:00 and then doing Park Güell and a night train with all four bags in hand. Now Barcelona holds both nights, Sep 3 is bag-free, and this leg is a clean morning transfer that delivers you to Madrid in time for your event.',
       segments: [
-        { mode: '🚇', title: 'Hotel → Barcelona Sants', operator: 'Metro L3/L5', duration: '10–15 min', cost: 'T-Casual', when: 'be at Sants 30 min early', booking: '—', notes: 'Store your bags at Sants left-luggage in the morning (€6–10) so you are not dragging them around Park Güell.' },
-        { mode: '🚄', title: 'Barcelona Sants → Madrid Atocha', operator: 'Renfe AVE / Iryo / Ouigo', duration: '2h 30m', cost: '€25–60/person', when: 'last useful departure ~21:00', booking: 'renfe.com (booked with the Sep 3 leg)', notes: 'Arriving Atocha by 22:30 leaves a calm Sep 5 morning before the Craiova flight.' },
-        { mode: '🚇', title: 'Atocha → hotel', operator: 'Metro L1', duration: '10–20 min', cost: '€3–4 for 2', when: '—', booking: 'Multi card', notes: 'Staying near Atocha both Madrid nights removes this leg entirely.' }
+        { mode: '🚇', title: 'Hotel → Barcelona Sants', operator: 'Metro L3/L5', duration: '10–15 min', cost: 'T-Casual', when: 'check out ~07:30, be at Sants 30 min before departure', booking: '—', notes: '🧳 Bags come straight from the room to the train. No storage needed anywhere on this day — that is the whole point of the restructure.' },
+        { mode: '🚄', title: 'Barcelona Sants → Madrid Atocha', operator: 'Renfe AVE / Iryo / Ouigo', duration: '2h 30m', cost: '€25–60/person', when: '🆕 ~09:00 arrives Atocha ~11:30. If your event starts before midday, take the ~07:00 instead (Atocha ~09:30).', booking: 'renfe.com (booked with the Sep 2 leg)', notes: 'First departures are around 06:00 and they run roughly hourly, so there is a fallback if you miss one.' },
+        { mode: '🚇', title: 'Atocha → Madrid hotel', operator: 'Metro L1', duration: '10–20 min', cost: '€3–4 for 2', when: 'drop bags before the event', booking: 'Multi card', notes: '🆕 Choose the Madrid hotel by where your event is, not by the station — you only sleep there one night and you leave for Barajas the next day.' }
       ]
     },
     alternatives: [
-      { label: 'Overnight in Barcelona, fly to Craiova from BCN', duration: '—', cost: 'Forfeits the booked flight', verdict: 'avoid', why: 'The Madrid→Craiova flight on Sep 5 is already booked and paid. Barcelona is a there-and-back.' }
+      { label: 'Keep the old shape: 2 nights Madrid, 1 night Barcelona', duration: '—', cost: 'about $25 cheaper', verdict: 'avoid', why: 'Saves roughly $25 on one hotel night and costs you a whole sightseeing day spent carrying luggage around Park Güell. It also puts the Barcelona→Madrid train on the evening of Sep 4, which no longer works now that the Madrid event is on Sep 4 and Sep 5.' },
+      { label: 'Overnight in Barcelona, fly to Craiova from BCN', duration: '—', cost: 'Forfeits the booked flight', verdict: 'avoid', why: 'The Madrid→Craiova flight on Sep 5 is already booked and paid, and the Madrid event runs Sep 4–5. Barcelona is a there-and-back.' }
     ],
-    watchOuts: ['Do NOT book the last train of the night. If it is cancelled you miss the Sep 5 Craiova flight, which is unrecoverable — the wedding is the next day.']
+    watchOuts: [
+      '📅 The Sep 4 departure time depends on when your event starts — confirm that before booking the ticket.',
+      '🧳 Confirm the Madrid hotel holds bags after the Sep 5 checkout. That single question is what makes Sep 5 workable: checkout is 11:00 and the flight is at 20:00.'
+    ]
   },
 
   // ---------------------------------------------------------- Sep 5
@@ -462,20 +470,25 @@ const ROUTES = [
     toEmoji: '🛷',
     tag: 'scenic rail',
     recommended: {
-      label: 'Zermatt → Visp → Spiez → Interlaken Ost → Grindelwald',
-      doorToDoor: '~2h 15m–2h 45m',
-      totalCost: 'Covered by the Swiss Travel Pass',
-      why: 'There is no faster way and no reason to want one — this is one of the best rail rides in Europe and the pass already paid for it. Two easy cross-platform changes.',
+      label: '🆕 Zermatt → Visp → Interlaken Ost (paraglide) → Grindelwald',
+      doorToDoor: '~2h 15m of rail, split by a 2h stop in Interlaken',
+      totalCost: 'Rail covered by the Swiss Travel Pass',
+      why: '🆕 Rebuilt as a morning departure with a deliberate stop. Gornergrat moved to Sep 19, which frees this morning — so instead of arriving Grindelwald exhausted at dusk, you leave at 09:30, break the journey in Interlaken for the Beatenberg paraglide, and still check in by 15:15 with the whole Pfingstegg afternoon ahead.',
       segments: [
-        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: 'hourly; leave early afternoon', booking: '—', notes: 'Keep the morning for the Gornergrat railway — it is the best scenic-rail-per-minute on the trip.' },
-        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change is genuinely enough.' },
-        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts early tomorrow.' }
+        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: '🆕 take the ~09:30 — this is now a morning departure', booking: '—', notes: 'Gornergrat happens on Sep 19 afternoon instead, which is what makes this early start possible.' },
+        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly, arrive ~11:30', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change is genuinely enough.' },
+        { mode: '🪂', title: 'Beatenberg tandem paraglide', operator: 'Paragliding Interlaken / Twin / Skywings', duration: '~2h total, 20–30 min airborne', cost: '~CHF 180–190/person', when: '~12:00–14:00', booking: 'Book direct with free cancellation — weather-dependent', notes: '🧳 Bags stay in the Interlaken Ost lockers. The minibus up and the landing field are both in Interlaken, so the station is your anchor the whole time.' },
+        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min; collect bags ~14:30', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts at 08:00 tomorrow.' }
       ]
     },
     alternatives: [
+      { label: 'Keep the old afternoon departure (Gornergrat this morning)', duration: '—', cost: 'Same', verdict: 'avoid', why: 'Arrives Grindelwald at dusk with nothing left in the day, and pushes the toboggan, the Cliff Walk and the zipline all into Sep 21 in front of a hard 14:07 train. That is the version that did not survive contact with the mountain cart queues.' },
       { label: 'Zermatt → Grindelwald via the Glacier Express', duration: '8h+', cost: 'Pass + CHF 49 reservation', verdict: 'avoid', why: 'The Glacier Express runs the wrong way, towards St. Moritz. Your scenic train is the GoldenPass Express tomorrow.' }
     ],
-    watchOuts: ['Leave Zermatt by ~15:00 so you see the Eiger north face in daylight.']
+    watchOuts: [
+      '🪂 If the paraglide is cancelled for wind, take the Harder Kulm funicular instead — same two-lake panorama from the ground, 10 min from the station, 50% off with the pass. You lose the flight, not the afternoon.',
+      '🛷 Aim to be on the Pfingstegg cable car by 15:45; the toboggan closes around 17:00 in September.'
+    ]
   },
 
   // ---------------------------------------------------------- Sep 21
@@ -494,8 +507,9 @@ const ROUTES = [
       totalCost: '$200–320 for 2 (TGV) + pass covers the Swiss legs',
       why: 'This routes your scenic panoramic train INTO the journey you were making anyway — zero detour. The alternative is a plain 6h transfer via Basel with no view. Same day, better day.',
       segments: [
-        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'after the First Cliff Walk morning, ~13:30', booking: '—', notes: 'The adventure morning ends by 13:00. Do not linger.' },
-        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: 'a few departures daily — check the timetable', booking: 'goldenpass.ch — 🔴 reserve the panoramic seats ahead', notes: 'The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva. Reserve seats; the panoramic class sells out.' },
+        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: '🆕 the 11:00 — off the mountain by 10:30, bags 10:45', booking: '—', notes: '🆕 The morning is now gondola 08:00 → Cliff Walk → First Flieger → down. The mountain cart is OUT: reported queues up to 110 min by mid-day, which is what used to put this connection at risk.' },
+        { mode: '🍫', title: 'Funky Chocolate Club, Interlaken', operator: 'Funky Chocolate Club', duration: '~1h 15m', cost: '~CHF 65/person', when: '12:00–13:15, back at Ost by 13:40', booking: 'funkychocolateclub.com — book ahead', notes: '🆕 OPTIONAL AND THE DESIGNATED DROP. 20 min walk each way from Interlaken Ost. If you are not on the 11:00 train out of Grindelwald, skip it and have a relaxed lunch by the station instead. Never run for the 14:07.' },
+        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: '🔴 14:07 — departures are 09:07, 11:07, 14:07, 16:07', booking: 'gpx.swiss — 🔴 reserve the panoramic seats ahead', notes: '🆕 THE 14:07 IS EFFECTIVELY THE LAST USABLE ONE. The 16:07 reaches Montreux ~19:20, by which time the last TGV Lyria out of Geneva to Paris has gone. The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva.' },
         { mode: '🚂', title: 'Montreux → Geneva', operator: 'SBB InterCity', duration: '1h 5m', cost: 'Swiss Travel Pass', when: 'twice hourly', booking: '—', notes: 'Lakeside the whole way.' },
         { mode: '🚄', title: 'Geneva → Paris Gare de Lyon', operator: 'TGV Lyria', duration: '3h 10m', cost: '€45–90/person', when: 'last departure ~19:00 — 🔴 verify yours', booking: 'sncf-connect.com or tgv-lyria.com — book 3 months out', notes: 'Cheap fares vanish. Arriving Gare de Lyon ~22:00 puts you in the Marais by 22:45.' },
         { mode: '🚇', title: 'Gare de Lyon → your Airbnb', operator: 'Metro L1/L14', duration: '15–20 min', cost: '€4.60 for 2', when: '—', booking: 'Navigo Easy card, or a carnet of 10', notes: 'Buy a Navigo Easy at the station — you need RER A tickets for Disney on both of the next two days.' }
@@ -506,8 +520,10 @@ const ROUTES = [
       { label: 'Fly Zurich/Geneva → Paris', duration: '5h–6h door-to-door', cost: '$150–300 for 2', verdict: 'avoid', why: 'Barely faster once you add the rail leg to the airport plus security plus CDG into Paris — and it throws away the best train ride of the trip.' }
     ],
     watchOuts: [
-      '🔴 Check the GoldenPass Express and the last TGV Lyria departure against each other before you book — the whole chain hangs on that connection.',
-      'This is a long day after a zipline morning. Eat before the TGV; the on-board options are thin.'
+      '🔴 THIS IS THE ONE HARD DEADLINE ON THE TRIP. GoldenPass departures from Interlaken Ost are 09:07, 11:07, 14:07 and 16:07; you need the 14:07, because the 16:07 lands in Montreux after the last TGV Lyria has left Geneva. Everything on Sep 21 chains back from it.',
+      '🆕 The morning now has genuine slack: down from First by 10:30, bags 10:45, 11:00 train, and the chocolate workshop is optional padding you can drop without consequence. That was not true before the mountain cart came out.',
+      'Verify the GoldenPass and the last TGV Lyria against each other before you book — the whole chain hangs on that connection.',
+      'This is a long day. Eat before the TGV; the on-board options are thin.'
     ]
   },
 
