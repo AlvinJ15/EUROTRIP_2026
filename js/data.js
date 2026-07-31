@@ -20,7 +20,8 @@ const TRIP = {
     note: "Fly Madrid→Craiova Sep 5 at 8pm, land ~midnight. Two full wedding days: Sep 6 + Sep 7."
   },
   flightNote: "✅ BOOKED — PNR XYJSDU, Plus Ultra: Lima Sep 1 18:10 → Madrid Sep 2 12:45 (PU0302, 11h35) · Madrid Sep 29 11:00 → Lima 16:10 (PU0301, 12h10) · Madrid→Craiova Sep 5, 8pm (lands ~midnight) · Jules Verne Paris Sep 24, 8pm",
-  datesRevision: "🎈 TURKEY + GREECE REBUILT — Cappadocia is now a real stop, not an option. Istanbul 8–10 (2n) · ✈️ Cappadocia 10–12 (2n, sunrise balloon Fri Sep 11) · ✈️ Athens 12–14 (2n) · ✈️ Santorini 14–15 (1n) · Rome 15–18 unchanged. The two nights came out of Istanbul, which drops from 4 to 2. Greece runs Athens FIRST, Santorini LAST — that keeps every hop moving west with no backtracking, and puts the Oia sunset as the finale before Rome. ⚠️ The cost: Istanbul loses the Asian side, Balat and the slow bazaar afternoon; and the plan is ~$760–1,180 dearer.",
+  datesRevision: "🧳 LUGGAGE AUDIT + SPAIN FLIPPED — every day was re-checked against the fact that you carry 2 cabin trolleys and 2 backpacks the whole trip, with nothing checked. Four days asked you to sightsee with bags in hand: Grindelwald (a zipline), Istanbul (a hamam), Zermatt (a 3,089m summit) and Barcelona (Park Güell after an 11:00 checkout). Spain is now Barcelona Sep 2–4 (2n) then Madrid Sep 4–5 (1n), so Sep 3 is a completely bag-free sightseeing day and you reach Madrid on the morning of Sep 4 for your event. ⚠️ Sagrada Família moves to Thu Sep 3 09:00 — rebook. The Paris→London Eurostar moved to ~11:00 (a 09:00 train meant leaving Le Marais at 07:45). New line item: cabin-bag fees, $130–215, because a 10kg trolley is not the free bag on easyJet or Ryanair.",
+  previousDatesRevision: "🎈 TURKEY + GREECE REBUILT — Cappadocia is now a real stop, not an option. Istanbul 8–10 (2n) · ✈️ Cappadocia 10–12 (2n, sunrise balloon Fri Sep 11) · ✈️ Athens 12–14 (2n) · ✈️ Santorini 14–15 (1n) · Rome 15–18 unchanged. The two nights came out of Istanbul, which drops from 4 to 2. Greece runs Athens FIRST, Santorini LAST — that keeps every hop moving west with no backtracking, and puts the Oia sunset as the finale before Rome. ⚠️ The cost: Istanbul loses the Asian side, Balat and the slow bazaar afternoon; and the plan is ~$760–1,180 dearer.",
   previousRevision: "✅ VENICE DROPPED — both yellow items resolved. Turkey Sep 8–12 (4n) · Greece 12–15 · Rome 15–18 · ✈️ Rome→Geneva Sep 18 · Zermatt 18–20 · Grindelwald 20–21 · Paris 21–25 · London 25–27 (2n) · Madrid 27–29. The Venice night went to London, and the freed calendar day pulled everything one day earlier — which also moved Disney onto Tue Sep 22 + Wed Sep 23, the two quietest days of the week, back-to-back.",
   flightSavings: "Round-trip LIM↔MAD on Plus Ultra is booked and paid — PNR XYJSDU. The Madrid bookends are now fixed in stone."
 };
@@ -92,21 +93,21 @@ const FLIGHTS = {
 const ITINERARY = [
   {
     id: 1,
-    city: "Madrid + Barcelona",
+    city: "Barcelona + Madrid",
     country: "Spain",
     emoji: "🇪🇸",
     nights: 3,
     dates: "Sep 2–5 (Wed–Sat)",
     image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80",
     dailyCost: 290,
-    accommodation: "Hotel Madrid (2 nights) + Hotel Barcelona (1 night)",
-    accommodationCost: 140,
-    transport: { from: "Lima (LIM)", how: "✅ BOOKED — Plus Ultra PU 0302, PNR XYJSDU. Departs Lima Tue Sep 1 at 18:10, lands Madrid Wed Sep 2 at 12:45 (11h 35m, direct, overnight)." },
+    accommodation: "🆕 Hotel Barcelona (2 nights) + Hotel Madrid (1 night)",
+    accommodationCost: 150,
+    transport: { from: "Lima (LIM)", how: "✅ BOOKED — Plus Ultra PU 0302, PNR XYJSDU. Departs Lima Tue Sep 1 at 18:10, lands Madrid Wed Sep 2 at 12:45 (11h 35m, direct, overnight). 🆕 Straight on to the AVE — you sleep in Barcelona tonight, not Madrid." },
     dayByDay: [
-      { day: "Sep 2 (Wed)", plan: "✅ Land Madrid 12:45 (Plus Ultra PU0302 out of Lima the previous evening). Through immigration + bags, hotel by ~14:30. Half a day, so keep it light and outdoors to break the jet lag: Retiro Park, Puerta del Sol, Plaza Mayor. Evening: Mercado de San Miguel tapas. Sleep early." },
-      { day: "Sep 3 (Thu)", plan: "Morning AVE train Madrid→Barcelona (2h30). Afternoon: Gothic Quarter + La Boqueria market. Evening: Barceloneta beach + seafood dinner." },
-      { day: "Sep 4 (Fri)", plan: "⛪ SAGRADA FAMÍLIA — book the 9:00am first-entry slot. Late morning: Park Güell or Casa Batlló exterior. Evening AVE train back to Madrid." },
-      { day: "Sep 5 (Sat)", plan: "Relaxed Madrid morning — Plaza de España, churros at San Ginés. Pack. Airport by 5:30pm. ✈️ 8:00pm flight Madrid→Craiova, lands ~midnight." }
+      { day: "Sep 2 (Wed)", plan: "✅ Land Madrid 12:45 (Plus Ultra PU0302 out of Lima the previous evening). Immigration + Cercanías to Atocha, there by ~15:00. 🆕 AVE ~16:30 → Barcelona Sants ~19:00, hotel by 19:30. 🧳 Bags go straight into the room — nothing on your back today. Evening: a short Gothic Quarter walk and dinner, then sleep. Do not try to sightsee Madrid on this day; Madrid gets Sep 4, Sep 5 and the whole of Sep 28." },
+      { day: "Sep 3 (Thu)", plan: "🆕 THE CLEAN BARCELONA DAY — you are based here, so this is the one full day on the trip with zero bags in hand. ⛪ SAGRADA FAMÍLIA at the 09:00 first-entry slot. Late morning: Park Güell (uphill — much easier empty-handed). Afternoon: Gothic Quarter + La Boqueria. Evening: Barceloneta beach + seafood dinner. Back to the same hotel." },
+      { day: "Sep 4 (Fri)", plan: "🆕 Checkout, straight to Sants, morning AVE → Madrid Atocha (2h30). Drop bags at the Madrid hotel on arrival. 📅 YOUR MADRID EVENT — day 1. ⚠️ If the event starts before midday, take the ~07:00 departure (Sants 07:00 → Atocha 09:30), not the 09:00 one." },
+      { day: "Sep 5 (Sat)", plan: "📅 YOUR MADRID EVENT — day 2. 🧳 Checkout is ~11:00 but the flight is not until 20:00, so leave the bags with the hotel (free) — do NOT plan to carry them through the event. If the venue is far from the hotel, use a Bounce or Stasher point near it instead (~€2/bag). Collect by 16:30. Airport by 17:30. ✈️ 8:00pm flight Madrid→Craiova, lands ~midnight." }
     ],
     highlights: [
       { icon: "⛪", text: "Sagrada Família — Gaudí's masterpiece, the whole reason for the Barcelona hop", cost: "€26/person (€36–44 with towers)" },
@@ -116,13 +117,15 @@ const ITINERARY = [
       { icon: "🌿", text: "Park Güell — Gaudí mosaic terraces over the city", cost: "€10/person" }
     ],
     tips: [
+      "🆕 WHY THIS LEG WAS FLIPPED: the old plan had you checking out of Barcelona at 11:00 on Sep 4 and then doing Park Güell and an evening train with two trolleys and two backpacks in hand. Barcelona now gets both nights, so Sep 3 is bag-free, and you move to Madrid on the morning of Sep 4 for your event. Same 3 nights, same 3 bag-moves — but no sightseeing day is spent carrying luggage.",
+      "🔴 REBOOK: Sagrada Família moves to THU SEP 3, 09:00. If you already hold a Sep 4 ticket, change it now — sagradafamilia.org, September mornings sell out weeks ahead.",
       "🛫 You leave Lima on Tue Sep 1 at 18:10 — the trip effectively starts a day before the itinerary does. Be at Jorge Chávez by 15:00.",
-      "Arrival is 12:45, not morning: Sep 2 is a half day. Don't book anything timed before 15:00 on it.",
-      "Sagrada Família Sep 4 (Fri) 9am slot: book at sagradafamilia.org NOW — September mornings sell out weeks ahead.",
-      "Stay near Madrid Atocha station — the Barcelona train leaves from there and it saves you two taxi rides.",
+      "Sep 2 is a half day that is entirely consumed by getting to Barcelona: land 12:45, Atocha by 15:00, AVE ~16:30, hotel 19:30. Book nothing on it except dinner.",
+      "🚄 Book both AVE legs together (Sep 2 Madrid→Barcelona evening, Sep 4 Barcelona→Madrid morning) — Renfe prices round-trips lower. Compare Iryo and Ouigo on the same route: often 30–50% cheaper.",
+      "📅 Tell me the Sep 4 event start time if it's before midday — the AVE choice changes from the 09:00 to the 07:00 departure.",
+      "🧳 Sep 5 is the only day in Spain where you're between accommodations. Madrid's Atocha station consigna CLOSED years ago, so 'lockers at the station' is not an option — use free hotel storage, or Stasher/Bounce (~€1.50–2.50 per bag per day, 200+ points around Sol and Gran Vía).",
       "Sep 5: leave for Barajas by 5:30pm at the latest for the 8pm Craiova flight.",
-      "🔴 Book a Craiova airport pickup BEFORE you fly — you land at midnight and taxis are scarce.",
-      "Don't overload Barcelona. One night is enough for Sagrada Família + Gothic Quarter + a beach dinner. That's the deal you made to buy days later in the trip."
+      "🔴 Book a Craiova airport pickup BEFORE you fly — you land at midnight and taxis are scarce."
     ],
     selectedActivities: ["⛪ Sagrada Família", "Gothic Quarter", "Mercado de San Miguel"]
   },
@@ -174,7 +177,7 @@ const ITINERARY = [
     dayByDay: [
       { day: "Sep 8 (Tue)", plan: "Arrive Istanbul afternoon/evening. Check in Sultanahmet. Easy first evening: Galata Bridge, fish sandwiches, Karaköy backstreets. You've just done two wedding days — take it slow." },
       { day: "Sep 9 (Wed)", plan: "🕌 THE SULTANAHMET DAY — Hagia Sophia, Blue Mosque, Basilica Cistern, Topkapi Palace, all within walking distance of each other. Late afternoon: Grand Bazaar + Spice Bazaar. Evening: rooftop dinner with Hagia Sophia on one side and the Blue Mosque on the other. This is a packed day — book the big two online." },
-      { day: "Sep 10 (Thu)", plan: "⛵ Morning Bosphorus cruise (Europe and Asia in one boat ride). Early afternoon: hamam at Çemberlitaş or Kılıç Ali Paşa — the right way to end the Istanbul leg. ✈️ Evening flight IST→Cappadocia (1h20). Cave hotel by ~22:00 — sleep fast, the balloon pickup is around 04:30." }
+      { day: "Sep 10 (Thu)", plan: "🧳 CHECK OUT FIRST, LEAVE THE BAGS AT THE HOTEL — every Sultanahmet hotel does this free and it is non-negotiable today: a hamam has small lockers for a wallet and a phone, not for two trolleys, and you would be undressing in a marble room with your luggage sitting in a corridor. ⛵ Morning Bosphorus cruise from Eminönü (10 min walk, bag-free). Early afternoon: hamam at Çemberlitaş or Kılıç Ali Paşa. Collect bags ~16:00. ✈️ Evening flight IST→Cappadocia (1h20). Cave hotel by ~22:00 — sleep fast, the balloon pickup is around 04:30." }
     ],
     highlights: [
       { icon: "🕌", text: "Hagia Sophia — 1,500 years old, cathedral then mosque then museum then mosque again", cost: "~€25/person (foreign visitor fee)" },
@@ -209,7 +212,7 @@ const ITINERARY = [
     dayByDay: [
       { day: "Sep 10 (Thu)", plan: "Land NAV/ASR in the evening, shuttle to the cave hotel in Göreme. Late dinner at the hotel. Bed early — balloon pickup is ~04:30." },
       { day: "Sep 11 (Fri)", plan: "🎈 SUNRISE BALLOON FLIGHT — up at 04:30, in the air about an hour as the sun comes over the fairy chimneys, hundreds of other balloons around you. Champagne landing ~08:00. Back to bed if you need it. Then: Göreme Open-Air Museum (rock-cut churches with Byzantine frescoes), Uçhisar Castle, and Derinkuyu or Kaymaklı underground city — eight levels carved into rock. Sunset at Red Valley." },
-      { day: "Sep 12 (Sat)", plan: "⭐ THE BACKUP MORNING — if Friday's balloon was cancelled for wind, you fly this morning instead. If it already flew: Devrent and Love Valley walk, or pottery in Avanos. ✈️ Midday flight back to Istanbul, connect straight through to Athens (arrive ~20:00)." }
+      { day: "Sep 12 (Sat)", plan: "⭐ THE BACKUP MORNING — if Friday's balloon was cancelled for wind, you fly this morning instead. If it already flew: Devrent and Love Valley walk, or pottery in Avanos. 🧳 Low bag risk: check out, leave everything with the cave hotel, and the airport shuttle collects you and the bags from the hotel door. Do not book a valley walk that ends anywhere but Göreme. ✈️ Midday flight back to Istanbul, connect straight through to Athens (arrive ~20:00)." }
     ],
     highlights: [
       { icon: "🎈", text: "SUNRISE HOT-AIR BALLOON — the reason this stop exists. September is peak flying season: clear, calm, warm.", cost: "~€200–280/person" },
@@ -278,7 +281,7 @@ const ITINERARY = [
     transport: { from: "Athens", how: "Morning flight ATH→JTR (45 min) — fly, do not ferry. Hotel transfer from the airport to Oia, 25 min." },
     dayByDay: [
       { day: "Sep 14 (Mon)", plan: "Morning flight in, transfer to Oia, drop bags. Afternoon: the Fira→Oia caldera path (10km clifftop, or take the bus and walk the last stretch). 🌅 OIA SUNSET — be in position 90 minutes early, it is as crowded as it is famous. Then a booked caldera-view dinner." },
-      { day: "Sep 15 (Tue)", plan: "Santorini morning: down the steps to Amoudi Bay for a swim and seafood on the water, or Red Beach. Back up, collect bags. ✈️ Afternoon flight → Rome." }
+      { day: "Sep 15 (Tue)", plan: "🧳 Check out, leave the bags with the hotel — Amoudi Bay is ~300 steps BELOW Oia and you are climbing back up in the afternoon heat. Santorini morning: down to Amoudi for a swim and seafood on the water, or Red Beach. Back up, collect bags. ⚠️ Oia's lanes are stepped and vehicle-free, so budget 10–15 min of hand-carrying to the taxi pickup point whatever you do — book the transfer in advance and ask exactly where it meets you. ✈️ Afternoon flight → Rome." }
     ],
     highlights: [
       { icon: "🌅", text: "Oia sunset — the single most famous sunset in Europe. Arrive 90 min early for a spot on the castle side.", cost: "Free" },
@@ -350,7 +353,7 @@ const ITINERARY = [
     dayByDay: [
       { day: "Sep 18 (Fri)", plan: "Fly Rome→Geneva in the morning, train down to Zermatt, arrive late afternoon. Check in, collect ski + boot rental for tomorrow morning, walk the village, early dinner. First sight of the Matterhorn. ✅ You now arrive with the rental shops still open — that was the weak point of the old Venice routing." },
       { day: "Sep 19 (Sat)", plan: "⛷️ SKI DAY. Up early. Matterhorn Glacier Ride cable car to 3,883m — highest cable car in Europe, glass floor. Ski the Theodul Glacier ~08:00–13:00, ~21km of groomed piste at 3,000m+ with the Matterhorn beside you and Italy over the ridge. Afternoon: late lunch at Chez Vrony (2,130m, Michelin-listed) or back down to the village." },
-      { day: "Sep 20 (Sun)", plan: "Morning: Gornergrat cogwheel railway — 33min to 3,089m, Matterhorn dead ahead the whole way. Best scenic-rail-per-minute on the trip. Afternoon: train → Grindelwald (2h15)." }
+      { day: "Sep 20 (Sun)", plan: "🧳 Check out and put the bags in a locker at Zermatt station (CHF 5–9) or leave them at the hotel — the Gornergrat train leaves from a platform directly opposite the main station, so they are on your way both times. Morning: Gornergrat cogwheel railway — 33min to 3,089m, Matterhorn dead ahead the whole way. Best scenic-rail-per-minute on the trip. Back down ~13:00, collect bags, walk across. Afternoon: train → Grindelwald (2h15)." }
     ],
     highlights: [
       { icon: "⛷️", text: "Theodul Glacier skiing — open YEAR-ROUND, ~21km, Europe's highest ski area at 3,899m", cost: "~CHF 95 pass + ~CHF 50 rental /person" },
@@ -385,7 +388,7 @@ const ITINERARY = [
     transport: { from: "Zermatt", how: "Train Zermatt→Visp→Interlaken Ost→Grindelwald (2h15). Covered by the Swiss Travel Pass." },
     dayByDay: [
       { day: "Sep 20 (Sun)", plan: "Arrive Grindelwald late afternoon from Zermatt. Check in. Evening: village stroll under the Eiger north face. Early night — tomorrow starts at 8am." },
-      { day: "Sep 21 (Mon)", plan: "🛷 ADVENTURE MORNING. First gondola up: FIRST CLIFF WALK (walkway bolted to the cliff face, free with the gondola), then FIRST FLIEGER zipline — 800m at 84 km/h straight at the Eiger. Then mountain cart or trottibike down. If time: Pfingstegg toboggan run (736m alpine slide, you control the brake). ~14:00: 🚂 GOLDENPASS EXPRESS Interlaken→Montreux (3h panoramic) → Geneva → TGV → Paris. Arrive ~22:00." }
+      { day: "Sep 21 (Mon)", plan: "🔴 THE TIGHTEST BAG DAY OF THE TRIP. You physically cannot ride the First Flieger zipline or a mountain cart holding a 10kg trolley. Check out early and LEAVE ALL FOUR BAGS AT THE GUESTHOUSE (free) — the Firstbahn base station is in the village, so you walk out empty-handed and come back past the door. 🛷 ADVENTURE MORNING: first gondola up, FIRST CLIFF WALK (walkway bolted to the cliff face, free with the gondola), then FIRST FLIEGER — 800m at 84 km/h straight at the Eiger. Then mountain cart or trottibike down. ⚠️ Be back at the guesthouse by 12:30 and off the mountain hard-stop 12:15 — you need the ~13:00 train to Interlaken Ost (35 min) for the 14:00 GoldenPass. Drop Pfingstegg; it does not fit once the bag collection is real. Then 🚂 GOLDENPASS EXPRESS Interlaken→Montreux (3h panoramic) → Geneva → TGV → Paris. Arrive ~22:00." }
     ],
     highlights: [
       { icon: "🪂", text: "First Flieger zipline — 800m, 84 km/h, flying head-first at the Eiger", cost: "~CHF 31/person" },
@@ -422,7 +425,7 @@ const ITINERARY = [
       { day: "Sep 22 (Tue)", plan: "🎡 DISNEYLAND PARIS — Day 1 (Disneyland Park). ✅ Tuesday is the single lowest-crowd day of the week in September: 15–30 min waits. RER A from Châtelet, €2.55. Rope drop at 09:30." },
       { day: "Sep 23 (Wed)", plan: "🎡 DISNEYLAND PARIS — Day 2 (Walt Disney Studios). ✅ Back-to-back with yesterday, so buy a 2-day ticket rather than two singles — cheaper, and anything you miss on Tuesday rolls over. Wednesday is equally quiet: 15–30 min." },
       { day: "Sep 24 (Thu)", plan: "🗼 EIFFEL TOWER day — this one is LOCKED by the booking. Morning: Montmartre + Sacré-Coeur. Midday: Eiffel summit + 2nd floor decks. Afternoon: Champ de Mars, the Louvre pyramid from OUTSIDE (courtyard only — no museum), Seine river cruise. Evening: 🍽️ LE JULES VERNE, 8:00pm — ✅ BOOKED. Jacket required for men." },
-      { day: "Sep 25 (Fri)", plan: "Relaxed last Paris morning — Le Marais, a proper café breakfast, anything you skipped. ~09:00–10:00 Eurostar Gare du Nord → St Pancras, arrive London around midday. ✅ No dawn alarm: the second London night removed that." }
+      { day: "Sep 25 (Fri)", plan: "🆕 Eurostar moved to ~11:00 (was 09:00–10:00). Gare du Nord check-in closes 30–45 min before departure, so a 09:00 train meant leaving Le Marais at 07:45 — there was no 'relaxed morning' in the old plan. At 11:00 you get a real café breakfast, check out ~09:30, walk to Gare du Nord with the bags (Le Marais is 20 min on the metro, one bag-move, nothing to see in between). Arrive St Pancras ~12:15 London time." }
     ],
     highlights: [
       { icon: "🎡", text: "Disneyland Paris — 2 days, ✅ Tue Sep 22 + Wed Sep 23, back-to-back on the two quietest weekdays of the year: 15–30 min waits.", cost: "€89–100/person/day (advance), or a 2-day ticket" },
@@ -440,7 +443,7 @@ const ITINERARY = [
       "Montmartre got folded into Thursday morning. It's a 45-min visit and it's free — it survives the squeeze fine.",
       "Book advance Disney tickets at disneylandparis.com for €89–100 vs €130+ at the gate. Transport: RER A from Châtelet-Les-Halles, €2.55/person. NEVER pay for the €23 shuttle.",
       "Louvre: courtyard and pyramid from outside only — noted, no ticket booked.",
-      "✅ The Eurostar is now Fri Sep 25 mid-morning (~09:00–10:00) instead of a 07:00 Saturday scramble. Book it for around 09:00 — you still land in London by midday with a usable afternoon.",
+      "🆕 CORRECTED: book the Eurostar for ~11:00, not 09:00. Gare du Nord check-in closes 30–45 min ahead, so the 09:00 train would have you out the door at 07:45 — incompatible with the 'relaxed Paris morning' this day is supposed to be. The 11:00 lands you at St Pancras ~12:15 and the Tower of London afternoon still works (last entry 15:30).",
       "🥽 Eclipso or The Gate VR now genuinely fits — the Friday morning is loose, or swap it into Thursday afternoon. This was 'optional, probably not' under the old dates."
     ],
     selectedActivities: ["🎡 Disneyland 2 days (Tue+Wed)", "🍽️ Jules Verne ✅ BOOKED", "🗼 Eiffel Tower", "Montmartre", "Louvre exterior only"]
@@ -456,11 +459,11 @@ const ITINERARY = [
     dailyCost: 340,
     accommodation: "Hotel — King's Cross / Euston (next to St Pancras and the Watford train)",
     accommodationCost: 200,
-    transport: { from: "Paris", how: "✅ Eurostar Gare du Nord → St Pancras, ~09:00–10:00 departure, arrives around midday. At 2 nights the train time is flexible again." },
+    transport: { from: "Paris", how: "✅ Eurostar Gare du Nord → St Pancras, 🆕 ~11:00 departure, arrives ~12:15 London time. At 2 nights the train time is flexible — use that flexibility to buy a real Paris morning rather than a dawn scramble." },
     dayByDay: [
-      { day: "Sep 25 (Fri)", plan: "✅ THE NIGHT VENICE PAID FOR. Arrive St Pancras ~midday, check in at King's Cross. Afternoon: Westminster + Big Ben + a Thames walk to Tower Bridge, or the TOWER OF LONDON (~£35, last entry 15:30 — this only exists because of the extra night). Evening: a proper pub." },
+      { day: "Sep 25 (Fri)", plan: "✅ THE NIGHT VENICE PAID FOR. Arrive St Pancras ~12:15, and the King's Cross hotel is a 5-minute walk — 🧳 the shortest bag-move of the entire trip, which is exactly why King's Cross is the right neighbourhood. Drop bags (leave them at reception if the room isn't ready), then afternoon: Westminster + Big Ben + a Thames walk to Tower Bridge, or the TOWER OF LONDON (~£35, last entry 15:30 — this only exists because of the extra night). Evening: a proper pub." },
       { day: "Sep 26 (Sat)", plan: "🎬 WARNER BROS STUDIO TOUR — a full, unhurried day. ANY slot works now, so take a mid-morning one: Euston → Watford Junction (20min) + shuttle, allow 4–5h inside. Back in central London late afternoon. Evening: dinner, or a West End show if you want one." },
-      { day: "Sep 27 (Sun)", plan: "🦕 NATURAL HISTORY MUSEUM at the 10:00 opening — dinosaur gallery, FREE. Add Jurassic Oceans (~£15) if running. Afternoon: collect bags, pack. ✈️ Evening flight London→Madrid (2h20)." }
+      { day: "Sep 27 (Sun)", plan: "🧳 Check out ~09:00 and leave the bags at the hotel — the Natural History Museum has a bag-size limit and no cloakroom for luggage, so this step is required, not optional. 🦕 NATURAL HISTORY MUSEUM at the 10:00 opening — dinosaur gallery, FREE. Add Jurassic Oceans (~£15) if running. Back to King's Cross ~15:00, collect bags, straight to the airport. ✈️ Evening flight London→Madrid (2h20) — ⚠️ if it's easyJet, your 10kg trolleys are NOT free hold-size cabin bags, see the luggage plan." }
     ],
     highlights: [
       { icon: "🎬", text: "Warner Bros Studio Tour — the actual Harry Potter sets, Diagon Alley, the Great Hall, Hogwarts model", cost: "~£53/person (~$68)" },
@@ -614,7 +617,7 @@ const TICKETS = [
     city: "Spain",
     flag: "🇪🇸",
     attractions: [
-      { name: "Sagrada Família", price: "€26/person (towers €36–44)", note: "🔴 Sep 4, 9:00am first slot. sagradafamilia.org — book now." },
+      { name: "Sagrada Família", price: "€26/person (towers €36–44)", note: "🆕 🔴 THU SEP 3, 9:00am first slot (moved from Sep 4). sagradafamilia.org — rebook if you hold the old date." },
       { name: "Park Güell", price: "€10/person", note: "parkguell.barcelona. Optional if the morning runs long." },
       { name: "AVE Madrid↔Barcelona", price: "$30–70/person each way", note: "renfe.com. Book both directions together, 2h30 each way." },
       { name: "Royal Palace of Madrid", price: "€14/person", note: "For the Sep 28 buffer day if you want one more sight." }
@@ -635,7 +638,7 @@ const AQUARIUMS = [
     highlights: "80-meter transparent underwater tunnel — sharks, rays and moray eels directly overhead. 35 tanks, 11,000 fish, 450+ species.",
     size: "35 tanks, 36m Oceanarium",
     duration: "1.5–2h",
-    verdict: "⚠️ TIGHT — you only have one night in Barcelona and Sagrada Família owns the morning. Only if you skip Park Güell.",
+    verdict: "🆕 NOW PLAUSIBLE — the Spain flip gave Barcelona a second night, so Sep 3 is a full bag-free day instead of a half one. Sagrada Família at 09:00 still owns the morning, but the aquarium is a 1.5–2h afternoon swap against Park Güell. Still a genuine either/or, not a bonus.",
     rating: 4,
     onRoute: true
   },
@@ -783,7 +786,7 @@ const DINO_BY_CITY = [
   { city: "London", flag: "🇬🇧", status: "open", selected: true, name: "Natural History Museum ✅", highlight: "World-class dinosaur gallery, FREE entry. Plus the 2026 Jurassic Oceans special exhibition (~£15). This is your dino day — Sep 27 morning.", admission: "FREE (special exhibition ~£15)", rating: 5 },
   { city: "Rome", flag: "🇮🇹", status: "open", selected: false, name: "Museo Civico di Zoologia", highlight: "5M specimens, dino section with interactive 3D reconstructions. Optional — Rome's 3 days are committed to the Vatican and Colosseum.", admission: "~€10/person", rating: 3 },
   { city: "Paris", flag: "🇫🇷", status: "closed", name: "MNHN Galerie de Paléontologie", warning: "CLOSED Jan 2026 – late 2027 for renovation. Do NOT plan this.", alternative: "Grande Galerie de l'Évolution (same park, open) — €9/person. But you have no spare Paris time.", rating: 0 },
-  { city: "Barcelona", flag: "🇪🇸", status: "open", selected: false, name: "Museu Blau", highlight: "4M+ specimens, strong paleontology, FREE Sunday afternoons. ❌ Doesn't fit — one Barcelona night and Sagrada Família owns it.", admission: "€6 (free Sun PM)", rating: 4 }
+  { city: "Barcelona", flag: "🇪🇸", status: "open", selected: false, name: "Museu Blau", highlight: "4M+ specimens, strong paleontology, FREE Sunday afternoons. ❌ Still doesn't fit — even with the second Barcelona night, Sep 3 is already Sagrada Família, Park Güell, the Gothic Quarter and Barceloneta. And Sep 3 is a Thursday, so the free Sunday doesn't apply.", admission: "€6 (free Sun PM)", rating: 4 }
 ];
 
 // ============================================================
@@ -804,7 +807,7 @@ const DINING = [
 const BUDGET = {
   categories: [
     { label: "Flights: Lima↔Madrid round-trip (×2)", min: 1300, max: 1800, note: "Direct Iberia/Air Europa. Sep 2 out, Sep 29 back at 11am. Book as one round-trip." },
-    { label: "Accommodation (27 nights, 2 pax)", min: 3980, max: 5390, note: "🆕 +$80–140 from the Turkey change: two Istanbul nights ($90–130) became two Cappadocia cave-hotel nights ($130–200). Same night count, slightly dearer beds. Zermatt, Santorini and London remain the expensive ones." },
+    { label: "Accommodation (27 nights, 2 pax)", min: 4000, max: 5420, note: "🆕 +$20–30 from the Spain flip — Barcelona goes 1→2 nights and Madrid 2→1, and a Barcelona bed costs a little more. That $25 is what buys you a completely bag-free Sep 3. 🆕 +$80–140 from the Turkey change: two Istanbul nights ($90–130) became two Cappadocia cave-hotel nights ($130–200). Same night count, slightly dearer beds. Zermatt, Santorini and London remain the expensive ones." },
     { label: "Food (28 days)", min: 2120, max: 3020, note: "~$20 higher than the Venice version (London eats dearer than Venice for one day). Airbnb kitchen in Paris + supermarket lunches in Switzerland save the most." },
     { label: "Intra-Europe transport (10 flights + 4 train legs)", min: 1610, max: 2620, note: "🆕 +$160–320 for the two Cappadocia hops (IST→NAV and NAV→IST, ~$40–80/person each). Cheap flights, but they are new. Everything 2–3 months out." },
     { label: "🎈 Cappadocia sunrise balloon (2 pax)", min: 440, max: 620, note: "🆕 ~€200–280/person for a standard 1-hour sunrise flight, Fri Sep 11. Government-regulated pricing, so shop on operator reputation and basket size, not price. This is the single biggest new line item." },
@@ -813,9 +816,10 @@ const BUDGET = {
     { label: "Skiing — Zermatt (1 day × 2 persons)", min: 300, max: 360, note: "~CHF 95 pass + ~CHF 50 rental per person. 🆕 Ski day is now Sat Sep 19. The ski add-on itself is cheap." },
     { label: "Swiss Travel Pass 4 days (×2 persons)", min: 620, max: 660, note: "🆕 Activate Sep 18. Now also covers the Geneva→Zermatt arrival, plus Swiss trains, Grindelwald gondolas, GoldenPass base fare and the Gornergrat discount." },
     { label: "Warner Bros Studio Tour + transport (2 pax)", min: 160, max: 200, note: "~£53/person + ~£11 train + £3 shuttle each." },
+    { label: "🧳 Cabin-bag fees + luggage storage", min: 130, max: 215, note: "🆕 WAS MISSING ENTIRELY. Your 10kg trolleys are NOT the free cabin bag on easyJet/Ryanair/Vueling/Wizz — those include one small under-seat bag only, so a 10kg trolley is a paid 'large cabin bag' at ~€25–35 each, per flight ($120–200 if you use budget carriers, $0 if every flight is full-service). Plus €3–10 of locker/storage on the days you're between hotels. Add the bag fee for TWO bags before comparing a budget fare against Iberia or Turkish — it often erases the saving." },
     { label: "Misc (travel insurance, SIMs, tips, gifts)", min: 500, max: 800, note: "Travel insurance STRONGLY recommended — 12 separate transport legs." }
   ],
-  total: { min: 13170, max: 18310, target: 14000 },
+  total: { min: 13320, max: 18555, target: 14000 },
   savingTips: [
     "⚠️ HONEST WARNING: the midpoint is now ~$15,740, about $1,740 over your $14,000 target. Adding Cappadocia cost roughly $760–1,180 — the balloon alone is $440–620. It is the best single experience you've added to this trip, and it is not free. Decide deliberately.",
     "🎈 IF YOU NEED THAT MONEY BACK: the honest candidates are Santorini's one caldera night ($220–300 + the $130 dinner), the Jules Verne dinner ($660–740, already booked), or one Disney day. Cutting the balloon to fund the rest defeats the purpose of the change.",
@@ -833,8 +837,8 @@ const BUDGET = {
     "Istanbul and Craiova are the cheap stops — don't economise there, economise in Switzerland."
   ],
   hotelVsAirbnb: [
-    { city: "Madrid (start)", nights: 2, recommendation: "Hotel near Atocha", reason: "Short stay, and Atocha is where the Barcelona train leaves from.", cost: "$120–150/night" },
-    { city: "Barcelona", nights: 1, recommendation: "Hotel", reason: "One night — hotel, no question. Stay near Sagrada Família or Eixample.", cost: "$140–180/night" },
+    { city: "Barcelona", nights: 2, recommendation: "🆕 Hotel — Eixample, near Sagrada Família or Sants", reason: "🆕 Up from 1 night. Both Barcelona nights in the same hotel is what makes Sep 3 a bag-free sightseeing day. Eixample walks to Sagrada Família and is 2 metro stops from Sants for the Sep 4 morning train.", cost: "$140–180/night" },
+    { city: "Madrid (start)", nights: 1, recommendation: "🆕 Hotel near the event venue", reason: "🆕 Down to 1 night (Sep 4). Pick this one by where your event is, not by the station — you arrive by train on Sep 4 and leave for Barajas on Sep 5, so Atocha proximity no longer buys anything. Confirm they hold bags after checkout.", cost: "$120–150/night" },
     { city: "Craiova", nights: 3, recommendation: "Hotel near the venue", reason: "Wedding logistics beat everything. Cheapest stop of the trip.", cost: "$60–80/night" },
     { city: "Istanbul", nights: 2, recommendation: "Hotel — Sultanahmet", reason: "🆕 Down from 4 nights. With only one core day, staying inside Sultanahmet (walk to Hagia Sophia, Blue Mosque, Topkapi, the cistern) stops being a preference and becomes the plan.", cost: "$90–130/night" },
     { city: "Cappadocia", nights: 2, recommendation: "🆕 Cave hotel — Göreme or Uçhisar", reason: "🆕 The two nights Istanbul gave up. Pay for a cave room with an east-facing terrace — you watch Saturday's balloons rise over breakfast. Two nights also buys a second balloon morning if Friday is cancelled for wind.", cost: "$130–200/night" },
@@ -858,7 +862,7 @@ const BOOKINGS = [
   { priority: 3, what: "🆕 Cave hotel, Göreme or Uçhisar — 2 nights (Sep 10 + 11)", when: "🔴 NOW", urgency: "critical", note: "🆕 Ask for an east-facing terrace room: you watch Saturday's balloons rise over breakfast even after flying on Friday. Confirm they run the 04:30 balloon pickup and a late check-in for the Thursday evening arrival.", estimatedCost: "$130–200/night" },
   { priority: 4, what: "🆕 Flight Rome (FCO) → Geneva (GVA), Fri Sep 18 morning", when: "🔴 NOW", urgency: "critical", note: "easyJet / ITA / Swiss, 1h50. Take a departure before ~11:00 so the Geneva→Zermatt train (3h40) lands you in the village before the ski-rental shops close.", estimatedCost: "$100–220 for 2" },
   { priority: 5, what: "Craiova midnight airport pickup (Sep 5)", when: "🔴 THIS WEEK", urgency: "critical", note: "You land at ~midnight. Taxis are scarce at Craiova at that hour. Arrange a transfer through your hotel now.", estimatedCost: "$25–50" },
-  { priority: 6, what: "Sagrada Família — 9:00am slot Fri Sep 4", when: "🔴 NOW", urgency: "critical", note: "sagradafamilia.org. September mornings sell out. This is the only reason for the Barcelona hop — don't lose it.", estimatedCost: "€26–44/person" },
+  { priority: 6, what: "🆕 Sagrada Família — 9:00am slot THU SEP 3 (moved from Sep 4)", when: "🔴 NOW — and REBOOK if you already hold Sep 4", urgency: "critical", note: "🆕 THE DATE CHANGED. Barcelona now holds both Sep 2 and Sep 3 nights so that Sep 3 is a bag-free day, and you move to Madrid on the morning of Sep 4 for your event. If you already booked the Sep 4 slot, change it at sagradafamilia.org now — September mornings sell out weeks ahead.", estimatedCost: "€26–44/person" },
   { priority: 7, what: "🆕 Craiova → Bucharest OTP private transfer (Sep 8 morning)", when: "1–2 weeks ahead", urgency: "high", note: "🆕 3h by car, ~€90–130 for the two of you, hotel door to terminal. Book through the Craiova hotel or the wedding hosts. The train + airport bus is far cheaper but CFR runs late routinely — and this is the morning after two wedding days.", estimatedCost: "€90–130 total" },
   { priority: 8, what: "Warner Bros Studio Tour, London — Sat Sep 26", when: "NOW", urgency: "high", note: "With 2 London nights any slot works — take mid-morning (~10:00–11:00) for an unhurried day. It still sells out 2–3 months ahead. wbstudiotour.co.uk", estimatedCost: "~£53/person (~$68)" },
   { priority: 9, what: "Disneyland Paris — 2-DAY ticket (Tue Sep 22 + Wed Sep 23)", when: "NOW", urgency: "high", note: "Consecutive days — buy one 2-day ticket instead of two singles, it's cheaper and lets rides roll over. Tue and Wed are the two lowest-crowd days of the week: 15–30 min waits. disneylandparis.com.", estimatedCost: "€150–190/person for 2 days" },

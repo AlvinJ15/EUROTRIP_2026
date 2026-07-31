@@ -176,6 +176,53 @@ function renderRoutes() {
   }
 }
 
+const BAG_LABELS = {
+  free:  { icon: '🎒', label: 'No bags in hand' },
+  move:  { icon: '🧳', label: 'Travel day' },
+  store: { icon: '🔒', label: 'Store &amp; collect' },
+  tight: { icon: '🔴', label: 'Storage required' }
+};
+
+function renderLuggage() {
+  if (typeof LUGGAGE === 'undefined') return;
+
+  const kit = document.getElementById('luggage-kit');
+  if (kit) kit.textContent = LUGGAGE.kit;
+
+  const principles = document.getElementById('luggage-principles');
+  if (principles) {
+    principles.innerHTML = LUGGAGE.principles.map(p => `<li>${p}</li>`).join('');
+  }
+
+  const fee = document.getElementById('luggage-fee');
+  if (fee) {
+    const w = LUGGAGE.cabinFeeWarning;
+    fee.innerHTML = `
+      <h3>${w.headline}</h3>
+      <p>${w.detail}</p>
+      <p><strong>Affects:</strong> ${w.affects}</p>
+      <p class="luggage-fee-est">💵 ${w.estimate}</p>`;
+  }
+
+  const list = document.getElementById('luggage-days');
+  if (list) {
+    list.innerHTML = LUGGAGE.days.map(d => {
+      const m = BAG_LABELS[d.status];
+      return `
+        <div class="bag-card is-${d.status}">
+          <div class="bag-card-head">
+            <span class="bag-date">${d.date}</span>
+            <span class="bag-status">${m.icon} ${m.label}</span>
+          </div>
+          <h4 class="bag-city">${d.city}</h4>
+          <p class="bag-headline">${d.headline}</p>
+          <p class="bag-action">${d.action}</p>
+          ${d.cost && d.cost !== '—' ? `<span class="bag-cost">💵 ${d.cost}</span>` : ''}
+        </div>`;
+    }).join('');
+  }
+}
+
 function renderItinerary() {
   const container = document.getElementById('itinerary-stops');
   container.innerHTML = ITINERARY.map((stop, i) => `
@@ -494,6 +541,7 @@ function initApp() {
   renderFlights();
   renderRoutePlans();
   renderRoutes();
+  renderLuggage();
   renderItinerary();
   renderVRByCity();
   renderDinoByCity();

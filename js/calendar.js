@@ -28,6 +28,15 @@ const STOP_COLORS = [
 
 const WEEKDAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+// Bag status shown on every day of the calendar. 'tight' means the day's
+// activity is physically incompatible with luggage, not merely inconvenient.
+const BAG_STATUS = {
+  free:  { icon: '🎒', label: 'No bags — based here' },
+  move:  { icon: '🧳', label: 'Travel day — bags with you' },
+  store: { icon: '🔒', label: 'Checked out — store the bags' },
+  tight: { icon: '🔴', label: 'Bag-hostile day — storage required' }
+};
+
 // ---- parsing helpers -------------------------------------------------
 
 // "Sep 12–15 (Sat–Tue)" -> { start: 12, end: 15 }
@@ -193,7 +202,11 @@ function buildCalendarModel() {
       weekday: weekdayName(d),
       weekend: isWeekend(d),
       inTrip: segments.length > 0,
-      route: typeof ROUTES !== 'undefined' ? ROUTES.find(r => r.day === d) || null : null,
+      // A day can carry more than one journey — Sep 2 is both the Madrid
+      // landing and the AVE on to Barcelona. This used to be .find(), which
+      // silently hid the second one.
+      routes: typeof ROUTES !== 'undefined' ? ROUTES.filter(r => r.day === d) : [],
+      bags: typeof LUGGAGE !== 'undefined' ? LUGGAGE.days.find(l => l.day === d) || null : null,
       isFirst: d === tripStart,
       isLast: d === tripEnd,
       beforeTrip: d < tripStart,
@@ -292,6 +305,20 @@ function renderCalendarGrid() {
   const lead = dayOfWeekIndex(1);
   const blanks = Array.from({ length: lead }, () => '<div class="cal-day is-empty"></div>').join('');
 
+  // One badge per journey. Days with two journeys (Sep 2: land Madrid, then
+  // the AVE to Barcelona) get two badges rather than silently showing one.
+  function routeBadges(d) {
+    if (!d.routes.length) return '';
+    return d.routes.map(r =>
+      `<span class="cal-routebadge">🚏 ${r.from} → ${r.to} · ${r.recommended.segments.length} segments · ${r.recommended.doorToDoor}</span>`
+    ).join('');
+  }
+
+  function bagLine(d) {
+    if (!d.bags) return '';
+    return `<span class="cal-bags is-${d.bags.status}">${BAG_STATUS[d.bags.status].icon} ${BAG_STATUS[d.bags.status].label}</span>`;
+  }
+
   const cells = CAL_MODEL.days.map(d => {
     if (!d.inTrip && !d.legs.length) {
       return `<div class="cal-day is-outside ${d.weekend ? 'is-weekend' : ''}">
@@ -313,7 +340,7 @@ function renderCalendarGrid() {
         <span class="cal-chip cal-chip-travel">🛫 Departure day</span>
         <span class="cal-legs">${d.legs.map(l =>
           `<span class="cal-leg">${l.icon} ${l.leg}<b> 🕑 ${l.time} · ⏱️ ${l.duration}</b></span>`).join('')}</span>
-        ${d.route ? `<span class="cal-routebadge">🚏 ${d.route.recommended.segments.length} segments · ${d.route.recommended.doorToDoor}</span>` : ''}
+        ${routeBadges(d)}
         <span class="cal-sleep is-move">🌙 Overnight in the air</span>
       </div>`;
     }
@@ -339,9 +366,7 @@ function renderCalendarGrid() {
     }).join('');
 
     const tags = d.tags.map(t => `<span class="cal-tag ${t.cls}">${t.label}</span>`).join('');
-    const routeBadge = d.route
-      ? `<span class="cal-routebadge">🚏 ${d.route.recommended.segments.length} segments · ${d.route.recommended.doorToDoor}</span>`
-      : '';
+    const routeBadge = routeBadges(d);
 
     const nightStop = d.segments.find(sg => sg.role !== 'depart');
     const sleepLine = d.isLast
@@ -365,6 +390,7 @@ function renderCalendarGrid() {
         <span class="cal-chips">${chips}</span>
         ${legs ? `<span class="cal-legs">${legs}</span>` : ''}
         ${routeBadge}
+        ${bagLine(d)}
         ${tags ? `<span class="cal-tags">${tags}</span>` : ''}
         ${sleepLine}
       </div>`;
@@ -400,23 +426,30 @@ function openDayDetail(dayNum) {
         ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join('  →  ')
         : d.legs.length ? '🛫 In transit — trip departure' : 'Not part of the trip'}</span>
     </div>
-    ${d.route ? `
+    ${d.bags ? `
+      <div class="cal-detail-block cal-bagblock is-${d.bags.status}">
+        <h5>🧳 Your bags <em>${BAG_STATUS[d.bags.status].label}</em></h5>
+        <p class="cal-bag-headline">${d.bags.headline}</p>
+        <p class="cal-bag-action">${d.bags.action}</p>
+        ${d.bags.cost && d.bags.cost !== '—' ? `<span class="cal-bag-cost">💵 ${d.bags.cost}</span>` : ''}
+      </div>` : ''}
+    ${d.routes.map(r => `
       <div class="cal-detail-block cal-route">
-        <h5>🚏 Best way to get there <em>${d.route.recommended.doorToDoor}</em></h5>
-        <p class="cal-route-best">${d.route.recommended.label}</p>
+        <h5>🚏 ${r.from} → ${r.to} <em>${r.recommended.doorToDoor}</em></h5>
+        <p class="cal-route-best">${r.recommended.label}</p>
         <div class="cal-route-totals">
-          <span>⏱️ ${d.route.recommended.doorToDoor}</span>
-          <span>💵 ${d.route.recommended.totalCost}</span>
+          <span>⏱️ ${r.recommended.doorToDoor}</span>
+          <span>💵 ${r.recommended.totalCost}</span>
         </div>
         <div class="cal-route-chain">
-          ${d.route.recommended.segments.map((s, i) => `
+          ${r.recommended.segments.map((s, i) => `
             <span class="cal-route-step">
               <b>${i + 1}. ${s.mode}</b>
               <span>${s.title}<br><i>${s.duration} · ${s.cost}${s.booking && s.booking !== '—' ? ` · 📋 ${s.booking}` : ''}</i></span>
             </span>`).join('')}
         </div>
-        <a class="cal-route-link" href="#route-${d.route.id}">Full route breakdown, alternatives &amp; warnings →</a>
-      </div>` : ''}
+        <a class="cal-route-link" href="#route-${r.id}">Full route breakdown, alternatives &amp; warnings →</a>
+      </div>`).join('')}
     ${d.legs.length ? `
       <div class="cal-detail-block">
         <h5>Transport this day</h5>
@@ -463,14 +496,17 @@ function renderCalendarSummary() {
   if (!el) return;
   const travelDays = CAL_MODEL.days.filter(d => d.legs.length).length;
   const transitions = CAL_MODEL.days.filter(d => d.segments.length > 1).length;
-  const routed = CAL_MODEL.days.filter(d => d.route).length;
-  const segs = CAL_MODEL.days.reduce((n, d) => n + (d.route ? d.route.recommended.segments.length : 0), 0);
+  const routed = CAL_MODEL.days.reduce((n, d) => n + d.routes.length, 0);
+  const segs = CAL_MODEL.days.reduce((n, d) =>
+    n + d.routes.reduce((m, r) => m + r.recommended.segments.length, 0), 0);
+  const bagDays = CAL_MODEL.days.filter(d => d.bags && (d.bags.status === 'tight' || d.bags.status === 'store')).length;
   el.innerHTML = `
     <span class="cal-kpi"><b>${TRIP.dates}</b>September 2026</span>
     <span class="cal-kpi"><b>${TRIP.duration}</b>${CAL_MODEL.stops.length} stops</span>
     <span class="cal-kpi"><b>${travelDays}</b>days with a transport leg</span>
     <span class="cal-kpi"><b>${transitions}</b>city-change days</span>
     <span class="cal-kpi"><b>${routed} routes · ${segs} segments</b>mapped door-to-door</span>
+    <span class="cal-kpi"><b>${bagDays}</b>days needing bag storage</span>
   `;
 }
 
