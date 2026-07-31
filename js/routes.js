@@ -470,20 +470,25 @@ const ROUTES = [
     toEmoji: '🛷',
     tag: 'scenic rail',
     recommended: {
-      label: 'Zermatt → Visp → Spiez → Interlaken Ost → Grindelwald',
-      doorToDoor: '~2h 15m–2h 45m',
-      totalCost: 'Covered by the Swiss Travel Pass',
-      why: 'There is no faster way and no reason to want one — this is one of the best rail rides in Europe and the pass already paid for it. Two easy cross-platform changes.',
+      label: '🆕 Zermatt → Visp → Interlaken Ost (paraglide) → Grindelwald',
+      doorToDoor: '~2h 15m of rail, split by a 2h stop in Interlaken',
+      totalCost: 'Rail covered by the Swiss Travel Pass',
+      why: '🆕 Rebuilt as a morning departure with a deliberate stop. Gornergrat moved to Sep 19, which frees this morning — so instead of arriving Grindelwald exhausted at dusk, you leave at 09:30, break the journey in Interlaken for the Beatenberg paraglide, and still check in by 15:15 with the whole Pfingstegg afternoon ahead.',
       segments: [
-        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: 'hourly; leave early afternoon', booking: '—', notes: 'Keep the morning for the Gornergrat railway — it is the best scenic-rail-per-minute on the trip.' },
-        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change is genuinely enough.' },
-        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts early tomorrow.' }
+        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: '🆕 take the ~09:30 — this is now a morning departure', booking: '—', notes: 'Gornergrat happens on Sep 19 afternoon instead, which is what makes this early start possible.' },
+        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly, arrive ~11:30', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change is genuinely enough.' },
+        { mode: '🪂', title: 'Beatenberg tandem paraglide', operator: 'Paragliding Interlaken / Twin / Skywings', duration: '~2h total, 20–30 min airborne', cost: '~CHF 180–190/person', when: '~12:00–14:00', booking: 'Book direct with free cancellation — weather-dependent', notes: '🧳 Bags stay in the Interlaken Ost lockers. The minibus up and the landing field are both in Interlaken, so the station is your anchor the whole time.' },
+        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min; collect bags ~14:30', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts at 08:00 tomorrow.' }
       ]
     },
     alternatives: [
+      { label: 'Keep the old afternoon departure (Gornergrat this morning)', duration: '—', cost: 'Same', verdict: 'avoid', why: 'Arrives Grindelwald at dusk with nothing left in the day, and pushes the toboggan, the Cliff Walk and the zipline all into Sep 21 in front of a hard 14:07 train. That is the version that did not survive contact with the mountain cart queues.' },
       { label: 'Zermatt → Grindelwald via the Glacier Express', duration: '8h+', cost: 'Pass + CHF 49 reservation', verdict: 'avoid', why: 'The Glacier Express runs the wrong way, towards St. Moritz. Your scenic train is the GoldenPass Express tomorrow.' }
     ],
-    watchOuts: ['Leave Zermatt by ~15:00 so you see the Eiger north face in daylight.']
+    watchOuts: [
+      '🪂 If the paraglide is cancelled for wind, take the Harder Kulm funicular instead — same two-lake panorama from the ground, 10 min from the station, 50% off with the pass. You lose the flight, not the afternoon.',
+      '🛷 Aim to be on the Pfingstegg cable car by 15:45; the toboggan closes around 17:00 in September.'
+    ]
   },
 
   // ---------------------------------------------------------- Sep 21
@@ -502,8 +507,9 @@ const ROUTES = [
       totalCost: '$200–320 for 2 (TGV) + pass covers the Swiss legs',
       why: 'This routes your scenic panoramic train INTO the journey you were making anyway — zero detour. The alternative is a plain 6h transfer via Basel with no view. Same day, better day.',
       segments: [
-        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'after the First Cliff Walk morning, ~13:30', booking: '—', notes: 'The adventure morning ends by 13:00. Do not linger.' },
-        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: 'a few departures daily — check the timetable', booking: 'goldenpass.ch — 🔴 reserve the panoramic seats ahead', notes: 'The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva. Reserve seats; the panoramic class sells out.' },
+        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: '🆕 the 11:00 — off the mountain by 10:30, bags 10:45', booking: '—', notes: '🆕 The morning is now gondola 08:00 → Cliff Walk → First Flieger → down. The mountain cart is OUT: reported queues up to 110 min by mid-day, which is what used to put this connection at risk.' },
+        { mode: '🍫', title: 'Funky Chocolate Club, Interlaken', operator: 'Funky Chocolate Club', duration: '~1h 15m', cost: '~CHF 65/person', when: '12:00–13:15, back at Ost by 13:40', booking: 'funkychocolateclub.com — book ahead', notes: '🆕 OPTIONAL AND THE DESIGNATED DROP. 20 min walk each way from Interlaken Ost. If you are not on the 11:00 train out of Grindelwald, skip it and have a relaxed lunch by the station instead. Never run for the 14:07.' },
+        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: '🔴 14:07 — departures are 09:07, 11:07, 14:07, 16:07', booking: 'gpx.swiss — 🔴 reserve the panoramic seats ahead', notes: '🆕 THE 14:07 IS EFFECTIVELY THE LAST USABLE ONE. The 16:07 reaches Montreux ~19:20, by which time the last TGV Lyria out of Geneva to Paris has gone. The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva.' },
         { mode: '🚂', title: 'Montreux → Geneva', operator: 'SBB InterCity', duration: '1h 5m', cost: 'Swiss Travel Pass', when: 'twice hourly', booking: '—', notes: 'Lakeside the whole way.' },
         { mode: '🚄', title: 'Geneva → Paris Gare de Lyon', operator: 'TGV Lyria', duration: '3h 10m', cost: '€45–90/person', when: 'last departure ~19:00 — 🔴 verify yours', booking: 'sncf-connect.com or tgv-lyria.com — book 3 months out', notes: 'Cheap fares vanish. Arriving Gare de Lyon ~22:00 puts you in the Marais by 22:45.' },
         { mode: '🚇', title: 'Gare de Lyon → your Airbnb', operator: 'Metro L1/L14', duration: '15–20 min', cost: '€4.60 for 2', when: '—', booking: 'Navigo Easy card, or a carnet of 10', notes: 'Buy a Navigo Easy at the station — you need RER A tickets for Disney on both of the next two days.' }
@@ -514,8 +520,10 @@ const ROUTES = [
       { label: 'Fly Zurich/Geneva → Paris', duration: '5h–6h door-to-door', cost: '$150–300 for 2', verdict: 'avoid', why: 'Barely faster once you add the rail leg to the airport plus security plus CDG into Paris — and it throws away the best train ride of the trip.' }
     ],
     watchOuts: [
-      '🔴 Check the GoldenPass Express and the last TGV Lyria departure against each other before you book — the whole chain hangs on that connection.',
-      'This is a long day after a zipline morning. Eat before the TGV; the on-board options are thin.'
+      '🔴 THIS IS THE ONE HARD DEADLINE ON THE TRIP. GoldenPass departures from Interlaken Ost are 09:07, 11:07, 14:07 and 16:07; you need the 14:07, because the 16:07 lands in Montreux after the last TGV Lyria has left Geneva. Everything on Sep 21 chains back from it.',
+      '🆕 The morning now has genuine slack: down from First by 10:30, bags 10:45, 11:00 train, and the chocolate workshop is optional padding you can drop without consequence. That was not true before the mountain cart came out.',
+      'Verify the GoldenPass and the last TGV Lyria against each other before you book — the whole chain hangs on that connection.',
+      'This is a long day. Eat before the TGV; the on-board options are thin.'
     ]
   },
 

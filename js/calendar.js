@@ -93,7 +93,9 @@ function planTags(text) {
   if (/💍/.test(text)) tags.push({ label: '💍 Wedding', cls: 'tag-wedding' });
   if (/🎡/.test(text)) tags.push({ label: '🎡 Disney', cls: 'tag-disney' });
   if (/⛷️/.test(text)) tags.push({ label: '⛷️ Ski', cls: 'tag-ski' });
-  if (/🛷/.test(text)) tags.push({ label: '🛷 Adventure', cls: 'tag-ski' });
+  if (/🛷/.test(text)) tags.push({ label: '🛷 Toboggan', cls: 'tag-ski' });
+  if (/🪂/.test(text)) tags.push({ label: '🪂 Paragliding', cls: 'tag-ski' });
+  if (/🍫/.test(text)) tags.push({ label: '🍫 Chocolate', cls: 'tag-ski' });
   if (/🏛️|🌅|🎬|🦕/.test(text)) tags.push({ label: '⭐ Headline day', cls: 'tag-disney' });
   if (/🔴/.test(text)) tags.push({ label: '🔴 Must-do', cls: 'tag-must' });
   if (/🍽️/.test(text)) tags.push({ label: '🍽️ Booked dinner', cls: 'tag-dining' });

@@ -82,14 +82,14 @@ const LUGGAGE = {
       action: "Fly FCO→Geneva, train to Zermatt, check in, then collect the ski rental. The bags are in the room before anything else happens.",
       cost: "—" },
 
-    { day: 20, date: "Sun Sep 20", city: "Zermatt → Grindelwald", status: "tight",
-      headline: "🔴 Gornergrat is a 3,089 m summit, not an errand",
-      action: "Check out and lock the bags at Zermatt station, or leave them at the hotel. The Gornergrat platform faces the main station, so the bags sit on your route in both directions. Back down around 13:00, collect, cross the platform for the Grindelwald train.",
-      cost: "CHF 5–9 for a locker, or free at the hotel" },
+    { day: 20, date: "Sun Sep 20", city: "Zermatt → Interlaken → Grindelwald", status: "tight",
+      headline: "🔴 You cannot paraglide holding a suitcase",
+      action: "🆕 Gornergrat moved to Sep 19, so this is now a clean early transfer. Check out of Zermatt, take the ~09:30 train, and put all four bags in the lockers at Interlaken Ost on arrival (~11:30). Paraglide from Beatenberg 12:00–14:00 — the minibus up and the landing field are both in Interlaken, so the station stays your anchor. Collect around 14:30, train on to Grindelwald, and the bags are in the room before Pfingstegg.",
+      cost: "CHF 6–12 for the lockers at Interlaken Ost" },
 
     { day: 21, date: "Mon Sep 21", city: "Grindelwald → Paris", status: "tight",
-      headline: "🔴 The tightest bag day of the trip",
-      action: "You cannot ride the First Flieger zipline or a mountain cart holding a trolley. Check out early and leave all four bags at the guesthouse — the Firstbahn base station is in the village, so you pass the door on the way back down. Hard stops: off the mountain 12:15, bags collected 12:30, ~13:00 train to Interlaken Ost for the 14:00 GoldenPass. Pfingstegg does not fit once the bag collection is real.",
+      headline: "🔴 Hard deadline: the 14:07 GoldenPass out of Interlaken Ost",
+      action: "You cannot ride the First Flieger holding a trolley. Check out early and leave all four bags at the guesthouse — the Firstbahn base is in the village, so you pass the door coming back down. 🆕 Now has real slack: gondola 08:00, Cliff Walk, Flieger, down by 10:30, bags 10:45, 11:00 train. The mountain cart is out (queues to 110 min). The chocolate workshop in Interlaken is the designated drop — if you miss the 11:00 train, skip it and have a relaxed lunch instead. Never run for the 14:07.",
       cost: "Free" },
 
     { day: 25, date: "Fri Sep 25", city: "Paris → London", status: "move",
