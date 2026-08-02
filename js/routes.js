@@ -399,8 +399,8 @@ const ROUTES = [
   // ---------------------------------------------------------- Sep 15
   {
     id: 'santorini-rome',
-    day: 15,
-    date: 'Tue Sep 15',
+    day: 16,
+    date: 'Wed Sep 16',
     from: 'Santorini',
     to: 'Rome',
     fromEmoji: '🌅',
@@ -413,14 +413,14 @@ const ROUTES = [
       why: 'A seasonal direct Santorini→Rome exists in September on low-cost carriers. It saves 3–4h over connecting through Athens. Check it first — but book early, because these routes run a few times a week, not daily.',
       segments: [
         { mode: '🚐', title: 'Oia → JTR airport', operator: 'Hotel transfer', duration: '25 min', cost: '€25–35 total', when: 'leave 2h 30m before departure', booking: 'Arrange with the hotel the night before', notes: 'JTR is a small airport that gets badly congested in September. Do not cut it fine.' },
-        { mode: '✈️', title: 'Santorini (JTR) → Rome Fiumicino (FCO)', operator: 'Volotea / Ryanair / ITA (seasonal)', duration: '2h 30m', cost: '€70–160/person', when: 'a few days a week — check your date', booking: '⭐ Verify on Google Flights for Sep 15 specifically', notes: 'If it is not running on your date, the fallback is JTR→ATH→FCO, which is 6–8h door-to-door. Check this before anything else on this leg.' },
+        { mode: '✈️', title: 'Santorini (JTR) → Rome Fiumicino (FCO)', operator: 'Volotea / Ryanair / ITA (seasonal)', duration: '2h 30m', cost: '€70–160/person', when: 'a few days a week — check your date', booking: '⭐ 🆕 Verify on Google Flights for SEP 16 specifically — the date moved when Santorini gained a night', notes: 'If it is not running on your date, the fallback is JTR→ATH→FCO, which is 6–8h door-to-door. Check this before anything else on this leg.' },
         { mode: '🚄', title: 'FCO → Roma Termini', operator: 'Leonardo Express', duration: '32 min', cost: '€14/person', when: 'every 15 min until 23:00', booking: 'trenitalia.com or the platform machine', notes: 'Non-stop, luggage racks, no traffic. The FL1 regional is cheaper (€8) but stops short of Termini and needs a change.' },
         { mode: '🚕', title: 'Termini → Trastevere', operator: 'Taxi or tram 8', duration: '15–20 min', cost: '€12–15 taxi · €3.20 for 2 by tram', when: '—', booking: '—', notes: 'Arriving in the evening with bags on Trastevere cobblestones — take the taxi.' }
       ]
     },
     alternatives: [
       { label: 'JTR → ATH → FCO connection', duration: '6h–8h door-to-door', cost: '$200–400 for 2', verdict: 'ok', why: 'The reliable fallback. Book it as one Aegean ticket so a delay is their problem, not yours.' },
-      { label: 'Ferry to Athens then fly', duration: '10h+', cost: '$150–280 for 2', verdict: 'avoid', why: 'A full travel day. Rome only gets 3 nights and two of them are committed to the Vatican and Colosseum.' }
+      { label: 'Ferry to Athens then fly', duration: '10h+', cost: '$150–280 for 2', verdict: 'avoid', why: '🆕 Worse than ever: Rome is down to 2 nights, so a full travel day here would leave you almost nothing.' }
     ],
     watchOuts: ['⚠️ FCO has a flat €50 taxi rate into the historic centre — the Leonardo Express is better on both time and money.', 'Do not book a Rome dinner before 21:00 on this day.']
   },
@@ -443,7 +443,7 @@ const ROUTES = [
       segments: [
         { mode: '🚕', title: 'Trastevere → FCO', operator: 'Taxi (flat rate) or Leonardo Express', duration: '45 min taxi · 55 min via Termini', cost: '€50 flat taxi · €28 for 2 by train', when: 'leave 3h before an early flight', booking: '—', notes: 'For a pre-09:00 departure take the taxi — the Leonardo Express first train may be too late.' },
         { mode: '✈️', title: 'Rome (FCO) → Geneva (GVA)', operator: 'easyJet / ITA / Swiss', duration: '1h 50m', cost: '€50–110/person', when: '⭐ take a departure before 11:00', booking: 'easyjet.com — 6–8 weeks out', notes: 'The morning departure is the whole plan: it gets you into Zermatt in daylight with the rental shops still open.' },
-        { mode: '🚂', title: 'Geneva Airport station → Visp', operator: 'SBB InterCity', duration: '2h 20m', cost: 'Covered by Swiss Travel Pass', when: 'twice hourly', booking: 'sbb.ch (pass: mystsnet.com)', notes: '⭐ The station is INSIDE the airport — no transfer, no bus. Buy the Swiss Travel Pass 4-day (~CHF 289/person 2nd class) and activate it today; it also covers Sep 20 Zermatt→Grindelwald and Sep 21 to the French border.' },
+        { mode: '🚂', title: 'Geneva Airport station → Visp', operator: 'SBB InterCity', duration: '2h 20m', cost: 'Covered by Swiss Travel Pass', when: 'twice hourly', booking: 'sbb.ch (pass: mystsnet.com)', notes: '⭐ The station is INSIDE the airport — no transfer, no bus. 🆕 Buy the Swiss Travel Pass 5-DAY (~CHF 335/person 2nd class) and activate it today — Grindelwald gained a night, so the block runs Sep 18–22 and the 4-day would expire a day early.' },
         { mode: '🚞', title: 'Visp → Zermatt', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Covered by Swiss Travel Pass', when: 'hourly', booking: 'Same pass', notes: 'One easy cross-platform change at Visp. Zermatt is car-free and the train runs right into the village.' }
       ]
     },
@@ -455,7 +455,7 @@ const ROUTES = [
     watchOuts: [
       '🔴 Departure before 11:00 or the ski day is compromised.',
       'Collect ski and boot rental on arrival Friday evening, not Saturday morning.',
-      'Do the Swiss Travel Pass maths once: 4 consecutive days covering Sep 18–21 including the GoldenPass Express and the Gornergrat discount. It wins comfortably over point-to-point tickets.'
+      '🆕 Do the Swiss Travel Pass maths once: 5 consecutive days covering Sep 18–22, including both Grindelwald gondola days, the Lauterbrunnen trains, the GoldenPass Express and the Gornergrat discount. It wins comfortably over point-to-point tickets.'
     ]
   },
 
@@ -482,7 +482,7 @@ const ROUTES = [
       ]
     },
     alternatives: [
-      { label: 'Keep the old afternoon departure (Gornergrat this morning)', duration: '—', cost: 'Same', verdict: 'avoid', why: 'Arrives Grindelwald at dusk with nothing left in the day, and pushes the toboggan, the Cliff Walk and the zipline all into Sep 21 in front of a hard 14:07 train. That is the version that did not survive contact with the mountain cart queues.' },
+      { label: 'Keep the old afternoon departure (Gornergrat this morning)', duration: '—', cost: 'Same', verdict: 'avoid', why: 'Arrives Grindelwald at dusk with nothing left in the day, and wastes the paragliding window. Gornergrat belongs on Sep 19 — the glacier lifts shut at 13:00, so that afternoon was always free.' },
       { label: 'Zermatt → Grindelwald via the Glacier Express', duration: '8h+', cost: 'Pass + CHF 49 reservation', verdict: 'avoid', why: 'The Glacier Express runs the wrong way, towards St. Moritz. Your scenic train is the GoldenPass Express tomorrow.' }
     ],
     watchOuts: [
@@ -491,11 +491,11 @@ const ROUTES = [
     ]
   },
 
-  // ---------------------------------------------------------- Sep 21
+  // ---------------------------------------------------------- Sep 22
   {
     id: 'grindelwald-paris',
-    day: 21,
-    date: 'Mon Sep 21',
+    day: 22,
+    date: 'Tue Sep 22',
     from: 'Grindelwald',
     to: 'Paris',
     fromEmoji: '🛷',
@@ -507,80 +507,58 @@ const ROUTES = [
       totalCost: '$200–320 for 2 (TGV) + pass covers the Swiss legs',
       why: 'This routes your scenic panoramic train INTO the journey you were making anyway — zero detour. The alternative is a plain 6h transfer via Basel with no view. Same day, better day.',
       segments: [
-        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: '🆕 the 11:00 — off the mountain by 10:30, bags 10:45', booking: '—', notes: '🆕 The morning is now gondola 08:00 → Cliff Walk → First Flieger → down. The mountain cart is OUT: reported queues up to 110 min by mid-day, which is what used to put this connection at risk.' },
-        { mode: '🍫', title: 'Funky Chocolate Club, Interlaken', operator: 'Funky Chocolate Club', duration: '~1h 15m', cost: '~CHF 65/person', when: '12:00–13:15, back at Ost by 13:40', booking: 'funkychocolateclub.com — book ahead', notes: '🆕 OPTIONAL AND THE DESIGNATED DROP. 20 min walk each way from Interlaken Ost. If you are not on the 11:00 train out of Grindelwald, skip it and have a relaxed lunch by the station instead. Never run for the 14:07.' },
-        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: '🔴 14:07 — departures are 09:07, 11:07, 14:07, 16:07', booking: 'gpx.swiss — 🔴 reserve the panoramic seats ahead', notes: '🆕 THE 14:07 IS EFFECTIVELY THE LAST USABLE ONE. The 16:07 reaches Montreux ~19:20, by which time the last TGV Lyria out of Geneva to Paris has gone. The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva.' },
+        { mode: '🚞', title: 'Grindelwald → Interlaken Ost', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: '🆕 the 09:37 — check out unhurried, nothing on the mountain today', booking: '—', notes: '🆕 THE SECOND GRINDELWALD NIGHT CHANGED THIS COMPLETELY. First, the Cliff Walk, the Flieger and the mountain cart all happened yesterday, so this morning carries nothing but a train and an optional chocolate class.' },
+        { mode: '🍫', title: 'Funky Chocolate Club, Interlaken', operator: 'Funky Chocolate Club', duration: '~1h 15m', cost: '~CHF 65/person', when: '🆕 ~10:15–11:30, then an unhurried lunch', booking: 'funkychocolateclub.com — book ahead', notes: '🆕 It now has clear hours in front of the train instead of seventy minutes. 20 min walk each way from Interlaken Ost; 🧳 bags in the station lockers. Still the designated drop if anything slips, but for the first time it probably will not have to be.' },
+        { mode: '🚞', title: 'Interlaken Ost → Montreux', operator: '⭐ GOLDENPASS EXPRESS', duration: '3h 15m', cost: 'Pass + seat reservation CHF 20–35/person', when: '🆕 14:07 — departures are 09:07, 11:07, 14:07, 16:07', booking: 'gpx.swiss — 🔴 reserve the panoramic seats ahead', notes: '✅ NO LONGER A HARD DEADLINE. Take the 14:07 and reach Paris ~22:00, or skip the chocolate class, take the 11:07 and be in the Marais by ~20:15 with the evening intact. The 16:07 still does not work — it reaches Montreux ~19:20, after the last TGV Lyria out of Geneva. The signature ride: gauge-changing panoramic coaches over the Simmental to Lake Geneva.' },
         { mode: '🚂', title: 'Montreux → Geneva', operator: 'SBB InterCity', duration: '1h 5m', cost: 'Swiss Travel Pass', when: 'twice hourly', booking: '—', notes: 'Lakeside the whole way.' },
         { mode: '🚄', title: 'Geneva → Paris Gare de Lyon', operator: 'TGV Lyria', duration: '3h 10m', cost: '€45–90/person', when: 'last departure ~19:00 — 🔴 verify yours', booking: 'sncf-connect.com or tgv-lyria.com — book 3 months out', notes: 'Cheap fares vanish. Arriving Gare de Lyon ~22:00 puts you in the Marais by 22:45.' },
-        { mode: '🚇', title: 'Gare de Lyon → your Airbnb', operator: 'Metro L1/L14', duration: '15–20 min', cost: '€4.60 for 2', when: '—', booking: 'Navigo Easy card, or a carnet of 10', notes: 'Buy a Navigo Easy at the station — you need RER A tickets for Disney on both of the next two days.' }
+        { mode: '🚇', title: 'Gare de Lyon → your Airbnb', operator: 'Metro L1/L14', duration: '15–20 min', cost: '€4.60 for 2', when: '—', booking: 'Navigo Easy card, or a carnet of 10', notes: 'Buy a Navigo Easy at the station — you need RER A tickets for Disney on Sep 23 and Sep 25, and line 14 takes you to Orly on Sep 26.' }
       ]
     },
     alternatives: [
-      { label: 'Grindelwald → Basel → Paris by TGV', duration: '6h 30m', cost: '$180–300 for 2', verdict: 'ok', why: 'Two hours faster and slightly cheaper, but you skip the GoldenPass Express entirely. Take this only if the adventure morning overruns.' },
+      { label: 'Take the 11:07 GoldenPass and skip the chocolate class', duration: '~8h', cost: 'Same', verdict: 'ok', why: '🆕 Now a genuine option rather than a panic move. Paris by ~19:30 with an evening in hand. Take it if the weather is poor in Interlaken or you would rather have a first night in Paris than a chocolate bar.' },
+      { label: 'Grindelwald → Basel → Paris by TGV', duration: '6h 30m', cost: '$180–300 for 2', verdict: 'ok', why: 'Two hours faster and slightly cheaper, but you skip the GoldenPass Express entirely — and there is no longer any schedule pressure that would justify that trade.' },
       { label: 'Fly Zurich/Geneva → Paris', duration: '5h–6h door-to-door', cost: '$150–300 for 2', verdict: 'avoid', why: 'Barely faster once you add the rail leg to the airport plus security plus CDG into Paris — and it throws away the best train ride of the trip.' }
     ],
     watchOuts: [
-      '🔴 THIS IS THE ONE HARD DEADLINE ON THE TRIP. GoldenPass departures from Interlaken Ost are 09:07, 11:07, 14:07 and 16:07; you need the 14:07, because the 16:07 lands in Montreux after the last TGV Lyria has left Geneva. Everything on Sep 21 chains back from it.',
-      '🆕 The morning now has genuine slack: down from First by 10:30, bags 10:45, 11:00 train, and the chocolate workshop is optional padding you can drop without consequence. That was not true before the mountain cart came out.',
-      'Verify the GoldenPass and the last TGV Lyria against each other before you book — the whole chain hangs on that connection.',
-      'This is a long day. Eat before the TGV; the on-board options are thin.'
+      '✅ THE TRIP NO LONGER HAS A HARD DEADLINE. This day used to be the most fragile thing in the itinerary, with four mountain activities stacked in front of the 14:07. The second Grindelwald night moved all of them to Sep 21, and this is now a travel day with an optional chocolate class in it.',
+      'The 16:07 GoldenPass still does not work — it reaches Montreux ~19:20, after the last TGV Lyria out of Geneva. Your usable departures are 09:07, 11:07 and 14:07.',
+      'Verify the GoldenPass and the last TGV Lyria against each other before you book — the chain still hangs on that connection even with slack in front of it.',
+      'Eat before the TGV; the on-board options are thin.'
     ]
   },
 
-  // ---------------------------------------------------------- Sep 25
+  // ---------------------------------------------------------- Sep 26
   {
-    id: 'paris-london',
-    day: 25,
-    date: 'Fri Sep 25',
+    id: 'paris-madrid',
+    day: 26,
+    date: 'Sat Sep 26',
     from: 'Paris',
-    to: 'London',
-    fromEmoji: '🗼',
-    toEmoji: '🦕',
-    tag: 'Eurostar',
-    recommended: {
-      label: 'Eurostar Gare du Nord → St Pancras, mid-morning',
-      doorToDoor: '~4h door to door',
-      totalCost: '$140–320 for 2',
-      why: 'City centre to city centre with no airport at either end. Flying is 1h 20m in the air and 5h+ in practice, plus a UK border queue at the gate instead of in Paris.',
-      segments: [
-        { mode: '🚇', title: 'Airbnb → Gare du Nord', operator: 'Metro L4/L5', duration: '15–25 min', cost: '€4.60 for 2', when: 'arrive 75–90 min before departure', booking: 'Navigo Easy', notes: '⚠️ Eurostar closes check-in 30–45 min before departure and you clear BOTH French exit and UK entry controls in Paris. Do not treat it like a normal train.' },
-        { mode: '🚄', title: 'Paris Gare du Nord → London St Pancras', operator: 'Eurostar', duration: '2h 20m', cost: '€65–150/person', when: '⭐ 09:00–10:00 departure', booking: 'eurostar.com — 🔴 book 3+ months out; fares only go up', notes: 'Arrive London around midday, which leaves the Tower of London or Westminster genuinely doable that afternoon.' },
-        { mode: '🚶', title: 'St Pancras → hotel', operator: 'Walk, or one Tube stop', duration: '5–15 min', cost: '£0–7 for 2', when: '—', booking: 'Contactless bank card — no Oyster needed', notes: 'A King\'s Cross hotel makes this a walk, and puts Euston next door for tomorrow\'s Watford train.' }
-      ]
-    },
-    alternatives: [
-      { label: 'Fly CDG/ORY → LHR/LGW', duration: '1h 20m air, 5h–5h 30m door-to-door', cost: '$100–260 for 2', verdict: 'avoid', why: 'Two airport transfers plus a UK border queue on arrival. Slower and more stressful for roughly the same money.' },
-      { label: 'Bus + ferry via Calais', duration: '8h–10h', cost: '$60–120 for 2', verdict: 'avoid', why: 'You have two London nights. Do not spend one of the days on a coach.' }
-    ],
-    watchOuts: ['🔴 Eurostar fares climb steeply as the date approaches — this is one of the first things to book.', 'Passports, not ID cards. Post-Brexit UK entry requires the passport.']
-  },
-
-  // ---------------------------------------------------------- Sep 27
-  {
-    id: 'london-madrid',
-    day: 27,
-    date: 'Sun Sep 27',
-    from: 'London',
     to: 'Madrid',
-    fromEmoji: '🦕',
-    toEmoji: '🛫',
-    tag: 'must be today',
+    fromEmoji: '🗼',
+    toEmoji: '🏰',
+    tag: '🆕 replaces the London leg',
     recommended: {
-      label: 'Evening flight from Gatwick or Heathrow into Madrid',
-      doorToDoor: '~6h door to door',
-      totalCost: '$140–340 for 2',
-      why: 'There is no rail alternative worth considering for London→Madrid. The optimisation is airport choice: pick the one that is cheap AND reachable, and count the transfer cost, not just the fare.',
+      label: 'Metro line 14 straight to ORLY, then a 2-hour flight to Madrid',
+      doorToDoor: '~4h 30m door to door',
+      totalCost: '~$198 for 2',
+      why: '🆕 This single leg replaces BOTH the Eurostar to London and the London→Madrid flight, and it is the cheapest, shortest connection of the two cities. Orly beats Charles de Gaulle twice over: the flight is 2h00–2h05 instead of 2h05–2h15, and metro line 14 runs there DIRECT from central Paris in ~25 min, against ~50–60 min on the RER B with a change to reach CDG. Door to door the difference is close to half an hour, and the Orly fares here are lower too.',
       segments: [
-        { mode: '🚇', title: 'Hotel → the airport', operator: 'Gatwick Express / Piccadilly line / Stansted Express', duration: 'LHR 50 min by Tube · LGW 30 min from Victoria · STN 50 min from Liverpool St', cost: 'LHR £5.60pp Tube · LGW £20pp express · STN £20pp express', when: 'leave 4h before an international departure', booking: 'Contactless for the Tube; book express trains online for half price', notes: '⭐ Heathrow is the cheapest to reach (Piccadilly line, no premium fare) and often has the Iberia fare anyway. Stansted only wins if the Ryanair fare is €40+/person lower.' },
-        { mode: '✈️', title: 'London → Madrid (MAD)', operator: 'Iberia / British Airways / easyJet / Ryanair', duration: '2h 20m', cost: '€55–150/person', when: 'evening departure after the museum morning', booking: 'iberia.com / easyjet.com — 6–8 weeks out', notes: '🔴 It MUST be Sep 27. The Sep 29 Lima flight leaves at 11:00, and you need a buffer night in Madrid before it.' },
-        { mode: '🚇', title: 'MAD → hotel', operator: 'Metro L8, or taxi', duration: '30–45 min', cost: '€10 for 2 by metro · €35 flat by taxi', when: '—', booking: 'Multi card', notes: 'Landing late — an airport-adjacent hotel for the final night is genuinely the smart move, and Barajas hotels run free shuttles.' }
+        { mode: '🚇', title: 'Airbnb → Paris-Orly', operator: 'Metro line 14 (direct)', duration: '~25 min from central Paris', cost: '~€23 for 2', when: 'leave 2h 30m before departure', booking: 'Navigo Easy, or the Orly fare at the machine', notes: '⭐ Line 14 was extended to Orly and runs with no change from Châtelet or Gare de Lyon. This is the whole reason to prefer Orly over CDG with luggage.' },
+        { mode: '✈️', title: 'Paris Orly (ORY) → Madrid (MAD)', operator: '⭐ Iberia 584, or Air Europa 1028', duration: '2h 00m – 2h 05m', cost: '~$99/person', when: '⭐ Iberia 07:25 → 09:30 · Air Europa 10:55 → 12:55 (the fastest at 2h00)', booking: 'iberia.com / aireuropa.com — 6–8 weeks out', notes: '🧳 BOTH INCLUDE A FULL CABIN BAG, so your two 10 kg trolleys fly free. Transavia is ~$45 cheaper on paper (06:35 and 21:20 departures) but charges for the trolleys, which erases the saving entirely. The 07:25 keeps the whole Madrid day; the 10:55 is the lie-in.' },
+        { mode: '🚇', title: 'MAD → hotel near Atocha', operator: 'Metro L8 + L1, or taxi', duration: '35–45 min', cost: '€10 for 2 by metro · €35 flat by taxi', when: '—', booking: 'Multi card', notes: '🆕 An Atocha hotel, NOT an airport hotel — you arrive in the morning, not at midnight, and Atocha is where the Toledo AVE leaves from tomorrow.' }
       ]
     },
     alternatives: [
-      { label: 'Fly Sep 28 instead', duration: 'same', cost: 'same', verdict: 'avoid', why: '🔴 Removes your entire buffer before an 11:00 intercontinental departure. One delay and you miss a booked, paid Lima flight.' },
-      { label: 'Train London → Paris → Madrid', duration: '20h+ with an overnight', cost: '$300–500 for 2', verdict: 'avoid', why: 'Slower and more expensive than flying, and there is no through sleeper to Madrid any more.' }
+      { label: 'Fly from CDG instead of Orly', duration: '~5h door-to-door', cost: '$176–500 for 2', verdict: 'ok', why: 'It works, and the Iberia 06:00 from CDG is the single cheapest fare (~$176 for 2). But the transfer is twice as long with bags and the fares are otherwise higher. Only worth it if a CDG fare comes in dramatically cheaper.' },
+      { label: 'Transavia from Orly', duration: 'same', cost: '$153 for 2 + bag fees', verdict: 'avoid', why: '🧳 ~$45 cheaper on the fare, then ~€25–35 per trolley per flight. With two trolleys the saving is gone and you have paid for the privilege of a 06:35 departure.' },
+      { label: 'Train Paris → Barcelona → Madrid', duration: '12h+', cost: '$300–500 for 2', verdict: 'avoid', why: 'Two high-speed legs and a change, for four times the journey time. Keep this in your back pocket only as the fallback if French ATC strike action grounds flights.' }
     ],
-    watchOuts: ['🦕 Natural History Museum opens at 10:00 — do it in the morning, then collect bags. Do not book a flight before ~17:00.', 'Confirm which London airport BEFORE booking the Madrid hotel; an airport hotel only makes sense with a late arrival.']
+    watchOuts: [
+      '⚠️ FRENCH AIR TRAFFIC CONTROL STRIKES are the real risk on this leg, not ordinary cancellation — Paris–Madrid is one of Europe\'s densest corridors, with ~15–20 direct flights a day, so a normal cancellation is easily rebooked. A strike day is different: it can cancel 20–40% of departures at once. ✅ This is precisely why the third Madrid night exists — a Sep 26 problem costs you a day trip, not the Lima flight.',
+      '🆕 Take the earliest flight you will tolerate. If the 07:25 is cancelled, eight more departures follow that same day. If you book the 20:55 and it goes, you have nothing left.',
+      'Book an Atocha-area hotel, not an airport one — check whether you want Toledo (Atocha) or Segovia (Chamartín) first.'
+    ]
   },
 
   // ---------------------------------------------------------- Sep 29
