@@ -72,8 +72,8 @@ const FLIGHTS = {
     ]
   },
   intraEurope: [
-    { leg: "Madrid → Barcelona", method: "🚄 AVE high-speed train", cost: "$60–140 for 2", notes: "2h30 city-centre to city-centre. Sep 3 morning. Book at renfe.com — cheaper than flying once you count airport transfers." },
-    { leg: "Barcelona → Madrid", method: "🚄 AVE high-speed train", cost: "$60–140 for 2", notes: "Sep 4 evening return. Book both directions together." },
+    { leg: "Madrid → Barcelona", method: "🚄 AVE high-speed train — ✅ PAID", cost: "✅ $243 for 2, both legs", notes: "✅ BOUGHT. 2h30 city-centre to city-centre, Sep 2 late afternoon on landing day. The $243 covers this leg AND the Sep 4 return." },
+    { leg: "Barcelona → Madrid", method: "🚄 AVE high-speed train — ✅ PAID", cost: "✅ included in the $243", notes: "✅ BOUGHT. 🆕 Sep 4 MORNING (not evening) — you go straight to your Madrid event. 🔴 Verify which departure you hold: if the event starts before midday you want the ~07:00, not the 09:00." },
     { leg: "Madrid → Craiova", method: "✈️ Flight — ✅ BOOKED", cost: "Booked", notes: "Sep 5, departs 8:00pm, lands ~midnight. Arrange an airport pickup in advance — arriving at midnight with no plan is the one avoidable stress of this trip." },
     { leg: "Craiova → Istanbul", method: "🚗 Overland + ✈️ direct flight", cost: "$170–330 for 2", notes: "Sep 8. ⭐ Two separate tickets beats one: go overland Craiova→Bucharest OTP (3h by private car, or 3h15 train + airport bus), then a DIRECT OTP→IST flight (1h30, Turkish Airlines). A single connecting ticket out of Craiova routes you through a western hub — 10–14h and more expensive. Fly into IST, not Sabiha Gökçen. See the route planner for the full breakdown." },
     { leg: "Istanbul → Cappadocia", method: "✈️ Domestic flight", cost: "$80–160 for 2", notes: "🆕 Sep 10 evening. IST→Nevşehir (NAV, 40min from Göreme) or Kayseri (ASR, 1h15 but more flights and often cheaper). 1h20 in the air, Turkish Airlines or AJet. Take an evening departure so you keep the Bosphorus cruise and the hamam." },
@@ -106,24 +106,26 @@ const ITINERARY = [
     transport: { from: "Lima (LIM)", how: "✅ BOOKED — Plus Ultra PU 0302, PNR XYJSDU. Departs Lima Tue Sep 1 at 18:10, lands Madrid Wed Sep 2 at 12:45 (11h 35m, direct, overnight). 🆕 Straight on to the AVE — you sleep in Barcelona tonight, not Madrid." },
     dayByDay: [
       { day: "Sep 2 (Wed)", plan: "✅ Land Madrid 12:45 (Plus Ultra PU0302 out of Lima the previous evening). Immigration + Cercanías to Atocha, there by ~15:00. 🆕 AVE ~16:30 → Barcelona Sants ~19:00, hotel by 19:30. 🧳 Bags go straight into the room — nothing on your back today. Evening: a short Gothic Quarter walk and dinner, then sleep. Do not try to sightsee Madrid on this day; Madrid gets Sep 4, Sep 5 and the whole of Sep 28." },
-      { day: "Sep 3 (Thu)", plan: "🆕 THE CLEAN BARCELONA DAY — you are based here, so this is the one full day on the trip with zero bags in hand. ⛪ SAGRADA FAMÍLIA at the 09:00 first-entry slot. Late morning: Park Güell (uphill — much easier empty-handed). Afternoon: Gothic Quarter + La Boqueria. Evening: Barceloneta beach + seafood dinner. Back to the same hotel." },
+      { day: "Sep 3 (Thu)", plan: "🆕 THE CLEAN BARCELONA DAY — you are based here, so this is the one full day on the trip with zero bags in hand. ✅ REBUILT AROUND THE REAL TICKET: Sagrada Família is 11:45 with the TOWER at 12:30, not 09:00. So the order flips. 🌿 09:30 PARK GÜELL first — it opens 09:30, it's uphill, and the morning is cooler and emptier than midday. Out by ~11:00. Bus/metro across (~25 min). ⛪ 11:45 SAGRADA FAMÍLIA — do the nave first, you have 45 minutes and that is enough. 🗼 12:30 TOWER — be at the tower base 10 minutes early, the slot is separate from your entry slot and non-transferable. Down by ~13:15. Late lunch in the Eixample. Afternoon: Gothic Quarter + La Boqueria. Evening: Barceloneta beach + seafood dinner. Back to the same hotel." },
       { day: "Sep 4 (Fri)", plan: "🆕 Checkout, straight to Sants, morning AVE → Madrid Atocha (2h30). Drop bags at the Madrid hotel on arrival. 📅 YOUR MADRID EVENT — day 1. ⚠️ If the event starts before midday, take the ~07:00 departure (Sants 07:00 → Atocha 09:30), not the 09:00 one." },
       { day: "Sep 5 (Sat)", plan: "📅 YOUR MADRID EVENT — day 2. 🧳 Checkout is ~11:00 but the flight is not until 20:00, so leave the bags with the hotel (free) — do NOT plan to carry them through the event. If the venue is far from the hotel, use a Bounce or Stasher point near it instead (~€2/bag). Collect by 16:30. Airport by 17:30. ✈️ 8:00pm flight Madrid→Craiova, lands ~midnight." }
     ],
     highlights: [
-      { icon: "⛪", text: "Sagrada Família — Gaudí's masterpiece, the whole reason for the Barcelona hop", cost: "€26/person (€36–44 with towers)" },
-      { icon: "🚄", text: "AVE high-speed train Madrid↔Barcelona — 2h30, 300km/h, city centre to city centre", cost: "$60–140 for 2 each way" },
+      { icon: "⛪", text: "Sagrada Família + TOWER — ✅ PAID. Gaudí's masterpiece, the whole reason for the Barcelona hop. Entry 11:45, tower 12:30.", cost: "✅ $82 total for 2, towers included" },
+      { icon: "🚄", text: "AVE high-speed train Madrid↔Barcelona — ✅ PAID. 2h30, 300km/h, city centre to city centre, both directions.", cost: "✅ $243 total for 2, round trip" },
       { icon: "🥘", text: "Mercado de San Miguel — Madrid's best tapas market, perfect first-night jet-lag dinner", cost: "$25–40/person" },
       { icon: "🏛️", text: "Retiro Park + Plaza Mayor + Puerta del Sol — free, walkable, ideal jet-lag day", cost: "Free" },
       { icon: "🌿", text: "Park Güell — Gaudí mosaic terraces over the city", cost: "€10/person" }
     ],
     tips: [
       "🆕 WHY THIS LEG WAS FLIPPED: the old plan had you checking out of Barcelona at 11:00 on Sep 4 and then doing Park Güell and an evening train with two trolleys and two backpacks in hand. Barcelona now gets both nights, so Sep 3 is bag-free, and you move to Madrid on the morning of Sep 4 for your event. Same 3 nights, same 3 bag-moves — but no sightseeing day is spent carrying luggage.",
-      "🔴 REBOOK: Sagrada Família moves to THU SEP 3, 09:00. If you already hold a Sep 4 ticket, change it now — sagradafamilia.org, September mornings sell out weeks ahead.",
+      "✅ SAGRADA FAMÍLIA IS PAID — Thu Sep 3, entry 11:45, TOWER 12:30, $82 for the two of you. $41/person with towers is a good price; the tower add-on is normally €36–44/person all-in.",
+      "🗼 THE TOWER SLOT IS SEPARATE FROM YOUR ENTRY SLOT and it is non-transferable — miss 12:30 and it is gone, refund included. Be at the tower base by 12:20. You go UP by lift and come DOWN a narrow spiral staircase: no bags, no big camera, and skip it if either of you dislikes heights or tight stairs. Ask which facade when you check in — the Nativity tower is the better view of the two.",
+      "🔄 THE DAY ORDER FLIPPED because of that 11:45 slot. Park Güell now goes FIRST (opens 09:30, uphill, and far cooler and emptier before 11:00), then you cross to the Sagrada. This is better than the old 09:00-Sagrada version — Park Güell was always the wrong thing to do at midday in September heat.",
       "🛫 You leave Lima on Tue Sep 1 at 18:10 — the trip effectively starts a day before the itinerary does. Be at Jorge Chávez by 15:00.",
       "Sep 2 is a half day that is entirely consumed by getting to Barcelona: land 12:45, Atocha by 15:00, AVE ~16:30, hotel 19:30. Book nothing on it except dinner.",
-      "🚄 Book both AVE legs together (Sep 2 Madrid→Barcelona evening, Sep 4 Barcelona→Madrid morning) — Renfe prices round-trips lower. Compare Iryo and Ouigo on the same route: often 30–50% cheaper.",
-      "📅 Tell me the Sep 4 event start time if it's before midday — the AVE choice changes from the 09:00 to the 07:00 departure.",
+      "✅ THE AVE IS PAID — $243 for both directions for the two of you (Sep 2 Madrid→Barcelona, Sep 4 Barcelona→Madrid). That is ~$61/person per leg, inside the $120–280 round-trip estimate this plan carried.",
+      "🔴 NOW THE ONE OPEN ITEM IN SPAIN: check which Sep 4 Barcelona→Madrid departure you actually hold, against when your event starts. If the event begins before midday you want the ~07:00, not the 09:00. A Renfe time change is cheap while the date is far out and expensive near it — do this in the same sitting as reading this line.",
       "🧳 Sep 5 is the only day in Spain where you're between accommodations. Madrid's Atocha station consigna CLOSED years ago, so 'lockers at the station' is not an option — use free hotel storage, or Stasher/Bounce (~€1.50–2.50 per bag per day, 200+ points around Sol and Gran Vía).",
       "Sep 5: leave for Barajas by 5:30pm at the latest for the 8pm Craiova flight.",
       "🔴 Book a Craiova airport pickup BEFORE you fly — you land at midnight and taxis are scarce."
@@ -611,7 +613,7 @@ const TICKETS = [
     city: "Spain",
     flag: "🇪🇸",
     attractions: [
-      { name: "Sagrada Família — ✅ PAID", price: "✅ $82 total for 2 (paid)", note: "✅ BOUGHT. Thu Sep 3. Came in at $41/person, so you're on the basic entry rather than the towers — that's the right call, the towers add a timed lift slot that would tighten the 09:00 start. Keep the QR handy; entry is timed and they do enforce it." },
+      { name: "Sagrada Família + TOWER — ✅ PAID", price: "✅ $82 total for 2, towers included", note: "✅ BOUGHT. Thu Sep 3 — entry 11:45, TOWER 12:30. $41/person WITH the tower is a good price (the tower ticket normally runs €36–44/person all-in). 🗼 The 12:30 tower slot is separate from the 11:45 entry and non-transferable — be at the tower base by 12:20. Up by lift, down a narrow spiral staircase: no bags, and skip it if either of you dislikes heights." },
       { name: "Park Güell", price: "€10/person", note: "parkguell.barcelona. Optional if the morning runs long." },
       { name: "AVE Madrid↔Barcelona — ✅ PAID", price: "✅ $243 total for 2, both directions (paid)", note: "✅ BOUGHT. Sep 2 Madrid→Barcelona and Sep 4 Barcelona→Madrid, 2h30 each way. ~$61/person per leg — a fair price for locking in the dates that carry your Sep 4–5 event. 🔴 Check the Sep 4 departure time against when your event starts: if it starts before midday you want the ~07:00, not the 09:00." },
       { name: "Royal Palace of Madrid", price: "€14/person", note: "🆕 Sep 26 afternoon — with three final nights there's now time to go inside, not just walk past." },
@@ -637,7 +639,7 @@ const AQUARIUMS = [
     highlights: "80-meter transparent underwater tunnel — sharks, rays and moray eels directly overhead. 35 tanks, 11,000 fish, 450+ species.",
     size: "35 tanks, 36m Oceanarium",
     duration: "1.5–2h",
-    verdict: "🆕 NOW PLAUSIBLE — the Spain flip gave Barcelona a second night, so Sep 3 is a full bag-free day instead of a half one. Sagrada Família at 09:00 still owns the morning, but the aquarium is a 1.5–2h afternoon swap against Park Güell. Still a genuine either/or, not a bonus.",
+    verdict: "⚠️ TIGHTER THAN IT LOOKED — the real Sagrada ticket is 11:45 with the tower at 12:30, so the middle of Sep 3 is now spoken for and Park Güell moved to the 09:30 opening. The aquarium would have to displace the Gothic Quarter or Barceloneta in the late afternoon. Doable, but it is a straight either/or, not a bonus.",
     rating: 4,
     onRoute: true
   },
@@ -806,8 +808,8 @@ const DINING = [
 const SPENT = {
   updated: "Aug 3, 2026",
   items: [
-    { what: "🚄 AVE Madrid↔Barcelona, both directions (2 pax)", when: "Sep 2 + Sep 4", amount: 243, note: "~$61/person per leg. Locks in the dates that carry your Sep 4–5 Madrid event." },
-    { what: "⛪ Sagrada Família entry (2 pax)", when: "Thu Sep 3, 09:00", amount: 82, note: "$41/person — basic entry, no towers. Timed slot, and it is enforced." },
+    { what: "🚄 AVE Madrid↔Barcelona, both directions (2 pax)", when: "Sep 2 + Sep 4", amount: 243, note: "Round trip, both legs, both people — ~$61/person per leg. Inside the $120–280 round-trip estimate the plan carried. 🔴 Still to check: whether the Sep 4 departure is early enough for your Madrid event." },
+    { what: "⛪ Sagrada Família + tower (2 pax)", when: "Thu Sep 3 · entry 11:45 · tower 12:30", amount: 82, note: "$41/person WITH the tower — a good price; that add-on normally runs €36–44/person all-in. Both slots are timed and the tower one is separate and non-transferable." },
     { what: "✈️ Lima ↔ Madrid round-trip, Plus Ultra (2 pax)", when: "Sep 1 out · Sep 29 back", amount: null, note: "✅ BOOKED — PNR XYJSDU. Price never recorded here. Budget carries $1,300–1,800; replace that with the real figure when you have it." },
     { what: "✈️ Madrid → Craiova (2 pax)", when: "Sat Sep 5, 20:00", amount: null, note: "✅ BOOKED. Price never recorded here." },
     { what: "🍽️ Le Jules Verne (2 pax)", when: "Thu Sep 24, 20:00", amount: null, note: "✅ BOOKED. Budget carries $660–740. This is the single largest committed line after the long-haul flights." }
@@ -876,7 +878,7 @@ const BOOKINGS = [
   { priority: 3, what: "🆕 Cave hotel, Göreme or Uçhisar — 2 nights (Sep 10 + 11)", when: "🔴 NOW", urgency: "critical", note: "🆕 Ask for an east-facing terrace room: you watch Saturday's balloons rise over breakfast even after flying on Friday. Confirm they run the 04:30 balloon pickup and a late check-in for the Thursday evening arrival.", estimatedCost: "$130–200/night" },
   { priority: 4, what: "🆕 Flight Rome (FCO) → Geneva (GVA), Fri Sep 18 morning", when: "🔴 NOW", urgency: "critical", note: "easyJet / ITA / Swiss, 1h50. Take a departure before ~11:00 so the Geneva→Zermatt train (3h40) lands you in the village before the ski-rental shops close.", estimatedCost: "$100–220 for 2" },
   { priority: 5, what: "Craiova midnight airport pickup (Sep 5)", when: "🔴 THIS WEEK", urgency: "critical", note: "You land at ~midnight. Taxis are scarce at Craiova at that hour. Arrange a transfer through your hotel now.", estimatedCost: "$25–50" },
-  { priority: 6, what: "✅ DONE — Sagrada Família, THU SEP 3", when: "✅ Paid", urgency: "medium", note: "✅ BOUGHT — $82 for the two of you, basic entry (no towers). Timed slot and they enforce it, so be at the door on time. Nothing left to do but keep the QR codes offline on your phone.", estimatedCost: "✅ $82 paid" },
+  { priority: 6, what: "✅ DONE — Sagrada Família + TOWER, THU SEP 3 (entry 11:45 · tower 12:30)", when: "✅ Paid", urgency: "medium", note: "✅ BOUGHT — $82 for the two of you, towers included. 🔄 The 11:45 slot flipped the day: Park Güell now goes first at 09:30, then you cross to the Sagrada. 🗼 The 12:30 tower is a SEPARATE, non-transferable slot — be at the tower base by 12:20. Keep both QR codes offline on your phone.", estimatedCost: "✅ $82 paid" },
   { priority: 7, what: "🆕 Craiova → Bucharest OTP private transfer (Sep 8 morning)", when: "1–2 weeks ahead", urgency: "high", note: "🆕 3h by car, ~€90–130 for the two of you, hotel door to terminal. Book through the Craiova hotel or the wedding hosts. The train + airport bus is far cheaper but CFR runs late routinely — and this is the morning after two wedding days.", estimatedCost: "€90–130 total" },
   { priority: 8, what: "🪂 Tandem paraglide, Beatenberg/Interlaken — SUN SEP 20 midday", when: "1 month ahead, WITH free cancellation", urgency: "high", note: "🆕 NEW. ~CHF 180–190/person, 20–30 min over Lake Thun and Lake Brienz with the Jungfrau massif behind — the green-and-lakes flight, chosen over the Grindelwald First flight (higher and more dramatic at the Eiger north face, but no lakes and ~CHF 50/person more). Operators: Paragliding Interlaken, Twin Paragliding, Skywings. Book an EARLY slot and insist on free cancellation — it is weather-dependent and gets scrubbed for wind. If cancelled, Harder Kulm gives you the same panorama by funicular the same afternoon.", estimatedCost: "~CHF 180–190/person" },
   { priority: 9, what: "🍫 Funky Chocolate Club workshop, Interlaken — 🆕 TUE SEP 22, ~10:15", when: "2–3 weeks ahead", urgency: "medium", note: "🆕 MOVED off the old deadline day. Make-your-own-bar class, ~1h15, 20 min walk from Interlaken Ost, bags in the station lockers. It now has clear hours in front of the 14:07 GoldenPass instead of seventy minutes. Still the designated drop if anything slips. funkychocolateclub.com", estimatedCost: "~CHF 65/person" },

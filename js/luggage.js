@@ -39,7 +39,7 @@ const LUGGAGE = {
 
     { day: 3, date: "Thu Sep 3", city: "Barcelona", status: "free",
       headline: "🆕 The clean day — zero bags in hand",
-      action: "You sleep in the same hotel on Sep 2 and Sep 3, so Sagrada Família, Park Güell, the Gothic Quarter and Barceloneta are all done empty-handed. This is the entire reason the Spain leg was restructured.",
+      action: "You sleep in the same hotel on Sep 2 and Sep 3, so Park Güell, Sagrada Família, the Gothic Quarter and Barceloneta are all done empty-handed. This is the entire reason the Spain leg was restructured. 🗼 It matters more than usual on this day: the Sagrada tower at 12:30 comes DOWN a narrow spiral staircase, and they will not let you take a trolley up it.",
       cost: "Free" },
 
     { day: 4, date: "Fri Sep 4", city: "Barcelona → Madrid", status: "move",
