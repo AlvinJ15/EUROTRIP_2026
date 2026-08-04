@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/routes.css" />
   <link rel="stylesheet" href="styles/luggage.css" />
+  <link rel="stylesheet" href="styles/spent.css" />
   <link rel="stylesheet" href="styles/calendar.css" />
 </head>
 <body>
@@ -264,7 +265,8 @@
   <section id="budget" style="background:linear-gradient(135deg,#f8fafc,#e0f2fe);">
     <div class="section">
       <h2 class="section-title">💵 Budget Breakdown</h2>
-      <p class="section-subtitle">$14,000 for 2 persons — Option B open-jaw September saves ~$600 on flights alone</p>
+      <p class="section-subtitle">$14,000 for 2 persons — what's estimated, and what's actually been paid</p>
+      <div id="spent-tracker"></div>
       <div style="overflow-x:auto; border-radius:var(--radius-lg); box-shadow:var(--shadow); margin-bottom:36px;">
         <table class="budget-table">
           <thead><tr><th style="width:40%">Category</th><th>Min ($)</th><th>Max ($)</th><th>Notes</th></tr></thead>

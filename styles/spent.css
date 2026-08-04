@@ -1,0 +1,146 @@
+/* ============================================================
+   SPENT TRACKER
+   Real money already paid, kept visually separate from the
+   estimate table it sits above. Green = confirmed figures;
+   the muted block below = booked but never priced.
+   Shares the palette tokens from main.css.
+   ============================================================ */
+
+.spent-card {
+  max-width: 900px;
+  margin: 0 auto 36px;
+  padding: 24px 26px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #3fa66a;
+  border-radius: var(--radius, 14px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.spent-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.spent-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text, #12232e);
+}
+.spent-total {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #2f8a55;
+  text-align: right;
+}
+.spent-total span {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-soft, #667);
+}
+
+.spent-bar {
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+.spent-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3fa66a, #62c48a);
+}
+.spent-sub {
+  margin: 8px 0 18px;
+  font-size: 0.86rem;
+  color: var(--text-soft, #566);
+}
+
+.spent-sub-head {
+  margin: 22px 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft, #667);
+}
+
+.spent-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spent-item {
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.09);
+}
+.spent-item:last-child { border-bottom: 0; }
+
+.spent-item-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.spent-what {
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: var(--text, #12232e);
+}
+.spent-amount {
+  font-weight: 800;
+  font-size: 1.02rem;
+  color: #2f8a55;
+  white-space: nowrap;
+}
+.spent-when {
+  margin-top: 2px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-soft, #778);
+}
+.spent-note {
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-soft, #566);
+}
+
+/* booked, but the price was never written down */
+.spent-item.is-unpriced .spent-amount {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8a6410;
+  background: #fdf4e0;
+  border: 1px solid #ecd7a4;
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.spent-caveat {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #5c4415;
+  background: #fff8e6;
+  border: 1px solid #f0d493;
+  border-radius: 10px;
+}
+
+@media (max-width: 560px) {
+  .spent-head { flex-direction: column; align-items: flex-start; }
+  .spent-total { text-align: left; }
+}
