@@ -89,7 +89,7 @@ const LUGGAGE = {
 
     { day: 20, date: "Sun Sep 20", city: "Zermatt → Interlaken → Grindelwald", status: "tight",
       headline: "🔴 You cannot paraglide holding a suitcase",
-      action: "Gornergrat moved to Sep 19, so this is a clean early transfer. Check out of Zermatt, take the ~09:30 train, and put all four bags in the lockers at Interlaken Ost on arrival (~11:30). Paraglide from Beatenberg 12:00–14:00 — the minibus up and the landing field are both in Interlaken, so the station stays your anchor. Collect around 14:30, train on to Grindelwald, and the bags are in the room before Pfingstegg. 🆕 You now check into that room for TWO nights, so this is the last time you touch the bags until Sep 22.",
+      action: "🔴 TAKE THE ~08:15 TRAIN, NOT THE 09:30. Gornergrat moved to Sep 19, so the morning is free — use it. Arrive Interlaken Ost ~10:30 and put all four bags in the station lockers WITHOUT rushing, because the operator's office is a ~15-min walk away in central Interlaken and the paraglide slot is ~13:00. The old version landed you at 11:30 for a 12:00 flight: thirty minutes to store four bags and cross town. Collect ~15:30, train on to Grindelwald, bags in the room by ~16:00, then Pfingstegg. 🆕 You check into that room for TWO nights, so this is the last time you touch the bags until Sep 22.",
       cost: "CHF 6–12 for the lockers at Interlaken Ost" },
 
     { day: 21, date: "Mon Sep 21", city: "Grindelwald", status: "free",

@@ -473,12 +473,12 @@ const ROUTES = [
       label: '🆕 Zermatt → Visp → Interlaken Ost (paraglide) → Grindelwald',
       doorToDoor: '~2h 15m of rail, split by a 2h stop in Interlaken',
       totalCost: 'Rail covered by the Swiss Travel Pass',
-      why: '🆕 Rebuilt as a morning departure with a deliberate stop. Gornergrat moved to Sep 19, which frees this morning — so instead of arriving Grindelwald exhausted at dusk, you leave at 09:30, break the journey in Interlaken for the Beatenberg paraglide, and still check in by 15:15 with the whole Pfingstegg afternoon ahead.',
+      why: 'Rebuilt as a morning departure with a deliberate stop. Gornergrat moved to Sep 19, which frees this whole morning — so instead of arriving Grindelwald exhausted at dusk, you break the journey in Interlaken for the Beatenberg paraglide and still check in by ~16:00 with Pfingstegg ahead. 🔴 CORRECTED: take the ~08:15 from Zermatt, not the 09:30. A paraglide is 2h–2h30 door to door, not one hour, and the operator meets you in central Interlaken rather than at the station — so the earlier train is what turns this from a 30-minute scramble into a normal day.',
       segments: [
-        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: '🆕 take the ~09:30 — this is now a morning departure', booking: '—', notes: 'Gornergrat happens on Sep 19 afternoon instead, which is what makes this early start possible.' },
-        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly, arrive ~11:30', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change is genuinely enough.' },
-        { mode: '🪂', title: 'Beatenberg tandem paraglide', operator: 'Paragliding Interlaken / Twin / Skywings', duration: '~2h total, 20–30 min airborne', cost: '~CHF 180–190/person', when: '~12:00–14:00', booking: 'Book direct with free cancellation — weather-dependent', notes: '🧳 Bags stay in the Interlaken Ost lockers. The minibus up and the landing field are both in Interlaken, so the station is your anchor the whole time.' },
-        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min; collect bags ~14:30', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts at 08:00 tomorrow.' }
+        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: '🔴 take the ~08:15 — NOT the 09:30', booking: 'Check exact times on sbb.ch nearer the date', notes: '🔴 CORRECTED. The 09:30 put you at Interlaken Ost at 11:30 for a 12:00 paraglide slot — 30 minutes to store four bags and walk 15 min to an office that is not at the station. Leaving an hour earlier costs you nothing and buys the whole margin.' },
+        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly, arrive ~10:30', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change at Visp is genuinely enough.' },
+        { mode: '🪂', title: 'Beatenberg tandem paraglide', operator: 'Paragliding Interlaken / Twin / Skywings', duration: '🔴 2h–2h30 door to door, 20–30 min airborne', cost: '~CHF 180–190/person', when: '🔴 book the ~13:00 slot', booking: 'Book direct, free cancellation, and ASK WHERE THEY MEET YOU', notes: '🔴 THE FLIGHT IS THE SHORT PART: check-in and weigh-in 15 min · minibus up 25–30 min · briefing and waiting 15–30 min · flight 20–30 min · landing and photos 15 min. ⚠️ Most operators meet at their office in central Interlaken near Höhematte, ~15 min walk from Ost — but several collect at Interlaken Ost itself, which removes the tightest part of this day. Ask. 🧳 Bags stay in the Ost lockers throughout.' },
+        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min; collect bags ~15:30, check in ~16:00', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts at 08:00 tomorrow. Pfingstegg still fits before it closes ~17:00.' }
       ]
     },
     alternatives: [
@@ -486,8 +486,9 @@ const ROUTES = [
       { label: 'Zermatt → Grindelwald via the Glacier Express', duration: '8h+', cost: 'Pass + CHF 49 reservation', verdict: 'avoid', why: 'The Glacier Express runs the wrong way, towards St. Moritz. Your scenic train is the GoldenPass Express tomorrow.' }
     ],
     watchOuts: [
-      '🪂 If the paraglide is cancelled for wind, take the Harder Kulm funicular instead — same two-lake panorama from the ground, 10 min from the station, 50% off with the pass. You lose the flight, not the afternoon.',
-      '🛷 Aim to be on the Pfingstegg cable car by 15:45; the toboggan closes around 17:00 in September.'
+      '✅ SEP 21 IS THE BACKUP. If today is windy, cancelled or simply runs late, fly tomorrow morning from Interlaken (35 min from Grindelwald) and push First to the afternoon — the gondola runs to ~17:00–18:00. A two-day window is the strongest protection a weather-dependent activity can have, and the second Grindelwald night is what created it.',
+      '🪂 If BOTH days blow out, take the Harder Kulm funicular — same two-lake panorama from the ground, 10 min from the station, 50% off with the pass. You lose the flight, not the view.',
+      '🛷 Aim to be on the Pfingstegg cable car by ~16:15; the toboggan closes around 17:00 in September. This is the day\'s designated drop if anything slips — it is three minutes of fun, not the reason you came.'
     ]
   },
 
