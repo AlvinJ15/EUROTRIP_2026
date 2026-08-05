@@ -186,7 +186,7 @@ const ROUTES = [
     recommended: {
       label: '🆕 AVE Madrid Atocha → Barcelona Sants, late-afternoon departure on landing day',
       doorToDoor: '~3h 15m door to door',
-      totalCost: '$60–140 for 2',
+      totalCost: '✅ PAID — $243 for 2, BOTH directions',
       why: 'Flying MAD→BCN is 1h15 in the air but 4h+ door-to-door once you add two airport transfers and security. The train puts you in the middle of Barcelona with no transfer at either end. This is not close.',
       segments: [
         { mode: '🚆', title: 'Barajas T4 → Madrid Atocha', operator: 'Cercanías C-1 (or Metro L8 + L1)', duration: '~35 min', cost: '€2.60/person on Cercanías', when: 'land 12:45, clear immigration ~13:45, at Atocha ~15:00', booking: 'Buy at the station', notes: '🆕 You go straight from the plane to the train — no Madrid hotel on Sep 2 any more. Cercanías runs from inside T4, which is why it beats a taxi with four bags.' },
@@ -200,7 +200,7 @@ const ROUTES = [
     ],
     watchOuts: [
       '🧳 This is a bag-move day by design. Nothing is scheduled in Madrid — you land, you cross the city, you ride to Barcelona, you check in. Trying to squeeze Retiro or Plaza Mayor in between means doing it with two trolleys after an 11h35 overnight flight.',
-      '⏰ Do not book the last AVE of the evening. If your inbound is delayed you want a later train to fall back to, and the Sep 3 Sagrada Família slot is at 09:00.',
+      '✅ PAID — $243 for both directions for the two of you. ⏰ The Sep 3 Sagrada Família slot is 11:45 with the tower at 12:30, so even a fairly late arrival on Sep 2 still leaves the morning intact.',
       'Book the outbound AVE and the Sep 4 return together — Renfe prices round-trips lower.'
     ]
   },
@@ -218,7 +218,7 @@ const ROUTES = [
     recommended: {
       label: '🆕 AVE Barcelona Sants → Madrid Atocha, morning departure',
       doorToDoor: '~3h 15m door to door',
-      totalCost: '$60–140 for 2',
+      totalCost: '✅ PAID — $243 for 2, BOTH directions',
       why: '🆕 Flipped from an evening train to a morning one. The old plan had you checking out at 11:00 and then doing Park Güell and a night train with all four bags in hand. Now Barcelona holds both nights, Sep 3 is bag-free, and this leg is a clean morning transfer that delivers you to Madrid in time for your event.',
       segments: [
         { mode: '🚇', title: 'Hotel → Barcelona Sants', operator: 'Metro L3/L5', duration: '10–15 min', cost: 'T-Casual', when: 'check out ~07:30, be at Sants 30 min before departure', booking: '—', notes: '🧳 Bags come straight from the room to the train. No storage needed anywhere on this day — that is the whole point of the restructure.' },

@@ -453,6 +453,45 @@ function renderDining() {
   `).join('');
 }
 
+// Shows real money already out the door, kept visually distinct from the
+// estimate table below it. Items with amount === null are booked but their
+// price was never recorded — they are listed rather than hidden, so the
+// confirmed total reads as a floor instead of a complete figure.
+function renderSpent() {
+  const box = document.getElementById('spent-tracker');
+  if (!box || typeof SPENT === 'undefined') return;
+
+  const confirmed = SPENT.items.filter(i => i.amount != null);
+  const pending = SPENT.items.filter(i => i.amount == null);
+  const paid = confirmed.reduce((sum, i) => sum + i.amount, 0);
+  const pct = Math.min(100, Math.round((paid / TRIP.budget) * 100));
+
+  const row = i => `
+    <li class="spent-item${i.amount == null ? ' is-unpriced' : ''}">
+      <div class="spent-item-main">
+        <span class="spent-what">${i.what}</span>
+        <span class="spent-amount">${i.amount == null ? 'booked · price not recorded' : '$' + i.amount.toLocaleString()}</span>
+      </div>
+      <div class="spent-when">${i.when}</div>
+      <p class="spent-note">${i.note}</p>
+    </li>`;
+
+  box.innerHTML = `
+    <div class="spent-card">
+      <div class="spent-head">
+        <h3>💳 Paid so far</h3>
+        <div class="spent-total">$${paid.toLocaleString()}<span>of $${TRIP.budget.toLocaleString()} confirmed</span></div>
+      </div>
+      <div class="spent-bar"><span style="width:${pct}%"></span></div>
+      <p class="spent-sub">${pct}% of the target budget is confirmed spent. Updated ${SPENT.updated}.</p>
+      <ul class="spent-list">${confirmed.map(row).join('')}</ul>
+      ${pending.length ? `
+      <h4 class="spent-sub-head">Committed, but no figure recorded</h4>
+      <ul class="spent-list">${pending.map(row).join('')}</ul>` : ''}
+      <p class="spent-caveat${pending.length ? '' : ' is-complete'}">${pending.length ? '⚠️' : '✅'} ${SPENT.note}</p>
+    </div>`;
+}
+
 function renderBudget() {
   const tbody = document.getElementById('budget-rows');
   if (tbody) {
@@ -549,6 +588,7 @@ function initApp() {
   renderTickets();
   renderSkiing();
   renderDining();
+  renderSpent();
   renderBudget();
   renderBookings();
   renderCrowdNote();
