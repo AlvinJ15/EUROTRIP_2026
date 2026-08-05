@@ -272,12 +272,18 @@ function renderItinerary() {
         <div class="stop-highlights">
           <h4>Highlights & Activities</h4>
           <ul>
-            ${stop.highlights.map(h => `
-              <li>
+            ${stop.highlights.map(h => {
+              // Only highlights with a verified image get one. A missing key
+              // renders the old text-only row rather than a broken <img>.
+              const src = h.img && typeof IMAGES !== 'undefined' ? IMAGES[h.img] : null;
+              return `
+              <li class="${src ? 'has-photo' : ''}">
+                ${src ? `<img class="h-photo" src="${src}" alt="" loading="lazy" decoding="async">` : ''}
                 <span class="h-icon">${h.icon}</span>
                 <span class="h-text">${h.text}</span>
                 <span class="h-cost">${h.cost}</span>
-              </li>`).join('')}
+              </li>`;
+            }).join('')}
           </ul>
         </div>
         ${stop.tips ? `

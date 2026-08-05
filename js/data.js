@@ -110,11 +110,11 @@ const ITINERARY = [
       { day: "Sep 5 (Sat)", plan: "📅 YOUR MADRID EVENT — day 2. 🧳 Checkout is ~11:00 but the flight is not until 20:00, so leave the bags with the hotel (free) — do NOT plan to carry them through the event. If the venue is far from the hotel, use a Bounce or Stasher point near it instead (~€2/bag). Collect by 16:30. Airport by 17:30. ✈️ 8:00pm flight Madrid→Craiova, lands ~midnight." }
     ],
     highlights: [
-      { icon: "⛪", text: "Sagrada Família + TOWER — ✅ PAID. Gaudí's masterpiece, the whole reason for the Barcelona hop. Entry 11:45, tower 12:30.", cost: "✅ $82 total for 2, towers included" },
+      { icon: "⛪", img: "sagrada", text: "Sagrada Família + TOWER — ✅ PAID. Gaudí's masterpiece, the whole reason for the Barcelona hop. Entry 11:45, tower 12:30.", cost: "✅ $82 total for 2, towers included" },
       { icon: "🚄", text: "AVE high-speed train Madrid↔Barcelona — ✅ PAID. 2h30, 300km/h, city centre to city centre, both directions.", cost: "✅ $243 total for 2, round trip" },
-      { icon: "🥘", text: "Mercado de San Miguel — Madrid's best tapas market, perfect first-night jet-lag dinner", cost: "$25–40/person" },
-      { icon: "🏛️", text: "Retiro Park + Plaza Mayor + Puerta del Sol — free, walkable, ideal jet-lag day", cost: "Free" },
-      { icon: "🌿", text: "Park Güell — Gaudí mosaic terraces over the city. 🔴 Timed entry, book the 09:30 slot. Allow 1h–1h15 for the Monumental Zone.", cost: "~€10–13/person" }
+      { icon: "🥘", img: "sanmiguel", text: "Mercado de San Miguel — Madrid's best tapas market, perfect first-night jet-lag dinner", cost: "$25–40/person" },
+      { icon: "🏛️", img: "royalpalace", text: "Retiro Park + Plaza Mayor + Puerta del Sol — free, walkable, ideal jet-lag day", cost: "Free" },
+      { icon: "🌿", img: "parkguell", text: "Park Güell — Gaudí mosaic terraces over the city. 🔴 Timed entry, book the 09:30 slot. Allow 1h–1h15 for the Monumental Zone.", cost: "~€10–13/person" }
     ],
     tips: [
       "✅ BARCELONA IS BOOKED AND PAID — Airbnb by the Cathedral, $272 for both nights, check-in 15:00, check-out 11:00. Neither time conflicts with anything: you arrive ~19:30 on Sep 2, and on Sep 4 you're on a morning train well before 11:00. 🎯 The Gothic Quarter is the right trade for this itinerary — your entire afternoon and evening on Sep 3 (Gothic Quarter, La Boqueria, Barceloneta) becomes walkable, and Sants is a direct L3 ride. The price is one commute: Park Güell and the Sagrada are 25–35 min away, so leave the apartment at 08:50 on Sep 3.",
@@ -185,11 +185,11 @@ const ITINERARY = [
       { day: "Sep 10 (Thu)", plan: "🧳 CHECK OUT FIRST, LEAVE THE BAGS AT THE HOTEL — every Sultanahmet hotel does this free and it is non-negotiable today: a hamam has small lockers for a wallet and a phone, not for two trolleys, and you would be undressing in a marble room with your luggage sitting in a corridor. ⛵ Morning Bosphorus cruise from Eminönü (10 min walk, bag-free). Early afternoon: hamam at Çemberlitaş or Kılıç Ali Paşa. Collect bags ~16:00. ✈️ Evening flight IST→Cappadocia (1h20). Cave hotel by ~22:00 — sleep fast, the balloon pickup is around 04:30." }
     ],
     highlights: [
-      { icon: "🕌", text: "Hagia Sophia — 1,500 years old, cathedral then mosque then museum then mosque again", cost: "~€25/person (foreign visitor fee)" },
-      { icon: "🕌", text: "Blue Mosque + Basilica Cistern — the cistern's sunken columns and Medusa heads are unforgettable", cost: "Mosque free · Cistern ~€25/person" },
-      { icon: "🏰", text: "Topkapi Palace — Ottoman sultans' palace, harem, treasury, Bosphorus views", cost: "~€30/person" },
-      { icon: "⛵", text: "Bosphorus cruise — cross between two continents, palaces and fortresses along both shores", cost: "~€15–30/person" },
-      { icon: "🛁", text: "Traditional hamam (Turkish bath) — Çemberlitaş or Kılıç Ali Paşa. Perfect wedding recovery.", cost: "~€40–70/person" },
+      { icon: "🕌", img: "hagiasophia", text: "Hagia Sophia — 1,500 years old, cathedral then mosque then museum then mosque again", cost: "~€25/person (foreign visitor fee)" },
+      { icon: "🕌", img: "bluemosque", text: "Blue Mosque + Basilica Cistern — the cistern's sunken columns and Medusa heads are unforgettable", cost: "Mosque free · Cistern ~€25/person" },
+      { icon: "🏰", img: "topkapi", text: "Topkapi Palace — Ottoman sultans' palace, harem, treasury, Bosphorus views", cost: "~€30/person" },
+      { icon: "⛵", img: "bosphorus", text: "Bosphorus cruise — cross between two continents, palaces and fortresses along both shores", cost: "~€15–30/person" },
+      { icon: "🛁", img: "hamam", text: "Traditional hamam (Turkish bath) — Çemberlitaş or Kılıç Ali Paşa. Perfect wedding recovery.", cost: "~€40–70/person" },
       { icon: "🛍️", text: "Grand Bazaar + Spice Bazaar — 4,000 shops, 15th century. Haggling expected.", cost: "Free to browse" }
     ],
     tips: [
@@ -220,12 +220,12 @@ const ITINERARY = [
       { day: "Sep 12 (Sat)", plan: "⭐ THE BACKUP MORNING — if Friday's balloon was cancelled for wind, you fly this morning instead. If it already flew: Devrent and Love Valley walk, or pottery in Avanos. 🧳 Low bag risk: check out, leave everything with the cave hotel, and the airport shuttle collects you and the bags from the hotel door. Do not book a valley walk that ends anywhere but Göreme. ✈️ Midday flight back to Istanbul, connect straight through to Athens (arrive ~20:00)." }
     ],
     highlights: [
-      { icon: "🎈", text: "SUNRISE HOT-AIR BALLOON — the reason this stop exists. September is peak flying season: clear, calm, warm.", cost: "~€200–280/person" },
-      { icon: "⛪", text: "Göreme Open-Air Museum — UNESCO site, rock-cut monasteries and 10th-century frescoes", cost: "~€25/person" },
-      { icon: "🕳️", text: "Derinkuyu or Kaymaklı underground city — 8 levels deep, sheltered 20,000 people", cost: "~€15/person" },
-      { icon: "🏨", text: "Cave hotel — sleeping inside carved volcanic rock. Genuinely worth paying up for one of the two nights.", cost: "$130–200/night" },
+      { icon: "🎈", img: "balloon", text: "SUNRISE HOT-AIR BALLOON — the reason this stop exists. September is peak flying season: clear, calm, warm.", cost: "~€200–280/person" },
+      { icon: "⛪", img: "goreme", text: "Göreme Open-Air Museum — UNESCO site, rock-cut monasteries and 10th-century frescoes", cost: "~€25/person" },
+      { icon: "🕳️", img: "derinkuyu", text: "Derinkuyu or Kaymaklı underground city — 8 levels deep, sheltered 20,000 people", cost: "~€15/person" },
+      { icon: "🏨", img: "cappadocia", text: "Cave hotel — sleeping inside carved volcanic rock. Genuinely worth paying up for one of the two nights.", cost: "$130–200/night" },
       { icon: "🌄", text: "Red Valley / Rose Valley at sunset — the light on the tuff is the second-best thing here after the balloon", cost: "Free" },
-      { icon: "🏰", text: "Uçhisar Castle — highest point in Cappadocia, whole-valley panorama", cost: "~€6/person" }
+      { icon: "🏰", img: "uchisar", text: "Uçhisar Castle — highest point in Cappadocia, whole-valley panorama", cost: "~€6/person" }
     ],
     tips: [
       "🔴 BOOK THE BALLOON NOW, for Friday Sep 11, with a reputable operator (Butterfly, Royal, Voyager). September is the busiest flying month and the good slots sell out months ahead.",
@@ -256,11 +256,11 @@ const ITINERARY = [
       { day: "Sep 14 (Mon)", plan: "Breakfast, then the 40-min Metro to the airport. ✈️ Morning flight → Santorini (45 min)." }
     ],
     highlights: [
-      { icon: "🏛️", text: "The Acropolis + Parthenon — go at 08:00 opening, it's 30°C by 11am and packed by 10", cost: "€20/person (€30 combo covers 6 more sites)" },
-      { icon: "🏺", text: "Acropolis Museum — the Parthenon frieze displayed at real scale, glass floor over the excavations", cost: "€15/person" },
+      { icon: "🏛️", img: "acropolis", text: "The Acropolis + Parthenon — go at 08:00 opening, it's 30°C by 11am and packed by 10", cost: "€20/person (€30 combo covers 6 more sites)" },
+      { icon: "🏺", img: "acropolismuseum", text: "Acropolis Museum — the Parthenon frieze displayed at real scale, glass floor over the excavations", cost: "€15/person" },
       { icon: "🏛️", text: "Ancient Agora + Temple of Olympian Zeus — included in the combo ticket", cost: "Combo ticket" },
-      { icon: "🌆", text: "Lycabettus Hill at sunset — funicular or a 25-min climb, the whole city and the Acropolis below you", cost: "€10/person funicular" },
-      { icon: "🏘️", text: "Plaka + Anafiotika — the old town under the Acropolis, best evening wandering in Athens", cost: "Free" },
+      { icon: "🌆", img: "lycabettus", text: "Lycabettus Hill at sunset — funicular or a 25-min climb, the whole city and the Acropolis below you", cost: "€10/person funicular" },
+      { icon: "🏘️", img: "acropolis", text: "Plaka + Anafiotika — the old town under the Acropolis, best evening wandering in Athens", cost: "Free" },
       { icon: "🍽️", text: "Rooftop dinner facing the lit Acropolis — cheap by European standards, unforgettable view", cost: "$30–50/person" }
     ],
     tips: [
@@ -290,12 +290,12 @@ const ITINERARY = [
       { day: "Sep 16 (Wed)", plan: "🧳 Check out and leave the bags with the hotel. Slow morning — coffee on the caldera, last photos, the Oia castle walk. ⚠️ Oia's lanes are stepped and vehicle-free, so budget 10–15 min of hand-carrying to the taxi pickup point whatever you do — book the transfer in advance and ask exactly where it meets you. ✈️ Afternoon flight → Rome. ✅ Amoudi Bay is no longer on this day, which is what made the old version the tightest day of the trip." }
     ],
     highlights: [
-      { icon: "🌅", text: "Oia sunset — the single most famous sunset in Europe. Arrive 90 min early for a spot on the castle side.", cost: "Free" },
-      { icon: "🏘️", text: "Fira → Oia caldera walk — 10km along the cliff edge with the volcano below you the whole way", cost: "Free (bus ~€2)" },
-      { icon: "🍽️", text: "Caldera-view dinner in Oia — expensive, touristy, completely worth doing once", cost: "$60–90/person" },
-      { icon: "🏖️", text: "Amoudi Bay — 300 steps below Oia, swim off the rocks, seafood tavernas at the waterline. 🆕 Now on the Sep 15 full day, with no flight waiting at the top of the steps.", cost: "Free" },
-      { icon: "⛵", text: "🆕 Caldera boat trip — sail to the volcano crater and the sulphur hot springs, swim off the boat. Only possible because of the second night, and it is the best thing on the island after the sunset.", cost: "~€35–60/person" },
-      { icon: "🏨", text: "Caldera-view room, 2 nights — pay for the view. It is the entire point of coming here.", cost: "$220–300/night" }
+      { icon: "🌅", img: "oia", text: "Oia sunset — the single most famous sunset in Europe. Arrive 90 min early for a spot on the castle side.", cost: "Free" },
+      { icon: "🏘️", img: "santorini", text: "Fira → Oia caldera walk — 10km along the cliff edge with the volcano below you the whole way", cost: "Free (bus ~€2)" },
+      { icon: "🍽️", img: "oia", text: "Caldera-view dinner in Oia — expensive, touristy, completely worth doing once", cost: "$60–90/person" },
+      { icon: "🏖️", img: "oia", text: "Amoudi Bay — 300 steps below Oia, swim off the rocks, seafood tavernas at the waterline. 🆕 Now on the Sep 15 full day, with no flight waiting at the top of the steps.", cost: "Free" },
+      { icon: "⛵", img: "santorini", text: "🆕 Caldera boat trip — sail to the volcano crater and the sulphur hot springs, swim off the boat. Only possible because of the second night, and it is the best thing on the island after the sunset.", cost: "~€35–60/person" },
+      { icon: "🏨", img: "santorini", text: "Caldera-view room, 2 nights — pay for the view. It is the entire point of coming here.", cost: "$220–300/night" }
     ],
     tips: [
       "🆕 WHY THE SECOND NIGHT: the old plan checked out on the morning of Sep 15 and asked you to climb 300 steps out of Amoudi Bay with a flight to Rome that afternoon. It was the single tightest day of the trip. Sep 15 is now a full, bag-free island day and Sep 16 is a slow departure.",
@@ -327,13 +327,13 @@ const ITINERARY = [
       { day: "Sep 18 (Fri)", plan: "🆕 Morning flight Rome (FCO) → Geneva (1h50), then train Geneva→Visp→Zermatt (~3h40) on the Swiss Travel Pass. Arrive Zermatt late afternoon — in daylight, with the rental shops still open." }
     ],
     highlights: [
-      { icon: "🔴", text: "MANDATORY: Colosseum + Roman Forum + Palatine Hill + VR Oculus in the arena", cost: "€18 entry + €30 VR = ~€48/person" },
-      { icon: "⛪", text: "🆕 St. Peter's Basilica + the DOME CLIMB — this survives the Vatican cut, because it is not a museum. Free entry; the dome is €10 and 551 steps to the best view in Rome.", cost: "FREE · dome €10/person" },
-      { icon: "🏎️", text: "Circo Massimo AR — augmented-reality chariot races on the actual site. Not a museum — you walk the ruins.", cost: "~€12/person" },
-      { icon: "🏛️", text: "Pantheon — 2,000 years old and still intact, the best building in Rome", cost: "€5/person" },
-      { icon: "🦕", text: "🆕 Museo Civico di Zoologia — dino hall with 3D reconstructions, near Villa Borghese. NOW A REAL OPTION: with the Vatican Museums gone and London dropped, this is one of only two dinosaur stops left on the trip.", cost: "~€10/person" },
+      { icon: "🔴", img: "colosseum", text: "MANDATORY: Colosseum + Roman Forum + Palatine Hill + VR Oculus in the arena", cost: "€18 entry + €30 VR = ~€48/person" },
+      { icon: "⛪", img: "stpeters", text: "🆕 St. Peter's Basilica + the DOME CLIMB — this survives the Vatican cut, because it is not a museum. Free entry; the dome is €10 and 551 steps to the best view in Rome.", cost: "FREE · dome €10/person" },
+      { icon: "🏎️", img: "circusmaximus", text: "Circo Massimo AR — augmented-reality chariot races on the actual site. Not a museum — you walk the ruins.", cost: "~€12/person" },
+      { icon: "🏛️", img: "pantheon", text: "Pantheon — 2,000 years old and still intact, the best building in Rome", cost: "€5/person" },
+      { icon: "🦕", img: "zoologiaroma", text: "🆕 Museo Civico di Zoologia — dino hall with 3D reconstructions, near Villa Borghese. NOW A REAL OPTION: with the Vatican Museums gone and London dropped, this is one of only two dinosaur stops left on the trip.", cost: "~€10/person" },
       { icon: "❌", text: "Vatican Museums + Sistine Chapel — REMOVED BY CHOICE. A statue-and-vitrine museum, which is not what you enjoy. Be aware the Sistine Chapel is inside them and goes with them.", cost: "€0 — saved ~€44 for 2" },
-      { icon: "🌆", text: "Trastevere evenings — cobblestones, the best food in Rome, no tourist-trap menus", cost: "$35–55/person" }
+      { icon: "🌆", img: "trastevere", text: "Trastevere evenings — cobblestones, the best food in Rome, no tourist-trap menus", cost: "$35–55/person" }
     ],
     tips: [
       "🆕 WHY ROME IS 2 NIGHTS NOW: you cut the Vatican Museums, which were half of a whole day. That freed one night, and it went to Santorini. Rome is now arrival evening + one full day — tight but honest, because the single biggest time sink is gone.",
@@ -370,18 +370,18 @@ const ITINERARY = [
       { day: "Sep 22 (Tue)", plan: "🚞 GOLDENPASS DAY. Check out unhurried, 09:37 train to Interlaken Ost. 🚞 GOLDENPASS EXPRESS — take the 11:07 now that the chocolate workshop moved to Sunday: gauge-changing panoramic coaches over the Simmental, opening onto Lake Geneva. Montreux ~14:25 → Geneva ~15:40 → TGV Lyria → PARIS GARE DE LYON ~19:30, which leaves you an evening in the Marais instead of a midnight arrival. The 14:07 remains the fallback (Paris ~22:00). ❌ The 16:07 still does not work — Montreux ~19:20, after the last TGV out of Geneva." }
     ],
     highlights: [
-      { icon: "🪂", text: "TANDEM PARAGLIDE FROM BEATENBERG — Sun Sep 20, 20–30 min over Lake Thun and Lake Brienz with the Jungfrau massif behind. The green-and-turquoise Switzerland you actually pictured. Chosen over the Grindelwald First flight, which launches higher at the Eiger north face but has no lakes and costs ~CHF 50/person more.", cost: "~CHF 180–190/person" },
-      { icon: "🏔️", text: "🆕 SCHILTHORN / PIZ GLORIA, 2,970m — 360° revolving restaurant, a Bond location, ~200 peaks in view. Reached via Mürren, a cliff village with no road. ✅ ONLY POSSIBLE BECAUSE ZERMATT CAME OUT — it was previously on the 'what you're not doing' list.", cost: "~CHF 54/person with the 50% pass discount" },
-      { icon: "💧", text: "🆕 BACHALPSEE — the mirror lake reflecting the Eiger, Mönch and Jungfrau. ~1h walk each way from the top of the First gondola. The most photographed view in Switzerland, and it costs nothing.", cost: "FREE" },
-      { icon: "🚶", text: "First Cliff Walk — steel walkway bolted to a vertical cliff, included with the gondola", cost: "Included (gondola ~CHF 43, 50% off with the pass)" },
-      { icon: "🎿", text: "First Flieger zipline — 800m, 84 km/h, head-first at the Eiger", cost: "~CHF 31/person" },
-      { icon: "🛴", text: "Mountain cart + Trottibike — downhill from First. Ride before 10:00 and the 110-minute mid-day queue never happens to you.", cost: "~CHF 19/person each" },
-      { icon: "🛷", text: "Pfingstegg Rodelbahn — 736m alpine toboggan, 40 km/h, you control the brake. Its own cable car from the village, ~5-min queues.", cost: "~CHF 10/run + ~CHF 34 cable car" },
-      { icon: "🏞️", text: "Lauterbrunnen — the valley of 72 waterfalls. Staubbach falls 300m off a vertical wall behind the village, free. Trümmelbach is glacier meltwater carved inside the mountain.", cost: "Free · Trümmelbach ~CHF 14/person" },
-      { icon: "⛵", text: "🆕 Lake Brienz cruise — turquoise glacial water, and scheduled boat services are FULLY covered by the Swiss Travel Pass.", cost: "Covered by the pass" },
-      { icon: "🚡", text: "Harder Kulm — 10-min funicular to the two-lake panorama. Also the weather fallback if the paraglide is scrubbed.", cost: "~CHF 38/person return, 50% off with the pass" },
-      { icon: "🍫", text: "Funky Chocolate Club, Interlaken — hands-on workshop, you make and take home your own bars. 🆕 Moved to Sunday, so it no longer competes with a train.", cost: "~CHF 65/person" },
-      { icon: "🚞", text: "GOLDENPASS EXPRESS Interlaken→Montreux — gauge-changing panoramic coaches, the Bernese Oberland opening onto Lake Geneva. Your scenic train, and it is ON the route to Paris.", cost: "Base fare covered by the pass + CHF 20–35 seat reservation" }
+      { icon: "🪂", img: "paragliding", text: "TANDEM PARAGLIDE FROM BEATENBERG — Sun Sep 20, 20–30 min over Lake Thun and Lake Brienz with the Jungfrau massif behind. The green-and-turquoise Switzerland you actually pictured. Chosen over the Grindelwald First flight, which launches higher at the Eiger north face but has no lakes and costs ~CHF 50/person more.", cost: "~CHF 180–190/person" },
+      { icon: "🏔️", img: "schilthorn", text: "🆕 SCHILTHORN / PIZ GLORIA, 2,970m — 360° revolving restaurant, a Bond location, ~200 peaks in view. Reached via Mürren, a cliff village with no road. ✅ ONLY POSSIBLE BECAUSE ZERMATT CAME OUT — it was previously on the 'what you're not doing' list.", cost: "~CHF 54/person with the 50% pass discount" },
+      { icon: "💧", img: "bachalpsee", text: "🆕 BACHALPSEE — the mirror lake reflecting the Eiger, Mönch and Jungfrau. ~1h walk each way from the top of the First gondola. The most photographed view in Switzerland, and it costs nothing.", cost: "FREE" },
+      { icon: "🚶", img: "eiger", text: "First Cliff Walk — steel walkway bolted to a vertical cliff, included with the gondola", cost: "Included (gondola ~CHF 43, 50% off with the pass)" },
+      { icon: "🎿", img: "ziplinegen", text: "First Flieger zipline — 800m, 84 km/h, head-first at the Eiger", cost: "~CHF 31/person" },
+      { icon: "🛴", img: "grindelwald", text: "Mountain cart + Trottibike — downhill from First. Ride before 10:00 and the 110-minute mid-day queue never happens to you.", cost: "~CHF 19/person each" },
+      { icon: "🛷", img: "rodelbahn", text: "Pfingstegg Rodelbahn — 736m alpine toboggan, 40 km/h, you control the brake. Its own cable car from the village, ~5-min queues.", cost: "~CHF 10/run + ~CHF 34 cable car" },
+      { icon: "🏞️", img: "staubbach", text: "Lauterbrunnen — the valley of 72 waterfalls. Staubbach falls 300m off a vertical wall behind the village, free. Trümmelbach is glacier meltwater carved inside the mountain.", cost: "Free · Trümmelbach ~CHF 14/person" },
+      { icon: "⛵", img: "brienz", text: "🆕 Lake Brienz cruise — turquoise glacial water, and scheduled boat services are FULLY covered by the Swiss Travel Pass.", cost: "Covered by the pass" },
+      { icon: "🚡", img: "harderkulm", text: "Harder Kulm — 10-min funicular to the two-lake panorama. Also the weather fallback if the paraglide is scrubbed.", cost: "~CHF 38/person return, 50% off with the pass" },
+      { icon: "🍫", img: "chocolate", text: "Funky Chocolate Club, Interlaken — hands-on workshop, you make and take home your own bars. 🆕 Moved to Sunday, so it no longer competes with a train.", cost: "~CHF 65/person" },
+      { icon: "🚞", img: "goldenpass", text: "GOLDENPASS EXPRESS Interlaken→Montreux — gauge-changing panoramic coaches, the Bernese Oberland opening onto Lake Geneva. Your scenic train, and it is ON the route to Paris.", cost: "Base fare covered by the pass + CHF 20–35 seat reservation" }
     ],
     tips: [
       "✅ WHY ZERMATT CAME OUT, in one line: it cost 3h25 of rail on arrival plus an entire transfer day on Sep 20, for a 21km September glacier morning — and the skiing moved to Chile in August, where it is mid-winter and two full days. What you lose is real: the MATTERHORN, the Gornergrat railway and Chez Vrony. What you gain is a whole extra usable day, a single base for four nights, Schilthorn, Bachalpsee, Mürren and a lake cruise, and about $600.",
@@ -420,15 +420,15 @@ const ITINERARY = [
       { day: "Sep 26 (Sat)", plan: "✈️ PARIS → MADRID. Check out, metro line 14 direct to Orly (~25 min from central Paris), fly ORY→MAD. ⭐ Iberia 07:25→09:30 (~$198 for 2, full cabin bag included) lands you in Madrid with the whole day intact; the 10:55 Air Europa is the 2h00 fastest if you'd rather sleep in. Orly beats CDG twice over: shorter flight and half the transfer time." }
     ],
     highlights: [
-      { icon: "🎡", text: "🆕 DISNEYLAND PARK — Wed Sep 23, full day. ~15 headline rides, the castle, the parade and the night show. Wednesday is one of the two quietest weekdays: 15–30 min waits.", cost: "Part of the 2-day ticket" },
-      { icon: "🎢", text: "🎢 DISNEY ADVENTURE WORLD — Fri Sep 25, a FULL day. Reopened 29 Mar 2026 having refreshed 90%+ of its offering and nearly doubled in size. 13 attractions across World of Frozen, Adventure Way, Worlds of Pixar, Avengers Campus and World Premiere. Ratatouille and Crush's Coaster exist nowhere else on earth.", cost: "1-day 1-park ticket, €89–114/person" },
-      { icon: "🌊", text: "🌊 DISNEY CASCADE OF LIGHTS — Adventure World's own nighttime show, and the reason you don't need a park hopper. 16 minutes on Adventure Bay: aquatic drones, water screens, pyrotechnics, 360° around the lake. Included with park entry.", cost: "Included" },
-      { icon: "❄️", text: "❄️ FROZEN EVER AFTER + World of Frozen — opened 29 Mar 2026. Boat ride through Arendelle beneath a 36m North Mountain topped by Elsa's ice palace. 🔴 Newest thing in the park: rope-drop it first or expect the longest queue of your day.", cost: "Included" },
-      { icon: "🍽️", text: "LE JULES VERNE — ✅ BOOKED Sep 24, 8:00pm. 2 Michelin stars inside the Eiffel Tower.", cost: "€295–330/person" },
-      { icon: "🗼", text: "Eiffel Tower — summit + 2nd floor decks. Do this the same day as the dinner.", cost: "€29.40/person summit" },
-      { icon: "⛵", text: "Seine river cruise — 1h, the whole city from the water", cost: "~€17/person" },
-      { icon: "🏘️", text: "Montmartre + Sacré-Coeur — free, and the best panorama in Paris", cost: "Free" },
-      { icon: "🖼️", text: "Louvre — EXTERIOR ONLY (glass pyramid + courtyard). You said you don't like the museum; you're not going in.", cost: "Free" },
+      { icon: "🎡", img: "disneylandpark", text: "🆕 DISNEYLAND PARK — Wed Sep 23, full day. ~15 headline rides, the castle, the parade and the night show. Wednesday is one of the two quietest weekdays: 15–30 min waits.", cost: "Part of the 2-day ticket" },
+      { icon: "🎢", img: "disneystudios", text: "🎢 DISNEY ADVENTURE WORLD — Fri Sep 25, a FULL day. Reopened 29 Mar 2026 having refreshed 90%+ of its offering and nearly doubled in size. 13 attractions across World of Frozen, Adventure Way, Worlds of Pixar, Avengers Campus and World Premiere. Ratatouille and Crush's Coaster exist nowhere else on earth.", cost: "1-day 1-park ticket, €89–114/person" },
+      { icon: "🌊", img: "disneylandpark", text: "🌊 DISNEY CASCADE OF LIGHTS — Adventure World's own nighttime show, and the reason you don't need a park hopper. 16 minutes on Adventure Bay: aquatic drones, water screens, pyrotechnics, 360° around the lake. Included with park entry.", cost: "Included" },
+      { icon: "❄️", img: "disneystudios", text: "❄️ FROZEN EVER AFTER + World of Frozen — opened 29 Mar 2026. Boat ride through Arendelle beneath a 36m North Mountain topped by Elsa's ice palace. 🔴 Newest thing in the park: rope-drop it first or expect the longest queue of your day.", cost: "Included" },
+      { icon: "🍽️", img: "eiffel", text: "LE JULES VERNE — ✅ BOOKED Sep 24, 8:00pm. 2 Michelin stars inside the Eiffel Tower.", cost: "€295–330/person" },
+      { icon: "🗼", img: "eiffel", text: "Eiffel Tower — summit + 2nd floor decks. Do this the same day as the dinner.", cost: "€29.40/person summit" },
+      { icon: "⛵", img: "louvre", text: "Seine river cruise — 1h, the whole city from the water", cost: "~€17/person" },
+      { icon: "🏘️", img: "sacrecoeur", text: "Montmartre + Sacré-Coeur — free, and the best panorama in Paris", cost: "Free" },
+      { icon: "🖼️", img: "louvre", text: "Louvre — EXTERIOR ONLY (glass pyramid + courtyard). You said you don't like the museum; you're not going in.", cost: "Free" },
       { icon: "🥽", text: "Optional: Eclipso or The Gate VR — dark-room immersive / haptic free-roam", cost: "€28–32/person" }
     ],
     tips: [
@@ -472,10 +472,10 @@ const ITINERARY = [
       { day: "Sep 29 (Tue)", plan: "✈️ MADRID → LIMA — Plus Ultra PU 0301, departs 11:00, lands Lima 16:10 the same day (12h 10m). Be at Barajas by 08:00. Trip ends." }
     ],
     highlights: [
-      { icon: "🏰", text: "🆕 TOLEDO — 33 min by AVE. Walled medieval city on a granite outcrop inside a river bend. Cathedral, Alcázar, Jewish quarter. The best day trip in Spain and it only exists because London came out.", cost: "~€28/person return + €14 cathedral" },
-      { icon: "🏛️", text: "🆕 SEGOVIA — 27 min by AVE. Roman aqueduct, 2,000 years old, still standing with no mortar. Plus the Alcázar that inspired the Disney castle.", cost: "~€26/person return + €9 Alcázar" },
-      { icon: "🦕", text: "🆕 Museo Nacional de Ciencias Naturales — full Diplodocus and the original Megatherium. With London gone, this and Rome are your only dinosaur stops.", cost: "~€7/person" },
-      { icon: "👑", text: "Royal Palace of Madrid — Europe's largest functioning royal palace. Now on Sep 26 afternoon, with time to actually go in.", cost: "€14/person" },
+      { icon: "🏰", img: "toledo", text: "🆕 TOLEDO — 33 min by AVE. Walled medieval city on a granite outcrop inside a river bend. Cathedral, Alcázar, Jewish quarter. The best day trip in Spain and it only exists because London came out.", cost: "~€28/person return + €14 cathedral" },
+      { icon: "🏛️", img: "segoviaaqueduct", text: "🆕 SEGOVIA — 27 min by AVE. Roman aqueduct, 2,000 years old, still standing with no mortar. Plus the Alcázar that inspired the Disney castle.", cost: "~€26/person return + €9 Alcázar" },
+      { icon: "🦕", img: "madriddino", text: "🆕 Museo Nacional de Ciencias Naturales — full Diplodocus and the original Megatherium. With London gone, this and Rome are your only dinosaur stops.", cost: "~€7/person" },
+      { icon: "👑", img: "royalpalace", text: "Royal Palace of Madrid — Europe's largest functioning royal palace. Now on Sep 26 afternoon, with time to actually go in.", cost: "€14/person" },
       { icon: "🛡️", text: "Buffer before the flight — Sep 28 stays deliberately light. If anything slips earlier in the trip, it absorbs it.", cost: "Free" },
       { icon: "🥘", text: "Three Spanish dinners to finish — jamón, tortilla, vermut, and La Latina on a Sunday", cost: "$30–45/person" }
     ],
