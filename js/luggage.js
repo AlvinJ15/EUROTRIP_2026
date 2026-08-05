@@ -87,15 +87,15 @@ const LUGGAGE = {
       action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED AN ENTIRE BAG-MOVE: the old plan checked you out again on Sep 20 and put all four bags into station lockers mid-day so you could paraglide. Now you have one base for four nights and the bags do not move again until Sep 22.",
       cost: "—" },
 
-    { day: 19, date: "Sat Sep 19", city: "Grindelwald — First, then Hotel Spinne", status: "free",
-      headline: "🆕 One backpack each, and the trolleys never move",
-      action: "🔴 THE ONE THING TO GET RIGHT: you sleep at the Hotel Spinne tonight and back at the guesthouse tomorrow, so do NOT take the trolleys. Pack an overnight backpack each before the 08:00 gondola and leave both trolleys with the guesthouse — arrange that when you book, not on the morning. Then the whole First day is empty-handed (you cannot ride a zipline or a mountain cart holding a trolley), and the walk to the Spinne at ~16:00 is a backpack each. ⚠️ Dropping the trolleys at the Spinne instead would be worse: it only has you for one night, so they would have to come straight back tomorrow.",
-      cost: "Free — the guesthouse holds them" },
+{ day: 19, date: "Sat Sep 19", city: "Guesthouse A → First → Hotel Spinne", status: "store",
+      headline: "🔴 Three different hotels this leg — so the Spinne holds the bags today",
+      action: "🆕 CORRECTED. He is staying in three separate places (Sep 18 · Spinne Sep 19 · a third for Sep 20–21), so there is no room to come back to today. Check out of guesthouse A early, walk all four bags the ~10 minutes to the HOTEL SPINNE and leave them at reception — check-in is 15:00 but they hold luggage from the morning. Then go up to First empty-handed: you cannot ride a zipline or a mountain cart holding a trolley. Collect the room at ~16:00 when you come down. Everything is inside the village, so this is two short walks, not a transfer.",
+      cost: "Free — hotel reception, ask when you book" },
 
-    { day: 20, date: "Sun Sep 20", city: "Spinne → guesthouse → Interlaken", status: "free",
-      headline: "🆕 A ten-minute walk, then a normal day trip",
-      action: "Check out of the Spinne around 10:00 and walk the backpacks back to the guesthouse, where the trolleys have been since Friday. Then day-trip to Interlaken with a daypack: paraglide ~13:00, lake cruise, chocolate workshop, home to the same room. ✅ REMOVING ZERMATT SOLVED THE HARD PART: the old Sep 20 was a real checkout with four bags into Interlaken Ost lockers and a 30-minute window that did not work. The Spinne night adds one short walk inside the village, not a transfer.",
-      cost: "Free — no lockers needed" },
+{ day: 20, date: "Sun Sep 20", city: "Spinne → guesthouse B → Interlaken", status: "store",
+      headline: "One short walk across the village, then a clean day trip",
+      action: "Check out of the Spinne ~10:00 and walk all four bags to guesthouse B, your last Grindelwald stay. 🔴 Ask guesthouse B AT BOOKING whether they take luggage before check-in — they almost certainly will, but that is the one assumption this day rests on. Then day-trip to Interlaken with a daypack: paraglide ~13:00, lake cruise, chocolate workshop, home to that same room tonight and tomorrow.",
+      cost: "Free — hotel storage" },
 
     { day: 21, date: "Mon Sep 21", city: "Lauterbrunnen + Schilthorn", status: "free",
       headline: "🆕 Bag-free again — a day trip, not a transfer",
