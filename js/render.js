@@ -485,9 +485,10 @@ function renderSpent() {
       <div class="spent-bar"><span style="width:${pct}%"></span></div>
       <p class="spent-sub">${pct}% of the target budget is confirmed spent. Updated ${SPENT.updated}.</p>
       <ul class="spent-list">${confirmed.map(row).join('')}</ul>
+      ${pending.length ? `
       <h4 class="spent-sub-head">Committed, but no figure recorded</h4>
-      <ul class="spent-list">${pending.map(row).join('')}</ul>
-      <p class="spent-caveat">⚠️ ${SPENT.note}</p>
+      <ul class="spent-list">${pending.map(row).join('')}</ul>` : ''}
+      <p class="spent-caveat${pending.length ? '' : ' is-complete'}">${pending.length ? '⚠️' : '✅'} ${SPENT.note}</p>
     </div>`;
 }
 

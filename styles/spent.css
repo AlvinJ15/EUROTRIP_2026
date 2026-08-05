@@ -140,6 +140,13 @@
   border-radius: 10px;
 }
 
+/* nothing left unpriced — the note becomes a confirmation, not a warning */
+.spent-caveat.is-complete {
+  color: #245d3c;
+  background: #f1faf4;
+  border-color: #b6e0c6;
+}
+
 @media (max-width: 560px) {
   .spent-head { flex-direction: column; align-items: flex-start; }
   .spent-total { text-align: left; }
