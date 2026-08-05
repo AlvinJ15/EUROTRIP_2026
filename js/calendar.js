@@ -19,10 +19,8 @@ const STOP_COLORS = [
   { base: '#0e7490', soft: '#e6f6fa' }, // Athens
   { base: '#0284c7', soft: '#e6f4fd' }, // Santorini
   { base: '#7c3aed', soft: '#f3edff' }, // Rome
-  { base: '#1d4ed8', soft: '#e8efff' }, // Zermatt
   { base: '#0891b2', soft: '#e4f7fb' }, // Grindelwald
   { base: '#be185d', soft: '#fdeaf2' }, // Paris
-  { base: '#15803d', soft: '#e8f6ec' }, // London
   { base: '#57534e', soft: '#f2f1f0' }  // Madrid final
 ];
 
@@ -92,7 +90,7 @@ function planTags(text) {
   const tags = [];
   if (/💍/.test(text)) tags.push({ label: '💍 Wedding', cls: 'tag-wedding' });
   if (/🎡/.test(text)) tags.push({ label: '🎡 Disney', cls: 'tag-disney' });
-  if (/⛷️/.test(text)) tags.push({ label: '⛷️ Ski', cls: 'tag-ski' });
+  if (/🏔️/.test(text)) tags.push({ label: '🏔️ Alpine', cls: 'tag-ski' });
   if (/🛷/.test(text)) tags.push({ label: '🛷 Toboggan', cls: 'tag-ski' });
   if (/🪂/.test(text)) tags.push({ label: '🪂 Paragliding', cls: 'tag-ski' });
   if (/🍫/.test(text)) tags.push({ label: '🍫 Chocolate', cls: 'tag-ski' });

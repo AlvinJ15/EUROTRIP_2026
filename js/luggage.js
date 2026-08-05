@@ -19,8 +19,8 @@ const LUGGAGE = {
   principles: [
     "🧳 Hotel storage is free, universal, and almost always the right answer. Every hotel on this itinerary will hold bags after checkout and before check-in. Confirm it at booking, not on the morning.",
     "🔒 Paid lockers are the fallback for when the day ends far from where you slept. Budget €2–6 per bag per day. You'd normally store the two trolleys and keep the backpacks.",
-    "🚫 Do not assume a train station has left luggage. Madrid Atocha's consigna closed years ago. Zermatt station and Barcelona Sants do have lockers; Atocha does not.",
-    "✅ 🆕 THE RESTRUCTURE REMOVED TWO OF THE THREE BAG-HOSTILE DAYS. The Grindelwald zipline and mountain cart moved to Sep 21, a day you sleep in Grindelwald either side of — so the bags never leave the room. Amoudi Bay moved to Sep 15, the same way. The only remaining one is the Istanbul hamam on Sep 10, where storage is mandatory rather than convenient.",
+    "🚫 Do not assume a train station has left luggage. Madrid Atocha's consigna closed years ago; Barcelona Sants and Interlaken Ost do have them. 🆕 On this version of the trip you barely need lockers at all — the only day between accommodations with anything scheduled is Sep 10 in Istanbul.",
+    "✅ 🆕 ALL THREE BAG-HOSTILE DAYS ARE NOW SOLVED BY GEOGRAPHY, NOT BY LOCKERS. The Grindelwald zipline, mountain cart and paraglide all sit inside a four-night single base, so the bags never leave the room. Amoudi Bay moved onto Santorini's second night the same way. Only the Istanbul hamam on Sep 10 still needs a storage step, and the hotel there does it free.",
     "🎒 Passports, the PNR, medication and one change of clothes live in a backpack — never in a stored trolley."
   ],
 
@@ -82,25 +82,30 @@ const LUGGAGE = {
       action: "🆕 Check out and leave the bags with the hotel for the morning — coffee on the caldera, the Oia castle walk, last photos. ⚠️ Oia's lanes are stepped and vehicle-free, so you hand-carry the bags 10–15 minutes to the transfer pickup no matter what. Book the transfer in advance and ask exactly where it meets you. ✅ Amoudi Bay is no longer on this day.",
       cost: "Free" },
 
-    { day: 18, date: "Fri Sep 18", city: "Rome → Zermatt", status: "move",
-      headline: "Pure travel day",
-      action: "Fly FCO→Geneva, train to Zermatt, check in, then collect the ski rental. The bags are in the room before anything else happens.",
+    { day: 18, date: "Fri Sep 18", city: "Rome → Grindelwald", status: "move",
+      headline: "🆕 The last bag-move for four days",
+      action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED AN ENTIRE BAG-MOVE: the old plan checked you out again on Sep 20 and put all four bags into station lockers mid-day so you could paraglide. Now you have one base for four nights and the bags do not move again until Sep 22.",
       cost: "—" },
 
-    { day: 20, date: "Sun Sep 20", city: "Zermatt → Interlaken → Grindelwald", status: "tight",
-      headline: "🔴 You cannot paraglide holding a suitcase",
-      action: "Gornergrat moved to Sep 19, so this is a clean early transfer. Check out of Zermatt, take the ~09:30 train, and put all four bags in the lockers at Interlaken Ost on arrival (~11:30). Paraglide from Beatenberg 12:00–14:00 — the minibus up and the landing field are both in Interlaken, so the station stays your anchor. Collect around 14:30, train on to Grindelwald, and the bags are in the room before Pfingstegg. 🆕 You now check into that room for TWO nights, so this is the last time you touch the bags until Sep 22.",
-      cost: "CHF 6–12 for the lockers at Interlaken Ost" },
-
-    { day: 21, date: "Mon Sep 21", city: "Grindelwald", status: "free",
-      headline: "🆕 The clean mountain day — zero bags in hand",
-      action: "🆕 THE SECOND GRINDELWALD NIGHT FIXED THIS. You sleep in the same guesthouse on Sep 20 and Sep 21, so the First gondola, the Cliff Walk, the Flieger, the mountain cart and Lauterbrunnen are all done empty-handed. The old version asked you to ride a zipline on a checkout day in front of a hard train — that is exactly the failure this whole luggage plan exists to catch.",
+    { day: 19, date: "Sat Sep 19", city: "Grindelwald — First", status: "free",
+      headline: "🆕 Bag-free: Cliff Walk, zipline, mountain cart, Bachalpsee",
+      action: "One base for four nights means the whole First day is done empty-handed. This matters more here than anywhere: you cannot ride a zipline or a mountain cart holding a trolley, and the old itinerary had this exact day landing on a checkout.",
       cost: "Free" },
 
-    { day: 22, date: "Tue Sep 22", city: "Grindelwald → Paris", status: "store",
-      headline: "🆕 A calm transfer — the deadline is gone",
-      action: "🆕 Check out unhurried, nothing on the mountain today. 09:37 train to Interlaken Ost, all four bags into the station lockers, chocolate workshop ~10:15–11:30, unhurried lunch, collect the bags, GoldenPass 14:07. If you skip the workshop, take the 11:07 and keep the bags with you the whole way.",
-      cost: "CHF 6–12 for the lockers at Interlaken Ost" },
+    { day: 20, date: "Sun Sep 20", city: "Grindelwald → Interlaken → Grindelwald", status: "free",
+      headline: "🆕 The paraglide problem simply disappeared",
+      action: "✅ REMOVING ZERMATT SOLVED THIS OUTRIGHT. The old Sep 20 was a checkout day: four bags into Interlaken Ost lockers, paraglide, collect, move on — with a 30-minute window that did not work. Now you day-trip down from Grindelwald with a daypack, fly, do the lake cruise and the chocolate workshop, and come home to the same room. No lockers, no deadline, no cost.",
+      cost: "Free — no lockers needed any more" },
+
+    { day: 21, date: "Mon Sep 21", city: "Lauterbrunnen + Schilthorn", status: "free",
+      headline: "🆕 Bag-free again — a day trip, not a transfer",
+      action: "Train to Lauterbrunnen, Trümmelbach, cable car via Mürren to Schilthorn, and back to the same guesthouse. The Schilthorn cable cars and the Trümmelbach lifts are cramped; going up with luggage would be miserable and this plan never asks you to.",
+      cost: "Free" },
+
+    { day: 22, date: "Tue Sep 22", city: "Grindelwald → Paris", status: "move",
+      headline: "🆕 Pure travel day — nothing to store",
+      action: "🆕 The chocolate workshop moved to Sunday, so today carries no activity at all: check out unhurried, 09:37 to Interlaken Ost, bags straight onto the GoldenPass Express at 11:07. Panoramic coaches to Montreux, then Geneva, then the TGV into Paris ~19:30. The bags sit on a luggage rack the whole way and you never need a locker.",
+      cost: "—" },
 
     { day: 26, date: "Sat Sep 26", city: "Paris → Madrid", status: "move",
       headline: "🆕 One bag-move, and it replaces two",
