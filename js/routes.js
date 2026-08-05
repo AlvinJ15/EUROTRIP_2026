@@ -103,7 +103,7 @@ const ROUTE_PLANS = [
         pros: ['Genuinely restful. One hotel, one island, no airports mid-leg.'],
         cons: [
           'You would fly past the Acropolis. On a first trip through Greece that is hard to defend.',
-          'Santorini at 3 nights in September is the most expensive lodging on the trip after Zermatt.'
+          'Santorini in September is now the most expensive lodging on the whole trip, since Zermatt came out.'
         ]
       },
       {
@@ -427,70 +427,38 @@ const ROUTES = [
 
   // ---------------------------------------------------------- Sep 18
   {
-    id: 'rome-zermatt',
+    id: 'rome-grindelwald',
     day: 18,
     date: 'Fri Sep 18',
     from: 'Rome',
-    to: 'Zermatt',
+    to: 'Grindelwald',
     fromEmoji: '🏛️',
-    toEmoji: '⛷️',
-    tag: '⭐ longest transfer day',
+    toEmoji: '🏔️',
+    tag: '🆕 Zermatt removed — one hop shorter',
     recommended: {
-      label: 'Early FCO → Geneva flight, then Swiss rail Geneva → Visp → Zermatt on the Travel Pass',
-      doorToDoor: '~9h door to door',
-      totalCost: '$120–260 for 2 + the Swiss Travel Pass',
-      why: 'Geneva airport has its own railway station under the terminal, so the flight hands you straight to the train with no transfer. Activate the Swiss Travel Pass on this date and the whole Swiss rail portion — including Sep 20 and 21 — costs nothing extra.',
+      label: 'Early FCO → Geneva flight, then Swiss rail Geneva → Bern → Interlaken Ost → Grindelwald',
+      doorToDoor: '~8h door to door',
+      totalCost: '$120–260 for 2 + the Swiss rail ticket',
+      why: '🆕 REBUILT WITHOUT ZERMATT. The old routing ran Geneva→Visp→Zermatt, 3h25 of rail into a dead-end valley, and then charged you a whole second transfer day on Sep 20 to get back out. Grindelwald is ~2h35 from Geneva and you never move base again. Geneva airport has its own railway station under the terminal, so the flight hands you straight to the train with no transfer.',
       segments: [
         { mode: '🚕', title: 'Trastevere → FCO', operator: 'Taxi (flat rate) or Leonardo Express', duration: '45 min taxi · 55 min via Termini', cost: '€50 flat taxi · €28 for 2 by train', when: 'leave 3h before an early flight', booking: '—', notes: 'For a pre-09:00 departure take the taxi — the Leonardo Express first train may be too late.' },
-        { mode: '✈️', title: 'Rome (FCO) → Geneva (GVA)', operator: 'easyJet / ITA / Swiss', duration: '1h 50m', cost: '€50–110/person', when: '⭐ take a departure before 11:00', booking: 'easyjet.com — 6–8 weeks out', notes: 'The morning departure is the whole plan: it gets you into Zermatt in daylight with the rental shops still open.' },
-        { mode: '🚂', title: 'Geneva Airport station → Visp', operator: 'SBB InterCity', duration: '2h 20m', cost: 'Covered by Swiss Travel Pass', when: 'twice hourly', booking: 'sbb.ch (pass: mystsnet.com)', notes: '⭐ The station is INSIDE the airport — no transfer, no bus. 🆕 Buy the Swiss Travel Pass 5-DAY (~CHF 335/person 2nd class) and activate it today — Grindelwald gained a night, so the block runs Sep 18–22 and the 4-day would expire a day early.' },
-        { mode: '🚞', title: 'Visp → Zermatt', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Covered by Swiss Travel Pass', when: 'hourly', booking: 'Same pass', notes: 'One easy cross-platform change at Visp. Zermatt is car-free and the train runs right into the village.' }
+        { mode: '✈️', title: 'Rome (FCO) → Geneva (GVA)', operator: 'easyJet / ITA / Swiss', duration: '1h 50m', cost: '€50–110/person', when: '⭐ take a departure before 11:00', booking: 'easyjet.com — 6–8 weeks out', notes: '🆕 Less critical than it was: with no ski rental to collect before closing time, a midday flight no longer wrecks the next morning. Still take the early one — it buys you the Pfingstegg toboggan on arrival day.' },
+        { mode: '🚂', title: 'Geneva Airport station → Interlaken Ost', operator: 'SBB via Bern', duration: '~2h', cost: '~CHF 60–72/person full fare, less with a Supersaver', when: 'hourly, one change at Bern', booking: 'sbb.ch — 🆕 buy this leg as an ordinary ticket, see notes', notes: '⭐ The station is INSIDE the airport — no transfer, no bus. 🎫 🔴 THE 5-DAY SWISS TRAVEL PASS DOES NOT EXIST (durations are 3/4/6/8/15 days). Recommended: buy the 4-DAY pass and activate it TOMORROW, Sep 19, then pay for today\'s arrival separately. That is ~CHF 381/person versus CHF 399 for the 6-day, and the four covered days are the ones carrying First, Schilthorn, the lake boat and the GoldenPass.' },
+        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: '~CHF 12/person', when: 'every 30 min; arrive ~15:15', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the Firstbahn base is in the village too, and this is your only base for four nights.' }
       ]
     },
     alternatives: [
-      { label: 'Rome → Milan → Zermatt by train all the way', duration: '9h–11h', cost: '$200–350 for 2', verdict: 'ok', why: 'Scenic and zero flying, but longer and pricier than the flight, and you would reach Zermatt after dark with the rental shops shut.' },
-      { label: 'Fly FCO → Milan/Zurich instead of Geneva', duration: '8h–10h', cost: '$120–280 for 2', verdict: 'avoid', why: 'Zurich is 4h from Zermatt by rail and Milan needs a border change. Geneva is the shortest rail tail of the three.' },
-      { label: 'An afternoon FCO → GVA flight', duration: 'same', cost: 'same', verdict: 'avoid', why: '⚠️ You arrive in Zermatt at 21:00+, in the dark, with no skis for the morning. The early flight IS the optimisation.' }
+      { label: 'Keep Zermatt (Geneva → Visp → Zermatt)', duration: '+50 min today, +a whole transfer day on Sep 20', cost: '~$600 more across the leg', verdict: 'avoid', why: '🆕 REMOVED DELIBERATELY. Zermatt is a dead-end valley: 1h05 up from Visp and the same back down, for a 21km September glacier morning. With the skiing moved to Chile in August the ski day no longer justified it. You lose the Matterhorn, Gornergrat and Chez Vrony; you gain a full extra usable day, a single base, Schilthorn, Bachalpsee, Mürren and a lake cruise.' },
+      { label: 'Base in Interlaken instead of Grindelwald', duration: '35 min closer to the paraglide', cost: 'Slightly cheaper beds', verdict: 'ok', why: 'Interlaken is the transport hub and a little cheaper, but it is a town in a valley — you wake up to shops, not the Eiger north face. Lauterbrunnen is the other strong candidate: cheaper than Grindelwald, a 300m waterfall behind the village, and better placed for Mürren and Schilthorn.' },
+      { label: 'Rome → Milan → Switzerland by train all the way', duration: '9h–11h', cost: '$200–350 for 2', verdict: 'ok', why: 'Scenic and zero flying, but longer and pricier than the flight.' }
     ],
     watchOuts: [
-      '🔴 Departure before 11:00 or the ski day is compromised.',
-      'Collect ski and boot rental on arrival Friday evening, not Saturday morning.',
-      '🆕 Do the Swiss Travel Pass maths once: 5 consecutive days covering Sep 18–22, including both Grindelwald gondola days, the Lauterbrunnen trains, the GoldenPass Express and the Gornergrat discount. It wins comfortably over point-to-point tickets.'
+      '🎫 🔴 BUY THE RIGHT PASS. There is no 5-day Swiss Travel Pass — 3/4/6/8/15 days only, CHF 254/309/399/439/499 in 2nd class. Your block is 5 days. Buy the 4-day, activate Sep 19, and pay for today\'s arrival leg separately.',
+      '⚠️ Removing Zermatt WEAKENED the case for any pass at all: Geneva→Zermatt and Zermatt→Interlaken were the two most expensive rail legs on this trip and both are gone. Price your actual legs on sbb.ch, and compare against the Half Fare Card (CHF 150 for a month, 50% off nearly everything including the lifts).',
+      '🧳 This is your last bag-move until Sep 22. Four nights, one room.'
     ]
   },
 
-  // ---------------------------------------------------------- Sep 20
-  {
-    id: 'zermatt-grindelwald',
-    day: 20,
-    date: 'Sun Sep 20',
-    from: 'Zermatt',
-    to: 'Grindelwald',
-    fromEmoji: '⛷️',
-    toEmoji: '🛷',
-    tag: 'scenic rail',
-    recommended: {
-      label: '🆕 Zermatt → Visp → Interlaken Ost (paraglide) → Grindelwald',
-      doorToDoor: '~2h 15m of rail, split by a 2h stop in Interlaken',
-      totalCost: 'Rail covered by the Swiss Travel Pass',
-      why: 'Rebuilt as a morning departure with a deliberate stop. Gornergrat moved to Sep 19, which frees this whole morning — so instead of arriving Grindelwald exhausted at dusk, you break the journey in Interlaken for the Beatenberg paraglide and still check in by ~16:00 with Pfingstegg ahead. 🔴 CORRECTED: take the ~08:15 from Zermatt, not the 09:30. A paraglide is 2h–2h30 door to door, not one hour, and the operator meets you in central Interlaken rather than at the station — so the earlier train is what turns this from a 30-minute scramble into a normal day.',
-      segments: [
-        { mode: '🚞', title: 'Zermatt → Visp', operator: 'Matterhorn Gotthard Bahn', duration: '1h 5m', cost: 'Swiss Travel Pass', when: '🔴 take the ~08:15 — NOT the 09:30', booking: 'Check exact times on sbb.ch nearer the date', notes: '🔴 CORRECTED. The 09:30 put you at Interlaken Ost at 11:30 for a 12:00 paraglide slot — 30 minutes to store four bags and walk 15 min to an office that is not at the station. Leaving an hour earlier costs you nothing and buys the whole margin.' },
-        { mode: '🚂', title: 'Visp → Interlaken Ost', operator: 'SBB via Spiez', duration: '55 min', cost: 'Swiss Travel Pass', when: 'twice hourly, arrive ~10:30', booking: '—', notes: 'Through the Lötschberg base tunnel. Swiss connections are timed to the minute — a 6-minute change at Visp is genuinely enough.' },
-        { mode: '🪂', title: 'Beatenberg tandem paraglide', operator: 'Paragliding Interlaken / Twin / Skywings', duration: '🔴 2h–2h30 door to door, 20–30 min airborne', cost: '~CHF 180–190/person', when: '🔴 book the ~13:00 slot', booking: 'Book direct, free cancellation, and ASK WHERE THEY MEET YOU', notes: '🔴 THE FLIGHT IS THE SHORT PART: check-in and weigh-in 15 min · minibus up 25–30 min · briefing and waiting 15–30 min · flight 20–30 min · landing and photos 15 min. ⚠️ Most operators meet at their office in central Interlaken near Höhematte, ~15 min walk from Ost — but several collect at Interlaken Ost itself, which removes the tightest part of this day. Ask. 🧳 Bags stay in the Ost lockers throughout.' },
-        { mode: '🚞', title: 'Interlaken Ost → Grindelwald', operator: 'Berner Oberland Bahn', duration: '35 min', cost: 'Swiss Travel Pass', when: 'every 30 min; collect bags ~15:30, check in ~16:00', booking: '—', notes: 'Sit on the right. Stay near Grindelwald station — the First gondola starts at 08:00 tomorrow. Pfingstegg still fits before it closes ~17:00.' }
-      ]
-    },
-    alternatives: [
-      { label: 'Keep the old afternoon departure (Gornergrat this morning)', duration: '—', cost: 'Same', verdict: 'avoid', why: 'Arrives Grindelwald at dusk with nothing left in the day, and wastes the paragliding window. Gornergrat belongs on Sep 19 — the glacier lifts shut at 13:00, so that afternoon was always free.' },
-      { label: 'Zermatt → Grindelwald via the Glacier Express', duration: '8h+', cost: 'Pass + CHF 49 reservation', verdict: 'avoid', why: 'The Glacier Express runs the wrong way, towards St. Moritz. Your scenic train is the GoldenPass Express tomorrow.' }
-    ],
-    watchOuts: [
-      '✅ SEP 21 IS THE BACKUP. If today is windy, cancelled or simply runs late, fly tomorrow morning from Interlaken (35 min from Grindelwald) and push First to the afternoon — the gondola runs to ~17:00–18:00. A two-day window is the strongest protection a weather-dependent activity can have, and the second Grindelwald night is what created it.',
-      '🪂 If BOTH days blow out, take the Harder Kulm funicular — same two-lake panorama from the ground, 10 min from the station, 50% off with the pass. You lose the flight, not the view.',
-      '🛷 Aim to be on the Pfingstegg cable car by ~16:15; the toboggan closes around 17:00 in September. This is the day\'s designated drop if anything slips — it is three minutes of fun, not the reason you came.'
-    ]
-  },
 
   // ---------------------------------------------------------- Sep 22
   {
