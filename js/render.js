@@ -276,9 +276,14 @@ function renderItinerary() {
               // Only highlights with a verified image get one. A missing key
               // renders the old text-only row rather than a broken <img>.
               const src = h.img && typeof IMAGES !== 'undefined' ? IMAGES[h.img] : null;
+              // If an image fails anyway, drop it and the card styling with
+              // it, so the row falls back to plain text rather than showing
+              // a broken-image icon. Cheap insurance: this whole feature
+              // shipped broken once because 48 URLs 404'd unnoticed.
+              const onErr = "this.remove();this.parentNode.classList.remove('has-photo')";
               return `
               <li class="${src ? 'has-photo' : ''}">
-                ${src ? `<img class="h-photo" src="${src}" alt="" loading="lazy" decoding="async">` : ''}
+                ${src ? `<img class="h-photo" src="${src}" alt="" loading="lazy" decoding="async" onerror="${onErr}">` : ''}
                 <span class="h-icon">${h.icon}</span>
                 <span class="h-text">${h.text}</span>
                 <span class="h-cost">${h.cost}</span>
