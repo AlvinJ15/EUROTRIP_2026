@@ -842,6 +842,9 @@ const BUDGET = {
     "🆕 The Swiss Travel Pass is now 5 days, not 4 — activate Sep 18 so it runs Sep 18–22 and covers the Geneva→Zermatt arrival, both Grindelwald gondola days, Lauterbrunnen and the GoldenPass out. Activating a day late costs you ~$70 for nothing.",
     "Istanbul and Craiova are the cheap stops — don't economise there, economise in Switzerland."
   ],
+  // Every `cost` here is the WHOLE-ROOM nightly rate for BOTH travellers,
+  // not per person — same convention as the rest of the budget. He asked,
+  // which means the table was not saying so clearly enough.
   hotelVsAirbnb: [
     { city: "Barcelona", nights: 2, recommendation: "✅ BOOKED — Airbnb, Gothic Quarter near the Cathedral", reason: "✅ PAID: $272 for both nights ($136/night, under the estimate). Same place both nights, which is what makes Sep 3 a bag-free day. The Gothic Quarter is better than the Eixample for how this day actually runs: the Cathedral, La Boqueria and the walk to Barceloneta are all on foot, and Sants is a direct L3 ride for the Sep 4 train. ⚠️ The trade is the morning — Park Güell and Sagrada Família are both 25–35 min away, so Sep 3 starts with a commute.", cost: "✅ $136/night, paid" },
     { city: "Madrid (start)", nights: 1, recommendation: "🆕 Hotel near the event venue", reason: "🆕 Down to 1 night (Sep 4). Pick this one by where your event is, not by the station — you arrive by train on Sep 4 and leave for Barajas on Sep 5, so Atocha proximity no longer buys anything. Confirm they hold bags after checkout.", cost: "$120–150/night" },
