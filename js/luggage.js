@@ -14,7 +14,7 @@
 // ============================================================
 
 const LUGGAGE = {
-  kit: "2 cabin trolleys (10 kg each) + 2 backpacks. Nothing checked — all four items are with you the whole trip.",
+  kit: "2 cabin trolleys (10 kg each) + 2 backpacks — one trolley and one backpack each. Nothing checked, nothing in a hold, so all four items are with you the whole trip. It is lighter than 'four bags' sounds: two of them are on your back.",
 
   principles: [
     "🧳 Hotel storage is free, universal, and almost always the right answer. Every hotel on this itinerary will hold bags after checkout and before check-in. Confirm it at booking, not on the morning.",
@@ -42,14 +42,14 @@ const LUGGAGE = {
       action: "You sleep in the same hotel on Sep 2 and Sep 3, so Park Güell, Sagrada Família, the Gothic Quarter and Barceloneta are all done empty-handed. This is the entire reason the Spain leg was restructured. 🗼 It matters more than usual on this day: the Sagrada tower at 12:30 comes DOWN a narrow spiral staircase, and they will not let you take a trolley up it.",
       cost: "Free" },
 
-    { day: 4, date: "Fri Sep 4", city: "Barcelona → Madrid", status: "move",
-      headline: "Morning train, bags into the Madrid hotel before the event",
-      action: "Check out, metro to Sants, AVE to Atocha, drop the bags at the Madrid hotel, then go to your event. If the event starts before midday, take the ~07:00 departure instead of the 09:00 one.",
+{ day: 4, date: "Fri Sep 4", city: "Barcelona → Madrid", status: "move",
+      headline: "🆕 No longer an event day — take the earliest train",
+      action: "Check out, metro to Sants, AVE to Atocha, drop everything at the Estrecho hotel, and the rest of the day is yours. 🆕 The event is Sep 5 ONLY, so Sep 4 became a full Madrid day — which makes the ~07:00 departure worth more than it was, not less: it lands you at Atocha 09:30 instead of 11:30. 🔴 Kindergarten visits do NOT work today; the Madrid school year starts Mon Sep 7. Those moved to Sep 28.",
       cost: "—" },
 
     { day: 5, date: "Sat Sep 5", city: "Madrid", status: "store",
       headline: "Checkout 11:00, flight 20:00 — nine hours to cover",
-      action: "Leave all four bags with the Madrid hotel (free) and collect at ~16:30 on the way to Barajas. If the event venue is nowhere near the hotel, use a Stasher or Bounce point beside the venue instead — 200+ points around Sol and Gran Vía. Atocha has no consigna, so the station is not a fallback.",
+      action: "Leave the two trolleys and two backpacks with the Madrid hotel (free) and collect at ~16:30 on the way to Barajas. If the event venue is nowhere near the hotel, use a Stasher or Bounce point beside the venue instead — 200+ points around Sol and Gran Vía. Atocha has no consigna, so the station is not a fallback.",
       cost: "Free at the hotel, or €3–10 for the two trolleys" },
 
     { day: 8, date: "Tue Sep 8", city: "Craiova → Istanbul", status: "move",
@@ -59,7 +59,7 @@ const LUGGAGE = {
 
     { day: 10, date: "Thu Sep 10", city: "Istanbul → Cappadocia", status: "tight",
       headline: "🔴 A hamam with suitcases is not possible",
-      action: "Check out in the morning and leave all four bags at the Sultanahmet hotel — free, and every hotel there does it. The Bosphorus cruise leaves from Eminönü, a 10-minute walk. The hamam has lockers for a wallet and a phone, not for luggage. Collect around 16:00 for the evening flight.",
+      action: "Check out in the morning and leave both trolleys and the backpacks at the Sultanahmet hotel — free, and every hotel there does it. The Bosphorus cruise leaves from Eminönü, a 10-minute walk. The hamam has lockers for a wallet and a phone, not for luggage. Collect around 16:00 for the evening flight.",
       cost: "Free" },
 
     { day: 12, date: "Sat Sep 12", city: "Cappadocia → Athens", status: "store",
@@ -84,17 +84,17 @@ const LUGGAGE = {
 
     { day: 18, date: "Fri Sep 18", city: "Rome → Grindelwald", status: "move",
       headline: "🆕 The last bag-move for four days",
-      action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED AN ENTIRE BAG-MOVE: the old plan checked you out again on Sep 20 and put all four bags into station lockers mid-day so you could paraglide. Now you have one base for four nights and the bags do not move again until Sep 22.",
+      action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED AN ENTIRE BAG-MOVE: the old plan checked you out again on Sep 20 and put the two trolleys and two backpacks into station lockers mid-day so you could paraglide. Now you have one base for four nights and the bags do not move again until Sep 22.",
       cost: "—" },
 
 { day: 19, date: "Sat Sep 19", city: "Guesthouse A → First → Hotel Spinne", status: "store",
       headline: "🔴 Three different hotels this leg — so the Spinne holds the bags today",
-      action: "🆕 CORRECTED. He is staying in three separate places (Sep 18 · Spinne Sep 19 · a third for Sep 20–21), so there is no room to come back to today. Check out of guesthouse A early, walk all four bags the ~10 minutes to the HOTEL SPINNE and leave them at reception — check-in is 15:00 but they hold luggage from the morning. Then go up to First empty-handed: you cannot ride a zipline or a mountain cart holding a trolley. Collect the room at ~16:00 when you come down. Everything is inside the village, so this is two short walks, not a transfer.",
+      action: "🆕 CORRECTED. He is staying in three separate places (Sep 18 · Spinne Sep 19 · a third for Sep 20–21), so there is no room to come back to today. Check out of guesthouse A early, walk the two trolleys and two backpacks the ~10 minutes to the HOTEL SPINNE and leave them at reception — check-in is 15:00 but they hold luggage from the morning. Then go up to First empty-handed: you cannot ride a zipline or a mountain cart holding a trolley. Collect the room at ~16:00 when you come down. Everything is inside the village, so this is two short walks, not a transfer.",
       cost: "Free — hotel reception, ask when you book" },
 
 { day: 20, date: "Sun Sep 20", city: "Spinne → guesthouse B → Interlaken", status: "store",
       headline: "One short walk across the village, then a clean day trip",
-      action: "Check out of the Spinne ~10:00 and walk all four bags to guesthouse B, your last Grindelwald stay. 🔴 Ask guesthouse B AT BOOKING whether they take luggage before check-in — they almost certainly will, but that is the one assumption this day rests on. Then day-trip to Interlaken with a daypack: paraglide ~13:00, lake cruise, chocolate workshop, home to that same room tonight and tomorrow.",
+      action: "Check out of the Spinne ~10:00 and walk the two trolleys and two backpacks to guesthouse B, your last Grindelwald stay. 🔴 Ask guesthouse B AT BOOKING whether they take luggage before check-in — they almost certainly will, but that is the one assumption this day rests on. Then day-trip to Interlaken with a daypack: paraglide ~13:00, lake cruise, chocolate workshop, home to that same room tonight and tomorrow.",
       cost: "Free — hotel storage" },
 
     { day: 21, date: "Mon Sep 21", city: "Lauterbrunnen + Schilthorn", status: "free",
