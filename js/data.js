@@ -359,7 +359,7 @@ const ITINERARY = [
     dates: "Sep 18–22 (Fri–Tue)",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
     dailyCost: 340,
-    accommodation: "🆕 Guesthouse / Airbnb in Grindelwald — ONE base, all four nights",
+    accommodation: "🆕 Three hotels, ONE village — all four nights in Grindelwald. The base never changes; only the room does.",
     accommodationCost: 210,
     transport: { from: "Rome", how: "🆕 Flight FCO→Geneva (1h50), then train Geneva→Bern→Interlaken Ost (~2h) and Interlaken→Grindelwald (35 min). ✅ ZERMATT REMOVED: the old routing added 3h25 of rail on arrival plus a whole transfer day on Sep 20. This is ~2h35 of rail and then you do not touch a train station with luggage again until Sep 22." },
     dayByDay: [
