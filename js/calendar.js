@@ -35,6 +35,29 @@ const BAG_STATUS = {
   tight: { icon: '🔴', label: 'Bag-hostile day — storage required' }
 };
 
+// Lodging status per night. A stay counts as booked when its cost carries a
+// ✅ — the same marker the spend tracker reads, so the calendar can never
+// disagree with the budget table about what is paid for.
+const LODGING_STATUS = {
+  booked:  { icon: '🏠', label: 'Bed booked' },
+  pending: { icon: '🏚️', label: 'Bed NOT booked yet' }
+};
+
+// day-of-month -> { stay, booked } for the 27 nights that need a bed.
+// The last night of the trip has no entry: Sep 29 you are on the plane home.
+function buildLodgingByNight() {
+  const map = {};
+  if (typeof BUDGET === 'undefined' || !BUDGET.hotelVsAirbnb) return map;
+  BUDGET.hotelVsAirbnb.forEach(stay => {
+    if (!stay.firstNight) return;
+    const booked = /✅/.test(stay.cost);
+    for (let i = 0; i < stay.nights; i++) {
+      map[stay.firstNight + i] = { stay, booked, nightOf: i + 1 };
+    }
+  });
+  return map;
+}
+
 // ---- parsing helpers -------------------------------------------------
 
 // "Sep 12–15 (Sat–Tue)" -> { start: 12, end: 15 }
@@ -106,6 +129,7 @@ function planTags(text) {
 // ---- model -----------------------------------------------------------
 
 function buildCalendarModel() {
+  const lodgingByNight = buildLodgingByNight();
   const stops = ITINERARY.map((stop, i) => {
     const range = parseStopRange(stop.dates) || { start: null, end: null };
     return {
@@ -210,6 +234,7 @@ function buildCalendarModel() {
       // silently hid the second one.
       routes: typeof ROUTES !== 'undefined' ? ROUTES.filter(r => r.day === d) : [],
       bags: typeof LUGGAGE !== 'undefined' ? LUGGAGE.days.find(l => l.day === d) || null : null,
+      lodging: lodgingByNight[d] || null,
       isFirst: d === tripStart,
       isLast: d === tripEnd,
       beforeTrip: d < tripStart,
@@ -322,6 +347,19 @@ function renderCalendarGrid() {
     return `<span class="cal-bags is-${d.bags.status}">${BAG_STATUS[d.bags.status].icon} ${BAG_STATUS[d.bags.status].label}</span>`;
   }
 
+  // The whole point of this row is scanning: he wants to sweep the month and
+  // see which beds are still missing, so the pending state is loud and the
+  // booked state is quiet.
+  function lodgingLine(d) {
+    if (!d.lodging) return '';
+    const st = LODGING_STATUS[d.lodging.booked ? 'booked' : 'pending'];
+    const which = d.lodging.stay.nights > 1
+      ? ` · night ${d.lodging.nightOf}/${d.lodging.stay.nights}`
+      : '';
+    return `<span class="cal-lodging is-${d.lodging.booked ? 'booked' : 'pending'}">
+      ${st.icon} ${st.label}${which}</span>`;
+  }
+
   const cells = CAL_MODEL.days.map(d => {
     if (!d.inTrip && !d.legs.length) {
       return `<div class="cal-day is-outside ${d.weekend ? 'is-weekend' : ''}">
@@ -394,6 +432,7 @@ function renderCalendarGrid() {
         ${legs ? `<span class="cal-legs">${legs}</span>` : ''}
         ${routeBadge}
         ${bagLine(d)}
+        ${lodgingLine(d)}
         ${tags ? `<span class="cal-tags">${tags}</span>` : ''}
         ${sleepLine}
       </div>`;
@@ -429,6 +468,14 @@ function openDayDetail(dayNum) {
         ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join('  →  ')
         : d.legs.length ? '🛫 In transit — trip departure' : 'Not part of the trip'}</span>
     </div>
+    ${d.lodging ? `
+      <div class="cal-detail-block cal-lodgeblock is-${d.lodging.booked ? 'booked' : 'pending'}">
+        <h5>${LODGING_STATUS[d.lodging.booked ? 'booked' : 'pending'].icon} Where you sleep tonight
+          <em>${d.lodging.booked ? 'booked & paid' : 'still to book'}</em></h5>
+        <p class="cal-lodge-headline">${d.lodging.stay.city} — ${d.lodging.stay.recommendation}</p>
+        <p class="cal-lodge-action">${d.lodging.stay.reason}</p>
+        <span class="cal-lodge-cost">💵 ${d.lodging.stay.cost} · ${d.lodging.stay.nights} ${d.lodging.stay.nights === 1 ? 'night' : 'nights'} (night ${d.lodging.nightOf})</span>
+      </div>` : ''}
     ${d.bags ? `
       <div class="cal-detail-block cal-bagblock is-${d.bags.status}">
         <h5>🧳 Your bags <em>${BAG_STATUS[d.bags.status].label}</em></h5>
@@ -503,6 +550,8 @@ function renderCalendarSummary() {
   const segs = CAL_MODEL.days.reduce((n, d) =>
     n + d.routes.reduce((m, r) => m + r.recommended.segments.length, 0), 0);
   const bagDays = CAL_MODEL.days.filter(d => d.bags && (d.bags.status === 'tight' || d.bags.status === 'store')).length;
+  const nightsBooked = CAL_MODEL.days.filter(d => d.lodging && d.lodging.booked).length;
+  const nightsToBook = CAL_MODEL.days.filter(d => d.lodging && !d.lodging.booked).length;
   el.innerHTML = `
     <span class="cal-kpi"><b>${TRIP.dates}</b>September 2026</span>
     <span class="cal-kpi"><b>${TRIP.duration}</b>${CAL_MODEL.stops.length} stops</span>
@@ -510,6 +559,7 @@ function renderCalendarSummary() {
     <span class="cal-kpi"><b>${transitions}</b>city-change days</span>
     <span class="cal-kpi"><b>${routed} routes · ${segs} segments</b>mapped door-to-door</span>
     <span class="cal-kpi"><b>${bagDays}</b>days needing bag storage</span>
+    <span class="cal-kpi ${nightsToBook ? 'is-alert' : ''}"><b>${nightsBooked}/${nightsBooked + nightsToBook} nights</b>${nightsToBook ? `🏚️ ${nightsToBook} still without a bed` : '🏠 every bed booked'}</span>
   `;
 }
 
