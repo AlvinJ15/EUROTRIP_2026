@@ -1,0 +1,69 @@
+/* ============================================================
+   LODGING MARKERS ON THE CALENDAR
+   One line per night saying whether the bed is booked. Deliberately
+   asymmetric: booked is a quiet outline, pending is a filled red
+   badge that pulses on hover. The page is scanned to find what is
+   MISSING, so the missing state is the one that has to shout.
+   ============================================================ */
+
+/* --- the lodging line inside a calendar cell ---------------- */
+.cal-lodging {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.63rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+.cal-lodging.is-booked {
+  color: #1f7a4d;
+  background: #e7f6ee;
+  border: 1px solid #b6e3cc;
+}
+.cal-lodging.is-pending {
+  color: #fff;
+  background: #d64545;
+  border: 1px solid #b93636;
+  /* A dashed underline reads as "unfinished" even in greyscale or for
+     anyone who cannot separate this red from the bag-hostile red. */
+  text-decoration: underline dashed rgba(255, 255, 255, 0.55) 1px;
+  text-underline-offset: 2px;
+}
+
+/* --- the lodging block inside the calendar day drawer ------- */
+.cal-lodgeblock {
+  border-left: 4px solid var(--lodge-c, #9aa5ad);
+  padding-left: 12px;
+}
+.cal-lodgeblock.is-booked  { --lodge-c: #1f7a4d; }
+.cal-lodgeblock.is-pending { --lodge-c: #d64545; }
+.cal-lodge-headline {
+  margin: 4px 0 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.cal-lodge-action {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-soft, #566);
+}
+.cal-lodge-cost {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 9px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* --- the "n nights still without a bed" counter ------------- */
+.cal-kpi.is-alert {
+  color: #b93636;
+}
+.cal-kpi.is-alert b {
+  color: #d64545;
+}
