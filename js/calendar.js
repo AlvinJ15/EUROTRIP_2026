@@ -347,17 +347,22 @@ function renderCalendarGrid() {
     return `<span class="cal-bags is-${d.bags.status}">${BAG_STATUS[d.bags.status].icon} ${BAG_STATUS[d.bags.status].label}</span>`;
   }
 
-  // The whole point of this row is scanning: he wants to sweep the month and
-  // see which beds are still missing, so the pending state is loud and the
-  // booked state is quiet.
-  function lodgingLine(d) {
+  // Corner indicator, NOT a row in the cell body. It sits absolutely in the
+  // top-right of the day so the whole month can be swept in one vertical
+  // glance down a fixed column position — mixed into the body it moved with
+  // however many chips and legs that day happened to have, which defeats
+  // the point of an indicator.
+  function lodgingBadge(d) {
     if (!d.lodging) return '';
-    const st = LODGING_STATUS[d.lodging.booked ? 'booked' : 'pending'];
+    const state = d.lodging.booked ? 'booked' : 'pending';
     const which = d.lodging.stay.nights > 1
-      ? ` · night ${d.lodging.nightOf}/${d.lodging.stay.nights}`
+      ? ` · night ${d.lodging.nightOf} of ${d.lodging.stay.nights}`
       : '';
-    return `<span class="cal-lodging is-${d.lodging.booked ? 'booked' : 'pending'}">
-      ${st.icon} ${st.label}${which}</span>`;
+    // Title, not visible text: the icon has to stay small enough to read as
+    // a marker rather than as content.
+    const tip = `${LODGING_STATUS[state].label} — ${d.lodging.stay.city}${which}`;
+    return `<span class="cal-lodgedot is-${state}" title="${tip}" aria-label="${tip}"
+      >${LODGING_STATUS[state].icon}</span>`;
   }
 
   const cells = CAL_MODEL.days.map(d => {
@@ -424,6 +429,7 @@ function renderCalendarGrid() {
            role="button" tabindex="0"
            aria-label="September ${d.day}, ${d.weekday}">
         <span class="cal-bands">${bands}</span>
+        ${lodgingBadge(d)}
         <span class="cal-dayhead">
           <span class="cal-daynum">${d.day}</span>
           <span class="cal-dayname">${d.weekday}</span>
@@ -432,7 +438,6 @@ function renderCalendarGrid() {
         ${legs ? `<span class="cal-legs">${legs}</span>` : ''}
         ${routeBadge}
         ${bagLine(d)}
-        ${lodgingLine(d)}
         ${tags ? `<span class="cal-tags">${tags}</span>` : ''}
         ${sleepLine}
       </div>`;
