@@ -84,27 +84,27 @@ const LUGGAGE = {
 
     { day: 18, date: "Fri Sep 18", city: "Rome → Grindelwald", status: "move",
       headline: "Arrival — then two short bag-moves in four days",
-      action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED A WHOLE TRANSFER DAY. 🆕 The bags now move twice more and both are cheap: a ~10-min walk to the Spinne on Sep 19, and a ride down to Interlaken on Sep 20 aboard the train the Interlaken day needed anyway. Neither one costs you a journey you were not already making.",
+      action: "Fly FCO→Geneva, train Geneva→Bern→Interlaken Ost→Grindelwald, check in ~15:15, bags into the room. ✅ REMOVING ZERMATT DELETED A WHOLE TRANSFER DAY. 🆕 The bags now move twice more and both are cheap: a ~10-min walk to the Spinne on Sep 19, and a ride down to Interlaken on Sep 20 aboard the train the Interlaken day needed anyway, with the bags waiting in a station locker until you head up to Lauterbrunnen that evening. Neither one costs you a journey you were not already making.",
       cost: "—" },
 
 { day: 19, date: "Sat Sep 19", city: "Guesthouse A → First → Hotel Spinne", status: "store",
       headline: "🔴 Three different hotels this leg — so the Spinne holds the bags today",
-      action: "🆕 CORRECTED. He is staying in three separate places (Grindelwald Sep 18 · the Spinne Sep 19 · Interlaken Sep 20–21), so there is no room to come back to today. Check out of guesthouse A early, walk the two trolleys and two backpacks the ~10 minutes to the HOTEL SPINNE and leave them at reception — check-in is 15:00 but they hold luggage from the morning. Then go up to First empty-handed: you cannot ride a zipline or a mountain cart holding a trolley. Collect the room at ~16:00 when you come down. Everything is inside the village, so this is two short walks, not a transfer.",
+      action: "🆕 CORRECTED. He is staying in three separate places (Grindelwald Sep 18 · the Spinne Sep 19 · Lauterbrunnen Sep 20–21), so there is no room to come back to today. Check out of guesthouse A early, walk the two trolleys and two backpacks the ~10 minutes to the HOTEL SPINNE and leave them at reception — check-in is 15:00 but they hold luggage from the morning. Then go up to First empty-handed: you cannot ride a zipline or a mountain cart holding a trolley. Collect the room at ~16:00 when you come down. Everything is inside the village, so this is two short walks, not a transfer.",
       cost: "Free — hotel reception, ask when you book" },
 
-{ day: 20, date: "Sun Sep 20", city: "🆕 Grindelwald → Interlaken (base change)", status: "move",
-      headline: "🆕 The bags leave Grindelwald — on a train you were catching anyway",
-      action: "🆕 THE LAST TWO NIGHTS MOVED TO INTERLAKEN ON PRICE (~$800 vs ~$400 for the pair), and the bags follow. This looks like it added a transfer, but it did not add a JOURNEY: Sep 20 is the Interlaken day and you were riding that 35-min train regardless — the trolleys simply come along. Check out of the Spinne ~10:00, train down, drop everything at the Interlaken hotel, then day-trip with a daypack: paraglide ~13:00, then two of {boat to Iseltwald / Harder Kulm / chocolate workshop}. 🔴 Ask the hotel AT BOOKING whether it holds luggage before check-in. Unlike the old Grindelwald guesthouse, this is no longer a single point of failure — Interlaken Ost has lockers 5 minutes away.",
-      cost: "Free — hotel storage, or ~CHF 9 for a station locker" },
+{ day: 20, date: "Sun Sep 20", city: "🆕 Grindelwald → Interlaken → Lauterbrunnen", status: "store",
+      headline: "🔴 The one day the Lauterbrunnen move costs you something — solved with a locker",
+      action: "🆕 THE LAST TWO NIGHTS MOVED TO LAUTERBRUNNEN (Hotel Schützen, $555 for the pair, against ~$800 in Grindelwald), and this is the day the bags follow. 🔴 DO NOT DROP THEM AT THE HOTEL FIRST. Grindelwald→Lauterbrunnen is ~40 min with a change at Zweilütschinen, then another 20 min back out to Interlaken — ~60 min of travel before a ~13:00 flight, against 35 min direct. ✅ DO THIS INSTEAD: check out of the Spinne ~10:00, ride 35 min straight to INTERLAKEN OST, put everything in a station locker (~CHF 9), and day-trip with a daypack — paraglide ~13:00, then two of {boat one-way to Iseltwald / Harder Kulm / chocolate workshop}. Collect the bags in the evening on your way through and ride the last 20 min up to Lauterbrunnen. 💡 The locker is the point: it turns a detour into a straight line, and it means the hotel's luggage policy cannot break the day.",
+      cost: "~CHF 9 — Interlaken Ost lockers" },
 
     { day: 21, date: "Mon Sep 21", city: "Lauterbrunnen + Schilthorn", status: "free",
-      headline: "🆕 Bag-free again — a day trip, not a transfer",
-      action: "🆕 Train to Lauterbrunnen — 20 min from Interlaken Ost, against ~40 min and a change at Zweilütschinen from Grindelwald, so the base change hands this day ~40 min back. Trümmelbach, cable car via Mürren to Schilthorn, and back to the same room. The Schilthorn cable cars and the Trümmelbach lifts are cramped; going up with luggage would be miserable and this plan never asks you to.",
+      headline: "🆕 Bag-free AND commute-free — you sleep inside today's destination",
+      action: "🆕 THE BEST ARGUMENT FOR LAUTERBRUNNEN: this day used to open with ~40 min and a change at Zweilütschinen from Grindelwald and close with the same in reverse. All ~80 min of it is gone — you walk out of the hotel into Staubbach. Trümmelbach, cable car via Mürren to Schilthorn, and back to the same room. The Schilthorn cable cars and the Trümmelbach lifts are cramped; going up with luggage would be miserable and this plan never asks you to.",
       cost: "Free" },
 
-    { day: 22, date: "Tue Sep 22", city: "Interlaken → Paris", status: "move",
-      headline: "🆕 The gentlest travel morning of the trip",
-      action: "🆕 SLEEPING IN INTERLAKEN PAYS OFF HERE: the GoldenPass leaves from Interlaken Ost, so you check out around 10:30 and walk to it. The old Grindelwald plan meant a 09:37 train with every bag just to reach the start line. Bags straight onto the GoldenPass Express at 11:07. Panoramic coaches to Montreux, then Geneva, then the TGV into Paris ~19:30. The bags sit on a luggage rack the whole way and you never need a locker.",
+    { day: 22, date: "Tue Sep 22", city: "Lauterbrunnen → Paris", status: "move",
+      headline: "🆕 An unhurried travel morning",
+      action: "🆕 Check out of the Schützen around 10:00 and take the 20-min train to Interlaken Ost, in good time for the 11:07. The old Grindelwald plan needed a 09:37 with every bag just to reach the start line. Bags straight onto the GoldenPass Express at 11:07. Panoramic coaches to Montreux, then Geneva, then the TGV into Paris ~19:30. The bags sit on a luggage rack the whole way and you never need a locker.",
       cost: "—" },
 
     { day: 26, date: "Sat Sep 26", city: "Paris → Madrid", status: "move",
