@@ -6,30 +6,41 @@
    MISSING, so the missing state is the one that has to shout.
    ============================================================ */
 
-/* --- the lodging line inside a calendar cell ---------------- */
-.cal-lodging {
-  display: block;
-  margin-top: 4px;
-  font-size: 0.63rem;
-  font-weight: 700;
-  line-height: 1.3;
-  padding: 2px 6px;
-  border-radius: 5px;
+/* --- the corner indicator on a calendar cell ----------------
+   Absolutely positioned in the top-right so it lands at the SAME spot
+   in every cell. That fixed position is the whole feature: you sweep
+   the month down one column of corners instead of hunting for a line
+   that sits at a different height in every day. .cal-day is already
+   position:relative, so it anchors here. */
+.cal-lodgedot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 0.82rem;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: help;
 }
-.cal-lodging.is-booked {
-  color: #1f7a4d;
+.cal-lodgedot.is-booked {
   background: #e7f6ee;
   border: 1px solid #b6e3cc;
+  /* Reserved beds are settled business — present, but not competing for
+     attention with the ones still to book. */
+  opacity: 0.75;
 }
-.cal-lodging.is-pending {
-  color: #fff;
-  background: #d64545;
-  border: 1px solid #b93636;
-  /* A dashed underline reads as "unfinished" even in greyscale or for
-     anyone who cannot separate this red from the bag-hostile red. */
-  text-decoration: underline dashed rgba(255, 255, 255, 0.55) 1px;
-  text-underline-offset: 2px;
+.cal-lodgedot.is-pending {
+  background: #fdeaea;
+  /* Ring rather than fill: at 24px a solid red disc swallows the emoji. */
+  border: 2px solid #d64545;
+  box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.14);
 }
+.cal-day:hover .cal-lodgedot { opacity: 1; }
 
 /* --- the lodging block inside the calendar day drawer ------- */
 .cal-lodgeblock {
