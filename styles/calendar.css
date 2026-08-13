@@ -219,43 +219,64 @@ body.view-calendar #nav-cities { display: none; }
   font-size: 0.8rem;
   line-height: 1;
   border-radius: 50%;
-  cursor: help;
-  background: #e9eefc;
-  border: 1px solid #b9c6ee;
-  color: #2c3f7c;
+  cursor: pointer;
+  /* White on the now-dark-green cell, so the one thing you are meant to
+     click stays the brightest object in it. */
+  background: #fff;
+  border: 2px solid #14402b;
+  color: #1f5c3d;
 }
 .cal-day:hover .cal-transportdot {
-  background: #d8e1fb;
-  border-color: #8fa4e0;
+  background: #d7ecdf;
+  border-color: #0d2c1d;
 }
 
-/* The tint. Deliberately LOUD, because the job is scanning a 30-cell
-   grid and picking out the 13 travel days without reading any of them.
-   An earlier version used a barely-there corner wash that was invisible
-   at a glance, which defeated the entire point of having a marker.
+/* SOLID DARK GREEN, not a tint. This is the third attempt: a corner
+   wash and then a pale slate hatch were both invisible when scanning
+   thirty cells, which is the only thing this marker exists to do.
+   A wash cannot win against a grid of white cards — it has to be a
+   filled cell.
 
-   A slate-indigo is used because none of the ten stop colours is one —
-   they run red, amber, cyan, violet, pink and stone — so a transport day
-   cannot be confused with a city. The diagonal hatching carries the
-   signal a second time without hue, so it still reads when the cell is
-   already busy with bands and chips. */
+   Green because none of the ten stop colours is green: they run red,
+   amber, orange, cyan, blue, violet, pink and stone. So a filled green
+   cell cannot be read as a city, and it needs no legend to be obvious.
+   Mid-dark rather than near-black so it reads as a colour rather than
+   as a hole in the calendar. */
 .cal-day.is-transport {
-  background-color: #d7ddf4;
+  background-color: #357a56;
+  /* Hatching in white now, since the ground went dark. Kept very low so
+     it textures the surface without turning into stripes. */
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(58, 76, 148, 0.10) 0px,
-    rgba(58, 76, 148, 0.10) 5px,
-    transparent 5px,
-    transparent 12px
+    rgba(255, 255, 255, 0.075) 0px,
+    rgba(255, 255, 255, 0.075) 6px,
+    transparent 6px,
+    transparent 14px
   );
-  border-color: #5468b0;
+  border-color: #22563a;
   border-width: 2px;
+  color: #fff;
 }
-/* Weekend shading must not wash the transport tint back out. */
-.cal-day.is-transport.is-weekend { background-color: #d3daf5; }
-.cal-day.is-transport .cal-chip { background: rgba(255, 255, 255, 0.72); }
+/* Weekend shading would otherwise repaint the cell white. */
+.cal-day.is-transport.is-weekend { background-color: #2f7050; }
+
+/* Only the BARE text needs inverting. Every other child — chips, legs,
+   bag line, tags, sleep line — already carries its own light background,
+   so they read as pale cards floating on the green and are left alone. */
+.cal-day.is-transport .cal-daynum { color: #fff; }
+.cal-day.is-transport .cal-dayname,
+.cal-day.is-transport.is-weekend .cal-dayname { color: rgba(255, 255, 255, 0.82); }
 .cal-day.is-transport .cal-sleep,
-.cal-day.is-transport .cal-routebadge { background: rgba(255, 255, 255, 0.66); }
+.cal-day.is-transport .cal-sleep.is-move { color: rgba(255, 255, 255, 0.88); }
+.cal-day.is-transport .cal-outside-note { color: rgba(255, 255, 255, 0.75); }
+
+/* Lift the pale children slightly so they sit ON the green rather than
+   looking like holes punched through it. */
+.cal-day.is-transport .cal-chip,
+.cal-day.is-transport .cal-leg,
+.cal-day.is-transport .cal-routebadge {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
 
 .cal-day.is-transport.is-selected { border-color: var(--c); }
 
@@ -286,7 +307,7 @@ body.view-calendar #nav-cities { display: none; }
   transition: transform 0.12s ease, background 0.12s ease;
 }
 .cal-transportdot:hover { transform: scale(1.12); }
-.cal-transportdot:focus-visible { outline: 2px solid #3a4c94; outline-offset: 2px; }
+.cal-transportdot:focus-visible { outline: 2px solid #14402b; outline-offset: 2px; }
 
 /* --- switching between the two drawer views ---------------------- */
 .cal-gotransport,
@@ -304,12 +325,12 @@ body.view-calendar #nav-cities { display: none; }
   padding: 12px 15px;
   margin-bottom: 16px;
   border-radius: 12px;
-  background: #eaeefb;
-  border: 1px solid #a8b6e4;
-  color: #2c3f7c;
+  background: #e9f5ee;
+  border: 1px solid #a3ceb5;
+  color: #1f5c3d;
 }
 .cal-gotransport:hover,
-.cal-goday:hover { background: #dde4f8; border-color: #7b8fd4; }
+.cal-goday:hover { background: #d7ecdf; border-color: #6faa87; }
 .cal-gotransport em,
 .cal-goday em {
   font-style: normal;
@@ -320,12 +341,12 @@ body.view-calendar #nav-cities { display: none; }
 .cal-goday { margin: 18px 0 0; }
 
 .cal-detail-head.is-transport {
-  border-left-color: #5468b0;
+  border-left-color: #357a56;
 }
 .cal-detail-sub {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #2c3f7c;
+  color: #1f5c3d;
 }
 
 /* Non-interactive key for the transport tint. The stop legend filters on
@@ -337,7 +358,7 @@ body.view-calendar #nav-cities { display: none; }
   padding: 8px 12px;
   border-radius: 10px;
   background: transparent;
-  border: 1px dashed #a8b6e4;
+  border: 1px dashed #7fae94;
   cursor: default;
 }
 .cal-legend-keyswatch.is-transport {
@@ -345,13 +366,89 @@ body.view-calendar #nav-cities { display: none; }
   height: 20px;
   flex-shrink: 0;
   border-radius: 5px;
-  background-color: #d7ddf4;
+  background-color: #357a56;
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(58, 76, 148, 0.10) 0px,
-    rgba(58, 76, 148, 0.10) 5px,
-    transparent 5px,
-    transparent 12px
+    rgba(255, 255, 255, 0.075) 0px,
+    rgba(255, 255, 255, 0.075) 6px,
+    transparent 6px,
+    transparent 14px
   );
-  border: 2px solid #5468b0;
+  border: 2px solid #22563a;
+}
+
+/* ============================================================
+   TELLING THE TWO DRAWER VIEWS APART
+   Same panel, two completely different answers — "how do I get
+   there" and "what am I doing all day". In identical white chrome
+   they read as the same screen, so each gets a saturated banner
+   and a tinted ground. Loud on purpose: the point is to know
+   which one you are in before reading a word.
+   ============================================================ */
+
+.cal-viewbanner {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  /* Bleed to the panel edges — .cal-detail is padded 22px/24px, and the
+     right side leaves room for the close button that sits on top. */
+  margin: -22px -24px 18px;
+  padding: 13px 60px 13px 24px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.cal-viewbanner em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: none;
+  opacity: 0.86;
+}
+
+/* --- transport: the same dark green as the calendar cells -------- */
+.cal-detail.is-transportview {
+  background: #eaf4ee;
+  border-left: 6px solid #22563a;
+}
+.cal-detail.is-transportview .cal-viewbanner { background: #22563a; }
+
+/* --- the whole day: deep amber, as far from green as the palette
+       goes without colliding with a stop colour ------------------- */
+.cal-detail.is-dayview {
+  background: #fdf6ec;
+  border-left: 6px solid #92400e;
+}
+.cal-detail.is-dayview .cal-viewbanner { background: #92400e; }
+
+/* Content blocks stay white so they lift off whichever ground is
+   behind them, instead of inheriting the tint and going flat. */
+.cal-detail.is-dayview .cal-detail-block,
+.cal-detail.is-transportview .cal-detail-block {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.cal-detail.is-transportview .cal-routecards .route-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+}
+
+/* The close button sits on the banner now, so it needs to be legible
+   against a saturated colour rather than against white. */
+.cal-detail.is-dayview .cal-detail-close,
+.cal-detail.is-transportview .cal-detail-close {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  z-index: 4;
+}
+.cal-detail.is-dayview .cal-detail-close:hover,
+.cal-detail.is-transportview .cal-detail-close:hover {
+  background: rgba(255, 255, 255, 0.38);
+  color: #fff;
 }

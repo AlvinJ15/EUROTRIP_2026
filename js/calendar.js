@@ -475,21 +475,33 @@ function renderCalendarGrid() {
 
   el.querySelectorAll('.cal-day[data-day]').forEach(cell => {
     const open = () => openDayDetail(parseInt(cell.dataset.day, 10));
-    cell.addEventListener('click', open);
+    cell.addEventListener('click', e => {
+      // BELT AND BRACES. The badge below also calls stopPropagation, but
+      // relying on that alone means one missed listener anywhere in the
+      // chain silently reopens the day on top of the transport view — the
+      // exact bug this guard exists to make impossible. Asking "did this
+      // click start inside the badge?" cannot be defeated by ordering.
+      if (e.target.closest && e.target.closest('.cal-transportdot')) return;
+      open();
+    });
     cell.addEventListener('keydown', e => {
+      if (e.target.closest && e.target.closest('.cal-transportdot')) return;
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
     });
   });
 
-  // Bound AFTER the cell handler and stopping propagation, so the badge
-  // wins over the cell it sits inside rather than opening both panels.
   el.querySelectorAll('.cal-transportdot[data-transport]').forEach(dot => {
     dot.addEventListener('click', e => {
+      e.preventDefault();
       e.stopPropagation();
       openTransportDetail(parseInt(dot.dataset.transport, 10));
     });
     dot.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') e.stopPropagation();
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        openTransportDetail(parseInt(dot.dataset.transport, 10));
+      }
     });
   });
 }
@@ -523,10 +535,17 @@ function openTransportDetail(dayNum) {
     ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join(' → ')
     : '🛫 In transit';
 
+  // The two views live in the same drawer, so the drawer itself has to say
+  // which one you are looking at. Without this they were two walls of text
+  // in identical chrome.
+  panel.classList.remove('is-dayview');
+  panel.classList.add('is-transportview');
+
   panel.innerHTML = `
     <button class="cal-detail-close" aria-label="Close">✕</button>
+    <div class="cal-viewbanner">🚏 TRANSPORT ONLY <em>door to door</em></div>
     <div class="cal-detail-head is-transport">
-      <span class="cal-detail-date">🚏 Transport · ${d.weekday}, September ${d.day}, 2026</span>
+      <span class="cal-detail-date">${d.weekday}, September ${d.day}, 2026</span>
       <span class="cal-detail-where">${d.routes.map(r => `${r.fromEmoji} ${r.from} → ${r.toEmoji} ${r.to}`).join('<br>')}</span>
       <span class="cal-detail-sub">${d.routes.length} journey${d.routes.length === 1 ? '' : 's'} · ${segs} segment${segs === 1 ? '' : 's'} to book</span>
     </div>
@@ -565,8 +584,12 @@ function openDayDetail(dayNum) {
 
   const primary = d.inTrip ? d.segments[d.segments.length - 1].stop : null;
 
+  panel.classList.remove('is-transportview');
+  panel.classList.add('is-dayview');
+
   panel.innerHTML = `
     <button class="cal-detail-close" aria-label="Close">✕</button>
+    <div class="cal-viewbanner">🗓️ THE WHOLE DAY <em>plan · beds · bags</em></div>
     <div class="cal-detail-head" style="--c:${primary ? primary.color.base : 'var(--text-muted)'}">
       <span class="cal-detail-date">${d.weekday}, September ${d.day}, 2026</span>
       <span class="cal-detail-where">${d.inTrip
@@ -632,7 +655,7 @@ function openDayDetail(dayNum) {
 
 function closeDayDetail() {
   const panel = document.getElementById('cal-detail');
-  if (panel) panel.classList.remove('is-open');
+  if (panel) panel.classList.remove('is-open', 'is-dayview', 'is-transportview');
   document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('is-selected'));
 }
 
