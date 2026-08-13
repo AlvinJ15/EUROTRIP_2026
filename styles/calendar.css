@@ -229,14 +229,34 @@ body.view-calendar #nav-cities { display: none; }
   border-color: #8fa4e0;
 }
 
-/* The tint. Kept very light and applied as a diagonal band from the
-   top-left — the direction the marker sits in — so it never competes
-   with the stop colour that already owns the cell body, and so a
-   weekend transport day still reads as a weekend. */
+/* The tint. Deliberately LOUD, because the job is scanning a 30-cell
+   grid and picking out the 13 travel days without reading any of them.
+   An earlier version used a barely-there corner wash that was invisible
+   at a glance, which defeated the entire point of having a marker.
+
+   A slate-indigo is used because none of the ten stop colours is one —
+   they run red, amber, cyan, violet, pink and stone — so a transport day
+   cannot be confused with a city. The diagonal hatching carries the
+   signal a second time without hue, so it still reads when the cell is
+   already busy with bands and chips. */
 .cal-day.is-transport {
-  background-image: linear-gradient(135deg, rgba(83, 109, 199, 0.11) 0%, rgba(83, 109, 199, 0.04) 42%, transparent 72%);
-  border-color: rgba(83, 109, 199, 0.32);
+  background-color: #d7ddf4;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(58, 76, 148, 0.10) 0px,
+    rgba(58, 76, 148, 0.10) 5px,
+    transparent 5px,
+    transparent 12px
+  );
+  border-color: #5468b0;
+  border-width: 2px;
 }
+/* Weekend shading must not wash the transport tint back out. */
+.cal-day.is-transport.is-weekend { background-color: #d3daf5; }
+.cal-day.is-transport .cal-chip { background: rgba(255, 255, 255, 0.72); }
+.cal-day.is-transport .cal-sleep,
+.cal-day.is-transport .cal-routebadge { background: rgba(255, 255, 255, 0.66); }
+
 .cal-day.is-transport.is-selected { border-color: var(--c); }
 
 /* --- the full route cards inside the day drawer ------------------ */
@@ -256,3 +276,82 @@ body.view-calendar #nav-cities { display: none; }
 }
 .cal-routecards .route-card .route-title { font-size: 0.98rem; }
 .cal-routecards .route-seg-meta { flex-wrap: wrap; }
+
+/* The badge has to look pressable now that it is a real button sitting
+   inside another clickable surface. */
+.cal-transportdot {
+  padding: 0;
+  font-family: inherit;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.cal-transportdot:hover { transform: scale(1.12); }
+.cal-transportdot:focus-visible { outline: 2px solid #3a4c94; outline-offset: 2px; }
+
+/* --- switching between the two drawer views ---------------------- */
+.cal-gotransport,
+.cal-goday {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+  cursor: pointer;
+  padding: 12px 15px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #eaeefb;
+  border: 1px solid #a8b6e4;
+  color: #2c3f7c;
+}
+.cal-gotransport:hover,
+.cal-goday:hover { background: #dde4f8; border-color: #7b8fd4; }
+.cal-gotransport em,
+.cal-goday em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.76rem;
+  opacity: 0.78;
+}
+.cal-goday { margin: 18px 0 0; }
+
+.cal-detail-head.is-transport {
+  border-left-color: #5468b0;
+}
+.cal-detail-sub {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2c3f7c;
+}
+
+/* Non-interactive key for the transport tint. The stop legend filters on
+   click; this one does not, so it must not look like a button. */
+.cal-legend-key {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px dashed #a8b6e4;
+  cursor: default;
+}
+.cal-legend-keyswatch.is-transport {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background-color: #d7ddf4;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(58, 76, 148, 0.10) 0px,
+    rgba(58, 76, 148, 0.10) 5px,
+    transparent 5px,
+    transparent 12px
+  );
+  border: 2px solid #5468b0;
+}

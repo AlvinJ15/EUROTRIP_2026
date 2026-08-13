@@ -262,7 +262,14 @@ function renderCalendarLegend() {
         <span>${s.dates} · ${s.nights} ${s.nights === 1 ? 'night' : 'nights'}</span>
       </span>
     </button>
-  `).join('');
+  `).join('') + `
+    <span class="cal-legend-key">
+      <span class="cal-legend-keyswatch is-transport"></span>
+      <span class="cal-legend-text">
+        <strong>🚏 Transport day</strong>
+        <span>${CAL_MODEL.days.filter(d => d.routes.length).length} days · click the 🚏 for the door-to-door plan on its own</span>
+      </span>
+    </span>`;
 
   el.querySelectorAll('.cal-legend-item').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -352,8 +359,13 @@ function renderCalendarGrid() {
     if (!d.routes.length) return '';
     const segs = d.routes.reduce((n, r) => n + r.recommended.segments.length, 0);
     const tip = d.routes.map(r => `${r.from} → ${r.to} (${r.recommended.doorToDoor})`).join(' · ')
-      + ` — ${segs} segment${segs === 1 ? '' : 's'}. Click for the full door-to-door plan.`;
-    return `<span class="cal-transportdot" title="${tip}" aria-label="${tip}">🚏</span>`;
+      + ` — ${segs} segment${segs === 1 ? '' : 's'}. Opens the transport plan on its own.`;
+    // Its OWN button, not part of the cell. Clicking it opens transport
+    // alone; clicking anywhere else in the cell opens the day. Mixing the
+    // two into one panel meant scrolling past lodging, bags and the day
+    // plan to reach the train you were looking for.
+    return `<button type="button" class="cal-transportdot" data-transport="${d.day}"
+      title="${tip}" aria-label="${tip}">🚏</button>`;
   }
 
   function bagLine(d) {
@@ -468,6 +480,78 @@ function renderCalendarGrid() {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
     });
   });
+
+  // Bound AFTER the cell handler and stopping propagation, so the badge
+  // wins over the cell it sits inside rather than opening both panels.
+  el.querySelectorAll('.cal-transportdot[data-transport]').forEach(dot => {
+    dot.addEventListener('click', e => {
+      e.stopPropagation();
+      openTransportDetail(parseInt(dot.dataset.transport, 10));
+    });
+    dot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') e.stopPropagation();
+    });
+  });
+}
+
+function legRow(l) {
+  return `
+    <div class="cal-detail-leg">
+      <span class="cal-detail-leg-top">${l.icon} <strong>${l.leg}</strong>${l.time ? ` · <b>🕑 ${l.time}</b>` : ''}${l.duration ? ` · <b>⏱️ ${l.duration}</b>` : ''}</span>
+      <span class="cal-detail-leg-meta">${l.method} · ${l.cost}</span>
+      <span class="cal-detail-leg-note">${l.notes}</span>
+    </div>`;
+}
+
+// TRANSPORT ON ITS OWN.
+// Shares the drawer with the day detail but is a separate view, not a
+// section inside one. The two answer different questions — "what am I
+// doing on the 22nd" and "how exactly do I get from Lauterbrunnen to
+// Paris" — and stacking them meant scrolling past lodging, bags and a
+// sixteen-step day plan to reach a train time.
+function openTransportDetail(dayNum) {
+  const d = CAL_MODEL.days.find(x => x.day === dayNum);
+  const panel = document.getElementById('cal-detail');
+  if (!d || !panel) return;
+
+  document.querySelectorAll('.cal-day').forEach(c =>
+    c.classList.toggle('is-selected', c.dataset.day === String(dayNum))
+  );
+
+  const segs = d.routes.reduce((n, r) => n + r.recommended.segments.length, 0);
+  const where = d.inTrip
+    ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join(' → ')
+    : '🛫 In transit';
+
+  panel.innerHTML = `
+    <button class="cal-detail-close" aria-label="Close">✕</button>
+    <div class="cal-detail-head is-transport">
+      <span class="cal-detail-date">🚏 Transport · ${d.weekday}, September ${d.day}, 2026</span>
+      <span class="cal-detail-where">${d.routes.map(r => `${r.fromEmoji} ${r.from} → ${r.toEmoji} ${r.to}`).join('<br>')}</span>
+      <span class="cal-detail-sub">${d.routes.length} journey${d.routes.length === 1 ? '' : 's'} · ${segs} segment${segs === 1 ? '' : 's'} to book</span>
+    </div>
+    ${d.legs.length ? `
+      <div class="cal-detail-block">
+        <h5>At a glance</h5>
+        ${d.legs.map(legRow).join('')}
+      </div>` : ''}
+    <div class="cal-routecards">${
+      // The FULL card — segments, alternatives, watch-outs. `routeCard` is
+      // render.js's, reused verbatim so the two can never drift apart.
+      typeof routeCard === 'function'
+        ? d.routes.map(routeCard).join('')
+        : d.routes.map(r => `<p>${r.from} → ${r.to} · ${r.recommended.doorToDoor}</p>`).join('')
+    }</div>
+    <button type="button" class="cal-goday" data-day="${d.day}">
+      ← Back to the whole day <em>${where}</em>
+    </button>
+  `;
+
+  panel.classList.add('is-open');
+  panel.scrollTop = 0;
+  panel.querySelector('.cal-detail-close').addEventListener('click', closeDayDetail);
+  const back = panel.querySelector('.cal-goday');
+  if (back) back.addEventListener('click', () => openDayDetail(d.day));
 }
 
 function openDayDetail(dayNum) {
@@ -505,28 +589,14 @@ function openDayDetail(dayNum) {
         ${d.bags.cost && d.bags.cost !== '—' ? `<span class="cal-bag-cost">💵 ${d.bags.cost}</span>` : ''}
       </div>` : ''}
     ${d.routes.length ? `
-      <div class="cal-detail-block cal-routeblock">
-        <h5>🚏 Door to door <em>${d.routes.length === 1 ? 'this journey' : `${d.routes.length} journeys today`}</em></h5>
-        <div class="cal-routecards">${
-          // The FULL card, not a summary. This used to be a three-line
-          // teaser plus a link into a standalone routes section — that
-          // section is gone, so everything it held has to arrive here or
-          // it is lost. `routeCard` is render.js's, reused verbatim so the
-          // two can never drift apart.
-          typeof routeCard === 'function'
-            ? d.routes.map(routeCard).join('')
-            : d.routes.map(r => `<p>${r.from} → ${r.to} · ${r.recommended.doorToDoor}</p>`).join('')
-        }</div>
-      </div>` : ''}
-    ${d.legs.length ? `
+      <button type="button" class="cal-gotransport" data-transport="${d.day}">
+        🚏 Transport this day — ${d.routes.map(r => `${r.from} → ${r.to}`).join(' · ')}
+        <em>open on its own →</em>
+      </button>` : ''}
+    ${d.legs.length && !d.routes.length ? `
       <div class="cal-detail-block">
         <h5>Transport this day</h5>
-        ${d.legs.map(l => `
-          <div class="cal-detail-leg">
-            <span class="cal-detail-leg-top">${l.icon} <strong>${l.leg}</strong>${l.time ? ` · <b>🕑 ${l.time}</b>` : ''}${l.duration ? ` · <b>⏱️ ${l.duration}</b>` : ''}</span>
-            <span class="cal-detail-leg-meta">${l.method} · ${l.cost}</span>
-            <span class="cal-detail-leg-note">${l.notes}</span>
-          </div>`).join('')}
+        ${d.legs.map(legRow).join('')}
       </div>` : ''}
     ${d.segments.map(sg => `
       <div class="cal-detail-block" style="--c:${sg.stop.color.base}">
@@ -548,6 +618,8 @@ function openDayDetail(dayNum) {
   // The stop link jumps back into the detail view. (There used to be a
   // route link here too, pointing at the standalone routes section — that
   // section is gone and its content now renders inline above.)
+  const toTransport = panel.querySelector('.cal-gotransport');
+  if (toTransport) toTransport.addEventListener('click', () => openTransportDetail(d.day));
   panel.querySelectorAll('.cal-detail-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
