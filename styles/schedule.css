@@ -1,0 +1,172 @@
+/* ============================================================
+   THE TIMETABLE
+   A four-column grid: start/end · what · duration · slack.
+   The slack column is the point of the whole thing, so it is the
+   only one that carries colour — you scan down it looking for red.
+   ============================================================ */
+
+.sch {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.sch-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f4f6f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.78rem;
+  color: var(--text-soft, #566);
+}
+.sch-span b { color: var(--text, #12232e); }
+.sch-slack {
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #eef2f6;
+}
+.sch-verdict {
+  margin-left: auto;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.sch-verdict.is-ok    { background: #e7f6ee; color: #1f7a4d; }
+.sch-verdict.is-tight { background: #fff2e0; color: #8a5a10; }
+.sch-verdict.is-clash { background: #fdeaea; color: #a83232; }
+
+.sch-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sch-row {
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  align-items: start;
+  gap: 0 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  /* The kind colour lives on a left edge rather than a background, so a
+     15-row day does not turn into a rainbow. */
+  border-left: 4px solid var(--k, transparent);
+}
+.sch-row:last-child { border-bottom: 0; }
+.sch-row.k-travel { --k: #6d8fb8; }
+.sch-row.k-fixed  { --k: #d64545; }
+.sch-row.k-act    { --k: #3fa66a; }
+.sch-row.k-food   { --k: #e0a133; }
+.sch-row.k-bags   { --k: #8b5cf6; }
+.sch-row.k-buffer { --k: #c3cad1; }
+.sch-row.is-fixed { background: #fffafa; }
+
+/* Start over end, so the eye reads one column of start times and can
+   still check when a thing is due to finish. */
+.sch-time {
+  display: flex;
+  flex-direction: column;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25;
+}
+.sch-time b { font-size: 0.86rem; font-weight: 800; }
+.sch-time i {
+  font-style: normal;
+  font-size: 0.7rem;
+  color: var(--text-muted, #667);
+}
+
+.sch-body { min-width: 0; }
+.sch-what {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.sch-lock { font-size: 0.7rem; opacity: 0.75; cursor: help; }
+.sch-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-top: 2px;
+}
+.sch-dur {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted, #667);
+  background: #f1f4f7;
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+.sch-note {
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--text-soft, #566);
+}
+
+/* The slack column. Positive numbers are quiet; the warnings shout. */
+.sch-gap {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: var(--text-muted, #667);
+  background: #f1f4f7;
+}
+.sch-gap.is-loose { background: #e7f6ee; color: #1f7a4d; }
+.sch-gap.is-tight { background: #fff2e0; color: #8a5a10; }
+.sch-gap.is-clash { background: #fdeaea; color: #a83232; }
+.sch-gap.is-end   { background: transparent; opacity: 0.45; font-weight: 600; }
+
+/* --- the collapsed reasoning ------------------------------------- */
+.day-why {
+  margin-top: 10px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  padding-top: 8px;
+}
+.day-why > summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted, #667);
+  list-style: none;
+  padding: 4px 0;
+}
+.day-why > summary::-webkit-details-marker { display: none; }
+.day-why > summary::before {
+  content: '▸ ';
+  display: inline-block;
+  transition: transform 0.15s;
+}
+.day-why[open] > summary::before { content: '▾ '; }
+.day-why > summary:hover { color: var(--text, #12232e); }
+
+/* --- compact variant, inside the calendar drawer ------------------ */
+.sch.is-compact .sch-row {
+  grid-template-columns: 52px 1fr auto;
+  padding: 7px 11px;
+  gap: 0 9px;
+}
+.sch.is-compact .sch-what { font-size: 0.81rem; }
+.sch.is-compact .sch-head { font-size: 0.73rem; padding: 8px 11px; }
+.cal-schedblock .sch { border: 0; }
+
+@media (max-width: 560px) {
+  .sch-row {
+    grid-template-columns: 52px 1fr;
+    gap: 0 8px;
+  }
+  /* The slack chip drops under the activity rather than squeezing it. */
+  .sch-gap { grid-column: 2; justify-self: start; margin-top: 4px; }
+}
