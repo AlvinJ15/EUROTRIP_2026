@@ -246,12 +246,12 @@ const SCHEDULE = {
     { t: '15:00', dur: 70, what: '🚂 Montreux → Geneva', kind: 'travel' },
     { t: '16:20', dur: 60, what: 'Change at Geneva', kind: 'buffer' },
     { t: '17:20', dur: 190, what: '🚄 TGV Lyria Geneva → Paris Gare de Lyon', kind: 'fixed', fixed: true },
-    { t: '20:30', dur: 45, what: 'Metro → Le Marais, check in', kind: 'bags' },
-    { t: '21:30', dur: 75, what: 'Dinner in the Marais', kind: 'food' }
+    { t: '20:30', dur: 55, what: '🚇 Gare de Lyon → 15th arr., check in', kind: 'bags', note: 'line 14 then line 8 — allow the extra with four bags' },
+    { t: '21:40', dur: 75, what: 'Dinner on rue du Commerce', kind: 'food', note: 'market street downstairs — kitchens there serve later than the quarter looks' }
   ]},
   23: { items: [
-    { t: '07:30', dur: 45, what: 'Breakfast at the apartment', kind: 'food' },
-    { t: '08:30', dur: 50, what: '🚆 RER A Châtelet → Marne-la-Vallée', kind: 'travel', note: '€2.55/person — not the €23 shuttle' },
+    { t: '07:05', dur: 45, what: 'Breakfast at the apartment', kind: 'food' },
+    { t: '08:05', dur: 75, what: '🚆 15th arr. → RER A → Marne-la-Vallée', kind: 'travel', note: '🔴 25 min longer than this plan assumed — the 15th has no direct RER A. Line 8 or 10 into the centre, then RER A east from Auber or Châtelet. €2.55/person on the RER — not the €23 shuttle.' },
     { t: '09:30', dur: 90, what: '🎡 ROPE DROP — Disneyland Park', kind: 'fixed', fixed: true, note: 'first 90 min run 5–10 min queues' },
     { t: '11:00', dur: 150, what: 'Big Thunder, Phantom Manor, Pirates, Peter Pan', kind: 'act' },
     { t: '13:30', dur: 60, what: 'Lunch — bring your own, park food is €20–30pp', kind: 'food' },
@@ -259,7 +259,7 @@ const SCHEDULE = {
     { t: '16:00', dur: 210, what: 'Hyperspace Mountain, Indiana Jones, Buzz Lightyear', kind: 'act' },
     { t: '19:30', dur: 75, what: 'Dinner in the park', kind: 'food' },
     { t: '21:00', dur: 60, what: '🌟 NIGHT SHOW on the castle', kind: 'fixed', fixed: true },
-    { t: '22:15', dur: 60, what: '🚆 RER A back to Paris', kind: 'travel' }
+    { t: '22:15', dur: 80, what: '🚆 RER A back, then line 8/10 to the 15th', kind: 'travel' }
   ]},
   24: { items: [
     { t: '08:00', dur: 45, what: 'Breakfast at the apartment', kind: 'food' },
@@ -267,15 +267,17 @@ const SCHEDULE = {
     { t: '11:45', dur: 45, what: 'Metro → Trocadéro / Champ de Mars', kind: 'travel' },
     { t: '12:45', dur: 60, what: 'Lunch', kind: 'food' },
     { t: '14:00', dur: 150, what: '🗼 EIFFEL TOWER — summit + 2nd floor in daylight', kind: 'fixed', fixed: true, note: '🔴 book the summit lift separately' },
-    { t: '16:45', dur: 60, what: 'Champ de Mars + Louvre pyramid from outside', kind: 'act', note: 'courtyard only — no museum' },
-    { t: '18:00', dur: 70, what: '⛵ Seine river cruise', kind: 'act' },
-    { t: '19:30', dur: 30, what: 'Back to the tower, change — jacket required', kind: 'buffer' },
+    { t: '16:45', dur: 70, what: '⛵ Seine river cruise', kind: 'act', note: 'boards at Port de la Bourdonnais, at the foot of the tower — no transfer' },
+    { t: '18:05', dur: 30, what: '🚶 Walk home to rue Quinault', kind: 'travel', note: '🆕 ~2 km. This step only exists because the flat is in the 15th.' },
+    { t: '18:40', dur: 45, what: 'Shower and change — jacket required for men', kind: 'buffer', note: '🆕 THE REAL WIN OF THIS BOOKING. From the Marais there was no way home and back, so you would have carried the jacket around all day or dressed at 09:00.' },
+    { t: '19:25', dur: 30, what: '🚶 Walk back to the south pillar', kind: 'travel' },
     { t: '20:00', dur: 180, what: '🍽️ LE JULES VERNE', kind: 'fixed', fixed: true, note: '✅ PAID $705 · private lift in the south pillar · reconfirm 48h ahead' },
-    { t: '23:15', dur: 45, what: '✨ Trocadéro — the tower sparkles on the hour', kind: 'act' }
+    { t: '23:15', dur: 30, what: '✨ Trocadéro — the tower sparkles on the hour', kind: 'act' },
+    { t: '23:50', dur: 35, what: '🚶 Walk home', kind: 'travel', note: 'no last-métro problem from here' }
   ]},
   25: { items: [
-    { t: '07:30', dur: 45, what: 'Breakfast at the apartment', kind: 'food' },
-    { t: '08:30', dur: 50, what: '🚆 RER A to the parks', kind: 'travel' },
+    { t: '07:05', dur: 45, what: 'Breakfast at the apartment', kind: 'food' },
+    { t: '08:05', dur: 75, what: '🚆 15th arr. → RER A → the parks', kind: 'travel', note: '🔴 Same 25-min penalty as Sep 23. Rope drop at 09:30 is the whole strategy for this day — do not shave this.' },
     { t: '09:30', dur: 45, what: '🎢 ROPE DROP — Frozen Ever After FIRST', kind: 'fixed', fixed: true, note: 'newest ride, longest queue by 11:00' },
     { t: '10:20', dur: 40, what: 'Crush\'s Coaster second', kind: 'act' },
     { t: '11:05', dur: 145, what: 'Ratatouille, Tangled Spin, Tower of Terror', kind: 'act' },
@@ -284,12 +286,12 @@ const SCHEDULE = {
     { t: '18:00', dur: 90, what: 'Slinky Dog, Toy Soldiers, RC Racer', kind: 'act' },
     { t: '19:45', dur: 75, what: 'Dinner', kind: 'food' },
     { t: '21:00', dur: 60, what: '🌟 Night show', kind: 'act' },
-    { t: '22:15', dur: 60, what: '🚆 RER A back to Paris', kind: 'travel' }
+    { t: '22:15', dur: 80, what: '🚆 RER A back, then line 8/10 to the 15th', kind: 'travel', note: '🔴 Home ~23:35 with a 05:00 checkout for Orly the next morning. Pack before you leave in the morning.' }
   ]},
   26: { items: [
     { t: '05:00', dur: 40, what: 'Check out', kind: 'bags' },
-    { t: '05:45', dur: 40, what: '🚇 Metro line 14 direct → Orly', kind: 'travel', note: 'Orly beats CDG twice over' },
-    { t: '06:30', dur: 55, what: 'Check-in and security', kind: 'buffer' },
+    { t: '05:45', dur: 55, what: '🚇 15th → line 8/10 → line 14 → Orly', kind: 'travel', note: '🔴 CORRECTED: line 14 is NOT direct from the 15th — it does not serve this arrondissement. You change at Madeleine or Châtelet. ⚠️ AND CHECK THE FIRST TRAIN: the métro starts ~05:30 on a Saturday, so this leans on the very first services with four bags. 💡 A pre-booked taxi is ~€35–40 and ~30 min at that hour — for a 07:25 flight, worth it.' },
+    { t: '06:50', dur: 35, what: 'Check-in and security', kind: 'buffer', note: '🔴 Thin. This is the strongest argument for the taxi.' },
     { t: '07:25', dur: 125, what: '✈️ Orly → Madrid · Iberia', kind: 'fixed', fixed: true, note: '~$198 for 2, cabin bag included · 10:55 Air Europa if you\'d rather sleep' },
     { t: '09:30', dur: 75, what: 'Bags, transfer to the hotel near Atocha', kind: 'bags' },
     { t: '11:15', dur: 75, what: 'Check in, drop bags', kind: 'bags' },
