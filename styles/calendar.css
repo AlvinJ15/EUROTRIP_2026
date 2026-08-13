@@ -376,3 +376,79 @@ body.view-calendar #nav-cities { display: none; }
   );
   border: 2px solid #22563a;
 }
+
+/* ============================================================
+   TELLING THE TWO DRAWER VIEWS APART
+   Same panel, two completely different answers — "how do I get
+   there" and "what am I doing all day". In identical white chrome
+   they read as the same screen, so each gets a saturated banner
+   and a tinted ground. Loud on purpose: the point is to know
+   which one you are in before reading a word.
+   ============================================================ */
+
+.cal-viewbanner {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  /* Bleed to the panel edges — .cal-detail is padded 22px/24px, and the
+     right side leaves room for the close button that sits on top. */
+  margin: -22px -24px 18px;
+  padding: 13px 60px 13px 24px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.cal-viewbanner em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: none;
+  opacity: 0.86;
+}
+
+/* --- transport: the same dark green as the calendar cells -------- */
+.cal-detail.is-transportview {
+  background: #eaf4ee;
+  border-left: 6px solid #22563a;
+}
+.cal-detail.is-transportview .cal-viewbanner { background: #22563a; }
+
+/* --- the whole day: deep amber, as far from green as the palette
+       goes without colliding with a stop colour ------------------- */
+.cal-detail.is-dayview {
+  background: #fdf6ec;
+  border-left: 6px solid #92400e;
+}
+.cal-detail.is-dayview .cal-viewbanner { background: #92400e; }
+
+/* Content blocks stay white so they lift off whichever ground is
+   behind them, instead of inheriting the tint and going flat. */
+.cal-detail.is-dayview .cal-detail-block,
+.cal-detail.is-transportview .cal-detail-block {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.cal-detail.is-transportview .cal-routecards .route-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+}
+
+/* The close button sits on the banner now, so it needs to be legible
+   against a saturated colour rather than against white. */
+.cal-detail.is-dayview .cal-detail-close,
+.cal-detail.is-transportview .cal-detail-close {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  z-index: 4;
+}
+.cal-detail.is-dayview .cal-detail-close:hover,
+.cal-detail.is-transportview .cal-detail-close:hover {
+  background: rgba(255, 255, 255, 0.38);
+  color: #fff;
+}
