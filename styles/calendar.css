@@ -194,3 +194,65 @@ body.view-calendar #nav-cities { display: none; }
 /* travel-only day (in the air, not checked in anywhere) */
 .cal-day.is-travel { background: repeating-linear-gradient(135deg, #fff 0 10px, #f6f9fc 10px 20px); border-style: dashed; }
 .cal-chip-travel { background: #e0f2fe; color: var(--primary-dark); font-size: 0.68rem; font-weight: 700; border-radius: 6px; padding: 3px 6px; }
+
+/* ============================================================
+   TRANSPORT DAYS ON THE GRID
+   The standalone door-to-door section is gone: its per-day content
+   now opens from the cell itself. That only works if the grid says
+   WHICH cells hold a journey, so a transport day gets two signals —
+   a fixed corner marker and a tinted background.
+   ============================================================ */
+
+/* Mirrors .cal-lodgedot on the opposite corner. Same size, same
+   vertical position, so the two read as a pair of gutters down the
+   month rather than as clutter. */
+.cal-transportdot {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 0.8rem;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: help;
+  background: #e9eefc;
+  border: 1px solid #b9c6ee;
+  color: #2c3f7c;
+}
+.cal-day:hover .cal-transportdot {
+  background: #d8e1fb;
+  border-color: #8fa4e0;
+}
+
+/* The tint. Kept very light and applied as a diagonal band from the
+   top-left — the direction the marker sits in — so it never competes
+   with the stop colour that already owns the cell body, and so a
+   weekend transport day still reads as a weekend. */
+.cal-day.is-transport {
+  background-image: linear-gradient(135deg, rgba(83, 109, 199, 0.11) 0%, rgba(83, 109, 199, 0.04) 42%, transparent 72%);
+  border-color: rgba(83, 109, 199, 0.32);
+}
+.cal-day.is-transport.is-selected { border-color: var(--c); }
+
+/* --- the full route cards inside the day drawer ------------------ */
+.cal-routeblock { padding: 0; }
+.cal-routecards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+/* routeCard() is reused verbatim from the itinerary, so it arrives
+   sized for a full-width section. Rein it in for a 420px drawer
+   rather than forking the markup. */
+.cal-routecards .route-card {
+  margin: 0;
+  font-size: 0.92em;
+}
+.cal-routecards .route-card .route-title { font-size: 0.98rem; }
+.cal-routecards .route-seg-meta { flex-wrap: wrap; }

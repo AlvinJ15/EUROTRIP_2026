@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="styles/spent.css" />
   <link rel="stylesheet" href="styles/photos.css" />
   <link rel="stylesheet" href="styles/calendar.css" />
+  <link rel="stylesheet" href="styles/plan.css" />
+  <link rel="stylesheet" href="styles/food.css" />
 </head>
 <body>
 
@@ -75,7 +77,7 @@
         <p style="color:#fbbf24; font-size:0.88rem;" id="flights-tip"></p>
       </div>
       <h3 style="color:#fff; font-size:1rem; margin-bottom:14px;">Intra-Europe Transport — Summary</h3>
-      <p style="color:rgba(255,255,255,0.5); font-size:0.84rem; margin-bottom:12px;">One line per leg. The full door-to-door segment breakdown, with alternatives and booking sites, is in the <strong style="color:#fbbf24;">Route Planner</strong> section below.</p>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.84rem; margin-bottom:12px;">One line per leg. 🆕 The full door-to-door segment breakdown, with alternatives and booking sites, now lives <strong style="color:#fbbf24;">on the calendar</strong> — switch to 🗓️ Calendar and click any day carrying a 🚏 marker.</p>
       <div style="overflow-x:auto; border-radius:12px;">
         <table class="budget-table">
           <thead><tr><th>Leg</th><th>Method</th><th>Cost for 2</th><th>Notes</th></tr></thead>
@@ -85,17 +87,18 @@
     </div>
   </section>
 
-  <div class="section-divider"><h3>Getting Between Cities — Optimized Routes</h3></div>
+  <div class="section-divider"><h3>Why The Route Is In This Order</h3></div>
 
-  <!-- ROUTES -->
+  <!-- ROUTING DECISIONS — the per-day door-to-door breakdown moved into
+       the calendar (click any 🚏 day). What stays here is the strategic
+       "why this order" reasoning, which is not tied to a single date and
+       has nowhere on the grid to live. -->
   <section id="routes" style="background:var(--bg);">
     <div class="section">
-      <h2 class="section-title">🚏 Route Planner — Door to Door</h2>
-      <p class="section-subtitle">Every city-to-city move broken into the segments you actually have to book, with times, costs and where to buy. Plus the alternatives — and why they lose.</p>
+      <h2 class="section-title">🧭 Routing Decisions</h2>
+      <p class="section-subtitle">The order-of-travel calls and why the alternatives lose. <strong>Looking for the door-to-door segments for a specific day?</strong> They moved onto the calendar — switch to 🗓️ Calendar and click any day with a 🚏 marker.</p>
       <div id="route-plans"></div>
-      <div id="routes-nav" class="routes-nav"></div>
       <div class="routes-warning">⚠️ Schedules are September-2026-realistic; <strong>fares are estimates for 2 people</strong>. Verify on the booking site listed in each segment before paying. Anything marked ✅ BOOKED is confirmed.</div>
-      <div id="routes-list"></div>
     </div>
   </section>
 
@@ -288,6 +291,17 @@
     </div>
   </section>
 
+  <div class="section-divider"><h3>Food — Per Day, Per Country</h3></div>
+
+  <!-- FOOD -->
+  <section id="food" style="background:#fffdf7;">
+    <div class="section">
+      <h2 class="section-title">🍽️ Food — What You Actually Spend Per Day</h2>
+      <p class="section-subtitle">Is food in the budget, and how much is it per day in each country? Both answered. Every figure is <strong>for the two of you, for one day</strong>.</p>
+      <div id="food-body"></div>
+    </div>
+  </section>
+
   <div class="section-divider"><h3>What To Book &amp; When</h3></div>
 
   <!-- BOOKINGS -->
@@ -308,6 +322,8 @@
   <script src="js/images.js"></script>
   <script src="js/routes.js"></script>
   <script src="js/luggage.js"></script>
+  <script src="js/plan.js"></script>
+  <script src="js/food.js"></script>
   <script src="js/render.js"></script>
   <script src="js/calendar.js"></script>
 </body>
