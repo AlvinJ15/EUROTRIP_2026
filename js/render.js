@@ -3,6 +3,11 @@
 // ============================================================
 
 function stars(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
+// "Sep 20 (Sun)" → 20. The day labels carry a weekday the schedule keys do not.
+function parseDayNum(label) {
+  const m = String(label).match(/Sep\s*(\d{1,2})/i);
+  return m ? parseInt(m[1], 10) : null;
+}
 function urgencyColor(u) { return u === 'critical' ? '#dc2626' : u === 'high' ? '#ea580c' : '#ca8a04'; }
 
 function renderHero() {
@@ -264,10 +269,16 @@ function renderItinerary() {
               <div class="day-row">
                 <span class="day-label">${d.day}</span>
                 <div class="day-plan">${
-                  // The plan is stored as one paragraph but was written as a
-                  // sequence of steps. Recover the steps at render time rather
-                  // than restructuring 30 day entries by hand — see plan.js.
-                  typeof planStepsHTML === 'function' ? planStepsHTML(d.plan) : d.plan
+                  // TIMETABLE FIRST. The `plan` prose is an argument — why
+                  // Lauterbrunnen, why the pass loses, what an earlier draft
+                  // got wrong — and you cannot walk a day with it to find out
+                  // whether the day is physically possible. The schedule can,
+                  // so it leads and the reasoning folds away behind it.
+                  (typeof scheduleHTML === 'function' ? scheduleHTML(parseDayNum(d.day)) : '') +
+                  `<details class="day-why">
+                     <summary>Why this day is shaped like this — notes &amp; decisions</summary>
+                     ${typeof planStepsHTML === 'function' ? planStepsHTML(d.plan) : d.plan}
+                   </details>`
                 }</div>
               </div>`).join('')}
           </div>` : ''}

@@ -596,6 +596,11 @@ function openDayDetail(dayNum) {
         ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join('  →  ')
         : d.legs.length ? '🛫 In transit — trip departure' : 'Not part of the trip'}</span>
     </div>
+    ${typeof scheduleHTML === 'function' && scheduleFor(d.day) ? `
+      <div class="cal-detail-block cal-schedblock">
+        <h5>⏱️ The day, hour by hour <em>slack is computed, not typed</em></h5>
+        ${scheduleHTML(d.day, true)}
+      </div>` : ''}
     ${d.lodging ? `
       <div class="cal-detail-block cal-lodgeblock is-${d.lodging.booked ? 'booked' : 'pending'}">
         <h5>${LODGING_STATUS[d.lodging.booked ? 'booked' : 'pending'].icon} Where you sleep tonight
@@ -626,9 +631,12 @@ function openDayDetail(dayNum) {
         <h5>${sg.stop.emoji} ${sg.stop.city}, ${sg.stop.country}
           <em>${sg.role === 'arrive' ? 'check-in day' : sg.role === 'depart' ? 'check-out day' : 'full day'}</em>
         </h5>
-        ${sg.plan ? `<div class="cal-detail-plan">${
-          typeof planStepsHTML === 'function' ? planStepsHTML(sg.plan, 'is-compact') : sg.plan
-        }</div>` : ''}
+        ${sg.plan ? `<div class="cal-detail-plan">
+          <details class="day-why">
+            <summary>Why this day is shaped like this — notes &amp; decisions</summary>
+            ${typeof planStepsHTML === 'function' ? planStepsHTML(sg.plan, 'is-compact') : sg.plan}
+          </details>
+        </div>` : ''}
         ${sg.role !== 'depart' ? `
           <p class="cal-detail-stay">🏠 ${sg.stop.accommodation} · ~$${sg.stop.accommodationCost}/night · ~$${sg.stop.dailyCost}/day for 2</p>` : ''}
       </div>`).join('')}
