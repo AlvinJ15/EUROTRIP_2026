@@ -80,6 +80,56 @@ const FOOD = {
     }
   ],
 
+  // ---- the named meals -------------------------------------------
+  // "Is the Jules Verne kind of thing budgeted?" is really two questions
+  // with two different answers, and the page could not tell them apart.
+  //
+  //  · Jules Verne has its OWN budget line and is paid. Settled.
+  //  · Every other named restaurant on this trip is NOT separately
+  //    budgeted. It comes out of the ordinary Food line — and each one
+  //    costs roughly a whole day's mid-tier food allowance, spent on one
+  //    dinner. That is the thing worth knowing before you sit down.
+  //
+  // `ref` points at the country row above so the comparison can never
+  // drift from the table it is being compared against.
+  special: [
+    {
+      what: '🍽️ Le Jules Verne', city: 'Paris', when: 'Thu Sep 24', ref: '🇫🇷 France',
+      min: 705, max: 705, separateLine: true,
+      note: '✅ PAID, and on its OWN budget line — the only meal on this trip that is. It does not touch the food line and must not be counted twice. 2 Michelin stars, inside the Eiffel Tower. Reconfirm 48h ahead; jacket required.'
+    },
+    {
+      what: '🌅 Caldera-view dinner, Oia', city: 'Santorini', when: 'Mon Sep 14 or Tue Sep 15', ref: '🇬🇷 Greece — Santorini',
+      min: 120, max: 180, separateLine: false, mustBook: true,
+      note: '🔴 THE ONE TO WATCH. At $120–180 for two, this single dinner costs MORE than a whole mid-tier day in Santorini — and Santorini is already the second most expensive food on the trip. 📅 Book it: the rim tables in Oia sell out in September and walk-ins get the inside room, which is the entire thing you are paying for. 💡 Do it ONCE, not both nights, and take the other sunset from a wall with supermarket wine.'
+    },
+    {
+      what: '🌇 Rooftop dinner, Sultanahmet', city: 'Istanbul', when: 'Wed Sep 9', ref: '🇹🇷 Turkey',
+      min: 60, max: 90, separateLine: false,
+      note: 'Hagia Sophia and the Blue Mosque lit up while you eat. ⚠️ Also a whole mid-tier Turkish day in one sitting — but Turkey is cheap enough that this is the easiest splurge on the trip to absorb. Ask for a table at the rail when booking; the back half of these terraces has no view at all.'
+    },
+    {
+      what: '🍝 Trastevere dinner', city: 'Rome', when: 'Thu Sep 17 evening', ref: '🇮🇹 Italy',
+      min: 70, max: 110, separateLine: false,
+      note: 'Your hotel is by the Vatican, so this is a deliberate ~25 min walk rather than stepping downstairs — plan it as the evening, not as a fallback. Roughly one mid-tier Roman day. ⚠️ Watch the coperto and check whether the fish is priced by weight.'
+    },
+    {
+      what: '🏔️ Piz Gloria, Schilthorn 2,970m', city: 'Lauterbrunnen', when: 'Mon Sep 21', ref: '🇨🇭 Switzerland',
+      min: 75, max: 105, separateLine: false,
+      note: '🆕 ADDED — it was described in the plan but never costed. The revolving restaurant at the summit, 360° over ~200 peaks. Swiss prices with a mountain premium on top: a main is CHF 30–40. 💡 It is the one Swiss meal worth the money because you are paying for the room, not the plate — so make it lunch, and make it the ONLY restaurant meal that day.'
+    },
+    {
+      what: '🥘 Mercado de San Miguel', city: 'Madrid', when: 'Sep 4–5 or Sep 26–29', ref: '🇪🇸 Spain',
+      min: 50, max: 80, separateLine: false,
+      note: 'Tapas market by Plaza Mayor. ⚠️ It is a tourist market and prices show it — but it is the cheapest of the named meals here and fits a normal Spanish day almost without noticing. No booking.'
+    }
+  ],
+
+  // The share of a day's food that is NOT dinner. Used to work out what a
+  // special dinner actually ADDS, rather than pretending you skip
+  // breakfast and lunch on the days you eat well.
+  nonDinnerShare: 0.45,
+
   tips: [
     '💧 TAP WATER IS FREE AND SAFE in every country on this route. In Italy and France ask for "acqua del rubinetto" / "une carafe d\'eau" — restaurants must serve it. Bottled water at every meal for two is roughly $100 across the trip for nothing.',
     '☕ BREAKFAST IS WHERE HOTEL PACKAGES LOSE. A €25/person hotel buffet is almost never worth it against a €4 café breakfast, except in Switzerland — where the buffet may genuinely be the cheapest food you will see that day. Check the price when you book, not at the table.',
@@ -102,13 +152,36 @@ function foodTotals() {
   }), { lean: 0, mid: 0, easy: 0, days: 0 });
 }
 
+// What the named dinners ADD on top of an ordinary mid-tier day. Worked
+// out rather than asserted: on a day you eat somewhere special you still
+// have breakfast and lunch, so the extra is
+//   (special dinner) − (the dinner share of that day's mid rate).
+function specialOverrun() {
+  return FOOD.special.filter(s => !s.separateLine).reduce((acc, s) => {
+    const c = FOOD.countries.find(x => x.country === s.ref);
+    const mid = c ? c.mid : 0;
+    const dinnerShare = mid * (1 - FOOD.nonDinnerShare);
+    const avg = (s.min + s.max) / 2;
+    return {
+      inLine: acc.inLine + avg,
+      extra: acc.extra + Math.max(0, avg - dinnerShare),
+      count: acc.count + 1
+    };
+  }, { inLine: 0, extra: 0, count: 0 });
+}
+
 function renderFood() {
   const el = document.getElementById('food-body');
   if (!el || typeof FOOD === 'undefined') return;
 
   const t = foodTotals();
+  // Match on the parenthesised day count, not on the start of the label.
+  // An earlier version anchored with /^Food/ and silently stopped matching
+  // the moment the label gained a leading emoji — which left the whole
+  // section rendering "—" for every budget figure and flipping the verdict
+  // to alert, with nothing on screen to say why.
   const line = typeof BUDGET !== 'undefined'
-    ? BUDGET.categories.find(c => /^Food/.test(c.label))
+    ? BUDGET.categories.find(c => /Food \(\d+ days\)/.test(c.label))
     : null;
 
   const rows = FOOD.countries.map(c => `
@@ -174,6 +247,65 @@ function renderFood() {
         </tfoot>
       </table>
     </div>
+
+    <h4 class="food-tips-head">🍾 The named meals — and whether they are budgeted</h4>
+    <p class="food-special-intro">Two different answers, so they are separated here.
+      <strong>Le Jules Verne has its own budget line and is paid.</strong> Every other restaurant below
+      comes out of the ordinary food line above — and each one costs roughly
+      <strong>a whole day's mid-tier food allowance, spent on one dinner</strong>.</p>
+
+    <div class="food-specials">
+      ${FOOD.special.map(s => {
+        const c = FOOD.countries.find(x => x.country === s.ref);
+        const mid = c ? c.mid : 0;
+        const avg = (s.min + s.max) / 2;
+        const ratio = mid ? Math.round((avg / mid) * 100) : 0;
+        return `
+        <div class="food-special ${s.separateLine ? 'is-own-line' : ''}">
+          <div class="food-special-head">
+            <strong>${s.what}</strong>
+            <span class="food-special-when">${s.city} · ${s.when}</span>
+          </div>
+          <div class="food-special-nums">
+            <span class="food-special-cost">💵 $${s.min}${s.max !== s.min ? `–${s.max}` : ''} for 2</span>
+            ${s.separateLine
+              ? '<span class="food-special-tag is-own">✅ Own budget line · paid</span>'
+              : `<span class="food-special-tag">📊 ${ratio}% of a mid-tier day in ${s.city}${
+                  ratio >= 100 ? ' — MORE than a whole day' : ''}</span>`}
+            ${s.mustBook ? '<span class="food-special-tag is-book">📅 Must book ahead</span>' : ''}
+          </div>
+          <p class="food-special-note">${s.note}</p>
+        </div>`;
+      }).join('')}
+    </div>
+
+    ${(() => {
+      const o = specialOverrun();
+      const headroom = (line ? line.max : 0) - t.mid;
+      const fits = o.extra <= headroom;
+      return `
+      <div class="food-verdict ${fits ? 'is-ok' : 'is-alert'}">
+        <h4>${fits ? '✅' : '🔴'} Do they fit in the budget?</h4>
+        <p><strong>Yes${fits ? '' : ' — but only just'}, and here is the arithmetic rather than the assurance.</strong>
+          The ${o.count} restaurant meals that are NOT on their own line come to about
+          <strong>$${Math.round(o.inLine)}</strong> between them. But you still eat breakfast and lunch on
+          those days, so what they actually <em>add</em> over an ordinary mid-tier day is
+          <strong>$${Math.round(o.extra)}</strong>.</p>
+        <p>Eating mid-tier the whole trip is <strong>$${t.mid.toLocaleString()}</strong>, and the food line's
+          ceiling is <strong>$${line ? line.max.toLocaleString() : '—'}</strong> — leaving
+          <strong>$${headroom.toLocaleString()}</strong> of headroom.
+          ${fits
+            ? `The $${Math.round(o.extra)} of special dinners fits inside it with about
+               <strong>$${Math.round(headroom - o.extra)}</strong> to spare.`
+            : `The $${Math.round(o.extra)} of special dinners exceeds it by
+               <strong>$${Math.round(o.extra - headroom)}</strong>.`}</p>
+        <p class="food-verdict-catch">🔴 <strong>THE CATCH, AND IT IS THE REAL ANSWER:</strong> that headroom is the
+          <em>same</em> headroom that pays for eating well on ordinary days. You can have the special
+          dinners <em>or</em> a comfortable margin everywhere else — not both. 💡 The clean way to buy them
+          is to eat lean on the days either side of each one, which costs you nothing you will remember.
+          🔴 Santorini is the one to actually watch: at $120–180 it is the single biggest food risk on the trip.</p>
+      </div>`;
+    })()}
 
     <h4 class="food-tips-head">💡 The five things that actually move this number</h4>
     <ul class="food-tips">${FOOD.tips.map(t => `<li>${t}</li>`).join('')}</ul>

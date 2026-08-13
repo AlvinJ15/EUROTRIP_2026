@@ -149,3 +149,131 @@
   .food-num span { display: none; }
   .food-note { font-size: 0.8rem; }
 }
+
+/* ============================================================
+   THE NAMED MEALS
+   Two categories that look identical on a page and are not:
+   one has its own budget line, the rest come out of the daily
+   food money. The card border is the only signal that needs to
+   survive a skim, so it carries the distinction.
+   ============================================================ */
+
+.food-special-intro {
+  font-size: 0.89rem;
+  line-height: 1.65;
+  margin: 0 0 14px;
+  color: var(--text-soft, #566);
+}
+
+.food-specials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.food-special {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #e0a133;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* The one meal that is already paid for and cannot surprise you. */
+.food-special.is-own-line {
+  border-left-color: #3fa66a;
+  background: #f6fbf8;
+}
+
+.food-special-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.food-special-head strong {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.food-special-when {
+  font-size: 0.75rem;
+  color: var(--text-muted, #667);
+  font-variant-numeric: tabular-nums;
+}
+
+.food-special-nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.food-special-cost,
+.food-special-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.food-special-cost {
+  background: #eef6ff;
+  border: 1px solid #b9d5f2;
+  color: #1d4f91;
+}
+.food-special-tag {
+  background: #fff6e8;
+  border: 1px solid #f0d493;
+  color: #8a5a10;
+  white-space: normal;
+}
+.food-special-tag.is-own {
+  background: #e7f6ee;
+  border-color: #b6e3cc;
+  color: #1f7a4d;
+}
+.food-special-tag.is-book {
+  background: #fdeaea;
+  border-color: #f0bcbc;
+  color: #a83232;
+}
+
+.food-special-note {
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--text-soft, #566);
+}
+
+/* --- the verdict block ------------------------------------------- */
+.food-verdict {
+  border-radius: var(--radius, 14px);
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  border: 1px solid #b6e3cc;
+  border-left: 5px solid #3fa66a;
+  background: #f6fbf8;
+}
+.food-verdict.is-alert {
+  border-color: #f0bcbc;
+  border-left-color: #d64545;
+  background: #fdf5f5;
+}
+.food-verdict h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #1f7a4d;
+}
+.food-verdict.is-alert h4 { color: #a83232; }
+.food-verdict p {
+  margin: 0 0 9px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.food-verdict p:last-child { margin-bottom: 0; }
+.food-verdict-catch {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 12px 15px;
+}
