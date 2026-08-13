@@ -342,6 +342,20 @@ function renderCalendarGrid() {
     ).join('');
   }
 
+  // Corner marker for "this day has a door-to-door plan behind it", the
+  // twin of the lodging dot on the opposite corner. It exists because the
+  // standalone route section is gone: without a fixed marker there is
+  // nothing telling you which cells are worth opening for transport.
+  // Deliberately mirrors lodgingBadge's placement so the two never fight
+  // for the same pixels.
+  function transportBadge(d) {
+    if (!d.routes.length) return '';
+    const segs = d.routes.reduce((n, r) => n + r.recommended.segments.length, 0);
+    const tip = d.routes.map(r => `${r.from} → ${r.to} (${r.recommended.doorToDoor})`).join(' · ')
+      + ` — ${segs} segment${segs === 1 ? '' : 's'}. Click for the full door-to-door plan.`;
+    return `<span class="cal-transportdot" title="${tip}" aria-label="${tip}">🚏</span>`;
+  }
+
   function bagLine(d) {
     if (!d.bags) return '';
     return `<span class="cal-bags is-${d.bags.status}">${BAG_STATUS[d.bags.status].icon} ${BAG_STATUS[d.bags.status].label}</span>`;
@@ -375,10 +389,11 @@ function renderCalendarGrid() {
 
     // Travel-only day: in the air, not yet checked in anywhere.
     if (!d.inTrip) {
-      return `<div class="cal-day is-travel ${d.weekend ? 'is-weekend' : ''}"
+      return `<div class="cal-day is-travel ${d.weekend ? 'is-weekend' : ''} ${d.routes.length ? 'is-transport' : ''}"
                    data-day="${d.day}" data-stops=""
                    role="button" tabindex="0"
                    aria-label="September ${d.day}, ${d.weekday}, travel day">
+        ${transportBadge(d)}
         <span class="cal-dayhead">
           <span class="cal-daynum">${d.day}</span>
           <span class="cal-dayname">${d.weekday}</span>
@@ -422,7 +437,7 @@ function renderCalendarGrid() {
         : '<span class="cal-sleep is-move">🌙 In transit</span>';
 
     return `
-      <div class="cal-day ${d.weekend ? 'is-weekend' : ''} ${d.segments.length > 1 ? 'is-transition' : ''}"
+      <div class="cal-day ${d.weekend ? 'is-weekend' : ''} ${d.segments.length > 1 ? 'is-transition' : ''} ${d.routes.length ? 'is-transport' : ''}"
            data-day="${d.day}"
            data-stops="${d.segments.map(sg => sg.stop.index).join(',')}"
            style="--c:${primary.color.base}; --cs:${primary.color.soft}"
@@ -430,6 +445,7 @@ function renderCalendarGrid() {
            aria-label="September ${d.day}, ${d.weekday}">
         <span class="cal-bands">${bands}</span>
         ${lodgingBadge(d)}
+        ${transportBadge(d)}
         <span class="cal-dayhead">
           <span class="cal-daynum">${d.day}</span>
           <span class="cal-dayname">${d.weekday}</span>
@@ -488,23 +504,20 @@ function openDayDetail(dayNum) {
         <p class="cal-bag-action">${d.bags.action}</p>
         ${d.bags.cost && d.bags.cost !== '—' ? `<span class="cal-bag-cost">💵 ${d.bags.cost}</span>` : ''}
       </div>` : ''}
-    ${d.routes.map(r => `
-      <div class="cal-detail-block cal-route">
-        <h5>🚏 ${r.from} → ${r.to} <em>${r.recommended.doorToDoor}</em></h5>
-        <p class="cal-route-best">${r.recommended.label}</p>
-        <div class="cal-route-totals">
-          <span>⏱️ ${r.recommended.doorToDoor}</span>
-          <span>💵 ${r.recommended.totalCost}</span>
-        </div>
-        <div class="cal-route-chain">
-          ${r.recommended.segments.map((s, i) => `
-            <span class="cal-route-step">
-              <b>${i + 1}. ${s.mode}</b>
-              <span>${s.title}<br><i>${s.duration} · ${s.cost}${s.booking && s.booking !== '—' ? ` · 📋 ${s.booking}` : ''}</i></span>
-            </span>`).join('')}
-        </div>
-        <a class="cal-route-link" href="#route-${r.id}">Full route breakdown, alternatives &amp; warnings →</a>
-      </div>`).join('')}
+    ${d.routes.length ? `
+      <div class="cal-detail-block cal-routeblock">
+        <h5>🚏 Door to door <em>${d.routes.length === 1 ? 'this journey' : `${d.routes.length} journeys today`}</em></h5>
+        <div class="cal-routecards">${
+          // The FULL card, not a summary. This used to be a three-line
+          // teaser plus a link into a standalone routes section — that
+          // section is gone, so everything it held has to arrive here or
+          // it is lost. `routeCard` is render.js's, reused verbatim so the
+          // two can never drift apart.
+          typeof routeCard === 'function'
+            ? d.routes.map(routeCard).join('')
+            : d.routes.map(r => `<p>${r.from} → ${r.to} · ${r.recommended.doorToDoor}</p>`).join('')
+        }</div>
+      </div>` : ''}
     ${d.legs.length ? `
       <div class="cal-detail-block">
         <h5>Transport this day</h5>
@@ -520,7 +533,9 @@ function openDayDetail(dayNum) {
         <h5>${sg.stop.emoji} ${sg.stop.city}, ${sg.stop.country}
           <em>${sg.role === 'arrive' ? 'check-in day' : sg.role === 'depart' ? 'check-out day' : 'full day'}</em>
         </h5>
-        ${sg.plan ? `<p class="cal-detail-plan">${sg.plan}</p>` : ''}
+        ${sg.plan ? `<div class="cal-detail-plan">${
+          typeof planStepsHTML === 'function' ? planStepsHTML(sg.plan, 'is-compact') : sg.plan
+        }</div>` : ''}
         ${sg.role !== 'depart' ? `
           <p class="cal-detail-stay">🏠 ${sg.stop.accommodation} · ~$${sg.stop.accommodationCost}/night · ~$${sg.stop.dailyCost}/day for 2</p>` : ''}
       </div>`).join('')}
@@ -528,9 +543,12 @@ function openDayDetail(dayNum) {
   `;
 
   panel.classList.add('is-open');
+  panel.scrollTop = 0;
   panel.querySelector('.cal-detail-close').addEventListener('click', closeDayDetail);
-  // Both the stop link and the route link jump back into the detail view.
-  panel.querySelectorAll('.cal-detail-link, .cal-route-link').forEach(link => {
+  // The stop link jumps back into the detail view. (There used to be a
+  // route link here too, pointing at the standalone routes section — that
+  // section is gone and its content now renders inline above.)
+  panel.querySelectorAll('.cal-detail-link').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       setView('timeline');

@@ -1,0 +1,126 @@
+/* ============================================================
+   DAY PLANS AS STEPS
+   Every `plan` in data.js is one paragraph. plan.js splits it back
+   into the steps it was written as; this styles the result.
+
+   The layout is a three-column grid — icon · time · text — so the
+   times line up down the left edge and the day can be read as a
+   schedule rather than as prose. A step with no time leaves the
+   column empty rather than reflowing, which is the whole point:
+   the eye tracks one vertical line.
+   ============================================================ */
+
+.daysteps {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.daystep {
+  display: grid;
+  grid-template-columns: 22px minmax(0, auto) 1fr;
+  align-items: baseline;
+  gap: 0 8px;
+  padding: 6px 8px 6px 6px;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text, #12232e);
+}
+.daystep:nth-child(odd) { background: rgba(0, 0, 0, 0.022); }
+
+.daystep-icon {
+  grid-column: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* The time badge is monospace-ish and fixed-width so 08:30 and ~15:15
+   occupy the same footprint and the text column starts at one x. */
+.daystep-time {
+  grid-column: 2;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: #e8eef5;
+  color: #26466b;
+}
+
+.daystep-text { grid-column: 3; }
+/* A step with no time still starts its text in column 3, so nothing
+   shifts left into the gap and break the alignment. */
+.daystep > .daystep-text:nth-child(2) { grid-column: 2 / -1; }
+
+/* --- tone, taken from the marker the author already used ---------
+   Only a left border and a wash: these run 10-16 deep on a big day,
+   and filled backgrounds at that density turn into stripes. */
+.daystep.is-alert {
+  background: #fdf0f0;
+  border-left: 3px solid #d64545;
+  font-weight: 600;
+}
+.daystep.is-warn {
+  background: #fff8e6;
+  border-left: 3px solid #e0a133;
+}
+.daystep.is-no {
+  background: #f7f7f8;
+  border-left: 3px solid #9aa5ad;
+  color: var(--text-soft, #566);
+}
+.daystep.is-ok      { border-left: 3px solid #3fa66a; }
+.daystep.is-new     { border-left: 3px solid #6d8fb8; }
+.daystep.is-key     { border-left: 3px solid #8b5cf6; }
+.daystep.is-time    { border-left: 3px solid #26466b; }
+
+/* Keep the zebra from fighting the tone colours. */
+.daystep[class*="is-"]:nth-child(odd) { background-blend-mode: normal; }
+.daystep.is-ok:nth-child(odd),
+.daystep.is-new:nth-child(odd),
+.daystep.is-key:nth-child(odd),
+.daystep.is-time:nth-child(odd) { background: rgba(0, 0, 0, 0.022); }
+
+/* Fallback when a plan is a single sentence and splitting it would be
+   noise — plan.js returns a paragraph instead of a one-item list. */
+.dayplan-para {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* --- compact variant, used inside the calendar drawer ------------ */
+.daysteps.is-compact .daystep {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 5px 6px 5px 5px;
+  gap: 0 6px;
+}
+.daysteps.is-compact .daystep-time { font-size: 0.75rem; }
+
+/* --- the day row in the itinerary -------------------------------- */
+/* .day-plan was a <span> holding a paragraph; it is now a block that
+   holds the list, so it must stop being an inline box. */
+.day-row .day-plan {
+  display: block;
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .daystep {
+    grid-template-columns: 20px 1fr;
+    gap: 0 6px;
+  }
+  /* On a narrow screen the time drops onto its own line above the text
+     rather than squeezing the text into a 40%-width column. */
+  .daystep-time { grid-column: 2; justify-self: start; margin-bottom: 2px; }
+  .daystep-text,
+  .daystep > .daystep-text:nth-child(2) { grid-column: 2; }
+}

@@ -163,18 +163,15 @@ function renderRoutePlans() {
   `).join('');
 }
 
-function renderRoutes() {
-  const container = document.getElementById('routes-list');
-  if (!container || typeof ROUTES === 'undefined') return;
-  container.innerHTML = ROUTES.map(routeCard).join('');
-
-  const nav = document.getElementById('routes-nav');
-  if (nav) {
-    nav.innerHTML = ROUTES.map(r =>
-      `<a class="route-chip" href="#route-${r.id}">${r.date.replace(/^\w+ /, '')} · ${r.fromEmoji}→${r.toEmoji}</a>`
-    ).join('');
-  }
-}
+// The standalone per-day route list is GONE from the page. Thirty route
+// cards stacked in one section meant scrolling past twenty-nine of them
+// to reach the day you were actually travelling on — the information was
+// filed by document order rather than by date, which is the one axis you
+// ever search it on. `routeCard` above is now called from the calendar
+// drawer instead, so the full breakdown (segments, alternatives, watch-
+// outs) opens on the day it belongs to. ROUTE_PLANS stays on the page,
+// because "why Athens before Santorini" is not tied to a single date and
+// has nowhere on a grid to live.
 
 const BAG_LABELS = {
   free:  { icon: '🎒', label: 'No bags in hand' },
@@ -266,7 +263,12 @@ function renderItinerary() {
             ${stop.dayByDay.map(d => `
               <div class="day-row">
                 <span class="day-label">${d.day}</span>
-                <span class="day-plan">${d.plan}</span>
+                <div class="day-plan">${
+                  // The plan is stored as one paragraph but was written as a
+                  // sequence of steps. Recover the steps at render time rather
+                  // than restructuring 30 day entries by hand — see plan.js.
+                  typeof planStepsHTML === 'function' ? planStepsHTML(d.plan) : d.plan
+                }</div>
               </div>`).join('')}
           </div>` : ''}
         <div class="stop-highlights">
@@ -590,7 +592,6 @@ function initApp() {
   renderNav();
   renderFlights();
   renderRoutePlans();
-  renderRoutes();
   renderLuggage();
   renderItinerary();
   renderVRByCity();
@@ -603,6 +604,7 @@ function initApp() {
   renderBudget();
   renderBookings();
   renderCrowdNote();
+  if (typeof renderFood === 'function') renderFood();
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {

@@ -1,0 +1,279 @@
+/* ============================================================
+   FOOD — PER DAY, PER COUNTRY
+   Three tiers side by side so the answer to "how much is food"
+   is a choice you read across, not a single number handed down.
+   The middle column is the one being recommended, so it carries
+   the only saturated colour in the table.
+   ============================================================ */
+
+.food-answer {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #3fa66a;
+  border-radius: var(--radius, 14px);
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.food-answer h3 {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  color: #1f7a4d;
+}
+.food-answer p {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.food-answer p:last-child { margin-bottom: 0; }
+.food-carve {
+  background: #fff8e6;
+  border: 1px solid #f0d493;
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: #5c4415;
+}
+
+/* --- the tier key ------------------------------------------------ */
+.food-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.food-tier {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-soft, #566);
+}
+.food-tier b {
+  font-size: 0.9rem;
+  color: var(--text, #12232e);
+}
+.food-tier.is-mid {
+  background: #eef6ff;
+  border-color: #b9d5f2;
+}
+.food-tier.is-mid b { color: #1d4f91; }
+
+/* --- the table --------------------------------------------------- */
+.food-tablewrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg, 18px);
+  box-shadow: var(--shadow, 0 2px 10px rgba(0, 0, 0, 0.06));
+  margin-bottom: 26px;
+}
+.food-table th { white-space: nowrap; }
+.food-th-sub {
+  display: block;
+  font-weight: 500;
+  font-size: 0.68rem;
+  opacity: 0.7;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.food-where,
+.food-dates {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-muted, #667);
+  line-height: 1.4;
+}
+.food-dates { font-variant-numeric: tabular-nums; opacity: 0.8; }
+
+.food-num {
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.food-num b {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+.food-num span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted, #667);
+}
+/* The recommended column, tinted down the whole table so the eye can
+   follow one line instead of re-finding the middle number per row. */
+.food-num.is-mid {
+  background: #eef6ff;
+}
+.food-num.is-mid b { color: #1d4f91; }
+
+.food-note {
+  font-size: 0.83rem;
+  line-height: 1.6;
+}
+
+.food-table tfoot td {
+  border-top: 2px solid rgba(0, 0, 0, 0.12);
+  background: #fbfbfc;
+  font-size: 0.84rem;
+}
+.food-table tfoot .food-num b { font-size: 1.1rem; }
+
+/* --- tips --------------------------------------------------------- */
+.food-tips-head {
+  font-size: 1.02rem;
+  margin: 0 0 12px;
+}
+.food-tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.food-tips li {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 13px 16px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .food-num span { display: none; }
+  .food-note { font-size: 0.8rem; }
+}
+
+/* ============================================================
+   THE NAMED MEALS
+   Two categories that look identical on a page and are not:
+   one has its own budget line, the rest come out of the daily
+   food money. The card border is the only signal that needs to
+   survive a skim, so it carries the distinction.
+   ============================================================ */
+
+.food-special-intro {
+  font-size: 0.89rem;
+  line-height: 1.65;
+  margin: 0 0 14px;
+  color: var(--text-soft, #566);
+}
+
+.food-specials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.food-special {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #e0a133;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* The one meal that is already paid for and cannot surprise you. */
+.food-special.is-own-line {
+  border-left-color: #3fa66a;
+  background: #f6fbf8;
+}
+
+.food-special-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.food-special-head strong {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.food-special-when {
+  font-size: 0.75rem;
+  color: var(--text-muted, #667);
+  font-variant-numeric: tabular-nums;
+}
+
+.food-special-nums {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.food-special-cost,
+.food-special-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.food-special-cost {
+  background: #eef6ff;
+  border: 1px solid #b9d5f2;
+  color: #1d4f91;
+}
+.food-special-tag {
+  background: #fff6e8;
+  border: 1px solid #f0d493;
+  color: #8a5a10;
+  white-space: normal;
+}
+.food-special-tag.is-own {
+  background: #e7f6ee;
+  border-color: #b6e3cc;
+  color: #1f7a4d;
+}
+.food-special-tag.is-book {
+  background: #fdeaea;
+  border-color: #f0bcbc;
+  color: #a83232;
+}
+
+.food-special-note {
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--text-soft, #566);
+}
+
+/* --- the verdict block ------------------------------------------- */
+.food-verdict {
+  border-radius: var(--radius, 14px);
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  border: 1px solid #b6e3cc;
+  border-left: 5px solid #3fa66a;
+  background: #f6fbf8;
+}
+.food-verdict.is-alert {
+  border-color: #f0bcbc;
+  border-left-color: #d64545;
+  background: #fdf5f5;
+}
+.food-verdict h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #1f7a4d;
+}
+.food-verdict.is-alert h4 { color: #a83232; }
+.food-verdict p {
+  margin: 0 0 9px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+.food-verdict p:last-child { margin-bottom: 0; }
+.food-verdict-catch {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 12px 15px;
+}
