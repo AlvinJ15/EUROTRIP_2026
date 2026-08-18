@@ -166,19 +166,24 @@ const SCHEDULE = {
     { t: '18:00', dur: 75, what: 'Transfer to the hotel, check in', kind: 'bags' },
     { t: '19:30', dur: 75, what: '📷 St Peter\'s Square floodlit + Via della Conciliazione', kind: 'act', note: 'exterior only — no ticket, no queue, open 24h' },
     { t: '21:00', dur: 45, what: '📷 Ponte Sant\'Angelo + Castel Sant\'Angelo lit', kind: 'act' },
-    { t: '21:45', dur: 90, what: 'Dinner nearby', kind: 'food' }
+    { t: '21:45', dur: 105, what: '🍝 TRASTEVERE dinner', kind: 'food', note: '🔁 MOVED HERE FROM SEP 17. You are already on this side of the river tonight — Trastevere is ~20 min on foot south along the Tiber from the Ponte. Tomorrow night you finish at the Colosseum, which is the wrong end of Rome for it. 🍝 Cacio e pepe and carbonara done properly, ~$70–110 for the two of you, and it is the one named Rome meal in the food budget.' }
   ]},
   17: { items: [
     { t: '07:15', dur: 45, what: 'Breakfast', kind: 'food' },
-    { t: '08:15', dur: 40, what: 'Metro → Colosseo', kind: 'travel' },
-    { t: '09:00', dur: 180, what: '🏛️ COLOSSEUM + VR + Forum + Palatine', kind: 'fixed', fixed: true, note: '🔴 book the earliest slot at ancientandrecent.com' },
-    { t: '12:15', dur: 75, what: 'Lunch', kind: 'food' },
-    { t: '13:45', dur: 75, what: '🏎️ Circo Massimo AR', kind: 'act', note: 'the honest drop if the day overruns' },
-    { t: '15:15', dur: 105, what: '🦕 Museo Civico di Zoologia — dino hall', kind: 'act' },
-    { t: '17:15', dur: 60, what: '🏛️ Pantheon', kind: 'act' },
-    { t: '18:30', dur: 45, what: 'Piazza Navona', kind: 'act' },
-    { t: '19:30', dur: 120, what: '🍝 Trastevere dinner', kind: 'food', note: '~25 min walk from the hotel · $70–110' },
-    { t: '22:00', dur: 45, what: '⛲ Trevi Fountain after dark, when the crowd thins', kind: 'act' }
+    { t: '08:15', dur: 85, what: "⛪ ST PETER'S SQUARE + facade + colonnade — EXTERIOR", kind: 'act', note: "🚶 ~10 min on foot from the hotel. No ticket, no queue, nothing to book. 📷 Morning is the right half of the day for this: the basilica FACES EAST, so the sun is on the stone rather than behind it, and the square is emptiest before 10:00." },
+    { t: '09:45', dur: 45, what: "📷 Ponte Sant'Angelo + Castel Sant'Angelo from outside", kind: 'act', note: "Bernini's angels along the bridge with the dome behind you. Still exterior-only — nothing to enter, nothing to buy." },
+    { t: '10:35', dur: 30, what: '🚶 Walk across the river toward the centre', kind: 'travel' },
+    { t: '11:10', dur: 30, what: '⛲ Piazza Navona', kind: 'act' },
+    { t: '11:45', dur: 35, what: '🏛️ Pantheon', kind: 'act', note: '5 min from Navona · free entry, but there is usually a short line' },
+    { t: '12:25', dur: 45, what: '🍝 Early lunch near the Pantheon', kind: 'food', note: '🔴 EAT EARLY TODAY, deliberately. The tour is at 14:30 and paid — a leisurely 13:30 lunch is the thing that would make you late.' },
+    { t: '13:15', dur: 30, what: '⛓️ CARCERE MAMERTINO — the Mamertine Prison', kind: 'act', note: '✅ ~€12/person, no timed scarcity, and it sits at the FORUM END of Via dei Fori Imperiali — about five minutes from the Colosseum, so it costs you no extra walking at all. 🔴 IT GOES BEFORE THE TOUR, NOT AFTER: it closes around 17:00 and your tour does not finish until ~16:00. Afterwards is a gamble; now is free.' },
+    { t: '13:50', dur: 25, what: '🚶 To the Colosseum meeting point', kind: 'travel', note: 'find the exact gate your voucher names — the Colosseum has several entrances and they are not close to each other' },
+    { t: '14:30', dur: 90, what: '🏛️ COLOSSEUM — UNDERGROUND + ARENA, guided, in Spanish', kind: 'fixed', fixed: true, note: '✅ PAID $74 for the two of you. 🔑 This is the restricted-access version: you walk the ARENA FLOOR and go down into the HYPOGEUM, the tunnels where the animals and the gladiators waited. Neither is included in a standard ticket. 🔴 BE THERE 15 MIN EARLY — a timed guided slot in one language does not wait and does not refund.' },
+    { t: '16:15', dur: 135, what: '🏛️ Roman Forum + Palatine Hill', kind: 'act', note: '⚠️ VERIFY THIS IS ON YOUR TICKET. Colosseum tickets usually bundle the Forum and Palatine for the same day, but the guided underground products do not always — read the voucher. If it is not included it is €18/person at the gate. 🕒 Last admission ~18:00, closes ~19:00 in September.' },
+    { t: '18:35', dur: 55, what: '🚶 Arch of Constantine + a lap of the Colosseum, golden hour', kind: 'act' },
+    { t: '19:35', dur: 40, what: '📷 COLOSSEUM AT BLUE HOUR', kind: 'act', note: '⭐ THE SHOT, and it is a narrow window. Sunset is ~19:15 and the floodlights come up while the sky is still deep blue rather than black — that ~30-minute overlap is when the building photographs best. Wait an hour and it is a bright object on a dead black background.' },
+    { t: '20:30', dur: 100, what: '🍝 Dinner in MONTI', kind: 'food', note: '🔁 NOT Trastevere — that moved to last night, when you were already on that side of the river. Monti is the quarter immediately behind the Colosseum: five minutes from where you are standing, and it is where Romans actually eat around here.' },
+    { t: '22:20', dur: 40, what: '📷 Colosseum floodlit again + Via dei Fori Imperiali', kind: 'act', note: 'the crowds are gone by now, and the avenue gives you the lit Forum as well · ⛲ Trevi is 15 min further if your legs are still working' }
   ]},
   18: { items: [
     { t: '06:15', dur: 45, what: '📷 OPTIONAL — St Peter\'s Square at sunrise', kind: 'buffer', note: 'decide that morning · east-facing facade takes the light' },
