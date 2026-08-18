@@ -193,13 +193,13 @@ const SCHEDULE = {
     { t: '12:00', dur: 45, what: 'Bags, buy train tickets at the machine', kind: 'travel', note: '💡 buy the Sep 22 tickets here too' },
     { t: '12:45', dur: 115, what: '🚂 Geneva → Bern', kind: 'travel' },
     { t: '14:45', dur: 55, what: '🚂 Bern → Interlaken Ost', kind: 'travel' },
-    { t: '15:50', dur: 40, what: '🔁 BRANCH POINT — check in Interlaken, or ride 34 min on to Grindelwald', kind: 'bags', note: '🔴 THIS IS THE DECISION, AND IT HAPPENS ON THE TRAIN. Interlaken Ost is the second-to-last stop; Grindelwald is 34 min further up the SAME line, so staying down there is getting off one stage early, not going somewhere else. Stay on and you reach Grindelwald ~16:15 — which is what kills the toboggan: Pfingstegg last ascent is ~17:00 and you would arrive at the lift ~16:50 with bags in hand. The timetable below is the Interlaken branch.' },
-    { t: '16:45', dur: 105, what: '🚡 Harder Kulm — two-lake panorama', kind: 'act', note: 'Interlaken branch. 10-min funicular to 1,322m, Thun and Brienz both below you, sunset ~19:30. ✅ Not time-critical — if the day runs late it still works, which is the point on a day made of one flight and three trains. 🔁 Grindelwald branch instead: Pfingstegg toboggan, CHF 10, ~1h — but only if you are off the train by ~16:15 and straight to the lift.' },
+    { t: '15:50', dur: 40, what: '🏨 GET OFF AT INTERLAKEN OST — check in', kind: 'bags', note: '✅ SETTLED AND PAID: $288. Interlaken Ost is the second-to-last stop; Grindelwald is 34 min further up the SAME line, so this is getting off one stage early rather than going somewhere else. 🏔️ Ask for a Jungfrau-facing room — the town is flat and unremarkable, but the mountain is visible straight down the valley.' },
+    { t: '16:45', dur: 105, what: '🚡 Harder Kulm — two-lake panorama', kind: 'act', note: '⭐ THIS IS WHAT THE $288 BOUGHT. 10-min funicular to 1,322m: Thun and Brienz below you, the Eiger–Mönch–Jungfrau wall opposite, sunset ~19:30. ✅ And the deciding property — it is NOT time-critical. It runs into the night, so a late flight or a missed connection cannot delete it. That is why it beat the Pfingstegg toboggan, which needed everything to run on time and would have died anyway.' },
     { t: '19:00', dur: 90, what: 'Dinner + 🛒 COOP/MIGROS shop for the week', kind: 'food' }
   ]},
   19: { items: [
     { t: '06:45', dur: 45, what: 'Breakfast, check out', kind: 'bags' },
-    { t: '07:35', dur: 35, what: '🚂 Interlaken → Grindelwald', kind: 'travel', note: 'skip if you slept in Grindelwald' },
+    { t: '07:35', dur: 35, what: '🚂 Interlaken → Grindelwald', kind: 'travel', note: '🔴 THE ONE LIVE DEPENDENCY OF THE SWISS LEG. Sep 18 is booked in Interlaken, so this train is not optional any more — and the next step needs the Spinne to take your luggage at ~08:20. Confirm that by phone.' },
     { t: '08:20', dur: 25, what: '🧳 Bags to the Hotel Spinne reception', kind: 'bags', note: '🔴 confirm they take them this early' },
     { t: '08:50', dur: 35, what: '🚡 Gondola Grindelwald → FIRST (2,166m)', kind: 'travel', note: 'Bort and Schreckfeld are intermediate stations on this same line — remember them, the afternoon comes back down through both.' },
     { t: '09:30', dur: 35, what: '🚶 First Cliff Walk', kind: 'act', note: 'free, at the top station. Do it now while you are here and the terrace is empty.' },
