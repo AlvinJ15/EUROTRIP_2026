@@ -66,11 +66,11 @@ const SCHEDULE = {
     { t: '16:00', dur: 30, what: 'Collect bags', kind: 'bags' },
     { t: '16:30', dur: 60, what: 'Travel to Barajas', kind: 'travel' },
     { t: '17:30', dur: 150, what: 'Check-in and wait', kind: 'buffer' },
-    { t: '20:00', dur: 240, what: '✈️ Madrid → Craiova', kind: 'fixed', fixed: true, note: 'lands ~midnight · 🔴 book the pickup' }
+    { t: '20:00', dur: 240, what: '✈️ Madrid → Craiova', kind: 'fixed', fixed: true, note: 'lands ~midnight. ✅ No key handover needed — a friend is already in the Airbnb, so you just knock. 🔴 THE TAXI IS THE ONLY THING LEFT: small airport, ~7km, trivial fare, thin supply at that hour. Have the friend book a car for your landing time, or have Bolt installed with a card added BEFORE you fly.' }
   ]},
   6: { items: [
     { t: '09:00', dur: 60, what: 'Breakfast', kind: 'food' },
-    { t: '12:00', dur: 600, what: '💍 THE WEDDING — all day', kind: 'fixed', fixed: true, note: 'the anchor of the whole trip' }
+    { t: '12:00', dur: 600, what: '💍 THE WEDDING — all day', kind: 'fixed', fixed: true, note: 'the anchor of the whole trip. ✅ TRANSPORT IS SOLVED — the wedding runs a bus both ways, so there is nothing to arrange and nothing to time.' }
   ]},
   7: { items: [
     { t: '10:00', dur: 90, what: 'Slow breakfast', kind: 'food' },
