@@ -240,7 +240,11 @@ function buildCalendarModel() {
       beforeTrip: d < tripStart,
       segments,
       legs: legsByDay[d] || [],
-      tags: planTags(planText)
+      tags: planTags(planText),
+      // Today's spending money — food + pocket for two, and what has
+      // been logged against it. Read live, not cached, because the log
+      // can change from the drawer without a page reload.
+      money: typeof dailyMoneyFor === 'function' ? dailyMoneyFor(d) : null
     });
   }
 
@@ -268,6 +272,13 @@ function renderCalendarLegend() {
       <span class="cal-legend-text">
         <strong>🚏 Transport day</strong>
         <span>${CAL_MODEL.days.filter(d => d.routes.length).length} days · click the 🚏 for the door-to-door plan on its own</span>
+      </span>
+    </span>
+    <span class="cal-legend-key">
+      <span class="cal-legend-keyswatch is-money"></span>
+      <span class="cal-legend-text">
+        <strong>💵 Today's money</strong>
+        <span>food + pocket for two, spent and left · beds and tickets are prepaid and not counted · log expenses from the day drawer</span>
       </span>
     </span>`;
 
@@ -415,6 +426,7 @@ function renderCalendarGrid() {
           `<span class="cal-leg">${l.icon} ${l.leg}<b> 🕑 ${l.time} · ⏱️ ${l.duration}</b></span>`).join('')}</span>
         ${routeBadges(d)}
         <span class="cal-sleep is-move">🌙 Overnight in the air</span>
+        ${moneyStrip(d)}
       </div>`;
     }
 
@@ -468,6 +480,7 @@ function renderCalendarGrid() {
         ${bagLine(d)}
         ${tags ? `<span class="cal-tags">${tags}</span>` : ''}
         ${sleepLine}
+        ${moneyStrip(d)}
       </div>`;
   }).join('');
 
@@ -501,6 +514,121 @@ function renderCalendarGrid() {
         e.preventDefault();
         e.stopPropagation();
         openTransportDetail(parseInt(dot.dataset.transport, 10));
+      }
+    });
+  });
+}
+
+// ---- today's money -----------------------------------------------------
+
+// The strip at the foot of every day cell. Always visible, never a
+// tooltip: the figure you check ten times a day cannot live behind a
+// hover, and there is no hover on a phone anyway.
+function moneyStrip(d) {
+  const m = d.money;
+  if (!m) return '';
+  const pct = Math.round(m.ratio * 100);
+  const line = m.state === 'untouched'
+    ? `<em>nothing logged</em><b>${dailyFmt(m.budget.total)} to spend</b>`
+    : m.state === 'over'
+      ? `<em>spent ${dailyFmt(m.spent.total)}</em><b>🔴 ${dailyFmt(-m.left)} over</b>`
+      : `<em>spent ${dailyFmt(m.spent.total)}</em><b>${dailyFmt(m.left)} left</b>`;
+  return `
+    <span class="cal-money is-${m.state}" data-money-day="${d.day}">
+      <span class="cal-money-top"><i>💵 today</i><b>${dailyFmt(m.budget.total)}</b></span>
+      <span class="cal-money-bar"><span style="width:${pct}%"></span></span>
+      <span class="cal-money-row">${line}</span>
+    </span>`;
+}
+
+// Re-render one cell's strip after the log changed, without rebuilding
+// the grid (which would drop the selection and scroll position).
+function refreshMoneyStrip(dayNum) {
+  const d = CAL_MODEL.days.find(x => x.day === dayNum);
+  if (!d) return;
+  d.money = dailyMoneyFor(dayNum);
+  const old = document.querySelector(`.cal-money[data-money-day="${dayNum}"]`);
+  if (old) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = moneyStrip(d).trim();
+    old.replaceWith(tmp.firstElementChild);
+  }
+  renderCalendarSummary();
+}
+
+function moneyBlock(d) {
+  const m = d.money;
+  if (!m) return '';
+  const b = m.budget;
+  const pct = Math.round(m.ratio * 100);
+  const tierWord = { lean: 'lean', mid: 'mid', easy: 'easy' }[b.tier] || b.tier;
+  const basis = b.where
+    ? `<b>${dailyFmt(b.food)}</b> food at the <b>${tierWord}</b> rate for ${b.where} + <b>${dailyFmt(b.pocket)}</b> pocket money (metro, taxis, coffee, small tickets). For the two of you.`
+    : `<b>${dailyFmt(b.food)}</b> food + <b>${dailyFmt(b.pocket)}</b> pocket money, for the two of you.`;
+
+  const log = m.spent.items.length
+    ? `<ul class="cal-money-log">${m.spent.items.map(e => `
+        <li>
+          <span class="cal-money-what">${e.what}</span>
+          <span class="cal-money-src ${e.source === 'local' ? 'is-local' : ''}">${e.source === 'local' ? 'this phone' : 'in repo'}</span>
+          <span class="cal-money-amt">${dailyFmt(e.amount)}</span>
+          ${e.source === 'local' ? `<button type="button" class="cal-money-del" data-at="${e.at}" title="Remove" aria-label="Remove this expense">✕</button>` : ''}
+        </li>`).join('')}</ul>`
+    : '<p class="cal-money-empty">Nothing logged for this day yet.</p>';
+
+  return `
+    <div class="cal-detail-block cal-moneyblock is-${m.state}" data-money-block="${d.day}">
+      <h5>💵 Today's money <em>food + pocket · beds and tickets are prepaid</em></h5>
+      <div class="cal-money-figures">
+        <span class="cal-money-fig"><b>${dailyFmt(b.total)}</b><span>to spend</span></span>
+        <span class="cal-money-fig"><b>${dailyFmt(m.spent.total)}</b><span>spent</span></span>
+        <span class="cal-money-fig is-left"><b>${m.left < 0 ? dailyFmt(-m.left) + ' over' : dailyFmt(m.left)}</b><span>${m.left < 0 ? 'over budget' : 'left'}</span></span>
+      </div>
+      <span class="cal-money-bar cal-money-bigbar"><span style="width:${pct}%"></span></span>
+      <p class="cal-money-basis">${basis}</p>
+      ${b.note ? `<p class="cal-money-note">${b.note}</p>` : ''}
+      ${log}
+      <form class="cal-money-form" data-day="${d.day}" autocomplete="off">
+        <input type="number" name="amount" inputmode="decimal" min="0" step="0.01" placeholder="$ 0" required aria-label="Amount in USD">
+        <input type="text" name="what" placeholder="What was it? (lunch, taxi…)" maxlength="60" aria-label="What was it">
+        <button type="submit">+ Log</button>
+      </form>
+      <p class="cal-money-form-hint">Saved on this device only. Copy entries into <code>js/daily.js</code> when you can — that file is the record.</p>
+    </div>`;
+}
+
+function wireMoneyBlock(panel, dayNum) {
+  const form = panel.querySelector('.cal-money-form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const amount = parseFloat(form.amount.value);
+      if (!(amount >= 0)) return;
+      dailyLocalAdd(dayNum, form.what.value, amount);
+      refreshMoneyStrip(dayNum);
+      const d = CAL_MODEL.days.find(x => x.day === dayNum);
+      const block = panel.querySelector('.cal-moneyblock');
+      if (block && d) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = moneyBlock(d).trim();
+        block.replaceWith(tmp.firstElementChild);
+        wireMoneyBlock(panel, dayNum);
+        const amt = panel.querySelector('.cal-money-form input[name=amount]');
+        if (amt) amt.focus();
+      }
+    });
+  }
+  panel.querySelectorAll('.cal-money-del').forEach(btn => {
+    btn.addEventListener('click', () => {
+      dailyLocalRemove(dayNum, Number(btn.dataset.at));
+      refreshMoneyStrip(dayNum);
+      const d = CAL_MODEL.days.find(x => x.day === dayNum);
+      const block = panel.querySelector('.cal-moneyblock');
+      if (block && d) {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = moneyBlock(d).trim();
+        block.replaceWith(tmp.firstElementChild);
+        wireMoneyBlock(panel, dayNum);
       }
     });
   });
@@ -596,6 +724,7 @@ function openDayDetail(dayNum) {
         ? d.segments.map(sg => `${sg.stop.emoji} ${sg.stop.city}`).join('  →  ')
         : d.legs.length ? '🛫 In transit — trip departure' : 'Not part of the trip'}</span>
     </div>
+    ${moneyBlock(d)}
     ${typeof scheduleHTML === 'function' && scheduleFor(d.day) ? `
       <div class="cal-detail-block cal-schedblock">
         <h5>⏱️ The day, hour by hour <em>slack is computed, not typed</em></h5>
@@ -646,6 +775,7 @@ function openDayDetail(dayNum) {
   panel.classList.add('is-open');
   panel.scrollTop = 0;
   panel.querySelector('.cal-detail-close').addEventListener('click', closeDayDetail);
+  wireMoneyBlock(panel, d.day);
   // The stop link jumps back into the detail view. (There used to be a
   // route link here too, pointing at the standalone routes section — that
   // section is gone and its content now renders inline above.)
@@ -678,6 +808,12 @@ function renderCalendarSummary() {
   const bagDays = CAL_MODEL.days.filter(d => d.bags && (d.bags.status === 'tight' || d.bags.status === 'store')).length;
   const nightsBooked = CAL_MODEL.days.filter(d => d.lodging && d.lodging.booked).length;
   const nightsToBook = CAL_MODEL.days.filter(d => d.lodging && !d.lodging.booked).length;
+  const money = typeof dailyMoneyTotals === 'function' ? dailyMoneyTotals() : null;
+  const moneyKpi = money ? `
+    <span class="cal-kpi is-money ${money.over ? 'is-alert' : ''}">
+      <b>${dailyFmt(money.allowance)} to spend · ${dailyFmt(money.logged)} logged</b>
+      food + pocket, whole trip${money.daysLogged ? ` · ${money.daysLogged} day${money.daysLogged === 1 ? '' : 's'} logged${money.over ? ` · 🔴 ${money.over} over` : ''}` : ' · nothing logged yet'}
+    </span>` : '';
   el.innerHTML = `
     <span class="cal-kpi"><b>${TRIP.dates}</b>September 2026</span>
     <span class="cal-kpi"><b>${TRIP.duration}</b>${CAL_MODEL.stops.length} stops</span>
@@ -686,6 +822,7 @@ function renderCalendarSummary() {
     <span class="cal-kpi"><b>${routed} routes · ${segs} segments</b>mapped door-to-door</span>
     <span class="cal-kpi"><b>${bagDays}</b>days needing bag storage</span>
     <span class="cal-kpi ${nightsToBook ? 'is-alert' : ''}"><b>${nightsBooked}/${nightsBooked + nightsToBook} nights</b>${nightsToBook ? `🏚️ ${nightsToBook} still without a bed` : '🏠 every bed booked'}</span>
+    ${moneyKpi}
   `;
 }
 
