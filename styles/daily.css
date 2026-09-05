@@ -1,0 +1,230 @@
+/* ============================================================
+   DAILY MONEY ON THE CALENDAR
+   The one open money question once you are travelling — "what can
+   we spend today, and what is left?" — answered on every day cell
+   without opening anything. Sits at the very bottom of the cell so
+   the whole month can be read as one column of figures.
+   ============================================================ */
+
+.cal-money {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 7px 8px 8px;
+  border-radius: 8px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #14532d;
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+.cal-money-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+}
+.cal-money-top b {
+  font-size: 0.84rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.cal-money-top i {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.78;
+}
+.cal-money-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.09);
+  overflow: hidden;
+}
+.cal-money-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #16a34a;
+  transition: width 0.25s;
+}
+.cal-money-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-weight: 700;
+}
+.cal-money-row em { font-style: normal; font-weight: 600; opacity: 0.8; }
+.cal-money-row b { font-weight: 800; }
+
+/* Nothing logged yet: quiet, but the figure still reads. */
+.cal-money.is-untouched { background: #f8fafc; border-color: #e2e8f0; color: #334155; }
+.cal-money.is-untouched .cal-money-bar { background: rgba(0, 0, 0, 0.06); }
+
+/* Past the warning share of the allowance. */
+.cal-money.is-warn { background: #fffbeb; border-color: #fcd34d; color: #92400e; }
+.cal-money.is-warn .cal-money-bar span { background: #f59e0b; }
+
+/* Over budget: the loudest state on the cell. */
+.cal-money.is-over { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+.cal-money.is-over .cal-money-bar span { background: #dc2626; }
+
+/* On the dark-green transport cells the strip is a pale card like the
+   chips, so lift it the same way. */
+.cal-day.is-transport .cal-money { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18); }
+
+/* The strip adds a row to every cell; give the grid the room. */
+.cal-day { min-height: 196px; }
+
+/* ---- KPI in the summary strip ---- */
+.cal-kpi.is-money b { color: #15803d; }
+.cal-kpi.is-money.is-alert b { color: var(--danger); }
+
+/* ---- legend key for the strip ---- */
+.cal-legend-keyswatch.is-money {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #f0fdf4 0 55%, #16a34a 55% 75%, #f0fdf4 75%);
+  border: 1px solid #86efac;
+}
+
+/* ============================================================
+   THE MONEY BLOCK IN THE DAY DRAWER
+   Budget breakdown, the log, and a quick-add form.
+   ============================================================ */
+.cal-moneyblock { border-left-color: #16a34a; }
+.cal-moneyblock.is-warn { border-left-color: #f59e0b; }
+.cal-moneyblock.is-over { border-left-color: #dc2626; }
+
+.cal-money-figures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 4px 0 10px;
+}
+.cal-money-fig {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.cal-money-fig b { font-size: 1.05rem; font-weight: 800; line-height: 1.1; }
+.cal-money-fig span {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+}
+.cal-money-fig.is-left b { color: #15803d; }
+.cal-moneyblock.is-warn .cal-money-fig.is-left b { color: #b45309; }
+.cal-moneyblock.is-over .cal-money-fig.is-left b { color: #b91c1c; }
+
+.cal-money-bigbar { height: 9px; }
+.cal-money-bigbar span { background: #16a34a; }
+.cal-moneyblock.is-warn .cal-money-bigbar span { background: #f59e0b; }
+.cal-moneyblock.is-over .cal-money-bigbar span { background: #dc2626; }
+
+.cal-money-basis {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.cal-money-basis b { color: var(--text); }
+.cal-money-note {
+  margin-top: 6px;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #78350f;
+}
+
+.cal-money-log { list-style: none; margin: 10px 0 0; padding: 0; }
+.cal-money-log li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.8rem;
+}
+.cal-money-log li:last-child { border-bottom: none; }
+.cal-money-log .cal-money-what { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.cal-money-log .cal-money-src {
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.cal-money-log .cal-money-src.is-local { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+.cal-money-log .cal-money-amt { font-weight: 800; white-space: nowrap; }
+.cal-money-del {
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+}
+.cal-money-del:hover { background: #fee2e2; border-color: #fca5a5; color: #b91c1c; }
+.cal-money-empty { margin-top: 8px; font-size: 0.78rem; color: var(--text-muted); }
+
+.cal-money-form {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 6px;
+  margin-top: 10px;
+}
+.cal-money-form input {
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  min-width: 0;
+}
+.cal-money-form input:focus { outline: 2px solid #16a34a; outline-offset: 1px; border-color: #16a34a; }
+.cal-money-form button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #16a34a;
+  color: #fff;
+  white-space: nowrap;
+}
+.cal-money-form button:hover { background: #15803d; }
+.cal-money-form-hint { margin-top: 6px; font-size: 0.68rem; color: var(--text-muted); line-height: 1.45; }
+
+@media (max-width: 560px) {
+  .cal-money-form { grid-template-columns: 80px 1fr; }
+  .cal-money-form button { grid-column: 1 / -1; }
+}
