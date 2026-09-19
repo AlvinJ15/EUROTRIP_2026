@@ -535,7 +535,7 @@ function moneyStrip(d) {
       : `<em>spent ${dailyFmt(m.spent.total)}</em><b>${dailyFmt(m.left)} left</b>`;
   return `
     <span class="cal-money is-${m.state}" data-money-day="${d.day}">
-      <span class="cal-money-top"><i>💵 today</i><b>${dailyFmt(m.budget.total)}</b></span>
+      <span class="cal-money-top"><i>💵 food + pocket</i><b>${dailyFmt(m.budget.total)}</b></span>
       <span class="cal-money-bar"><span style="width:${pct}%"></span></span>
       <span class="cal-money-row">${line}</span>
     </span>`;

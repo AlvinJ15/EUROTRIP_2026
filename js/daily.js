@@ -73,6 +73,11 @@ const DAILY = {
     // Jules Verne is paid on its own line, so Sep 24 only needs breakfast
     // and lunch — the non-dinner share of a Paris day.
     24: { food: 45, pocket: 30, note: '🍽️ Dinner is Le Jules Verne, already paid. This is breakfast + lunch only.' },
+    // Switzerland: the lifts, the paraglide, Schilthorn, Trümmelbach and
+    // the via ferrata gear are NOT in here — they sit on the budget's
+    // Switzerland activities line. These days are food + pocket only.
+    20: { note: '🪂 The $468 paraglide and CHF 14 Trümmelbach are on the Switzerland activities line, not in this figure. This is food + pocket.' },
+    21: { note: '🏔️ Schilthorn (CHF 54 each with the card) and the via ferrata gear are on the activities line. Piz Gloria lunch IS in here — it is food.' },
     // Flight home at 11:00. Airport breakfast and that is it.
     29: { food: 30, pocket: 10, note: '🛫 Fly home 11:00 — airport breakfast, nothing else.' }
   },
