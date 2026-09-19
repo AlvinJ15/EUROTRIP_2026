@@ -452,3 +452,46 @@ body.view-calendar #nav-cities { display: none; }
   background: rgba(255, 255, 255, 0.38);
   color: #fff;
 }
+
+/* ============================================================
+   THE DAY'S ACTIVITIES ON THE CELL
+   What you actually DO that day, read from the timetable, listed
+   on the cell so the month can be scanned without opening a day.
+   Trains, bag drops and meals are left out on purpose.
+   ============================================================ */
+.cal-acts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 7px 6px;
+  border-radius: 7px;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+.cal-acts-head {
+  font-style: normal;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1px;
+}
+.cal-act {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 0.64rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+.cal-act b {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  font-variant-numeric: tabular-nums;
+}
+.cal-act.is-fixed b { color: #b45309; }
+.cal-act.is-fixed { font-weight: 700; }
+.cal-day.is-transport .cal-acts { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18); }

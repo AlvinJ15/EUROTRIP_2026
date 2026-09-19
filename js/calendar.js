@@ -425,6 +425,7 @@ function renderCalendarGrid() {
         <span class="cal-legs">${d.legs.map(l =>
           `<span class="cal-leg">${l.icon} ${l.leg}<b> 🕑 ${l.time} · ⏱️ ${l.duration}</b></span>`).join('')}</span>
         ${routeBadges(d)}
+        ${activitiesList(d)}
         <span class="cal-sleep is-move">🌙 Overnight in the air</span>
         ${moneyStrip(d)}
       </div>`;
@@ -479,6 +480,7 @@ function renderCalendarGrid() {
         ${routeBadge}
         ${bagLine(d)}
         ${tags ? `<span class="cal-tags">${tags}</span>` : ''}
+        ${activitiesList(d)}
         ${sleepLine}
         ${moneyStrip(d)}
       </div>`;
@@ -517,6 +519,40 @@ function renderCalendarGrid() {
       }
     });
   });
+}
+
+// ---- the day's activities, on the cell --------------------------------
+
+// Everything the timetable says you DO that day — not the trains, not the
+// bag drops, not the meals — as a visible list on the cell itself. It is
+// read from SCHEDULE so it can never disagree with the hour-by-hour view.
+function activityLabel(what) {
+  let s = String(what)
+    .replace(/\s+[—·]\s+.*$/, '')      // drop "— the mirror lake · lunch…"
+    .replace(/\s*\(.*?\)\s*$/, '')     // drop a trailing "(3 km)"
+    .replace(/\s*[—–-]\s*$/, '')
+    .trim();
+  // Title-case shouting: "MOUNTAIN CART" reads as a warning in a list.
+  s = s.replace(/\b[A-ZÀ-Ü]{3,}(?:\s+[A-ZÀ-Ü]{2,})*\b/g, w =>
+    w.split(/\s+/).map(x => x.charAt(0) + x.slice(1).toLowerCase()).join(' '));
+  return s.length > 44 ? s.slice(0, 43).trimEnd() + '…' : s;
+}
+
+function dayActivities(day) {
+  if (typeof SCHEDULE === 'undefined' || !SCHEDULE[day]) return [];
+  return SCHEDULE[day].items
+    .filter(it => it.kind === 'act' || it.kind === 'fixed')
+    .map(it => ({ t: it.t, label: activityLabel(it.what), fixed: !!it.fixed }));
+}
+
+function activitiesList(d) {
+  const acts = dayActivities(d.day);
+  if (!acts.length) return '';
+  return `
+    <span class="cal-acts">
+      <i class="cal-acts-head">📌 Today</i>
+      ${acts.map(a => `<span class="cal-act ${a.fixed ? 'is-fixed' : ''}"><b>${a.t}</b>${a.label}</span>`).join('')}
+    </span>`;
 }
 
 // ---- today's money -----------------------------------------------------
