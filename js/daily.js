@@ -77,7 +77,7 @@ const DAILY = {
     // the via ferrata gear are NOT in here — they sit on the budget's
     // Switzerland activities line. These days are food + pocket only.
     20: { note: '🪂 The $468 paraglide and CHF 14 Trümmelbach are on the Switzerland activities line, not in this figure. This is food + pocket.' },
-    21: { note: '🛴 Cart + trottibike + gondola (~CHF 55–60 each), Schilthorn (CHF 54 each with the card) and Allmendhubel are on the activities line. Piz Gloria lunch IS in here — it is food.' },
+    21: { note: '🛴 Cart + gondola + Pfingstegg toboggan (~CHF 75–80 each) and Schilthorn (CHF 54 each with the card) are on the activities line. Piz Gloria lunch IS in here — it is food.' },
     // Flight home at 11:00. Airport breakfast and that is it.
     29: { food: 30, pocket: 10, note: '🛫 Fly home 11:00 — airport breakfast, nothing else.' }
   },
